@@ -1,0 +1,1818 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Language>
+  <Default>CH</Default>
+  <type language="CH">
+    <add Key="LOGO" Text="XY-DTO变压器油色谱在线监测系统" />
+    <add Key="Bottom" Text="上海欣影电力科技有限公司 版权所有  V 0.1.0 测试版" />
+    <!--Respon.Write-->
+    <add Key="RW-beifen" Text="请填写备份名">
+    </add>
+    <add Key="RW-fileexit" Text="该文件已经存在">
+    </add>
+    <add Key="RW-sql" Text="数据库备份成功">
+    </add>
+    <add Key="RW-sqlsuccess" Text="数据库备份成功，请退出后重新登录系统！">
+    </add>
+    <!--WCFHost/Program.cs-->
+    <add Key="Confirm" Text="确定退出吗？输入Y退出程序：">
+    </add>
+    <add Key="DebugOn" Text="调试输出开启">
+    </add>
+    <add Key="DebugOff" Text="调试输出关闭">
+    </add>
+    <add Key="BadCmd" Text="无法识别的命令\r\n">
+    </add>
+    <add Key="SvrStatus" Text="当前服务状态：">
+    </add>
+    <add Key="WcfRun" Text="WCF服务：运行">
+    </add>
+    <add Key="WcfStop" Text="WCF服务：停止">
+    </add>
+    <add Key="PollOn" Text="轮询线程：运行">
+    </add>
+    <add Key="PollOff" Text="轮询线程：停止">
+    </add>
+    <add Key="DebugOpen" Text="调试输出：开启">
+    </add>
+    <add Key="DebugClose" Text="调试输出：关闭">
+    </add>
+    <add Key="Welcome" Text="欢迎使用：">
+    </add>
+    <add Key="Address" Text="地址：">
+    </add>
+    <add Key="Tel" Text="联系电话：">
+    </add>
+    <add Key="CMD" Text="命令提示：">
+    </add>
+    <add Key="StartWCF" Text="1、开启WCF服务：start">
+    </add>
+    <add Key="StopWCF" Text="2、停止WCF服务：stop">
+    </add>
+    <add Key="OnDebug" Text="3、开启调试输出：debug on">
+    </add>
+    <add Key="OffDebug" Text="4、关闭调试输出：debug off">
+    </add>
+    <add Key="OnPoll" Text="5、开启轮询线程：poll on">
+    </add>
+    <add Key="OffPoll" Text="6、关闭轮询线程：poll off">
+    </add>
+    <add Key="Clear1" Text="7、清屏：clear">
+    </add>
+    <add Key="Server" Text="8、服务器状态：status">
+    </add>
+    <add Key="Help" Text="9、帮助：help">
+    </add>
+    <add Key="Quit" Text="10、退出程序：quit">
+    </add>
+    <add Key="Output1" Text="服务已开启">
+    </add>
+    <add Key="Output2" Text="服务已关闭">
+    </add>
+    <add Key="Output3" Text="请先开启WCF服务">
+    </add>
+    <add Key="Output4" Text="轮询线程开启">
+    </add>
+    <add Key="Output5" Text="轮询线程开启">
+    </add>
+    <!--ALarmInof.aspx.cs-->
+    <add Key="AlarmInfo_Logo" Text="告警信息数据">
+    </add>
+    <add Key="Alarm_Info_Type" Text="请选择告警信息类型">
+    </add>
+    <add Key="Alarm_RadioButton" Text="告警信息">
+    </add>
+    <add Key="Diagnos_RadioButton" Text="诊断信息">
+    </add>
+    <add Key="Inquery_Data" Text="刷新">
+    </add>
+    <add Key="Data_count" Text="此类信息不存在">
+    </add>
+    <add Key="Alarm_DeviceID" Text="设备号">
+    </add>
+    <add Key="Alarm_GasName" Text="气体名">
+    </add>
+    <add Key="Alarm_Value1" Text="设定值">
+    </add>
+    <add Key="Alarm_Type1" Text="告警类型">
+      <!--0：PPM 1：绝对速率 2：相对速率-->
+    </add>
+    <add Key="dropvalue0" Text="已读">
+    </add>
+    <add Key="dropvalue1" Text="未读">
+    </add>
+    <add Key="dropvalue2" Text="所有">
+    </add>
+    <add Key="Alarm_State" Text="信息状态">
+    </add>
+    <add Key="RealValue" Text="测量值">
+    </add>
+    <add Key="Message" Text="告警信息">
+    </add>
+    <add Key="Alarm_ReadDate" Text="查看日期">
+    </add>
+    <add Key="Alarm_CurDate" Text="告警日期">
+    </add>
+    <add Key="Alarm_Level1" Text="告警级别">
+    </add>
+    <add Key="Check_Read" Text="标记为已读">
+    </add>
+    <!--ALarm.aspx.cs-->
+    <add Key="TimeSpaceNotNull" Text="时间间隔不能为空">
+    </add>
+    <add Key="TimeSpaceError" Text="请输入正确的时间间隔">
+    </add>
+    <add Key="Success" Text="设置成功">
+    </add>
+    <add Key="False" Text="设置失败">
+    </add>
+    <add Key="FalseAndReason" Text="设置失败，原因：">
+    </add>
+    <add Key="Device" Text="选择设备">
+    </add>
+    <add Key="AutoAlarm" Text="自动阈值告警">
+    </add>
+    <add Key="AutoDiag" Text="自动诊断">
+    </add>
+    <add Key="DiagSpace" Text="自动告警诊断功能启用的最小日期间隔">
+    </add>
+    <add Key="Day" Text="天">
+    </add>
+    <add Key="Open" Text="开启">
+    </add>
+    <add Key="Setup" Text="设置">
+    </add>
+    <add Key="Read" Text="读取">
+    </add>
+    <add Key="Close" Text="关闭">
+    </add>
+    <add Key="Clear" Text="清空">
+    </add>
+    <add Key="Del" Text="删除">
+    </add>
+    <add Key="Edit" Text="修改">
+    </add>
+    <add Key="ADD" Text="添加">
+    </add>
+    <!--Analysis.aspx-->
+    <add Key="All" Text="请填写完整信息">
+    </add>
+    <add Key="Valid" Text="请输入有效信息">
+    </add>
+    <add Key="RightFormat" Text="请输入正确格式">
+    </add>
+    <add Key="RightZone" Text="请输入正确的剔除区间">
+    </add>
+    <add Key="ReadError" Text="读取失败">
+    </add>
+    <add Key="ReadSuccess" Text="读取成功">
+    </add>
+    <add Key="ParaError" Text="参数错误">
+    </add>
+    <add Key="H2oVarName" Text="微水">
+    </add>
+    <add Key="H2oVarParamA" Text="修正参数A">
+    </add>
+    <add Key="H2oVarParamK" Text="修正参数K">
+    </add>
+    <add Key="H2oVarParamB" Text="修正参数B">
+    </add>
+    <add Key="Gas" Text="气体">
+    </add>
+    <add Key="High" Text="最高点位置">
+    </add>
+    <add Key="Left" Text="左起点">
+    </add>
+    <add Key="Right" Text="右终点">
+    </add>
+    <add Key="Zhu" Text="柱修正系数">
+    </add>
+    <add Key="Tuo" Text="脱气率修正系数">
+    </add>
+    <add Key="LeftMin" Text="左梯度Min">
+    </add>
+    <add Key="LeftMax" Text="左梯度Max">
+    </add>
+    <add Key="RightMin" Text="右梯度Min">
+    </add>
+    <add Key="RightMax" Text="右梯度Max">
+    </add>
+    <add Key="TopWidth" Text="峰顶宽度">
+    </add>
+    <add Key="K" Text="多级K值">
+    </add>
+    <add Key="Erase" Text="气体谱图数据剔除区间：">
+    </add>
+    <add Key="To" Text="到">
+    </add>
+    <!--Attention.aspx-->
+    <add Key="GasAttention" Text="气体含量注意值设置（uL/L）">
+    </add>
+    <add Key="AbsAttention" Text="绝对产气速率注意值设置（mL/天）">
+    </add>
+    <add Key="RelAttention" Text="相对产气速率注意值设置（%/月）">
+    </add>
+    <add Key="Level1" Text="一级告警">
+    </add>
+    <add Key="Level2" Text="二级告警">
+    </add>
+    <add Key="H2" Text="氢气">
+    </add>
+    <add Key="CO" Text="一氧化碳">
+    </add>
+    <add Key="CH4" Text="甲烷">
+    </add>
+    <add Key="C2H2" Text="乙炔">
+    </add>
+    <add Key="C2H4" Text="乙烯">
+    </add>
+    <add Key="C2H6" Text="乙烷">
+    </add>
+    <add Key="CO2" Text="二氧化碳">
+    </add>
+    <add Key="ZongT" Text="总烃">
+    </add>
+    <add Key="Total" Text="总烃">
+    </add>
+    <add Key="keranxingqiti" Text="总可燃性气体">
+    </add>
+    <add Key="Activity" Text="水活性">
+    </add>
+    <add Key="Temperature" Text="温度">
+    </add>
+    <add Key="PPM" Text="微水（ppm）">
+    </add>
+    <add Key="AW" Text="微水（AW）">
+    </add>
+    <add Key="T" Text="微水（T）">
+    </add>
+    <add Key="H2O" Text="微水">
+    </add>
+    <!--CheckTime.apsx-->
+    <add Key="DeviceError" Text="设备选择失败！">
+    </add>
+    <add Key="TimeSuccess" Text="时间校准成功！">
+    </add>
+    <add Key="TimeError" Text="时间校准失败！">
+    </add>
+    <add Key="Check" Text="校准">
+    </add>
+    <!--Default.aspx-->
+    <add Key="Tip_Gas" Text="气体：">
+    </add>
+    <add Key="Tip_Time" Text="时间：">
+    </add>
+    <add Key="Tip_Content" Text="含量：">
+    </add>
+    <add Key="Title_Content" Text="采样日期">
+    </add>
+    <add Key="Title_Nongdu" Text="采样浓度(uL/L)">
+    </add>
+    <add Key="Pop_Notice" Text="注意!">
+    </add>
+    <add Key="Pop_AlarmDevice" Text="告警设备：">
+    </add>
+    <add Key="Pop_AlarmGas" Text="告警气体：">
+    </add>
+    <add Key="Msg_Abs" Text="绝对产气速率超标">
+    </add>
+    <add Key="Msg_Notice" Text="注意值超标">
+    </add>
+    <add Key="Msg_Rel" Text="相对产气速率超标">
+    </add>
+    <add Key="Msg_Type" Text="告警类型：">
+    </add>
+    <add Key="Msg_Value" Text="告警值：">
+    </add>
+    <add Key="Msg_Value1" Text="实际值:">
+    </add>
+    <add Key="NoH2O" Text="不支持微水">
+    </add>
+    <add Key="Title_Font" Text="宋体">
+      <!--中文操作系统默认为‘宋体’，英文操作系统默认为‘Tahoma’-->
+    </add>
+    <add Key="Title_DataView" Text="数据趋势图">
+    </add>
+    <add Key="Title_RelSpeedView" Text="相对产气速率">
+    </add>
+    <add Key="Title_AbsSpeedView" Text="绝对产气速率">
+    </add>
+    <add Key="Title_H2oDataView" Text="微水数据视图">
+    </add>
+    <add Key="Title_AnlySix" Text="六组分数据谱图">
+    </add>
+    <add Key="Title_Time" Text="采样时间(单位：秒)">
+    </add>
+    <add Key="Title_Value" Text="采样值">
+    </add>
+    <add Key="Tip_Denisity" Text="浓度: ">
+    </add>
+    <add Key="Tip_KeepTime" Text="保留时间: ">
+    </add>
+    <add Key="Title_AnlyCO2" Text="二氧化碳数据谱图">
+    </add>
+    <add Key="Label_Gas" Text="气体：">
+    </add>
+    <add Key="Label_Rate_Abs" Text="绝对产气速率：">
+    </add>
+    <add Key="Abs_Unit_ABs" Text="uL/天">
+    </add>
+    <add Key="Label_Rate_Rel" Text="相对产气速率：">
+    </add>
+    <add Key="Abs_Unit_Rel" Text="%/月">
+    </add>
+    <add Key="GenSpeed_Calc_Fail" Text="无法判断">
+    </add>
+    <!--DataBase.aspx-->
+    <add Key="BackUp" Text="备份">
+    </add>
+    <add Key="Recover" Text="恢复">
+    </add>
+    <add Key="bt_Backup" Text="备份">
+    </add>
+    <add Key="bt_Recover" Text="恢复">
+    </add>
+    <add Key="bt_Close" Text="关闭">
+    </add>
+    <!--SetReportItem.aspx-->
+    <add Key="bt_Export" Text="生成报表">
+    </add>
+    <add Key="device" Text="设备">
+    </add>
+    <add Key="Statementstype" Text="报表类型">
+    </add>
+    <add Key="Exporttypes" Text="导出类型">
+    </add>
+    <add Key="Statementdate" Text="导出日期">
+    </add>
+    <add Key="Dailyreports" Text="日报表">
+    </add>
+    <add Key="Historicaldata" Text="历史数据">
+    </add>
+    <!--Device.aspx-->
+    <add Key="Alert_Station" Text="请先添加场站">
+    </add>
+    <add Key="Col_DevieIDName" Text="设备名称及编号">
+    </add>
+    <add Key="Col_DevieID" Text="设备编号">
+    </add>
+    <add Key="Col_DevieName" Text="设备名">
+    </add>
+    <add Key="Col_StationName" Text="场站名">
+    </add>
+    <add Key="Col_Tel" Text="手机号码">
+    </add>
+    <add Key="Col_AddTime" Text="添加时间">
+    </add>
+    <add Key="Alert1" Text="请输入设备号！">
+    </add>
+    <add Key="Alert2" Text="设备号只能是数字！">
+    </add>
+    <add Key="Alert3" Text="设备号必须小于32！">
+    </add>
+    <add Key="Alert4" Text="请输入正确的手机号！">
+    </add>
+    <add Key="Alert5" Text="添加成功！">
+    </add>
+    <add Key="Alert6" Text="该设备已存在！">
+    </add>
+    <add Key="Alert7" Text="请先选择要删除的设备">
+    </add>
+    <add Key="Alert8" Text="错误的设备号">
+    </add>
+    <add Key="Alert9" Text="删除成功">
+    </add>
+    <add Key="Alert10" Text="请先选择要编辑的设备">
+    </add>
+    <add Key="Alert11" Text="错误的设备号">
+    </add>
+    <add Key="Alert12" Text="错误的手机号">
+    </add>
+    <add Key="UpdateSuccess" Text="更新成功">
+    </add>
+    <add Key="UpdateError" Text="更新失败">
+    </add>
+    <!--DeivceView.aspx-->
+    <add Key="OffLine" Text="离线">
+    </add>
+    <add Key="OnLinePressOk" Text="在线，载气压力正常">
+    </add>
+    <add Key="OnLinePressErr" Text="在线，载气压力不足">
+    </add>
+    <add Key="Title_Sample" Text="采样设置">
+    </add>
+    <add Key="Title_Compute" Text="计算参数设置">
+    </add>
+    <add Key="Title_Property" Text="环境参数">
+    </add>
+    <add Key="Warring1" Text="设备">
+    </add>
+    <add Key="Warring2" Text="离线，无法同步">
+    </add>
+    <add Key="Warring3" Text="，从设备到数据库工作流程1时间同步失败！">
+    </add>
+    <add Key="Warring4" Text="，从设备到数据库工作流程1时间同步成功！">
+    </add>
+    <add Key="Warring5" Text="，从设备到数据库工作流程1工作参数同步失败！">
+    </add>
+    <add Key="Warring6" Text="，从设备到数据库工作流程1工作参数同步成功！">
+    </add>
+    <add Key="Warring7" Text="，从设备到数据库工作流程1分析参数同步失败！">
+    </add>
+    <add Key="Warring8" Text="，从设备到数据库工作流程1分析参数同步成功！">
+    </add>
+    <add Key="Warring9" Text="，从数据库到设备工作流程1时间同步失败！">
+    </add>
+    <add Key="Warring10" Text="，从数据库到设备工作流程1时间同步成功！">
+    </add>
+    <add Key="Warring11" Text="，从数据库到设备工作流程1工作参数同步失败！">
+    </add>
+    <add Key="Warring12" Text="，从数据库到设备工作流程1工作参数同步成功！">
+    </add>
+    <add Key="Warring13" Text="，从数据库到设备工作流程1分析参数同步失败！">
+    </add>
+    <add Key="Warring14" Text="，从数据库到设备工作流程1分析参数同步成功！">
+    </add>
+    <add Key="Refresh" Text="刷新">
+    </add>
+    <add Key="Col_Status" Text="状态">
+    </add>
+    <add Key="Col_Opera" Text="操作">
+    </add>
+    <add Key="Dev2DB" Text="设备-&gt;数据库">
+    </add>
+    <add Key="DB2Dev" Text="数据库-&gt;设备">
+    </add>
+    <!--EnvironmentSet.aspx-->
+    <add Key="PressLevel" Text="电压等级">
+    </add>
+    <add Key="A" Text="油品系数A">
+    </add>
+    <add Key="B" Text="油品系数B">
+    </add>
+    <add Key="Altitude" Text="海拔高度">
+    </add>
+    <add Key="OilDenisity" Text="油密度">
+    </add>
+    <add Key="OilTotal" Text="油总量">
+    </add>
+    <!--Export-->
+    <add Key="NoData" Text="没有数据！">
+    </add>
+    <add Key="ReadDate" Text="读取日期">
+    </add>
+    <add Key="Result" Text="结果">
+    </add>
+    <add Key="SelDate" Text="选择日期">
+    </add>
+    <add Key="SelDateRangeInvalid" Text="日期范围无效">
+    </add>
+    <add Key="StartDate" Text="起始时间：">
+    </add>
+    <add Key="EndDate" Text="截止时间：">
+    </add>
+    <add Key="SelDevice" Text="选择设备">
+    </add>
+    <add Key="SelGas" Text="选择气体">
+    </add>
+    <add Key="GasType" Text="选择气体类型">
+    </add>
+    <add Key="Export" Text="导出">
+    </add>
+    <!--Login.aspx-->
+    <add Key="UserName" Text="请输入用户名">
+    </add>
+    <add Key="Password" Text="请输入密码">
+    </add>
+    <add Key="InvalidUser" Text="非法用户">
+    </add>
+    <add Key="LoginError" Text="登录失败">
+    </add>
+    <add Key="Login" Text="登录(Login)">
+    </add>
+    <!--Main.Master-->
+    <add Key="SelectData" Text="选择数据">
+    </add>
+    <add Key="Device1" Text="设备：">
+    </add>
+    <add Key="Offline" Text="连接：离线">
+    </add>
+    <add Key="Online" Text="连接：在线">
+    </add>
+    <add Key="GasStatus" Text="载气：无法监测">
+    </add>
+    <add Key="Press1" Text="压力正常">
+    </add>
+    <add Key="Press2" Text="压力不足">
+    </add>
+    <add Key="ZaiQiPress" Text="载气：">
+    </add>
+    <add Key="Attention" Text="注意！">
+    </add>
+    <add Key="QuitConfirm" Text="确定退出吗?">
+    </add>
+    <add Key="QuitSystem" Text="退出系统">
+    </add>
+    <add Key="TimeSet" Text="分析时段设置">
+    </add>
+    <add Key="SelData" Text="选择数据">
+    </add>
+    <add Key="Tip_Up" Text="向上平移">
+    </add>
+    <add Key="Tip_Left" Text="向左平移">
+    </add>
+    <add Key="Tip_ZoomIn" Text="缩小">
+    </add>
+    <add Key="Tip_ZoomOut" Text="放大">
+    </add>
+    <add Key="Tip_Right" Text="向右平移">
+    </add>
+    <add Key="Tip_Down" Text="向下平移">
+    </add>
+    <add Key="DeviceStatus" Text="设备状态">
+    </add>
+    <add Key="Connection" Text="连接：">
+    </add>
+    <add Key="H2O_Item_PPM" Text="含量">
+    </add>
+    <add Key="H2O_Item_T" Text="温度">
+    </add>
+    <add Key="H2O_Item_AW" Text="水活性">
+    </add>
+    <add Key="Six" Text="六组分">
+    </add>
+    <!--ManualAnalysis.aspx-->
+    <add Key="Alert_SelData" Text="请选择分析的数据">
+    </add>
+    <add Key="Alert_SelAbs" Text="请选择绝对产气速率数据">
+    </add>
+    <add Key="Alert_SelRel" Text="请选择相对产气速率数据">
+    </add>
+    <add Key="Alert_TimeErr1" Text="绝对产气速率数据时间必须小于要对比的数据时间">
+    </add>
+    <add Key="Alert_TimeErr2" Text="相对产气速率数据时间必须小于要对比的数据时间">
+    </add>
+    <add Key="Alarm_Device" Text="告警设备：">
+    </add>
+    <add Key="Alarm_Gas" Text="告警气体：">
+    </add>
+    <add Key="Alarm_Type_Content" Text="注意值告警">
+    </add>
+    <add Key="Alarm_Type_Abs" Text="绝对产气速率告警">
+    </add>
+    <add Key="Alarm_Type_Rel" Text="相对产气速率告警">
+    </add>
+    <add Key="Alarm_Type" Text="告警类型:">
+    </add>
+    <add Key="Alarm_Value" Text="告警值:">
+    </add>
+    <add Key="Alarm_Level" Text="告警级别:">
+    </add>
+    <add Key="Alarm_RealValue" Text="实际值:">
+    </add>
+    <add Key="Diag_Result" Text="--诊断结论：">
+    </add>
+    <add Key="ThreeRatio_Diag_Result" Text="-三比值法诊断数据（负数表示无法计算）：">
+    </add>
+    <add Key="David_Result" Text="-大卫三角形法诊断数据（负数表示无法计算）：">
+    </add>
+    <add Key="Cube_Diag_Result" Text="-立体图示法诊断数据（负数表示无法计算）：">
+    </add>
+    <add Key="Col_Data" Text="数据">
+    </add>
+    <add Key="CompareData" Text="分析数据">
+    </add>
+    <add Key="AbsData" Text="对比数据1-计算绝对产气速率">
+    </add>
+    <add Key="RelData" Text="对比数据2-计算相对产气速率">
+    </add>
+    <add Key="StartupError" Text="启动应用程序时出错！原因：">
+    </add>
+    <add Key="NoAlert" Text="没有告警信息">
+    </add>
+    <add Key="AnalysisFirst" Text="请先分析数据">
+    </add>
+    <add Key="Condition" Text="分析条件">
+    </add>
+    <add Key="SelAnaData" Text="选择分析数据">
+    </add>
+    <add Key="Analysis" Text="分析">
+    </add>
+    <add Key="SelectedData" Text="选择的数据">
+    </add>
+    <add Key="AnaResult" Text="分析结果">
+    </add>
+    <add Key="Ratio" Text="比值：">
+    </add>
+    <add Key="Result1" Text="初步分析结果：">
+    </add>
+    <add Key="Devied" Text="大卫三角形图示法">
+    </add>
+    <add Key="Cube" Text="立体图示法">
+    </add>
+    <!--ManualCalc.aspx-->
+    <add Key="Alert_DataError" Text="数据错误，无法计算">
+    </add>
+    <add Key="RatioCode" Text="三比值编码（负数表示无法计算）">
+    </add>
+    <add Key="RatioResult" Text="三比值诊断结果：">
+    </add>
+    <add Key="DeviedCode" Text="大卫三角形编码（负数表示无法计算）:">
+    </add>
+    <add Key="DeviedResult" Text="大卫三角形诊断结果：">
+    </add>
+    <add Key="CubeCode" Text="立体图示法编码（负数表示无法计算）">
+    </add>
+    <add Key="NoDiagnose" Text="无法诊断">
+    </add>
+    <add Key="SelDataFirst" Text="请先选择数据">
+    </add>
+    <add Key="SaveSuccess" Text="保存成功">
+    </add>
+    <add Key="SampleArea" Text="采样面积">
+    </add>
+    <add Key="Compute" Text="计算">
+    </add>
+    <add Key="Save" Text="保存">
+    </add>
+    <add Key="Alarm" Text="告警：">
+    </add>
+    <add Key="DiaResult" Text="诊断结果：">
+    </add>
+    <add Key="Selected" Text="选择">
+    </add>
+    <!--ModuleManage.aspx-->
+    <add Key="ModuleID" Text="模块ID">
+    </add>
+    <add Key="ModuleName" Text="模块名">
+    </add>
+    <add Key="PModuleID" Text="父模块ID">
+    </add>
+    <add Key="AddError" Text="添加失败！">
+    </add>
+    <add Key="EditSuccess" Text="修改成功！">
+    </add>
+    <add Key="EditError" Text="修改失败！">
+    </add>
+    <add Key="DelError" Text="删除失败！">
+    </add>
+    <add Key="TopModule" Text="(顶级模块请选择“无”)">
+    </add>
+    <!--MutiLevelK.aspx-->
+    <add Key="KValue" Text="K值">
+    </add>
+    <add Key="MinArea" Text="最小面积">
+    </add>
+    <add Key="MaxArea" Text="最大面积">
+    </add>
+    <add Key="MiFixValue" Text="柱修正系数">
+    </add>
+    <add Key="NiFixValue" Text="脱气率修正系数">
+    </add>
+    <add Key="Cancel" Text="取消">
+    </add>
+    <add Key="JiZhun" Text="基准值">
+    </add>
+    <!--PermissionManage.aspx-->
+    <add Key="AddRoleFirst" Text="请先添加角色">
+    </add>
+    <add Key="AddMpduleFirst" Text="请先添加模块">
+    </add>
+    <add Key="RoleID" Text="角色ID">
+    </add>
+    <add Key="RoleDesc" Text="角色描述">
+    </add>
+    <add Key="Red" Text="(红色是顶级模块。如果某角色具有某模块的访问权限，必须同时具有该模块的父级模块的权限)">
+    </add>
+    <!--RoleManage.aspx-->
+    <add Key="NoDel" Text="该角色下还有用户，不能删除！">
+    </add>
+    <!--SampleSet.aspx-->
+    <add Key="AllInfo" Text="请填写所有输入信息">
+    </add>
+    <add Key="CorrectFormat" Text="请填入正确的格式">
+    </add>
+    <add Key="TimeCheck" Text="时间校准">
+    </add>
+    <add Key="TimeReadError" Text="时间读取失败">
+    </add>
+    <add Key="Title1" Text="脱气及气路动作控制">
+    </add>
+    <add Key="Title2" Text="微水采样控制">
+    </add>
+    <add Key="Title3" Text="气体采样控制">
+    </add>
+    <add Key="Second" Text="秒">
+    </add>
+    <add Key="td1" Text="脱气机工作持续时间">
+    </add>
+    <add Key="td2" Text="脱气给定信号持续时间">
+    </add>
+    <add Key="td3" Text="排气阀持续时间">
+    </add>
+    <add Key="td4" Text="风扇预吹保持时间">
+    </add>
+    <add Key="td5" Text="管路压力平衡吹扫阀开启前的延迟时间">
+    </add>
+    <add Key="td6" Text="管路压力平衡吹扫阀开启后的保持时间">
+    </add>
+    <add Key="td7" Text="定量阀开启后的持续时间">
+    </add>
+    <add Key="td8" Text="定量阀打开后，吹扫阀延迟打开的时间">
+    </add>
+    <add Key="td9" Text="吹扫阀延时关闭计时">
+    </add>
+    <add Key="td10" Text="风扇吹尾保持时间">
+    </add>
+    <add Key="td11" Text="油泵持续时间">
+    </add>
+    <add Key="td12" Text="气泵第一次开启持续时间">
+    </add>
+    <add Key="td13" Text="气泵持续打开时间">
+    </add>
+    <add Key="td14" Text="气泵持续关闭时间">
+    </add>
+    <add Key="td15" Text="传感器加热延时时间">
+    </add>
+    <add Key="td16" Text="微水采样开始前的延迟时间">
+    </add>
+    <add Key="td17" Text="采样间隔">
+    </add>
+    <add Key="td18" Text="10毫秒">
+    </add>
+    <add Key="td19" Text="AW采样点数">
+    </add>
+    <add Key="td20" Text="T的采样点数">
+    </add>
+    <add Key="td21" Text="AD放大系数">
+    </add>
+    <add Key="td22" Text="传感器加热延时时间">
+    </add>
+    <add Key="td23" Text="CO2传感器加热延时时间">
+    </add>
+    <add Key="td24" Text="采样开始前的延迟时间">
+    </add>
+    <add Key="td25" Text="CO2采样开始前的延迟时间">
+    </add>
+    <add Key="td26" Text="六组分采样间隔">
+    </add>
+    <add Key="td27" Text="六组分采样点数">
+    </add>
+    <add Key="td28" Text="六组分采样放大系数">
+    </add>
+    <add Key="td29" Text="CO2采样间隔">
+    </add>
+    <add Key="td30" Text="CO2采样点数">
+    </add>
+    <add Key="td31" Text="气路切换开启前的延时时间">
+    </add>
+    <add Key="td32" Text="气路切换开启后的延时时间">
+    </add>
+    <add Key="td33" Text="空调开启时间">
+    </add>
+    <add Key="DeviceTime" Text="下位机时间">
+    </add>
+    <add Key="Recall" Text="参数回读">
+    </add>
+    <add Key="SysModule" Text="系统支持模块">
+    </add>
+    <add Key="Flow1Time" Text="工作流程1时间设置">
+    </add>
+    <add Key="LoadDefault" Text="加载默认设置">
+    </add>
+    <!--SelectData.aspx-->
+    <add Key="Max5" Text="最多选择5组数据">
+    </add>
+    <!--SelectGasData.aspx-->
+    <add Key="IDError" Text="数据id错误">
+    </add>
+    <add Key="Return" Text="返回">
+    </add>
+    <!--Station.aspx-->
+    <add Key="InputStation" Text="请输入场站名！">
+    </add>
+    <add Key="Exist" Text="该场站名和DTU号码已存在！">
+    </add>
+    <add Key="SelStationFirst" Text="请先选择场站">
+    </add>
+    <add Key="SelError" Text="选择错误">
+    </add>
+    <add Key="DTU" Text="DTU号码">
+    </add>
+    <!--SysModule.aspx-->
+    <add Key="SupportModule" Text="请选择支持模块">
+    </add>
+    <add Key="MCO2" Text="二氧化碳模块">
+    </add>
+    <add Key="MH2O" Text="微水模块">
+    </add>
+    <add Key="TuoQI" Text="脱气">
+    </add>
+    <add Key="Support" Text="支持">
+    </add>
+    <add Key="UnSupport" Text="不支持">
+    </add>
+    <add Key="ZhenKong" Text="真空脱气">
+    </add>
+    <add Key="Mo" Text="膜脱气">
+    </add>
+    <!--UserManage.aspx-->
+    <add Key="UName" Text="用户名">
+    </add>
+    <add Key="Pwd" Text="密码">
+    </add>
+    <add Key="Role" Text="角色">
+    </add>
+    <add Key="UNamePwd" Text="用户名和密码不能为空！">
+    </add>
+    <add Key="ExistUser" Text="用户已存在！">
+    </add>
+    <add Key="SelUserFirst" Text="请先选择用户">
+    </add>
+    <add Key="UnDelAdmin" Text="不能删除admin！">
+    </add>
+    <!--Workflow1Timeset.aspx-->
+    <add Key="StartSampleTime" Text="开始采样时间">
+    </add>
+    <add Key="SampleInterval" Text="采样间隔">
+    </add>
+    <add Key="AdvanceTime" Text="工作流程提前时间">
+    </add>
+    <add Key="Default" Text="默认设置">
+    </add>
+    <!--Module-->
+    <add Key="M_SYS" Text="系统">
+    </add>
+    <add Key="SM_STATION" Text="场站管理">
+    </add>
+    <add Key="SM_DEVICE" Text="设备管理">
+    </add>
+    <add Key="SM_DEV_OVERVIEW" Text="设备一览图">
+    </add>
+    <add Key="M_SAMPLE_CFG" Text="采样设置">
+    </add>
+    <add Key="SM_WORKPARAMS_CFG" Text="工作参数设置">
+    </add>
+    <add Key="SM_CALCPARAMS_CFG" Text="计算参数设置">
+    </add>
+    <add Key="SM_ATTRPARAMS_CFG" Text="环境参数">
+    </add>
+    <add Key="M_DB" Text="数据管理">
+    </add>
+    <add Key="SM_DB_EXPORT" Text="数据导出">
+    </add>
+    <add Key="SM_MANU_CALC" Text="手动计算">
+    </add>
+    <add Key="M_VIEW" Text="数据视图">
+    </add>
+    <add Key="SM_DATAVIEW" Text="数据视图">
+    </add>
+    <add Key="SM_RELSPEED" Text="相对产气速率">
+    </add>
+    <add Key="SM_ABSSPEED" Text="绝对产气速率">
+    </add>
+    <add Key="SM_H2O_DATAVIEW" Text="微水视图">
+    </add>
+    <add Key="SM_ANLYVIEW" Text="谱图分析">
+    </add>
+    <add Key="SM_REPORTVIEW" Text="数据报表">
+    </add>
+    <add Key="M_ALARM" Text="分析及报警">
+    </add>
+    <add Key="SM_AUTO_CFG" Text="自动告警诊断设定">
+    </add>
+    <add Key="SM_MANUANLY" Text="手动分析诊断">
+    </add>
+    <add Key="M_AUTHCFG" Text="权限配置">
+    </add>
+    <add Key="SM_USER" Text="用户管理">
+    </add>
+    <add Key="SM_ROLE" Text="角色管理">
+    </add>
+    <add Key="SM_MODULE" Text="系统模块管理">
+    </add>
+    <add Key="SM_ROLEAUTH" Text="角色权限管理">
+    </add>
+    <add Key="SM_ATTEN_CFG" Text="注意值设定">
+    </add>
+    <add Key="SM_DIAG_CFG" Text="诊断条件设定">
+    </add>
+    <add Key="SM_DB_BACKUP" Text="数据库备份及恢复">
+    </add>
+    <add Key="GJ_INFO" Text="告警信息">
+    </add>
+    <add Key="SM_GJ_INFO" Text="告警信息">
+    </add>
+    <!--Report.aspx-->
+    <add Key="Print_people" Text="打印人：">
+    </add>
+    <add Key="Print_Date" Text="打印日期：">
+    </add>
+  </type>
+  <type language="EN">
+    <add Key="LOGO" Text="XY-DTO Online Oil Chromatographic Analysis System" />
+    <add Key="Bottom" Text="Shanghai XinYing PowerTech Co., LTD. All rights reserved V 0.1.0" />
+    <!--Respon.Write-->
+    <add Key="RW-beifen" Text="Please fill in the name of the backup">
+    </add>
+    <add Key="RW-fileexit" Text="The file already exists">
+    </add>
+    <add Key="RW-sql" Text="Database was successfuly backed up">
+    </add>
+    <add Key="RW-sqlsuccess" Text="Database was successfuly backed up, Re-login the system">
+    </add>
+    <!--WCFHost/Program.cs-->
+    <add Key="Confirm" Text="Are you sure to exit this system?(Y/N)">
+    </add>
+    <add Key="DebugOn" Text="Turn on the debugging feature">
+    </add>
+    <add Key="DebugOff" Text="Turn off the debugging feature">
+    </add>
+    <add Key="BadCmd" Text="Invalid command\r\n">
+    </add>
+    <add Key="SvrStatus" Text="The status of curent service：">
+    </add>
+    <add Key="WcfRun" Text="WCF: running">
+    </add>
+    <add Key="WcfStop" Text="WCF: stopped">
+    </add>
+    <add Key="PollOn" Text="The status of polling thread: running">
+    </add>
+    <add Key="PollOff" Text="The status of polling thread: stopped">
+    </add>
+    <add Key="DebugOpen" Text="debug output message: open">
+    </add>
+    <add Key="DebugClose" Text="debug output message: closed">
+    </add>
+    <add Key="Welcome" Text="Welcome to use：">
+    </add>
+    <add Key="Address" Text="Address：">
+    </add>
+    <add Key="Tel" Text="Telephone：">
+    </add>
+    <add Key="CMD" Text="command hint：">
+    </add>
+    <add Key="StartWCF" Text="1、Run WCF:start">
+    </add>
+    <add Key="StopWCF" Text="2、Stop WCF:stop">
+    </add>
+    <add Key="OnDebug" Text="3、Turn on debug output message: debug on">
+    </add>
+    <add Key="OffDebug" Text="4、Turn off the debug output message: debug off">
+    </add>
+    <add Key="OnPoll" Text="5、Turn on the funcation of polling thread: poll on">
+    </add>
+    <add Key="OffPoll" Text="6、Turn off the funcation of polling thread: poll off">
+    </add>
+    <add Key="Clear1" Text="7、Clear screen: clear">
+    </add>
+    <add Key="Server" Text="8、Check the server status: status">
+    </add>
+    <add Key="Help" Text="9、Help: Help">
+    </add>
+    <add Key="Quit" Text="10、Quit: Quit">
+    </add>
+    <add Key="Output1" Text="The service is running">
+    </add>
+    <add Key="Output2" Text="The service was openned">
+    </add>
+    <add Key="Output3" Text="Please open the WCF">
+    </add>
+    <add Key="Output4" Text="The polling thread is running">
+    </add>
+    <add Key="Output5" Text="The polling thread is running">
+    </add>
+    <!--ALarmInof.aspx.cs-->
+    <add Key="AlarmInfo_Logo" Text="Alarm information Data">
+    </add>
+    <add Key="Alarm_Info_Type" Text="Please select alarm information Type">
+    </add>
+    <add Key="Alarm_RadioButton" Text="Alarm information">
+    </add>
+    <add Key="Diagnos_RadioButton" Text="Diagnose information">
+    </add>
+    <add Key="Inquery_Data" Text="Refresh">
+    </add>
+    <add Key="Data_count" Text="This information does not exist">
+    </add>
+    <add Key="Alarm_DeviceID" Text="Device ID">
+    </add>
+    <add Key="Alarm_GasName" Text="Gas name">
+    </add>
+    <add Key="Alarm_State" Text="Information State">
+    </add>
+    <add Key="Alarm_Value1" Text="Alarm Value">
+    </add>
+    <add Key="Alarm_Type1" Text="Alarm Type">
+      <!--0：PPM 1：绝对速率 2：相对速率-->
+    </add>
+    <add Key="RealValue" Text="Measured value">
+    </add>
+    <add Key="Message" Text="Alarm message">
+    </add>
+    <add Key="Alarm_ReadDate" Text="Date">
+    </add>
+    <add Key="Alarm_CurDate" Text="Alarm Date">
+    </add>
+    <add Key="Alarm_Level1" Text="Alarm Level">
+    </add>
+    <add Key="Check_Read" Text="Checked">
+    </add>
+    <add Key="dropvalue0" Text="Read">
+    </add>
+    <add Key="dropvalue1" Text="Unread">
+    </add>
+    <add Key="dropvalue2" Text="ALL">
+    </add>
+    <!--ALarm.aspx.cs-->
+    <add Key="TimeSpaceNotNull" Text="The time interval is empty, please set it">
+    </add>
+    <add Key="TimeSpaceError" Text="please input the correct time interval">
+    </add>
+    <add Key="Success" Text="Set successfully">
+    </add>
+    <add Key="False" Text="Set failed">
+    </add>
+    <add Key="FalseAndReason" Text="the reason of setting failure：">
+    </add>
+    <add Key="Device" Text="Select device">
+    </add>
+    <add Key="AutoAlarm" Text="Automatic Threshold Alarm">
+    </add>
+    <add Key="AutoDiag" Text="Automatic Diagnosis">
+    </add>
+    <add Key="DiagSpace" Text="Automatic Diagnosis Interval">
+    </add>
+    <add Key="Day" Text="Days">
+    </add>
+    <add Key="Open" Text="Open">
+    </add>
+    <add Key="Setup" Text="Set">
+    </add>
+    <add Key="Read" Text="Read">
+    </add>
+    <add Key="Close" Text="Close">
+    </add>
+    <add Key="Clear" Text="Clear">
+    </add>
+    <add Key="Del" Text="Delete">
+    </add>
+    <add Key="Edit" Text="Modify">
+    </add>
+    <add Key="ADD" Text="Add">
+    </add>
+    <!--Analysis.aspx-->
+    <add Key="All" Text="please complete information">
+    </add>
+    <add Key="Valid" Text="please input the effective information">
+    </add>
+    <add Key="RightFormat" Text="please input the correct format">
+    </add>
+    <add Key="RightZone" Text="please input the correct weed out the interval">
+    </add>
+    <add Key="ReadError" Text="read failure">
+    </add>
+    <add Key="ReadSuccess" Text="read success">
+    </add>
+    <add Key="ParaError" Text="parameters error">
+    </add>
+    <add Key="H2oVarName" Text="the water">
+    </add>
+    <add Key="H2oVarParamA" Text="fixed parametersA">
+    </add>
+    <add Key="H2oVarParamK" Text="correction parameterK">
+    </add>
+    <add Key="H2oVarParamB" Text="fixed parametersB">
+    </add>
+    <add Key="Gas" Text="Gas">
+    </add>
+    <add Key="High" Text="High position">
+    </add>
+    <add Key="Left" Text="Left starting point">
+    </add>
+    <add Key="Right" Text="Right end">
+    </add>
+    <add Key="Zhu" Text="column correction coefficient">
+    </add>
+    <add Key="Tuo" Text="to take off the gas rate correction coefficient">
+    </add>
+    <add Key="LeftMin" Text="left gradient Min">
+    </add>
+    <add Key="LeftMax" Text="left gradient Max">
+    </add>
+    <add Key="RightMin" Text="right gradient Min">
+    </add>
+    <add Key="RightMax" Text="right gradient Max">
+    </add>
+    <add Key="TopWidth" Text="peak width">
+    </add>
+    <add Key="K" Text="multilevel K value">
+    </add>
+    <add Key="Erase" Text="gas chromatogram data eliminate interval：">
+    </add>
+    <add Key="To" Text="To">
+    </add>
+    <!--Attention.aspx-->
+    <add Key="GasAttention" Text="gas content note value is set（uL/L）">
+    </add>
+    <add Key="AbsAttention" Text="bsolute gas production rate note value is set (mL/day) ">
+    </add>
+    <add Key="RelAttention" Text="relative gas production rate note value is set (% / month）">
+    </add>
+    <add Key="Level1" Text="level alarm">
+    </add>
+    <add Key="Level2" Text="level 2 alarm">
+    </add>
+    <add Key="H2" Text="H2">
+    </add>
+    <add Key="CO" Text="CO">
+    </add>
+    <add Key="CH4" Text="CH4">
+    </add>
+    <add Key="C2H2" Text="C2H2">
+    </add>
+    <add Key="C2H4" Text="C2H4">
+    </add>
+    <add Key="C2H6" Text="C2H6">
+    </add>
+    <add Key="CO2" Text="C02">
+    </add>
+    <add Key="ZongT" Text="hydrocarbon">
+    </add>
+    <add Key="Total" Text="hydrocarbon">
+    </add>
+    <add Key="keranxingqiti" Text="inflammable gas">
+    </add>
+    <add Key="Activity" Text="water Activity">
+    </add>
+    <add Key="Temperature" Text="the Temperature">
+    </add>
+    <add Key="PPM" Text="micro water（ppm）">
+    </add>
+    <add Key="AW" Text="micro water（AW）">
+    </add>
+    <add Key="T" Text="micro water（T）">
+    </add>
+    <add Key="H2O" Text="the water">
+    </add>
+    <!--CheckTime.apsx-->
+    <add Key="DeviceError" Text="equipment choice failed！">
+    </add>
+    <add Key="TimeSuccess" Text="time calibration success！">
+    </add>
+    <add Key="TimeError" Text="time calibration failure！">
+    </add>
+    <add Key="Check" Text="calibration">
+    </add>
+    <!--Default.aspx-->
+    <add Key="Tip_Gas" Text="gas：">
+    </add>
+    <add Key="Tip_Time" Text="time：">
+    </add>
+    <add Key="Tip_Content" Text="content：">
+    </add>
+    <add Key="Title_Content" Text="sampling date">
+    </add>
+    <add Key="Title_Nongdu" Text="sampling concentration (uL/L)">
+    </add>
+    <add Key="Pop_Notice" Text="attention!">
+    </add>
+    <add Key="Pop_AlarmDevice" Text="alarm equipment：">
+    </add>
+    <add Key="Pop_AlarmGas" Text="alarm gas：">
+    </add>
+    <add Key="Msg_Abs" Text="absolute gas production rate exceeds bid">
+    </add>
+    <add Key="Msg_Notice" Text="note values exceed bid">
+    </add>
+    <add Key="Msg_Rel" Text="relative gas production rate exceeds bid">
+    </add>
+    <add Key="Msg_Type" Text="alarm types：">
+    </add>
+    <add Key="Msg_Value" Text="warning value：">
+    </add>
+    <add Key="Msg_Value1" Text="actual value:">
+    </add>
+    <add Key="NoH2O" Text="does not support the water">
+    </add>
+    <add Key="Title_Font" Text="song ti">
+      <!--中文操作系统默认为‘宋体’，英文操作系统默认为‘Tahoma’-->
+    </add>
+    <add Key="Title_DataView" Text="data trend diagram">
+    </add>
+    <add Key="Title_RelSpeedView" Text="relative gas production rate">
+    </add>
+    <add Key="Title_AbsSpeedView" Text="absolute gas production rate">
+    </add>
+    <add Key="Title_H2oDataView" Text="micro water data view">
+    </add>
+    <add Key="Title_AnlySix" Text="six components data chart">
+    </add>
+    <add Key="Title_Time" Text="sampling time (unit: seconds)">
+    </add>
+    <add Key="Title_Value" Text="samples values">
+    </add>
+    <add Key="Tip_Denisity" Text="concentration: ">
+    </add>
+    <add Key="Tip_KeepTime" Text="retention time: ">
+    </add>
+    <add Key="Title_AnlyCO2" Text="carbon dioxide data chart">
+    </add>
+    <add Key="Label_Gas" Text="gas：">
+    </add>
+    <add Key="Label_Rate_Abs" Text="absolute gas production rate：">
+    </add>
+    <add Key="Abs_Unit_ABs" Text="uL/day">
+    </add>
+    <add Key="Label_Rate_Rel" Text="relative gas production rate：">
+    </add>
+    <add Key="Abs_Unit_Rel" Text="%/month">
+    </add>
+    <add Key="GenSpeed_Calc_Fail" Text="can't judge">
+    </add>
+    <!--DataBase.aspx-->
+    <add Key="BackUp" Text="BackUp">
+    </add>
+    <add Key="Recover" Text="Rescover">
+    </add>
+    <add Key="bt_Backup" Text="BackUp">
+    </add>
+    <add Key="bt_Recover" Text="Rescover">
+    </add>
+    <add Key="bt_Close" Text="Close">
+    </add>
+    <!--SetReportItem.aspx-->
+    <add Key="bt_Export" Text="report generation">
+    </add>
+    <add Key="device" Text="Device">
+    </add>
+    <add Key="Statementstype" Text="Statementstype">
+    </add>
+    <add Key="Exporttypes" Text="Exporttypes">
+    </add>
+    <add Key="Statementdate" Text="Statementdate">
+    </add>
+    <add Key="Dailyreports" Text="Dailyreports">
+    </add>
+    <add Key="Historicaldata" Text="Historical data">
+    </add>
+    <!--Device.aspx-->
+    <add Key="Alert_Station" Text="please add first stations">
+    </add>
+    <add Key="Col_DevieIDName" Text="equipment names and Numbers">
+    </add>
+    <add Key="Col_DevieID" Text="equipment Numbers">
+    </add>
+    <add Key="Col_DevieName" Text="device name">
+    </add>
+    <add Key="Col_StationName" Text="stations name">
+    </add>
+    <add Key="Col_Tel" Text="cell phone number">
+    </add>
+    <add Key="Col_AddTime" Text="add time">
+    </add>
+    <add Key="Alert1" Text="please input device number！">
+    </add>
+    <add Key="Alert2" Text="equipment number only Numbers！">
+    </add>
+    <add Key="Alert3" Text="equipment, must be smaller than 32！">
+    </add>
+    <add Key="Alert4" Text="please input the correct mobile phone number！">
+    </add>
+    <add Key="Alert5" Text="add success！">
+    </add>
+    <add Key="Alert6" Text="the equipment already exists！">
+    </add>
+    <add Key="Alert7" Text="please first choose to delete equipment">
+    </add>
+    <add Key="Alert8" Text="wrong device number">
+    </add>
+    <add Key="Alert9" Text="delete success">
+    </add>
+    <add Key="Alert10" Text="please first choose to edit equipment">
+    </add>
+    <add Key="Alert11" Text="wrong device number">
+    </add>
+    <add Key="Alert12" Text="wrong mobile phone number">
+    </add>
+    <add Key="UpdateSuccess" Text="updated">
+    </add>
+    <add Key="UpdateError" Text="update failure">
+    </add>
+    <!--DeivceView.aspx-->
+    <add Key="OffLine" Text="OffLine">
+    </add>
+    <add Key="OnLinePressOk" Text="online, the carrier gas pressure normal">
+    </add>
+    <add Key="OnLinePressErr" Text="online, the carrier insufficient pressure">
+    </add>
+    <add Key="Title_Sample" Text="sample set">
+    </add>
+    <add Key="Title_Compute" Text="the calculated parameters Settings">
+    </add>
+    <add Key="Title_Property" Text="environmental parameters">
+    </add>
+    <add Key="Warring1" Text="equipment">
+    </add>
+    <add Key="Warring2" Text="offline, can't sync">
+    </add>
+    <add Key="Warring3" Text="，from device to database workflow 1 time synchronization failed！">
+    </add>
+    <add Key="Warring4" Text="，from device to database workflow 1 time synchronization success！">
+    </add>
+    <add Key="Warring5" Text="，from device to database work flow parameters synchronous failed！">
+    </add>
+    <add Key="Warring6" Text="，from device to database work flow parameters 1 synchronous success！">
+    </add>
+    <add Key="Warring7" Text="，from device to work flow analysis parameters database 1 synchronous failed！">
+    </add>
+    <add Key="Warring8" Text="，from device to work flow analysis parameters database 1 synchronous success！">
+    </add>
+    <add Key="Warring9" Text="，from a database to equipment work flow 1 time synchronization failed！">
+    </add>
+    <add Key="Warring10" Text="，from a database to equipment work flow 1 time synchronization success！">
+    </add>
+    <add Key="Warring11" Text="，from a database to equipment work flow 1 working parameters synchronous failed！">
+    </add>
+    <add Key="Warring12" Text="，from a database to equipment work flow 1 working parameters synchronous success！">
+    </add>
+    <add Key="Warring13" Text="，from a database to equipment work flow 1 analysis parameters of synchronous failed！">
+    </add>
+    <add Key="Warring14" Text="，from a database to equipment work flow 1 analysis parameters synchronous success！">
+    </add>
+    <add Key="Refresh" Text="Refresh">
+    </add>
+    <add Key="Col_Status" Text="state">
+    </add>
+    <add Key="Col_Opera" Text="operation">
+    </add>
+    <add Key="Dev2DB" Text="equipment-and gt; database">
+    </add>
+    <add Key="DB2Dev" Text="database-and gt; equipment">
+    </add>
+    <!--EnvironmentSet.aspx-->
+    <add Key="PressLevel" Text="voltage grade">
+    </add>
+    <add Key="A" Text="oil coefficientA">
+    </add>
+    <add Key="B" Text="oil coefficientB">
+    </add>
+    <add Key="Attribute" Text="height">
+    </add>
+    <add Key="OilDenisity" Text="oil density">
+    </add>
+    <add Key="OilTotal" Text="oil amount">
+    </add>
+    <!--Export-->
+    <add Key="NoData" Text="no data！">
+    </add>
+    <add Key="ReadDate" Text="read the date">
+    </add>
+    <add Key="Result" Text="results">
+    </add>
+    <add Key="SelDate" Text="choose the date">
+    </add>
+    <add Key="SelDateRangeInvalid" Text="date range invalid">
+    </add>
+    <add Key="StartDate" Text="starting time：">
+    </add>
+    <add Key="EndDate" Text="deadline：">
+    </add>
+    <add Key="SelDevice" Text="choose device">
+    </add>
+    <add Key="SelGas" Text="please select gas">
+    </add>
+    <add Key="GasType" Text="please select gas type">
+    </add>
+    <add Key="Export" Text="Export">
+    </add>
+    <!--Login.aspx-->
+    <add Key="UserName" Text="please enter your user name">
+    </add>
+    <add Key="Password" Text="please enter the Password">
+    </add>
+    <add Key="InvalidUser" Text="illegal users">
+    </add>
+    <add Key="LoginError" Text="login failed">
+    </add>
+    <add Key="Login" Text="登陆(Login)">
+    </add>
+    <!--Main.Master-->
+    <add Key="SelectData" Text="select data">
+    </add>
+    <add Key="Device1" Text="equipment：">
+    </add>
+    <add Key="Offline" Text="connection: Offline">
+    </add>
+    <add Key="Online" Text="connection: Online">
+    </add>
+    <add Key="GasStatus" Text="carrier gas: can't monitoring">
+    </add>
+    <add Key="Press1" Text="pressure normal">
+    </add>
+    <add Key="Press2" Text="insufficient pressure">
+    </add>
+    <add Key="ZaiQiPress" Text="carrier gas：">
+    </add>
+    <add Key="Attention" Text="Attention！">
+    </add>
+    <add Key="QuitConfirm" Text="sure exit?">
+    </add>
+    <add Key="QuitSystem" Text="Exit">
+    </add>
+    <add Key="TimeSet" Text="analysis time Settings">
+    </add>
+    <add Key="SelData" Text="select data">
+    </add>
+    <add Key="Tip_Up" Text="up translation">
+    </add>
+    <add Key="Tip_Left" Text="left translation">
+    </add>
+    <add Key="Tip_ZoomIn" Text="narrow">
+    </add>
+    <add Key="Tip_ZoomOut" Text="amplifier">
+    </add>
+    <add Key="Tip_Right" Text="to step right">
+    </add>
+    <add Key="Tip_Down" Text="downward translation">
+    </add>
+    <add Key="DeviceStatus" Text="equipment state">
+    </add>
+    <add Key="Connection" Text="Connection：">
+    </add>
+    <add Key="H2O_Item_PPM" Text="content">
+    </add>
+    <add Key="H2O_Item_T" Text="the temperature">
+    </add>
+    <add Key="H2O_Item_AW" Text="water activity">
+    </add>
+    <add Key="Six" Text="Six components">
+    </add>
+    <!--ManualAnalysis.aspx-->
+    <add Key="Alert_SelData" Text="please choose analysis data">
+    </add>
+    <add Key="Alert_SelAbs" Text="please choose the absolute gas production rate data">
+    </add>
+    <add Key="Alert_SelRel" Text="please choose relatively the gas production rate data">
+    </add>
+    <add Key="Alert_TimeErr1" Text="bsolute gas production rate data must be smaller than the time compares data time">
+    </add>
+    <add Key="Alert_TimeErr2" Text="relative gas production rate data must be smaller than the time compares data time">
+    </add>
+    <add Key="Alarm_Device" Text="alarm equipment：">
+    </add>
+    <add Key="Alarm_Gas" Text="alarm gas：">
+    </add>
+    <add Key="Alarm_Type_Content" Text="note value alarm">
+    </add>
+    <add Key="Alarm_Type_Abs" Text="absolute gas production rate alarm">
+    </add>
+    <add Key="Alarm_Type_Rel" Text="relative gas production rate alarm">
+    </add>
+    <add Key="Alarm_Type" Text="alarm types:">
+    </add>
+    <add Key="Alarm_Value" Text="warning value:">
+    </add>
+    <add Key="Alarm_Level" Text="alarm level:">
+    </add>
+    <add Key="Alarm_RealValue" Text="actual value:">
+    </add>
+    <add Key="Diag_Result" Text="--diagnostic conclusion：">
+    </add>
+    <add Key="ThreeRatio_Diag_Result" Text="-David triangle method diagnosis data (negative said can not calculate）：">
+    </add>
+    <add Key="David_Result" Text="-David triangle method diagnosis data (negative said can not calculate）：">
+    </add>
+    <add Key="Cube_Diag_Result" Text="-stereo the law diagnosis data (negative said can not calculate）：">
+    </add>
+    <add Key="Col_Data" Text="data">
+    </add>
+    <add Key="CompareData" Text="analysis data">
+    </add>
+    <add Key="AbsData" Text="comparative data 1-calculation absolute gas production rate">
+    </add>
+    <add Key="RelData" Text="comparative data 2-computing opposite the gas production rate">
+    </add>
+    <add Key="StartupError" Text="start the application error! Reason：">
+    </add>
+    <add Key="NoAlert" Text="no alarm information">
+    </add>
+    <add Key="AnalysisFirst" Text="please first analyzed data">
+    </add>
+    <add Key="Condition" Text="analysis conditions">
+    </add>
+    <add Key="SelAnaData" Text="choose analysis data">
+    </add>
+    <add Key="Analysis" Text="Analysis">
+    </add>
+    <add Key="SelectedData" Text="choice of data">
+    </add>
+    <add Key="AnaResult" Text="results">
+    </add>
+    <add Key="Ratio" Text="Ratio：">
+    </add>
+    <add Key="Result1" Text="preliminary analysis results：">
+    </add>
+    <add Key="Devied" Text="over the law triangle">
+    </add>
+    <add Key="Cube" Text="stereo the law">
+    </add>
+    <!--ManualCalc.aspx-->
+    <add Key="Alert_DataError" Text="data error, can not calculate">
+    </add>
+    <add Key="RatioCode" Text="three ratio code (negative said can not calculate）">
+    </add>
+    <add Key="RatioResult" Text="three ratio diagnosis：">
+    </add>
+    <add Key="DeviedCode" Text="David triangle code (negative said can not calculate）:">
+    </add>
+    <add Key="DeviedResult" Text="David triangle diagnosis：">
+    </add>
+    <add Key="CubeCode" Text="stereo the law code (negative said can not calculate）">
+    </add>
+    <add Key="NoDiagnose" Text="can't diagnosis">
+    </add>
+    <add Key="SelDataFirst" Text="please first choice data">
+    </add>
+    <add Key="SaveSuccess" Text="save success">
+    </add>
+    <add Key="SampleArea" Text="sampling area">
+    </add>
+    <add Key="Compute" Text="calculation">
+    </add>
+    <add Key="Save" Text="Save">
+    </add>
+    <add Key="Alarm" Text="warning：">
+    </add>
+    <add Key="DiaResult" Text="diagnosis：">
+    </add>
+    <add Key="Selected" Text="choose">
+    </add>
+    <!--ModuleManage.aspx-->
+    <add Key="ModuleID" Text="module ID">
+    </add>
+    <add Key="ModuleName" Text="module name">
+    </add>
+    <add Key="PModuleID" Text="father module ID">
+    </add>
+    <add Key="AddError" Text="add failed！">
+    </add>
+    <add Key="EditSuccess" Text="modified success！">
+    </add>
+    <add Key="EditError" Text="modified failure！">
+    </add>
+    <add Key="DelError" Text="delete failed！">
+    </add>
+    <add Key="TopModule" Text="(top module please select “no”)">
+    </add>
+    <!--MutiLevelK.aspx-->
+    <add Key="KValue" Text="K value">
+    </add>
+    <add Key="MinArea" Text="minimum area">
+    </add>
+    <add Key="MaxArea" Text="most large area">
+    </add>
+    <add Key="MiFixValue" Text="correction factor">
+    </add>
+    <add Key="nifixvalue" Text="gas rate correction factor">
+    </add>
+    <add Key="Cancel" Text="Cancel">
+    </add>
+    <add Key="JiZhun" Text="Model">
+    </add>
+    <!--PermissionManage.aspx-->
+    <add Key="AddRoleFirst" Text="please add first role">
+    </add>
+    <add Key="AddMpduleFirst" Text="please add first module">
+    </add>
+    <add Key="RoleID" Text="role ID">
+    </add>
+    <add Key="RoleDesc" Text="character description">
+    </add>
+    <add Key="Red" Text="(Red is a top-level module. If a character with a module, and has access to the module of the parent module permissions)">
+    </add>
+    <!--RoleManage.aspx-->
+    <add Key="NoDel" Text="under the role and users, can't be deleted！">
+    </add>
+    <!--SampleSet.aspx-->
+    <add Key="AllInfo" Text="please fill out all input information">
+    </add>
+    <add Key="CorrectFormat" Text="please fill in the correct format">
+    </add>
+    <add Key="TimeCheck" Text="time calibration">
+    </add>
+    <add Key="TimeReadError" Text="time read failure">
+    </add>
+    <add Key="Title1" Text="take off the gas and pneumatic motor control">
+    </add>
+    <add Key="Title2" Text="micro water sampling control">
+    </add>
+    <add Key="Title3" Text="gas sampling control">
+    </add>
+    <add Key="Second" Text="Second">
+    </add>
+    <add Key="td1" Text="takes off angry machine working duration">
+    </add>
+    <add Key="td2" Text="to take off the gas a given signal duration">
+    </add>
+    <add Key="td3" Text="exhaust valve duration">
+    </add>
+    <add Key="td4" Text="fan blowing the keep time">
+    </add>
+    <add Key="td5" Text="line pressure balance purge valve opens before the delay time">
+    </add>
+    <add Key="td6" Text="Line pressure balance purge valve opens the time to maintain the after">
+    </add>
+    <add Key="td7" Text="quantitative valve opens after the duration">
+    </add>
+    <add Key="td8" Text="quantitative valve is opened, purge valve open time delay">
+    </add>
+    <add Key="td9" Text="purge valve closed delay time">
+    </add>
+    <add Key="td10" Text="fan blowing tail keeps time">
+    </add>
+    <add Key="td11" Text="oil pump duration">
+    </add>
+    <add Key="td12" Text="air pump first open last time">
+    </add>
+    <add Key="td13" Text="air pump for open time">
+    </add>
+    <add Key="td14" Text="air pump for closing time">
+    </add>
+    <add Key="td15" Text="sensor heating delay time">
+    </add>
+    <add Key="td16" Text="micro water sampling prior to the beginning of time delay">
+    </add>
+    <add Key="td17" Text="sampling interval">
+    </add>
+    <add Key="td18" Text="10 milliseconds">
+    </add>
+    <add Key="td19" Text="AW sampling points">
+    </add>
+    <add Key="td20" Text="T sampling points">
+    </add>
+    <add Key="td21" Text="AD amplification coefficient">
+    </add>
+    <add Key="td22" Text="sensor heating delay time">
+    </add>
+    <add Key="td23" Text="CO2 sensor heating delay time">
+    </add>
+    <add Key="td24" Text="sampling prior to the beginning of time delay">
+    </add>
+    <add Key="td25" Text="CO2 sampling prior to the beginning of time">
+    </add>
+    <add Key="td26" Text="six components sampling interval">
+    </add>
+    <add Key="td27" Text="six components sampling points">
+    </add>
+    <add Key="td28" Text="six components sampling amplification coefficient">
+    </add>
+    <add Key="td29" Text="CO2 sampling interval">
+    </add>
+    <add Key="td30" Text="CO2 sampling points">
+    </add>
+    <add Key="td31" Text="gas path before switching open the delay time">
+    </add>
+    <add Key="td32" Text="pneumatic switch after open the delay time">
+    </add>
+    <add Key="td33" Text="Air Control time">
+    </add>
+    <add Key="DeviceTime" Text="a time machine">
+    </add>
+    <add Key="Recall" Text="parameters back to read">
+    </add>
+    <add Key="SysModule" Text="system support module">
+    </add>
+    <add Key="Flow1Time" Text="work process 1 time set">
+    </add>
+    <add Key="LoadDefault" Text="load the default setting">
+    </add>
+    <!--SelectData.aspx-->
+    <add Key="Max5" Text="select up to 5 groups of data">
+    </add>
+    <!--SelectGasData.aspx-->
+    <add Key="IDError" Text="data id error">
+    </add>
+    <add Key="Return" Text="to Return">
+    </add>
+    <!--Station.aspx-->
+    <add Key="InputStation" Text="please input stations name！">
+    </add>
+    <add Key="Exist" Text="the stops and DTU number has existed！">
+    </add>
+    <add Key="SelStationFirst" Text="please first choice stations">
+    </add>
+    <add Key="SelError" Text="choose wrong">
+    </add>
+    <add Key="DTU" Text="DTU number">
+    </add>
+    <!--SysModule.aspx-->
+    <add Key="SupportModule" Text="please choose to support module">
+    </add>
+    <add Key="MCO2" Text="carbon dioxide module">
+    </add>
+    <add Key="MH2O" Text="micro water module">
+    </add>
+    <add Key="TuoQI" Text="to take off the gas">
+    </add>
+    <add Key="Support" Text="Support">
+    </add>
+    <add Key="UnSupport" Text="does not support">
+    </add>
+    <add Key="ZhenKong" Text="vacuum deairing with">
+    </add>
+    <add Key="Mo" Text="film degassing">
+    </add>
+    <!--UserManage.aspx-->
+    <add Key="UName" Text="user name">
+    </add>
+    <add Key="Pwd" Text="password">
+    </add>
+    <add Key="Role" Text="character">
+    </add>
+    <add Key="UNamePwd" Text="user name and password can't for empty！">
+    </add>
+    <add Key="ExistUser" Text="users already exists！">
+    </add>
+    <add Key="SelUserFirst" Text="please first select users">
+    </add>
+    <add Key="UnDelAdmin" Text="can't be deleted admin！">
+    </add>
+    <!--Workflow1Timeset.aspx-->
+    <add Key="StartSampleTime" Text="to start the sampling time">
+    </add>
+    <add Key="SampleInterval" Text="sampling interval">
+    </add>
+    <add Key="AdvanceTime" Text="work process ahead of time">
+    </add>
+    <add Key="Default" Text="Default Settings">
+    </add>
+    <!--Module-->
+    <add Key="M_SYS" Text="system">
+    </add>
+    <add Key="SM_STATION" Text="stations management">
+    </add>
+    <add Key="SM_DEVICE" Text="equipment management">
+    </add>
+    <add Key="SM_DEV_OVERVIEW" Text="equipment around the figure">
+    </add>
+    <add Key="M_SAMPLE_CFG" Text="sample set">
+    </add>
+    <add Key="SM_WORKPARAMS_CFG" Text="working parameters Settings">
+    </add>
+    <add Key="SM_CALCPARAMS_CFG" Text="calculated parameters Settings">
+    </add>
+    <add Key="SM_ATTRPARAMS_CFG" Text="environmental parameters">
+    </add>
+    <add Key="M_DB" Text="data management">
+    </add>
+    <add Key="SM_DB_EXPORT" Text="data output">
+    </add>
+    <add Key="SM_MANU_CALC" Text="manual calculation">
+    </add>
+    <add Key="M_VIEW" Text="data view">
+    </add>
+    <add Key="SM_DATAVIEW" Text="data view">
+    </add>
+    <add Key="SM_RELSPEED" Text="relative gas production rate">
+    </add>
+    <add Key="SM_ABSSPEED" Text="absolute gas production rate">
+    </add>
+    <add Key="SM_H2O_DATAVIEW" Text="the water view">
+    </add>
+    <add Key="SM_ANLYVIEW" Text="spectrum diagram analysis">
+    </add>
+    <add Key="SM_REPORTVIEW" Text="data report">
+    </add>
+    <add Key="M_ALARM" Text="analysis and alarm">
+    </add>
+    <add Key="SM_AUTO_CFG" Text="automatic alarm diagnosis set">
+    </add>
+    <add Key="SM_MANUANLY" Text="manual analysis diagnosis">
+    </add>
+    <add Key="M_AUTHCFG" Text="permissions configuration">
+    </add>
+    <add Key="SM_USER" Text="user management">
+    </add>
+    <add Key="SM_ROLE" Text="role management">
+    </add>
+    <add Key="SM_MODULE" Text="system module management">
+    </add>
+    <add Key="SM_ROLEAUTH" Text="role rights management">
+    </add>
+    <add Key="SM_ATTEN_CFG" Text="note value set">
+    </add>
+    <add Key="SM_DIAG_CFG" Text="diagnostic conditions set">
+    </add>
+    <add Key="SM_DB_BACKUP" Text="database backup and recovery">
+    </add>
+    <add Key="GJ_INFO" Text="Alarm Info">
+    </add>
+    <add Key="SM_GJ_INFO" Text="Diagonse Info">
+    </add>
+    <!--Report.aspx-->
+    <add Key="Print_people" Text="Print people：">
+    </add>
+    <add Key="Print_Date" Text="Print Date：">
+    </add>
+  </type>
+</Language>

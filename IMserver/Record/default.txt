@@ -1,0 +1,48 @@
+﻿向下写文件的时候，在索引fileitem时代替filename，默认编码能一一对应文件名
+
+向下写文件的时候，这里读完到之后指针已偏移，默认指定读到的数据能全部发送
+
+从接收队列取得消息，使用出队方法，直接清出队列，无论处理成功还是不成功，都不做恢复
+
+aftersend的返回结构体
+用于返回aftersend中的一些硬错，不是数据域表示内容的错误
+主要用于回避byte作为包编号无法表示负数，即所有0-255都用作表示报编号
+存在错误包默认数值，影响后续处理）
+public int errorcode;
+分为单包解析成功和多包完成，单包解析看errorcode，如果为0表示单包解析成功，
+如果不为0，单包解析错误，完美情况下根据编号重发  根据缓存组包
+
+aftersend返回的错误代码释义：
+errorcode          explain
+   -1                接收到的包编号在计时队列中不存在
+   -2                接收到的数据包的类型解析错误，已经校验之后了，这个错误一般不会出现
+
+就两个数据字典一个操作单元-类型，一个操作单元-此操作单元对应的长度，配合完成相应类型的截取和转换
+
+原有数据类型对应标号的修改，去掉当初为了按类型解析而制定的ushort[]和float[]，至于char[]和uchar[]
+已经删除            类型              编号
+                    uchar               0
+					ushort              1
+					float               2
+					datetime            3
+					char[]              4
+		 ushort[2]  EraseRange          5
+		 ushort[4]  GasFixPara_A        6
+		 ushort[4]  GasFixPara_B        7
+		 float[2]   EnvironmentSetting  8
+		 float[3]   H2OAnlyParam_AW     9
+		 float[3]   H2OAnlyParam_T      10
+		 float[5]   GasFixParameters    11
+writeunit类中假若传入的<string, string[]>数据字典，那么默认string[]没有错误，这里还是修正为object，接收到
+前台的数据，不一定为string 还是string[]类型
+
+writeunit中的string[]参数中对应类中的成员为顺序的
+
+获取文件信息的响应包的errorcode不是执行状态字，查询一定条件的文件并不是指定一个进行操作，返回的errorcode
+只是本次操作的返回代码    默认只要错误代码为0那么获取文件信息正常，只要不为0，获取文件信息错误
+
+读文件响应包中错误代码如果为0，代表两种情况：A、文件服务完成的响应包 B、文件读取成功，紧跟在后面的是具体的
+文件信息；如果错误代码为非零，那么代表一种情况：文件读取是存在错误
+多包发送文件时，组包结构体中的开始位置根据接收的具体消息定，然后终端在根据索引来peek文件
+
+向终端发送文件时，要在addrequire中初始化文件的句柄
