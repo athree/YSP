@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 
 namespace IMserver.CommonFuncs
 {
+    //测试github
     public class Define
     {
         //每次图文件最大长度，这个考虑随网络状况动态变化（LoopBack）
