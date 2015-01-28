@@ -219,7 +219,7 @@ input[type="select"] {
 
 
 
-/*dj添加的闪烁*/
+/*dj添加的闪烁样式*/
 @-webkit-keyframes twinkling{    /*透明度由0到1*/
     0%{
        opacity:0; /*透明度为0*/ /* IE9 + etc...modern browsers */ 
@@ -253,6 +253,9 @@ input[type="select"] {
     }
   }
 
+
+
+/*油色谱运行状态弹窗使用*/
 .twinkle{
     display: inline-block;
     min-width: 10px;
@@ -286,7 +289,7 @@ input[type="select"] {
 }
 
 
-
+/*仪表图使用*/
 @-webkit-keyframes twincing {
     0%{
         
