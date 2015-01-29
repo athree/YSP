@@ -13,7 +13,7 @@
     </div>
 
 
-    <%--第一个modal弹窗，展示具体设备的运行状态--%>
+    <%--第一个modal弹窗，展示具体设备的运行状态33--%>
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
      
