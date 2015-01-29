@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DEVModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DevSite">
+    <Key>
+      <PropertyRef Name="LocateID" />
+    </Key>
+    <Property Name="LocateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Lng" Type="Double" />
+    <Property Name="Lat" Type="Double" />
+    <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DevInfoes" Relationship="DEVModel.FK_DevInfo_Res_DevSite" FromRole="DevSite" ToRole="DevInfo" />
+  </EntityType>
+  <EntityType Name="SIML">
+    <Key>
+      <PropertyRef Name="DataID" />
+    </Key>
+    <Property Name="DataID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DevID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Time_Stamp" Type="DateTime" Precision="3" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="H2ppm" Type="Double" />
+    <Property Name="COppm" Type="Double" />
+    <Property Name="CH4ppm" Type="Double" />
+    <Property Name="C2H2ppm" Type="Double" />
+    <Property Name="C2H4ppm" Type="Double" />
+    <Property Name="C2H6ppm" Type="Double" />
+    <Property Name="CO2ppm" Type="Double" />
+    <Property Name="HotHyd" Type="Double" />
+    <Property Name="MstT" Type="Double" />
+    <Property Name="MstAw" Type="Double" />
+    <Property Name="Mstppm" Type="Double" />
+    <Property Name="PuData" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AnayData" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="WorkData" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="WorkStep" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="NextWorkTime" Type="DateTime" Precision="3" />
+    <Property Name="PreWorkTime" Type="DateTime" Precision="3" />
+    <Property Name="SmpProd" Type="Double" />
+    <Property Name="SupH2O" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="SupCO2" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TuoQi_Mode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="Send_Mode" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="WK_Switch" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="TQ_Para" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DevInfo" Relationship="DEVModel.FK_SIML_Res_DevInfo" FromRole="SIML" ToRole="DevInfo" />
+  </EntityType>
+  <EntityContainer Name="DEVEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DevSites" EntityType="Self.DevSite" />
+    <EntitySet Name="SIMLs" EntityType="Self.SIML" />
+    <EntitySet Name="DevInfoes" EntityType="DEVModel.DevInfo" />
+    <EntitySet Name="DevInfo_view" EntityType="DEVModel.DevInfo_view" />
+    <EntitySet Name="Users_view" EntityType="DEVModel.Users_view" />
+    <AssociationSet Name="FK_DevInfo_Res_DevSite" Association="DEVModel.FK_DevInfo_Res_DevSite">
+      <End Role="DevSite" EntitySet="DevSites" />
+      <End Role="DevInfo" EntitySet="DevInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIML_Res_DevInfo" Association="DEVModel.FK_SIML_Res_DevInfo">
+      <End Role="DevInfo" EntitySet="DevInfoes" />
+      <End Role="SIML" EntitySet="SIMLs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DevInfo">
+    <Key>
+      <PropertyRef Name="DevID" />
+    </Key>
+    <Property Name="DevID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="LocateID" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="GPRSID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="AddTime" Type="DateTime" Precision="3" />
+    <Property Name="DeleteTime" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="DevSite" Relationship="DEVModel.FK_DevInfo_Res_DevSite" FromRole="DevInfo" ToRole="DevSite" />
+    <NavigationProperty Name="SIMLs" Relationship="DEVModel.FK_SIML_Res_DevInfo" FromRole="DevInfo" ToRole="SIML" />
+  </EntityType>
+  <EntityType Name="DevInfo_view">
+    <Key>
+      <PropertyRef Name="DevID" />
+    </Key>
+    <Property Name="DevID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="CompName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="GPRSID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="AddTime" Type="DateTime" Precision="3" />
+    <Property Name="DeleteTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Users_view">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_DevInfo_Res_DevSite">
+    <End Type="DEVModel.DevSite" Role="DevSite" Multiplicity="0..1" />
+    <End Type="DEVModel.DevInfo" Role="DevInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DevSite">
+        <PropertyRef Name="LocateID" />
+      </Principal>
+      <Dependent Role="DevInfo">
+        <PropertyRef Name="LocateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIML_Res_DevInfo">
+    <End Type="DEVModel.DevInfo" Role="DevInfo" Multiplicity="0..1" />
+    <End Type="DEVModel.SIML" Role="SIML" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DevInfo">
+        <PropertyRef Name="DevID" />
+      </Principal>
+      <Dependent Role="SIML">
+        <PropertyRef Name="DevID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

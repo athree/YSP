@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DEVModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="DevInfo">
+    <Key>
+      <PropertyRef Name="DevID" />
+    </Key>
+    <Property Name="DevID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="LocateID" Type="int" />
+    <Property Name="Type" Type="char" MaxLength="1" />
+    <Property Name="GPRSID" Type="nvarchar" MaxLength="128" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="DeleteTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="DevSite">
+    <Key>
+      <PropertyRef Name="LocateID" />
+    </Key>
+    <Property Name="LocateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompName" Type="nvarchar" MaxLength="128" />
+    <Property Name="Lng" Type="float" />
+    <Property Name="Lat" Type="float" />
+    <Property Name="Address" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="SIML">
+    <Key>
+      <PropertyRef Name="DataID" />
+    </Key>
+    <Property Name="DataID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DevID" Type="nvarchar" MaxLength="128" />
+    <Property Name="Time_Stamp" Type="datetime" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="H2ppm" Type="float" />
+    <Property Name="COppm" Type="float" />
+    <Property Name="CH4ppm" Type="float" />
+    <Property Name="C2H2ppm" Type="float" />
+    <Property Name="C2H4ppm" Type="float" />
+    <Property Name="C2H6ppm" Type="float" />
+    <Property Name="CO2ppm" Type="float" />
+    <Property Name="HotHyd" Type="float" />
+    <Property Name="MstT" Type="float" />
+    <Property Name="MstAw" Type="float" />
+    <Property Name="Mstppm" Type="float" />
+    <Property Name="PuData" Type="nvarchar" MaxLength="200" />
+    <Property Name="AnayData" Type="nvarchar" MaxLength="200" />
+    <Property Name="WorkData" Type="nvarchar" MaxLength="200" />
+    <Property Name="WorkStep" Type="char" MaxLength="1" />
+    <Property Name="NextWorkTime" Type="datetime" />
+    <Property Name="PreWorkTime" Type="datetime" />
+    <Property Name="SmpProd" Type="float" />
+    <Property Name="SupH2O" Type="char" MaxLength="1" />
+    <Property Name="SupCO2" Type="char" MaxLength="1" />
+    <Property Name="TuoQi_Mode" Type="char" MaxLength="1" />
+    <Property Name="Send_Mode" Type="char" MaxLength="1" />
+    <Property Name="WK_Switch" Type="char" MaxLength="1" />
+    <Property Name="TQ_Para" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV.dbo.DevInfo_view”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="DevInfo_view">
+    <Key>
+      <PropertyRef Name="DevID" />
+    </Key>
+    <Property Name="DevID" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Type" Type="char" MaxLength="1" />
+    <Property Name="CompName" Type="nvarchar" MaxLength="128" />
+    <Property Name="GPRSID" Type="nvarchar" MaxLength="128" />
+    <Property Name="AddTime" Type="datetime" />
+    <Property Name="DeleteTime" Type="datetime" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“DEV.dbo.Users_view”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="Users_view">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DevInfo_Res_DevSite">
+    <End Role="DevSite" Type="Self.DevSite" Multiplicity="0..1" />
+    <End Role="DevInfo" Type="Self.DevInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DevSite">
+        <PropertyRef Name="LocateID" />
+      </Principal>
+      <Dependent Role="DevInfo">
+        <PropertyRef Name="LocateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SIML_Res_DevInfo">
+    <End Role="DevInfo" Type="Self.DevInfo" Multiplicity="0..1" />
+    <End Role="SIML" Type="Self.SIML" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DevInfo">
+        <PropertyRef Name="DevID" />
+      </Principal>
+      <Dependent Role="SIML">
+        <PropertyRef Name="DevID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DEVModelStoreContainer">
+    <EntitySet Name="DevInfo" EntityType="Self.DevInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DevSite" EntityType="Self.DevSite" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SIML" EntityType="Self.SIML" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DevInfo_view" EntityType="Self.DevInfo_view" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [DevInfo_view].[DevID] AS [DevID], 
+    [DevInfo_view].[Type] AS [Type], 
+    [DevInfo_view].[CompName] AS [CompName], 
+    [DevInfo_view].[GPRSID] AS [GPRSID], 
+    [DevInfo_view].[AddTime] AS [AddTime], 
+    [DevInfo_view].[DeleteTime] AS [DeleteTime]
+    FROM [dbo].[DevInfo_view] AS [DevInfo_view]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Users_view" EntityType="Self.Users_view" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Users_view].[UserName] AS [UserName], 
+    [Users_view].[PasswordHash] AS [PasswordHash], 
+    [Users_view].[Name] AS [Name]
+    FROM [dbo].[Users_view] AS [Users_view]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_DevInfo_Res_DevSite" Association="Self.FK_DevInfo_Res_DevSite">
+      <End Role="DevSite" EntitySet="DevSite" />
+      <End Role="DevInfo" EntitySet="DevInfo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SIML_Res_DevInfo" Association="Self.FK_SIML_Res_DevInfo">
+      <End Role="DevInfo" EntitySet="DevInfo" />
+      <End Role="SIML" EntitySet="SIML" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

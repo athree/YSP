@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DEVModelStoreContainer" CdmEntityContainer="DEVEntities">
+    <EntitySetMapping Name="DevSites">
+      <EntityTypeMapping TypeName="DEVModel.DevSite">
+        <MappingFragment StoreEntitySet="DevSite">
+          <ScalarProperty Name="LocateID" ColumnName="LocateID" />
+          <ScalarProperty Name="CompName" ColumnName="CompName" />
+          <ScalarProperty Name="Lng" ColumnName="Lng" />
+          <ScalarProperty Name="Lat" ColumnName="Lat" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SIMLs">
+      <EntityTypeMapping TypeName="DEVModel.SIML">
+        <MappingFragment StoreEntitySet="SIML">
+          <ScalarProperty Name="DataID" ColumnName="DataID" />
+          <ScalarProperty Name="DevID" ColumnName="DevID" />
+          <ScalarProperty Name="Time_Stamp" ColumnName="Time_Stamp" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="H2ppm" ColumnName="H2ppm" />
+          <ScalarProperty Name="COppm" ColumnName="COppm" />
+          <ScalarProperty Name="CH4ppm" ColumnName="CH4ppm" />
+          <ScalarProperty Name="C2H2ppm" ColumnName="C2H2ppm" />
+          <ScalarProperty Name="C2H4ppm" ColumnName="C2H4ppm" />
+          <ScalarProperty Name="C2H6ppm" ColumnName="C2H6ppm" />
+          <ScalarProperty Name="CO2ppm" ColumnName="CO2ppm" />
+          <ScalarProperty Name="HotHyd" ColumnName="HotHyd" />
+          <ScalarProperty Name="MstT" ColumnName="MstT" />
+          <ScalarProperty Name="MstAw" ColumnName="MstAw" />
+          <ScalarProperty Name="Mstppm" ColumnName="Mstppm" />
+          <ScalarProperty Name="PuData" ColumnName="PuData" />
+          <ScalarProperty Name="AnayData" ColumnName="AnayData" />
+          <ScalarProperty Name="WorkData" ColumnName="WorkData" />
+          <ScalarProperty Name="WorkStep" ColumnName="WorkStep" />
+          <ScalarProperty Name="NextWorkTime" ColumnName="NextWorkTime" />
+          <ScalarProperty Name="PreWorkTime" ColumnName="PreWorkTime" />
+          <ScalarProperty Name="SmpProd" ColumnName="SmpProd" />
+          <ScalarProperty Name="SupH2O" ColumnName="SupH2O" />
+          <ScalarProperty Name="SupCO2" ColumnName="SupCO2" />
+          <ScalarProperty Name="TuoQi_Mode" ColumnName="TuoQi_Mode" />
+          <ScalarProperty Name="Send_Mode" ColumnName="Send_Mode" />
+          <ScalarProperty Name="WK_Switch" ColumnName="WK_Switch" />
+          <ScalarProperty Name="TQ_Para" ColumnName="TQ_Para" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DevInfoes">
+      <EntityTypeMapping TypeName="DEVModel.DevInfo">
+        <MappingFragment StoreEntitySet="DevInfo">
+          <ScalarProperty Name="DeleteTime" ColumnName="DeleteTime" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="GPRSID" ColumnName="GPRSID" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="LocateID" ColumnName="LocateID" />
+          <ScalarProperty Name="DevID" ColumnName="DevID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DevInfo_view">
+      <EntityTypeMapping TypeName="DEVModel.DevInfo_view">
+        <MappingFragment StoreEntitySet="DevInfo_view">
+          <ScalarProperty Name="DeleteTime" ColumnName="DeleteTime" />
+          <ScalarProperty Name="AddTime" ColumnName="AddTime" />
+          <ScalarProperty Name="GPRSID" ColumnName="GPRSID" />
+          <ScalarProperty Name="CompName" ColumnName="CompName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="DevID" ColumnName="DevID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users_view">
+      <EntityTypeMapping TypeName="DEVModel.Users_view">
+        <MappingFragment StoreEntitySet="Users_view">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

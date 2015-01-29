@@ -119,6 +119,7 @@
     <Compile Include="Models\DevInfo.cs" />
     <Compile Include="Models\DevSite.cs" />
     <Compile Include="Models\DevType.cs" />
+    <Compile Include="Models\FirstPage.cs" />
     <Compile Include="Models\IdentityConfig.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\SIML.cs" />

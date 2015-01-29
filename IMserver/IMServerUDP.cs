@@ -49,24 +49,12 @@ namespace IMserver
 
     public class IMServerUDP:TimerTick
     {
-        //#region   测试使用的传递参数
-        //public static TextBox history;
-        //public static TextBox message;
-        //#endregion
-        //public static Socket listenfd;
-        //public static EndPoint remotepoint;
-
-        //public void helloworld()
-        //{
-        //    MessageBox.Show("this method is used just only by new a real example out of this class");
-        //}
-
-        ///// <summary>
-        ///// 启动UDP服务，接受UDP消息
-        ///// 使用一个套接口来监听远端终结点的连接（UDP报文）请求
-        ///// 如果有连接（UDP报文）那么就开出一个线程来操作，线程中进行任务请求
-        ///// socket.receivefrom(buffer , ref endpoint)函数的第二个参数为参考传入，外部必须定义并初始化，后期返回修改值，即远端结点
-        ///// </summary>
+        /// <summary>
+        /// 启动UDP服务，接受UDP消息
+        /// 使用一个套接口来监听远端终结点的连接（UDP报文）请求
+        /// 如果有连接（UDP报文）那么就开出一个线程来操作，线程中进行任务请求
+        /// socket.receivefrom(buffer , ref endpoint)函数的第二个参数为参考传入，外部必须定义并初始化，后期返回修改值，即远端结点
+        /// </summary>
         //public static void StartUDP(TextBox BaseHistory , TextBox BaseMessage)
         //{
         //    int recv;
@@ -117,12 +105,7 @@ namespace IMserver
         //    #endregion
         //}
 
-        #region   测试使用的传递参数
-        //public static TextBox history;
-        //public static TextBox message;
-        #endregion
-
-        #region  为构造引用类型封装的单独的类
+        #region  为构造引用类型已封装为单独的类
         //private IPEndPoint hostpoint;            //服务器段即本地IPEndPoint
         //private Socket listenfd;                 //处理本次通信的套接口
         //private EndPoint remotepoint;            //本次通信连接的远端终结点
@@ -132,8 +115,6 @@ namespace IMserver
         #endregion
 
         public static UDPSynchField shared;         //构造出的引用类，同上注释效果
-        //private int sendmsgtype;                 //要发送的信息的类型
-        //private int recvmsgtype;                 //已接受的数据的类型
 
         /// <summary>
         /// 启动UDP服务，接受UDP消息
@@ -168,7 +149,7 @@ namespace IMserver
             byte[] connectcheck = new byte[PrepareData.BUS_FRAME_MINLEN];
             IPEndPoint client = new IPEndPoint(IPAddress.Parse("219.244.93.127"), 9999);
             shared.remotepoint = (EndPoint)client;
-            shared.listenfd.ReceiveFrom(connectcheck , ref shared.remotepoint);
+            //shared.listenfd.ReceiveFrom(connectcheck , ref shared.remotepoint);
             //MessageBox.Show("服务器接收到数据！");
             ///封装函数用于检测是否有下位机请求连接
             ///如果有：分别开启下面的两个线程

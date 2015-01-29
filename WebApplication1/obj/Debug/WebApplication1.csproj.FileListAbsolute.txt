@@ -1,0 +1,523 @@
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\WebApplication1.dll.config
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\WebApplication1.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\WebApplication1.pdb
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Antlr3.Runtime.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\AspNet.ScriptManager.bootstrap.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\AspNet.ScriptManager.jQuery.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\EntityFramework.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\EntityFramework.SqlServer.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Identity.Core.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Cookies.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Facebook.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Google.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.OAuth.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Twitter.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.ScriptManager.WebForms.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Newtonsoft.Json.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Owin.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\System.Web.Optimization.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\System.Web.Providers.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\WebGrease.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\System.Web.Optimization.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Antlr3.Runtime.pdb
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Newtonsoft.Json.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\EntityFramework.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\EntityFramework.SqlServer.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\System.Web.Providers.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Facebook.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\System.Web.Optimization.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.dll
+E:\VS2013\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\VS2013\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\项目\网站\WebApplication1\bin\WebApplication1.dll.config
+E:\项目\网站\WebApplication1\bin\WebApplication1.dll
+E:\项目\网站\WebApplication1\bin\WebApplication1.pdb
+E:\项目\网站\WebApplication1\bin\Antlr3.Runtime.dll
+E:\项目\网站\WebApplication1\bin\AspNet.ScriptManager.bootstrap.dll
+E:\项目\网站\WebApplication1\bin\AspNet.ScriptManager.jQuery.dll
+E:\项目\网站\WebApplication1\bin\EntityFramework.dll
+E:\项目\网站\WebApplication1\bin\EntityFramework.SqlServer.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.Identity.Core.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.Cookies.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.Facebook.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.Google.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.OAuth.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.Twitter.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.ScriptManager.WebForms.dll
+E:\项目\网站\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+E:\项目\网站\WebApplication1\bin\Newtonsoft.Json.dll
+E:\项目\网站\WebApplication1\bin\Owin.dll
+E:\项目\网站\WebApplication1\bin\System.Web.Optimization.dll
+E:\项目\网站\WebApplication1\bin\System.Web.Providers.dll
+E:\项目\网站\WebApplication1\bin\WebGrease.dll
+E:\项目\网站\WebApplication1\bin\System.Web.Optimization.xml
+E:\项目\网站\WebApplication1\bin\Antlr3.Runtime.pdb
+E:\项目\网站\WebApplication1\bin\Newtonsoft.Json.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\项目\网站\WebApplication1\bin\EntityFramework.xml
+E:\项目\网站\WebApplication1\bin\EntityFramework.SqlServer.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\项目\网站\WebApplication1\bin\System.Web.Providers.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.Facebook.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\项目\网站\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
+E:\项目\网站\WebApplication1\bin\zh-Hans\System.Web.Optimization.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+E:\项目\网站\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+E:\项目\网站\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\项目\网站\WebApplication1\obj\Debug\WebApplication1.dll
+E:\项目\网站\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\WebApplication1.dll.config
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\WebApplication1.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\WebApplication1.pdb
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Antlr3.Runtime.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\AspNet.ScriptManager.bootstrap.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\AspNet.ScriptManager.jQuery.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\EntityFramework.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\EntityFramework.SqlServer.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.Google.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Newtonsoft.Json.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Owin.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\System.Web.Optimization.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\System.Web.Providers.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\WebGrease.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\System.Web.Optimization.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Antlr3.Runtime.pdb
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Newtonsoft.Json.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\EntityFramework.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\EntityFramework.SqlServer.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\System.Web.Providers.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\obj\Debug\WebApplication1.dll
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\Visual Studio 2013\Projects\DatabaseFirst\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\WebApplication1.dll.config
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\WebApplication1.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\WebApplication1.pdb
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Antlr3.Runtime.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\AspNet.ScriptManager.bootstrap.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\AspNet.ScriptManager.jQuery.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\EntityFramework.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\EntityFramework.SqlServer.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.Google.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\MongoDB.Bson.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\MongoDB.Driver.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Newtonsoft.Json.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Owin.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\System.Web.Optimization.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\System.Web.Providers.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\WebGrease.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\MongoDB.Bson.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\MongoDB.Driver.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\System.Web.Optimization.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Antlr3.Runtime.pdb
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Newtonsoft.Json.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\EntityFramework.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\EntityFramework.SqlServer.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\System.Web.Providers.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\obj\Debug\WebApplication1.dll
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\Visual Studio 2013\Projects\WebApplication2\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\WebApplication1.dll.config
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\WebApplication1.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\WebApplication1.pdb
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Antlr3.Runtime.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\AspNet.ScriptManager.bootstrap.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\AspNet.ScriptManager.jQuery.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\EntityFramework.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\EntityFramework.SqlServer.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Cookies.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Facebook.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Google.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Twitter.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\MongoDB.Bson.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\MongoDB.Driver.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Newtonsoft.Json.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Owin.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\System.Web.Optimization.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\System.Web.Providers.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\WebGrease.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\MongoDB.Bson.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\MongoDB.Driver.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\System.Web.Optimization.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Antlr3.Runtime.pdb
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Newtonsoft.Json.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\EntityFramework.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\EntityFramework.SqlServer.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\System.Web.Providers.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Facebook.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\System.Web.Optimization.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\obj\Debug\WebApplication1.dll
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\Visual Studio 2013\Projects\mongo\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\VS2013\Projects\mongo\WebApplication1\bin\WebApplication1.dll.config
+E:\VS2013\Projects\mongo\WebApplication1\bin\WebApplication1.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\WebApplication1.pdb
+E:\VS2013\Projects\mongo\WebApplication1\bin\Antlr3.Runtime.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\AspNet.ScriptManager.bootstrap.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\AspNet.ScriptManager.jQuery.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\EntityFramework.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\EntityFramework.SqlServer.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.Core.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Cookies.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Facebook.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Google.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.OAuth.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Twitter.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.ScriptManager.WebForms.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\MongoDB.Bson.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\MongoDB.Driver.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Newtonsoft.Json.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\Owin.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\System.Web.Optimization.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\System.Web.Providers.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\WebGrease.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\MongoDB.Bson.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\MongoDB.Driver.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\System.Web.Optimization.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Antlr3.Runtime.pdb
+E:\VS2013\Projects\mongo\WebApplication1\bin\Newtonsoft.Json.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\EntityFramework.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\EntityFramework.SqlServer.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\System.Web.Providers.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Facebook.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\System.Web.Optimization.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+E:\VS2013\Projects\mongo\WebApplication1\obj\Debug\WebApplication1.dll
+E:\VS2013\Projects\mongo\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\VS2013\Projects\mongo\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\VS2013\Projects\show\WebApplication1\bin\WebApplication1.dll.config
+E:\VS2013\Projects\show\WebApplication1\bin\WebApplication1.dll
+E:\VS2013\Projects\show\WebApplication1\bin\WebApplication1.pdb
+E:\VS2013\Projects\show\WebApplication1\bin\Antlr3.Runtime.dll
+E:\VS2013\Projects\show\WebApplication1\bin\AspNet.ScriptManager.bootstrap.dll
+E:\VS2013\Projects\show\WebApplication1\bin\AspNet.ScriptManager.jQuery.dll
+E:\VS2013\Projects\show\WebApplication1\bin\EntityFramework.dll
+E:\VS2013\Projects\show\WebApplication1\bin\EntityFramework.SqlServer.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.Identity.Core.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.Cookies.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.Facebook.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.Google.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.OAuth.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.Twitter.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.ScriptManager.MSAjax.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.ScriptManager.WebForms.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Web.Infrastructure.dll
+E:\VS2013\Projects\show\WebApplication1\bin\MongoDB.Bson.dll
+E:\VS2013\Projects\show\WebApplication1\bin\MongoDB.Driver.dll
+E:\VS2013\Projects\show\WebApplication1\bin\MWArray.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Newtonsoft.Json.dll
+E:\VS2013\Projects\show\WebApplication1\bin\Owin.dll
+E:\VS2013\Projects\show\WebApplication1\bin\SePuAnly.dll
+E:\VS2013\Projects\show\WebApplication1\bin\SePuAnlyNative.dll
+E:\VS2013\Projects\show\WebApplication1\bin\System.Web.Optimization.dll
+E:\VS2013\Projects\show\WebApplication1\bin\System.Web.Providers.dll
+E:\VS2013\Projects\show\WebApplication1\bin\WebGrease.dll
+E:\VS2013\Projects\show\WebApplication1\bin\MongoDB.Bson.xml
+E:\VS2013\Projects\show\WebApplication1\bin\MongoDB.Driver.xml
+E:\VS2013\Projects\show\WebApplication1\bin\System.Web.Optimization.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Antlr3.Runtime.pdb
+E:\VS2013\Projects\show\WebApplication1\bin\Newtonsoft.Json.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+E:\VS2013\Projects\show\WebApplication1\bin\EntityFramework.xml
+E:\VS2013\Projects\show\WebApplication1\bin\EntityFramework.SqlServer.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\VS2013\Projects\show\WebApplication1\bin\System.Web.Providers.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.Facebook.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\VS2013\Projects\show\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\System.Web.Optimization.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+E:\VS2013\Projects\show\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+E:\VS2013\Projects\show\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\VS2013\Projects\show\WebApplication1\obj\Debug\WebApplication1.dll
+E:\VS2013\Projects\show\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\WebApplication1.dll.config
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\WebApplication1.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\WebApplication1.pdb
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\System.Web.Optimization.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Antlr3.Runtime.pdb
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Newtonsoft.Json.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.AspNet.FriendlyUrls.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\EntityFramework.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\EntityFramework.SqlServer.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\System.Web.Providers.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.Security.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\System.Web.Optimization.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.AspNet.FriendlyUrls.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Facebook.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Google.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\obj\Debug\WebApplication1.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\obj\Debug\WebApplication1.pdb
+C:\Users\Administrator\Desktop\djproj\WebApplication1\obj\Debug\WebApplication1.csprojFakesResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\IMserver.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\IMserver.pdb
+C:\Users\Administrator\Desktop\djproj\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
