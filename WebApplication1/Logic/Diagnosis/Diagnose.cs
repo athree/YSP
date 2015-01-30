@@ -1159,10 +1159,10 @@ namespace WebApplication1.Diagnosis
         {
             if (dg == null || absdg == null || reldg == null || setting == null || hold == null)
             { return null; }
-            if (dg.DevID != absdg.DevID || dg.DevID != reldg.DevID)
+            if (dg.ID != absdg.ID || dg.ID != reldg.ID)
             { return null; }
 
-            string devId = dg.DevID.ToString();
+            string devId = dg.ID.ToString();
 
             //取得 油总量 和 油密度
             float G = setting.oilTotal;  //用油总量
