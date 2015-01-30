@@ -54,11 +54,7 @@ namespace WebApplication1.DevData
         {
             return mySiml.SC.OutSideSC;
         }
-        public ContentData Content_GetItem()
-        {
-            return mySiml.Content;
-        }
-
+      
         protected void BT_Data_Click(object sender, EventArgs e)
         {
             MyDictionary initialize = new MyDictionary();

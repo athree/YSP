@@ -23,21 +23,16 @@ namespace IMserver.Models
 
         #region 数据信息
         //气体和微水含量
-        public ContentData Content;
+        //public ContentData Content;
 
         //采样原始数据
-        public RawData Raw;
+        //public RawData Raw;
 
         //气体其它数据
-        public SGasOtherData OtherData;
+        //public SGasOtherData OtherData;
 
         #endregion
 
-
-       ////配置信息
-       // public Config CFG { get; set; }
-       
-     
 
 
         //状态/控制信息

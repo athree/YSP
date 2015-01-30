@@ -521,3 +521,13 @@ C:\Users\Administrator\Desktop\djproj\WebApplication1\obj\Debug\WebApplication1.
 C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\IMserver.dll
 C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\IMserver.pdb
 C:\Users\Administrator\Desktop\djproj\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\Git\YSP\YSP\WebApplication1\bin\WebApplication1.dll.config
+E:\Git\YSP\YSP\WebApplication1\bin\WebApplication1.dll
+E:\Git\YSP\YSP\WebApplication1\bin\WebApplication1.pdb
+E:\Git\YSP\YSP\WebApplication1\bin\IMserver.dll
+E:\Git\YSP\YSP\WebApplication1\bin\IMserver.pdb
+E:\Git\YSP\YSP\WebApplication1\obj\Debug\WebApplication1.csprojFakesResolveAssemblyReference.cache
+E:\Git\YSP\YSP\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
+E:\Git\YSP\YSP\WebApplication1\obj\Debug\WebApplication1.dll
+E:\Git\YSP\YSP\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\Microsoft.QualityTools.Testing.Fakes.resources.dll

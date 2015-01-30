@@ -115,11 +115,12 @@
     <Compile Include="HeartBeat.cs" />
     <Compile Include="IMServerTCP.cs" />
     <Compile Include="IMServerUDP.cs" />
+    <Compile Include="Models\AlarmState.cs" />
     <Compile Include="Models\Config.cs" />
     <Compile Include="Models\DevInfo.cs" />
     <Compile Include="Models\DevSite.cs" />
     <Compile Include="Models\DevType.cs" />
-    <Compile Include="Models\FirstPage.cs" />
+    <Compile Include="Models\RunningState.cs" />
     <Compile Include="Models\IdentityConfig.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\SIML.cs" />

@@ -93,10 +93,10 @@ namespace WebApplication1.DevInfoes
            
             try
             {
-                MongoHelper<SIML> _siml = new MongoHelper<SIML>();
-                Expression<Func<SIML, bool>> ex = p => p.DevID == deviceID && p.Raw != null;
-                Expression<Func<SIML, DataInfo>> ex1 = p => new DataInfo(p.DataID.ToString(), p.Raw.SampleTime);
-                IQueryable<DataInfo> infoList = _siml.FindBy(ex).Select(ex1);
+                MongoHelper<RunningState> _rs = new MongoHelper<RunningState>();
+                Expression<Func<RunningState, bool>> ex = p => p.DevID == deviceID;
+                Expression<Func<RunningState, DataInfo>> ex1 = p => new DataInfo(p.ID.ToString(), p.ReadDate);
+                IQueryable<DataInfo> infoList = _rs.FindBy(ex).Select(ex1);
                 
                 if (infoList != null && infoList.Count() != 0)
                 {

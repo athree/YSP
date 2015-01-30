@@ -48,9 +48,9 @@ namespace WebApplication1.DevInfoes
         {
             
 
-                MongoHelper<SIML> _siml = new MongoHelper<SIML>();
-                Expression<Func<SIML, bool>> ex = p => p.DevID == deviceID && p.Content != null;
-                ContentData[] gasList = _siml.FindBy(ex).Select(p=>p.Content).ToArray();
+                MongoHelper<RunningState> _rs = new MongoHelper<RunningState>();
+                Expression<Func<RunningState, bool>> ex = p => p.DevID == deviceID;
+                RunningState[] gasList = _rs.FindBy(ex).ToArray();
 
                 ViewState["gasList"] = gasList;
 
@@ -98,7 +98,7 @@ namespace WebApplication1.DevInfoes
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
         {
             int num = (int)GridView1.SelectedValue;
-            ContentData[] gasList = (ContentData[])ViewState["gasList"];
+            RunningState[] gasList = (RunningState[])ViewState["gasList"];
 
             string type = ViewState["type"].ToString();
             switch (type)

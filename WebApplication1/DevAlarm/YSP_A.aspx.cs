@@ -106,7 +106,7 @@ namespace WebApplication1.DevAlarm
 
             if (Session["SelectedData"] != null)
             {
-                ContentData gas = (ContentData)Session["SelectedData"];
+                RunningState gas = (RunningState)Session["SelectedData"];
 
                 DataRow row = dt.NewRow();
                 row[Language.Selected["Col_Data"]] = Language.Selected["CompareData"];
@@ -126,7 +126,7 @@ namespace WebApplication1.DevAlarm
 
             if (Session["SelectedAbs"] != null)
             {
-                ContentData gas = (ContentData)Session["SelectedAbs"];
+                RunningState gas = (RunningState)Session["SelectedAbs"];
 
                 DataRow row = dt.NewRow();
                 row[Language.Selected["Col_Data"]] = Language.Selected["AbsData"];
@@ -146,7 +146,7 @@ namespace WebApplication1.DevAlarm
 
             if (Session["SelectedRel"] != null)
             {
-                ContentData gas = (ContentData)Session["SelectedRel"];
+                RunningState gas = (RunningState)Session["SelectedRel"];
 
                 DataRow row = dt.NewRow();
                 row[Language.Selected["Col_Data"]] = Language.Selected["RelData"];
@@ -290,9 +290,9 @@ namespace WebApplication1.DevAlarm
                 return;
             }
             
-            ContentData data = (ContentData)Session["SelectedData"];
-            ContentData abs = (ContentData)Session["SelectedAbs"];
-            ContentData rel = (ContentData)Session["SelectedRel"];
+            RunningState data = (RunningState)Session["SelectedData"];
+            RunningState abs = (RunningState)Session["SelectedAbs"];
+            RunningState rel = (RunningState)Session["SelectedRel"];
 
             if (data.ReadDate <= abs.ReadDate)
             {
@@ -342,7 +342,7 @@ namespace WebApplication1.DevAlarm
             alarmList = Diagnose.GasAlarm(data, abs, rel, setting, hold);
 
             ////故障分析。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
-            anlyInfo = Diagnose.GasDiagnose(devId, data, abs, rel, setting, hold.DiagSet);
+            anlyInfo = Diagnose.GasDiagnose(devId, data, abs, rel, setting, hold);
             DiagnoseResult dr = Diagnose.WrapperAnlyResult(devId, 2, anlyInfo);
 
             TB_Result.Text = "";

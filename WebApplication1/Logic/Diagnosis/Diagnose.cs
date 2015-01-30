@@ -229,36 +229,28 @@ namespace WebApplication1.Diagnosis
             float[] lv2 = new float[8];
             if (alarmType == 0)  //浓度阈值告警
             {
-                lv1[0] = hold.H2Alarm.Level1; lv2[0] = hold.H2Alarm.Level2;
-                lv1[1] = hold.COAlarm.Level1; lv2[1] = hold.COAlarm.Level2;
-                lv1[2] = hold.CH4Alarm.Level1; lv2[2] = hold.CH4Alarm.Level2;
-                lv1[3] = hold.C2H2Alarm.Level1; lv2[3] = hold.C2H2Alarm.Level2;
-                lv1[4] = hold.C2H4Alarm.Level1; lv2[4] = hold.C2H4Alarm.Level2;
-                lv1[5] = hold.C2H6Alarm.Level1; lv2[5] = hold.C2H6Alarm.Level2;
-                lv1[6] = hold.CO2Alarm.Level1; lv2[6] = hold.CO2Alarm.Level2;
-                lv1[7] = hold.TotHydAlarm.Level1; lv2[7] = hold.TotHydAlarm.Level2;
+                for (int i = 0; i < lv1.Length; i++)
+                {
+                    lv1[i] = hold.GasAlarm[i].Level1;
+                    lv2[i] = hold.GasAlarm[i].Level2;
+                }
+                   
             }
             else if(alarmType == 1) //绝对产气速率告警
             {
-                lv1[0] = hold.H2Alarm.AbsLevel1; lv2[0] = hold.H2Alarm.AbsLevel2;
-                lv1[1] = hold.COAlarm.AbsLevel1; lv2[1] = hold.COAlarm.AbsLevel2;
-                lv1[2] = hold.CH4Alarm.AbsLevel1; lv2[2] = hold.CH4Alarm.AbsLevel2;
-                lv1[3] = hold.C2H2Alarm.AbsLevel1; lv2[3] = hold.C2H2Alarm.AbsLevel2;
-                lv1[4] = hold.C2H4Alarm.AbsLevel1; lv2[4] = hold.C2H4Alarm.AbsLevel2;
-                lv1[5] = hold.C2H6Alarm.AbsLevel1; lv2[5] = hold.C2H6Alarm.AbsLevel2;
-                lv1[6] = hold.CO2Alarm.AbsLevel1; lv2[6] = hold.CO2Alarm.AbsLevel2;
-                lv1[7] = hold.TotHydAlarm.AbsLevel1; lv2[7] = hold.TotHydAlarm.AbsLevel2;
+                for (int i = 0; i < lv1.Length; i++)
+                {
+                    lv1[i] = hold.GasAlarm[i].AbsLevel1;
+                    lv2[i] = hold.GasAlarm[i].AbsLevel1;
+                }
             }
             else if (alarmType == 2) //相对产气速率告警
             {
-                lv1[0] = hold.H2Alarm.RelLevel1; lv2[0] = hold.H2Alarm.RelLevel2;
-                lv1[1] = hold.COAlarm.RelLevel1; lv2[1] = hold.COAlarm.RelLevel2;
-                lv1[2] = hold.CH4Alarm.RelLevel1; lv2[2] = hold.CH4Alarm.RelLevel2;
-                lv1[3] = hold.C2H2Alarm.RelLevel1; lv2[3] = hold.C2H2Alarm.RelLevel2;
-                lv1[4] = hold.C2H4Alarm.RelLevel1; lv2[4] = hold.C2H4Alarm.RelLevel2;
-                lv1[5] = hold.C2H6Alarm.RelLevel1; lv2[5] = hold.C2H6Alarm.RelLevel2;
-                lv1[6] = hold.CO2Alarm.RelLevel1; lv2[6] = hold.CO2Alarm.RelLevel2;
-                lv1[7] = hold.TotHydAlarm.RelLevel1; lv2[7] = hold.TotHydAlarm.RelLevel2;
+                for (int i = 0; i < lv1.Length; i++)
+                {
+                    lv1[i] = hold.GasAlarm[i].RelLevel1;
+                    lv2[i] = hold.GasAlarm[i].RelLevel1;
+                }
             }
             else
             {
@@ -309,7 +301,7 @@ namespace WebApplication1.Diagnosis
         ///    故障诊断触发用浓度注意值（H2,C2H2,总烃）
         ///    故障诊断触发用绝对产气速率注意值（H2,C2H2,总烃,CO,CO2），单位ml/天
         ///    故障诊断触发用相对产气速率注意值（总烃），单位%/月
-        public static bool Gas_Anly_Step2_FaultChk(int devId,DiagnoseSet hold, float[] data, float[] absdata, float[] reldata)
+        public static bool Gas_Anly_Step2_FaultChk(int devId,AlarmAll hold, float[] data, float[] absdata, float[] reldata)
         {
             bool ret = false;
 
@@ -331,24 +323,33 @@ namespace WebApplication1.Diagnosis
             float relcxhx = reldata[7];
 
             ret = false;
-            if (ret == false && (Convert.ToDecimal(ppmh2) >= hold.contentH2
-                || Convert.ToDecimal(ppmc2h2) >= hold.contentC2H2
-                || Convert.ToDecimal(ppmcxhx) >= hold.contentAll))
+            for (int i = 0; i < data.Length; i++)
             {
-                ret = true;
+                if (ret == false && (data[i] >= hold.GasAlarm[i].AlarmContent))
+                {
+                    ret = true;
+                    break;
+                }
+               
             }
-            if (ret == false && (Convert.ToDecimal(absh2) >= hold.AbsH2
-                || Convert.ToDecimal(absc2h2) >= hold.AbsC2H2
-                || Convert.ToDecimal(abscxhx) >= hold.AbsAll
-                || Convert.ToDecimal(absco) >= hold.AbsCO
-                || Convert.ToDecimal(absco2) >= hold.AbsCO2))
+            for (int i = 0; i < data.Length; i++)
             {
-                ret = true;
+                if (ret == false && (absdata[i] >= hold.GasAlarm[i].AbsRateAlarmNumber))
+                {
+                    ret = true;
+                    break;
+                }
             }
-            if (ret == false && (Convert.ToDecimal(relcxhx) >= hold.RelAll))
+            for (int i = 0; i < data.Length; i++)
             {
-                ret = true;
+
+                if (ret == false && (reldata[i] >= hold.GasAlarm[i].RelRateAlarmNumer))
+                {
+                    ret = true;
+                    break;
+                }
             }
+               
 
             return ret;
         }
@@ -412,7 +413,7 @@ namespace WebApplication1.Diagnosis
         /// 处理气体数据
         /// </summary>
         /// <param name="data"></param>
-        public static bool GasData_Process(SIML alldata, int anlyMode)
+        public static bool GasData_Process(RunningState alldata, int anlyMode)
         {
             //sampTime = null;
 
@@ -420,7 +421,7 @@ namespace WebApplication1.Diagnosis
             {
                 return false;
             }
-            SIML _data = alldata;
+            RunningState _data = alldata;
             #region
             //FileStream fs = new FileStream("c:\\Users\\Administrator\\Desktop\\123\\1\\1.txt", FileMode.Create);
             //StreamWriter sw = new StreamWriter(fs, Encoding.Default);
@@ -450,19 +451,20 @@ namespace WebApplication1.Diagnosis
             #endregion
             
             Config cfg = _ysp.GetCFG(_data.DevID);
-            if (_data.OtherData == null || cfg.SampStart.SampleTime == null)
+            //if (_data.WorkFlow == null || cfg.SampStart.SampleTime == null)
+            //{ return false; }
+            if (cfg.SampStart.SampleTime == null)
             { return false; }
 
             //设备号
             string deviceID = _data.DevID;
 
-            //非采样流程产生的数据则不处理
-            SGasOtherData otherdata = _data.OtherData;
-            if (otherdata.workFlowId != 1)
-            {
-                Console.WriteLine("--- _data_Process : Receive Gas data From Other WorkFlow, Not Process! " + DateTime.Now.ToString());
-                return false;
-            }
+            //非采样流程产生的数据则不处理           
+            //if (_data.WorkFlow != '1')
+            //{
+            //    Console.WriteLine("--- _data_Process : Receive Gas data From Other WorkFlow, Not Process! " + DateTime.Now.ToString());
+            //    return false;
+            //}
 
             //采样日期
             DateTime sampleTime = cfg.SampStart.SampleTime;
@@ -558,40 +560,39 @@ namespace WebApplication1.Diagnosis
             #endregion
 
 
-            RawData raw = alldata.Raw;
-            //计算 -- 面积
-            AreaStruct areas = Gas_Process_Step1(deviceID, raw, anlyParams);
-            Console.WriteLine("--- GasData_Process : Calc Gas Area Finish! " + DateTime.Now.ToString());
-            //计算 -- 浓度
-            float[] DenisityList = Gas_Process_Step2(deviceID, areas, anlyParams.GasFix);
-            Console.WriteLine("--- GasData_Process : Calc Gas Denisity Finish! " + DateTime.Now.ToString());
+            ////计算 -- 面积
+            //AreaStruct areas = Gas_Process_Step1(deviceID, raw, anlyParams);
+            //Console.WriteLine("--- GasData_Process : Calc Gas Area Finish! " + DateTime.Now.ToString());
+            ////计算 -- 浓度
+            //float[] DenisityList = Gas_Process_Step2(deviceID, areas, anlyParams.GasFix);
+            //Console.WriteLine("--- GasData_Process : Calc Gas Denisity Finish! " + DateTime.Now.ToString());
 
-            //将数据存入数据库
-            ContentData gas = alldata.Content;
-            //gas.DeviceID = deviceID;
-            //gas.ReadDate = sampleTime;
-            //gas.H2 = Convert.ToDecimal(DenisityList[0]);
-            //gas.CO = Convert.ToDecimal(DenisityList[1]);
-            //gas.CH4 = Convert.ToDecimal(DenisityList[2]);
-            //gas.C2H2 = Convert.ToDecimal(DenisityList[3]);
-            //gas.C2H4 = Convert.ToDecimal(DenisityList[4]);
-            //gas.C2H6 = Convert.ToDecimal(DenisityList[5]);
-            //gas.CO2 = Convert.ToDecimal(DenisityList[6]);
-            //gas.Total = Convert.ToDecimal(DenisityList[7]); //总烃
-            //gas.RawData = alldata;                             //原始数据
-            //gas.ProcessedData = areas.ToBytes();
-            //gas.Result = "0";           
-            gas.H2 = DenisityList[0];
-            gas.CO = DenisityList[1];
-            gas.CH4 = DenisityList[2];
-            gas.C2H2 = DenisityList[3];
-            gas.C2H4 = DenisityList[4];
-            gas.C2H6 = DenisityList[5];
-            gas.CO2 = DenisityList[6];
-            gas.TotHyd = DenisityList[7];
-            _data.Content = gas;
+            ////将数据存入数据库
+            //RunningState gas = alldata.Content;
+            ////gas.DeviceID = deviceID;
+            ////gas.ReadDate = sampleTime;
+            ////gas.H2 = Convert.ToDecimal(DenisityList[0]);
+            ////gas.CO = Convert.ToDecimal(DenisityList[1]);
+            ////gas.CH4 = Convert.ToDecimal(DenisityList[2]);
+            ////gas.C2H2 = Convert.ToDecimal(DenisityList[3]);
+            ////gas.C2H4 = Convert.ToDecimal(DenisityList[4]);
+            ////gas.C2H6 = Convert.ToDecimal(DenisityList[5]);
+            ////gas.CO2 = Convert.ToDecimal(DenisityList[6]);
+            ////gas.Total = Convert.ToDecimal(DenisityList[7]); //总烃
+            ////gas.RawData = alldata;                             //原始数据
+            ////gas.ProcessedData = areas.ToBytes();
+            ////gas.Result = "0";           
+            //gas.H2 = DenisityList[0];
+            //gas.CO = DenisityList[1];
+            //gas.CH4 = DenisityList[2];
+            //gas.C2H2 = DenisityList[3];
+            //gas.C2H4 = DenisityList[4];
+            //gas.C2H6 = DenisityList[5];
+            //gas.CO2 = DenisityList[6];
+            //gas.TotHyd = DenisityList[7];
+            //_data.Content = gas;
             
-            _siml.Update(_data);
+            //_siml.Update(_data);
 
            #region 北京测试修改
         //    bool bModify = false;
@@ -600,7 +601,7 @@ namespace WebApplication1.Diagnosis
         //    int donetotal;
         //    int mode;
         //    WebApplication1.BLL.BJCheck bjCheck = new WebApplication1.BLL.BJCheck();
-        //    ContentData oldGas = new ContentData();
+        //    RunningState oldGas = new RunningState();
         //    try
         //    {
         //        if (bjCheck.Exists(gas.DeviceID))
@@ -615,8 +616,8 @@ namespace WebApplication1.Diagnosis
         //                {
         //                    if (total > 0 && donetotal >= 0 && donetotal < total)   //
         //                    {
-        //                        WebApplication1.BLL.ContentData ContentData = new BLL.ContentData();
-        //                        oldGas = ContentData.GetGasdataByDate((byte)gas.DeviceID, dt);
+        //                        WebApplication1.BLL.RunningState RunningState = new BLL.RunningState();
+        //                        oldGas = RunningState.GetGasdataByDate((byte)gas.DeviceID, dt);
         //                        bModify = true;
         //                        donetotal = donetotal + 1;
         //                        bjCheck.UpdateBJCheckData(gas.DeviceID, dt, total, donetotal, mode);
@@ -624,8 +625,8 @@ namespace WebApplication1.Diagnosis
         //                }
         //                else if (mode == 2) //一直拷贝
         //                {
-        //                    WebApplication1.BLL.ContentData ContentData = new BLL.ContentData();
-        //                    oldGas = ContentData.GetGasdataByDate((byte)gas.DeviceID, dt);
+        //                    WebApplication1.BLL.RunningState RunningState = new BLL.RunningState();
+        //                    oldGas = RunningState.GetGasdataByDate((byte)gas.DeviceID, dt);
         //                    bModify = true;
         //                }
         //            }
@@ -640,7 +641,7 @@ namespace WebApplication1.Diagnosis
         //    {
         //        if (bModify == false)
         //        {
-        //            int gasID = new WebApplication1.BLL.ContentData().Add(gas);
+        //            int gasID = new WebApplication1.BLL.RunningState().Add(gas);
         //            gas.ID = gasID;
         //            //Save_H2_ABS(gas);
         //            Console.WriteLine("--- GasData_Process : Write to DB ok! " + DateTime.Now.ToString());
@@ -655,7 +656,7 @@ namespace WebApplication1.Diagnosis
         //            gas.C2H6 = Convert.ToDecimal(Pec8Domn(float.Parse(oldGas.C2H6.ToString())));
         //            gas.CO2 = Convert.ToDecimal(Pec8Domn(float.Parse(oldGas.CO2.ToString())));
         //            gas.Total = Convert.ToDecimal(Pec8Domn(float.Parse(oldGas.Total.ToString())));
-        //            int gasID = new WebApplication1.BLL.ContentData().Add(gas);
+        //            int gasID = new WebApplication1.BLL.RunningState().Add(gas);
         //            gas.ID = gasID;
         //            //Save_H2_ABS(gas);
         //            Console.WriteLine("--- GasData_Process : ---------------Write to DB ok!-------------------- " + DateTime.Now.ToString());     
@@ -678,30 +679,29 @@ namespace WebApplication1.Diagnosis
                 AlarmAll alarmall = cfg.Alarm;
                 if (alarmall != null)
                 {
-                    //自动告警
-                    if (alarmall.AutoAlarm=="")
-                    {
-                        List<AlarmMsgAll> msgList = Do_Auto_GasAlarm(deviceID,sampleTime,gas,alarmall,anlyParams.EnviSet);
-                        //保存
-                        if (msgList != null && msgList.Count > 0)
-                        {
-                            _data.AlarmMsg = msgList.ToArray();
-                            _siml.Update(_data);
-                        }
-                    }
+                    ////自动告警
+                    //if (alarmall.AutoAlarm=="")
+                    //{
+                    //    List<AlarmMsgAll> msgList = Do_Auto_GasAlarm(deviceID,sampleTime,gas,alarmall,anlyParams.EnviSet);
+                    //    //保存
+                    //    if (msgList != null && msgList.Count > 0)
+                    //    {
+                    //        _siml.Update(_data);
+                    //    }
+                    //}
 
-                    //自动诊断
-                    if (alarmall.AutoDiagnose=="")
-                    {
-                        AnlyInformation r = Do_Auto_GasDiagnose(_data,cfg);
-                        //保存
-                        if (r != null)
-                        {
-                            //保存诊断结果
-                            _data.AnalyInfo = r;
-                            _siml.Update(_data);
-                        }
-                    }
+                    ////自动诊断
+                    //if (alarmall.AutoDiagnose=="")
+                    //{
+                    //    AnlyInformation r = Do_Auto_GasDiagnose(_data,cfg);
+                    //    //保存
+                    //    if (r != null)
+                    //    {
+                    //        //保存诊断结果
+                    //        _data.AnalyInfo = r;
+                    //        _siml.Update(_data);
+                    //    }
+                    //}
                 }
             }
             catch (System.Exception ex)
@@ -723,138 +723,138 @@ namespace WebApplication1.Diagnosis
         /// 当氢气产生的量高于前5天平均值的15%，提出报警，并将自动工作时间改为4小时一次。
         /// </summary>
         /// <param name="gas"></param>  
-        public static void Save_H2_ABS(SIML data)
+        //public static void Save_H2_ABS(RunningState data)
 
-        {
-            SIML _data = data;
-            ContentData gas = _data.Content;           
-            try
-            {
+        //{
+            
+        //    RunningState gas = data;           
+        //    try
+        //    {
                 
                 
-                //数据库操作。。。。。。。。。。。。。。。。。。。。。 
+        //        //数据库操作。。。。。。。。。。。。。。。。。。。。。 
 
-                Expression<Func<SIML, IEnumerable<bool>>> ex = p =>(new bool[2]{(p.DevID == _data.DevID),(p.Content.H2 != null)}).AsEnumerable();
+        //        Expression<Func<SIML, IEnumerable<bool>>> ex = p =>(new bool[2]{(p.DevID == _data.DevID),(p.Content.H2 != null)}).AsEnumerable();
 
-                IQueryable<SIML>  iq= _siml.FindNBy(ex,6);
-                bool flag;
-                float total=0;
-                float ave = 0;
-                if (iq.Count() == 6)
-                {
-                    for (int i = 0; i < 6; i++)
-                    {
-                        total += float.Parse(iq.ElementAt(i).Content.H2.ToString());
-                    }
-                    ave = total / (6 - 1);
-                    if ((float.Parse(iq.ElementAt(0).Content.H2.ToString()) - ave) > (0.15 * ave))
-                    {
-                        flag=true;
-                    }
-                }
-                flag=false;
+        //        IQueryable<SIML>  iq= _siml.FindNBy(ex,6);
+        //        bool flag;
+        //        float total=0;
+        //        float ave = 0;
+        //        if (iq.Count() == 6)
+        //        {
+        //            for (int i = 0; i < 6; i++)
+        //            {
+        //                total += float.Parse(iq.ElementAt(i).Content.H2.ToString());
+        //            }
+        //            ave = total / (6 - 1);
+        //            if ((float.Parse(iq.ElementAt(0).Content.H2.ToString()) - ave) > (0.15 * ave))
+        //            {
+        //                flag=true;
+        //            }
+        //        }
+        //        flag=false;
 
-                bool H2ABS = flag;
-                if (H2ABS)
-                {
-                    AlarmMsgAll msg = new AlarmMsgAll();
-                    msg.AlarmDate = _data.Time_Stamp;
-                    msg.AlarmValue = (decimal)gas.H2;
-                    msg.CompareGasID = gas.ID;
-                    msg.CurDate = gas.ReadDate;
-                    msg.CurGasID = gas.ID;
-                    //msg.DeviceID = data.DevID;
-                    msg.GasName = "H2";
-                    msg.Message = "H2产气速率告警，工作间隔改为4小时";
-                    msg.PrevData = DateTime.Now;
-                    msg.RealValue = (decimal)gas.H2;
-                    //数据库操作。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
-                    Config cfgParam =_ysp.GetCFG(data.DevID);
-                    if (cfgParam == null)
-                    {
-                        //.Config...........................................................................从下位机取配置....................
-                    }                  
+        //        bool H2ABS = flag;
+        //        if (H2ABS)
+        //        {
+        //            AlarmMsgAll msg = new AlarmMsgAll();
+        //            msg.AlarmDate = _data.Time_Stamp;
+        //            msg.AlarmValue = (decimal)gas.H2;
+        //            msg.CompareGasID = gas.ID;
+        //            msg.CurDate = gas.ReadDate;
+        //            msg.CurGasID = gas.ID;
+        //            //msg.DeviceID = data.DevID;
+        //            msg.GasName = "H2";
+        //            msg.Message = "H2产气速率告警，工作间隔改为4小时";
+        //            msg.PrevData = DateTime.Now;
+        //            msg.RealValue = (decimal)gas.H2;
+        //            //数据库操作。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+        //            Config cfgParam =_ysp.GetCFG(data.DevID);
+        //            if (cfgParam == null)
+        //            {
+        //                //.Config...........................................................................从下位机取配置....................
+        //            }                  
                     
-                    if (cfgParam != null)
-                    {
-                        //.............................................................要更改设备的。。。。。。。。。。。。。。。...........
-                        cfgParam.SampStart.interval = 240;                        
+        //            if (cfgParam != null)
+        //            {
+        //                //.............................................................要更改设备的。。。。。。。。。。。。。。。...........
+        //                cfgParam.SampStart.interval = 240;                        
 
-                        //更改数据库中的配置。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
-                        MongoHelper<Config> _cfg=new MongoHelper<Config>();
-                        _cfg.Update(cfgParam);
-                    }
-                }
-            }
-            catch (Exception ex)
-            { }
-        }
+        //                //更改数据库中的配置。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+        //                MongoHelper<Config> _cfg=new MongoHelper<Config>();
+        //                _cfg.Update(cfgParam);
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    { }
+        //}
         /// <summary>
         /// 自动告警
         /// </summary>
         /// <param name="dg"></param>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static List<AlarmMsgAll> Do_Auto_GasAlarm(string deviceid, DateTime sampletime, ContentData gas, AlarmAll alarmall, EnvironmentSetting enviset)
-        {
-            ContentData dg = gas;
-            if (dg == null)
-            { 
-                return null; 
-            }
+        //public static List<AlarmMsgAll> Do_Auto_GasAlarm(string deviceid, DateTime sampletime, RunningState gas, AlarmAll alarmall, EnvironmentSetting enviset)
+        //{
+        //    RunningState dg = gas;
+        //    if (dg == null)
+        //    { 
+        //        return null; 
+        //    }
 
 
-            //从原始数据中取得 环境配置信息
-            EnvironmentSetting es = enviset;
-            if (es == null)
-            {
+        //    //从原始数据中取得 环境配置信息
+        //    EnvironmentSetting es = enviset;
+        //    if (es == null)
+        //    {
 
-                //从数据库读取 自动告警配置、阈值设置          
-                AlarmAll aa = alarmall;
-                if (aa == null)
-                { return null; }
-                DateTime st = sampletime;
-                if (st == null)
-                { return null; }
+        //        //从数据库读取 自动告警配置、阈值设置          
+        //        AlarmAll aa = alarmall;
+        //        if (aa == null)
+        //        { return null; }
+        //        DateTime st = sampletime;
+        //        if (st == null)
+        //        { return null; }
 
 
-                //取得 对比数据
-                int interval = aa.Interval;
-                TimeSpan ts = new TimeSpan(interval, 0, 0, 0);
-                DateTime time = st - ts;
-                //数据库操作。。。。。。。。。。。。。。。。。。。。。。。。。。取时间为time的气体数据。。。。。。。
+        //        //取得 对比数据
+        //        int interval = aa.Interval;
+        //        TimeSpan ts = new TimeSpan(interval, 0, 0, 0);
+        //        DateTime time = st - ts;
+        //        //数据库操作。。。。。。。。。。。。。。。。。。。。。。。。。。取时间为time的气体数据。。。。。。。
 
-                Expression<Func<SIML, bool>> ex = p => (p.DevID == deviceid && p.Raw.SampleTime == time);
+        //        Expression<Func<SIML, bool>> ex = p => (p.DevID == deviceid && p.Raw.SampleTime == time);
                 
-                SIML prevData = _siml.FindOneBy(ex);
-                if (prevData == null)
-                {
-                    Console.WriteLine("auto alarm: do alarm with before {0} data, not exist", time);
-                    return null;
-                }
-                Console.WriteLine("auto alarm: do alarm with {0} data", prevData.Raw.SampleTime);
+        //        SIML prevData = _siml.FindOneBy(ex);
+        //        if (prevData == null)
+        //        {
+        //            Console.WriteLine("auto alarm: do alarm with before {0} data, not exist", time);
+        //            return null;
+        //        }
+        //        Console.WriteLine("auto alarm: do alarm with {0} data", prevData.Raw.SampleTime);
 
-                //
-                List<AlarmMsgAll> almList = GasAlarm(dg, prevData.Content, prevData.Content, es, aa);
-                if (almList != null)
-                {
-                    Console.WriteLine("auto alarm: {0} items alarm message", almList.Count);
-                    //for (int i=0; i < almList.Count; i++)
-                    //{
-                    //    Console.WriteLine(almList[i].Message);
-                    //}
-                }
-                else
-                {
-                    Console.WriteLine("auto alarm: no alarm message");
-                }
-                return almList;
-            }
-            else
-            {
-                return null;
-            }
-        }
+        //        //
+        //        List<AlarmMsgAll> almList = GasAlarm(dg, prevData.Content, prevData.Content, es, aa);
+        //        if (almList != null)
+        //        {
+        //            Console.WriteLine("auto alarm: {0} items alarm message", almList.Count);
+        //            //for (int i=0; i < almList.Count; i++)
+        //            //{
+        //            //    Console.WriteLine(almList[i].Message);
+        //            //}
+        //        }
+        //        else
+        //        {
+        //            Console.WriteLine("auto alarm: no alarm message");
+        //        }
+        //        return almList;
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
 
         /// <summary>
         /// 自动诊断
@@ -862,162 +862,162 @@ namespace WebApplication1.Diagnosis
         /// <param name="dg"></param>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static AnlyInformation Do_Auto_GasDiagnose(SIML data,Config cfg)
-        {
-            ContentData gasData = data.Content;
-            //从原始数据中取得 环境配置信息
-            EnvironmentSetting es = cfg.AnalyPara.EnviSet;
-            if(es==null)    {   return null;    }
+        //public static AnlyInformation Do_Auto_GasDiagnose(RunningState data,Config cfg)
+        //{
+        //    RunningState gasData = data;
+        //    //从原始数据中取得 环境配置信息
+        //    EnvironmentSetting es = cfg.AnalyPara.EnviSet;
+        //    if(es==null)    {   return null;    }
 
-            //从数据库读取 自动告警配置、阈值设置
-            AlarmAll aa = cfg.Alarm;
-            if (aa == null)
-            { return null; }
-            //Attention at = new WebApplication1.BLL.Attention().GetModel(dg.DeviceID);
-            //if (at == null)
-            //{ return null; }
-            //AutoAlarm auto = new WebApplication1.BLL.AutoAlarm().GetModel(dg.DeviceID);
-            //if (auto == null)
-            //{ return null; }
+        //    //从数据库读取 自动告警配置、阈值设置
+        //    AlarmAll aa = cfg.Alarm;
+        //    if (aa == null)
+        //    { return null; }
+        //    //Attention at = new WebApplication1.BLL.Attention().GetModel(dg.DeviceID);
+        //    //if (at == null)
+        //    //{ return null; }
+        //    //AutoAlarm auto = new WebApplication1.BLL.AutoAlarm().GetModel(dg.DeviceID);
+        //    //if (auto == null)
+        //    //{ return null; }
 
 
-            //取得 对比数据
-            int interval = aa.Interval;
-            DateTime time = data.Raw.SampleTime - new TimeSpan(interval, 0, 0, 0);
-            //去数据库中，时间为time的气体数据。。。。。。。。。。。。。。。。。。。。。。。。。。。
-            Expression<Func<SIML,bool>> ex=p=>(p.DevID==data.DevID &&p.Raw.SampleTime==time);
-                MongoHelper<SIML> _siml=new MongoHelper<SIML>();
-               SIML prevData= _siml.FindOneBy(ex);
-            if (prevData == null)
-            {
-                Console.WriteLine("auto diag: do diag with before {0} data, not exist", time);
-                return null;
-            }
-            Console.WriteLine("auto diag: do diag with {0} data", prevData.Content.ReadDate);
+        //    //取得 对比数据
+        //    int interval = aa.Interval;
+        //    DateTime time = data.Raw.SampleTime - new TimeSpan(interval, 0, 0, 0);
+        //    //去数据库中，时间为time的气体数据。。。。。。。。。。。。。。。。。。。。。。。。。。。
+        //    Expression<Func<SIML,bool>> ex=p=>(p.DevID==data.DevID &&p.Raw.SampleTime==time);
+        //        MongoHelper<SIML> _siml=new MongoHelper<SIML>();
+        //       SIML prevData= _siml.FindOneBy(ex);
+        //    if (prevData == null)
+        //    {
+        //        Console.WriteLine("auto diag: do diag with before {0} data, not exist", time);
+        //        return null;
+        //    }
+        //    Console.WriteLine("auto diag: do diag with {0} data", prevData.Content.ReadDate);
 
-            //
-            AnlyInformation anlyInfo = GasDiagnose(data.DevID, gasData, prevData.Content, prevData.Content, es, aa.DiagSet);
-            if (anlyInfo != null)
-            {
-                Console.WriteLine("auto diag: {0}", anlyInfo.Desc);
-            }
-            else
-            {
-                Console.WriteLine("auto diag: no message");
-            }
-            return anlyInfo;
-        }
+        //    //
+        //    AnlyInformation anlyInfo = GasDiagnose(data.DevID, gasData, prevData.Content, prevData.Content, es, aa.DiagSet);
+        //    if (anlyInfo != null)
+        //    {
+        //        Console.WriteLine("auto diag: {0}", anlyInfo.Desc);
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("auto diag: no message");
+        //    }
+        //    return anlyInfo;
+        //}
 
 
         /// <summary>
         /// 处理微水数据
         /// </summary>
         /// <param name="data"></param>
-        public static bool H2oData_Process(SIML data)
-        {
-            string deviceID = data.DevID;
-            RawData h2o = data.Raw;
+        //public static bool H2oData_Process(SIML data)
+        //{
+        //    string deviceID = data.DevID;
+        //    RawData h2o = data.Raw;
 
-            if (data == null)
-            {
-                return false;
-            }
+        //    if (data == null)
+        //    {
+        //        return false;
+        //    }
 
-            if (h2o.RawAW == 0 || h2o.RawT == 0)
-            { return false; }
-            if (h2o.SampleTime == null)
-            { return false; }
+        //    if (h2o.RawAW == 0 || h2o.RawT == 0)
+        //    { return false; }
+        //    if (h2o.SampleTime == null)
+        //    { return false; }
 
-            float temp_t = float.Parse(h2o.RawT.ToString());
-            float temp_aw = float.Parse(h2o.RawAW.ToString());
-            //float temp_ppm = float.Parse
-            /*
-            //float aw = (float)(2.0625 * h2o.RawAW.Value / 4096 - 0.25);
-            float aw = (float)(2.0625f * temp_aw / 4096f - 0.25f);
-            //float t = (float)4125 / 65536 * ((float.Parse(h2o.RawT.Value.ToString()))) - 56.25; 
-            float t = (4125f / 65536f) * temp_t - 56.25f;
-            //float t =(float) h2o.RawT.Value;
-            //获取油品系数A和B
-            Define.EnvironmentSetting ES = h2o.Analysis.Value.enviroment;
-            float A = CommonFuncs.ConvertBS(ES.oilFactorA);
-            float B = CommonFuncs.ConvertBS(ES.oilFactorB);
+        //    float temp_t = float.Parse(h2o.RawT.ToString());
+        //    float temp_aw = float.Parse(h2o.RawAW.ToString());
+        //    //float temp_ppm = float.Parse
+        //    /*
+        //    //float aw = (float)(2.0625 * h2o.RawAW.Value / 4096 - 0.25);
+        //    float aw = (float)(2.0625f * temp_aw / 4096f - 0.25f);
+        //    //float t = (float)4125 / 65536 * ((float.Parse(h2o.RawT.Value.ToString()))) - 56.25; 
+        //    float t = (4125f / 65536f) * temp_t - 56.25f;
+        //    //float t =(float) h2o.RawT.Value;
+        //    //获取油品系数A和B
+        //    Define.EnvironmentSetting ES = h2o.Analysis.Value.enviroment;
+        //    float A = CommonFuncs.ConvertBS(ES.oilFactorA);
+        //    float B = CommonFuncs.ConvertBS(ES.oilFactorB);
 
-            float ppm = (float)(aw * Math.Pow(10, (B - A / (t + 273.16))));
-             * */
+        //    float ppm = (float)(aw * Math.Pow(10, (B - A / (t + 273.16))));
+        //     * */
 
-            //奥特迅微水传感器计算方法
+        //    //奥特迅微水传感器计算方法
 
-            //计算AW：aw=（x-4)/16
-            float aw = (temp_aw * 0.006713f - 4.0f) / 16.0f;
-            //计算T：t =(x-4)/0.133-40
-            float t = (temp_t * 0.006713f - 4.0f) / 0.133f - 48.0f;
-            //计算PPM：A=126.8-t；B=95.176+0.18t；ppm=2.5212*aw*t*(B/A)
-            float ppm = 2.5212f * aw * t * ((95.176f + 0.18f * t) / (126.8f - t));
+        //    //计算AW：aw=（x-4)/16
+        //    float aw = (temp_aw * 0.006713f - 4.0f) / 16.0f;
+        //    //计算T：t =(x-4)/0.133-40
+        //    float t = (temp_t * 0.006713f - 4.0f) / 0.133f - 48.0f;
+        //    //计算Mst：A=126.8-t；B=95.176+0.18t；ppm=2.5212*aw*t*(B/A)
+        //    float ppm = 2.5212f * aw * t * ((95.176f + 0.18f * t) / (126.8f - t));
 
 
-            //微水数据存入数据库。。。。。。。。。。。。。。。。。。。。。。。。。。                 
-            data.Content.ReadDate = h2o.SampleTime;
-            data.Content.AW = aw;
-            data.Content.T =t;
-            data.Content.PPM =ppm;
-            //dataH2O.ConfigInfo =h2o.Config.Value;
+        //    //微水数据存入数据库。。。。。。。。。。。。。。。。。。。。。。。。。。                 
+        //    data.Content.ReadDate = h2o.SampleTime;
+        //    data.Content.AW = aw;
+        //    data.Content.T =t;
+        //    data.Content.Mst =ppm;
+        //    //dataH2O.ConfigInfo =h2o.Config.Value;
              
-            //dataH2O.Result = "0";
-            try
-            {
-                //保存
+        //    //dataH2O.Result = "0";
+        //    try
+        //    {
+        //        //保存
                 
-                Expression<Func<SIML, bool>> ex = p => (p.Content.AW == aw && p.Content.T == t && p.Content.PPM == ppm);
-                _siml.Update(data);
+        //        Expression<Func<SIML, bool>> ex = p => (p.Content.AW == aw && p.Content.T == t && p.Content.Mst == ppm);
+        //        _siml.Update(data);
 
-            }
-            catch (Exception ex)
-            {
-                //ILog log = new FileLog();
-                //log.Write(ex.Message + "\r\n" + ex.StackTrace);
-                //log.Dispose();
-                //return false;
-            }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //ILog log = new FileLog();
+        //        //log.Write(ex.Message + "\r\n" + ex.StackTrace);
+        //        //log.Dispose();
+        //        //return false;
+        //    }
 
-            try
-            {
-                //从数据库 取得告警配置
-                //自动告警
-                AlarmAll aa = _ysp.GetCFG(data.DevID).Alarm;               
-                if (aa!= null)
-                {
-                    if (aa.AutoAlarm!=null)
-                    {
-                        //微水注意值告警
-                        GasAlarm at = aa.TAlarm;
-                        if (at != null)
-                        {
-                            List<AlarmMsgAll> list = Do_Auto_H2OAlarm(aa, data.Content);
-                            if (list != null && list.Count > 0)
-                            {
-                                //保存告警信息
+        //    try
+        //    {
+        //        //从数据库 取得告警配置
+        //        //自动告警
+        //        AlarmAll aa = _ysp.GetCFG(data.DevID).Alarm;               
+        //        if (aa!= null)
+        //        {
+        //            if (aa.AutoAlarm!=null)
+        //            {
+        //                //微水注意值告警
+        //                GasAlarm at = aa.TAlarm;
+        //                if (at != null)
+        //                {
+        //                    List<AlarmMsgAll> list = Do_Auto_H2OAlarm(aa, data.Content);
+        //                    if (list != null && list.Count > 0)
+        //                    {
+        //                        //保存告警信息
                                 
-                                List<AlarmMsgAll> alarmList=data.AlarmMsg.ToList();
-                                alarmList.Concat(list);
-                                data.AlarmMsg = alarmList.ToArray();
-                                _siml.Update(data);
+        //                        List<AlarmMsgAll> alarmList=data.AlarmMsg.ToList();
+        //                        alarmList.Concat(list);
+        //                        data.AlarmMsg = alarmList.ToArray();
+        //                        _siml.Update(data);
                                 
                                
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                //ILog log = new FileLog();
-                //log.Write(ex.Message + "\r\n" + ex.StackTrace);
-                //log.Dispose();
-            }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        //ILog log = new FileLog();
+        //        //log.Write(ex.Message + "\r\n" + ex.StackTrace);
+        //        //log.Dispose();
+        //    }
 
-            //sampTime = h2o.SampleTime;
-            return true;
-        }
+        //    //sampTime = h2o.SampleTime;
+        //    return true;
+        //}
 
         /// <summary>
         /// 微水数据 与 注意值对比，产生告警
@@ -1025,125 +1025,125 @@ namespace WebApplication1.Diagnosis
         /// <param name="at"></param>
         /// <param name="h2o"></param>
         /// <returns></returns>
-        public static List<AlarmMsgAll> Do_Auto_H2OAlarm(AlarmAll aa,ContentData cd)
-        {
+        //public static List<AlarmMsgAll> Do_Auto_H2OAlarm(AlarmAll aa,RunningState cd)
+        //{
 
-            if (aa == null)
-            {   return null;    }
+        //    if (aa == null)
+        //    {   return null;    }
 
-            //if (at.Threshold == null)
-            //{   return null;    }
-            //object obj = CommonFuncs.BytesToStuct(at.Threshold, typeof(Threshold));
-            //if (obj == null)
-            //{ return null; }
-            //Threshold hold = (Threshold)obj;
+        //    //if (at.Threshold == null)
+        //    //{   return null;    }
+        //    //object obj = CommonFuncs.BytesToStuct(at.Threshold, typeof(Threshold));
+        //    //if (obj == null)
+        //    //{ return null; }
+        //    //Threshold hold = (Threshold)obj;
 
-            AlarmAll hold = aa;
-            ContentData h2o = cd;
+        //    AlarmAll hold = aa;
+        //    RunningState h2o = cd;
 
-            List<AlarmMsgAll> list = new List<AlarmMsgAll>();
+        //    List<AlarmMsgAll> list = new List<AlarmMsgAll>();
 
-            if (cd.AW >= hold.AWAlarm.Level1 && cd.AW < hold.AWAlarm.Level2)
-            {
-                AlarmMsgAll msg = new AlarmMsgAll();
+        //    if (cd.AW >= hold.AWAlarm.Level1 && cd.AW < hold.AWAlarm.Level2)
+        //    {
+        //        AlarmMsgAll msg = new AlarmMsgAll();
 
-                msg.Type = (int)AlarmType.Content;
-                msg.CurGasID = h2o.ID;
-                msg.AlarmDate = h2o.ReadDate;
-                msg.AlarmValue = (decimal)hold.AWAlarm.Level1;
-                msg.GasName = "H2O_AW";
-                msg.Message = "H2O_AW Threshold_Alarm";
-                msg.RealValue = (decimal)cd.AW;
-                msg.CurDate = h2o.ReadDate;
-                msg.Level = 1;
-                msg.PrevData = DateTime.Now;
-                list.Add(msg);
-            }
-            else if (cd.AW >= hold.AWAlarm.Level2)
-            {
-                AlarmMsgAll msg = new AlarmMsgAll();
+        //        msg.Type = (int)AlarmType.Content;
+        //        msg.CurGasID = h2o.ID;
+        //        msg.AlarmDate = h2o.ReadDate;
+        //        msg.AlarmValue = (decimal)hold.AWAlarm.Level1;
+        //        msg.GasName = "H2O_AW";
+        //        msg.Message = "H2O_AW Threshold_Alarm";
+        //        msg.RealValue = (decimal)cd.AW;
+        //        msg.CurDate = h2o.ReadDate;
+        //        msg.Level = 1;
+        //        msg.PrevData = DateTime.Now;
+        //        list.Add(msg);
+        //    }
+        //    else if (cd.AW >= hold.AWAlarm.Level2)
+        //    {
+        //        AlarmMsgAll msg = new AlarmMsgAll();
 
-                msg.Type = (int)AlarmType.Content;
-                msg.CurGasID = h2o.ID;
-                msg.AlarmDate = h2o.ReadDate;
-                msg.AlarmValue = (decimal)hold.AWAlarm.Level2;
-                msg.GasName = "H2O_AW";
-                msg.Message = "H2O_AW Threshold_Alarm";
-                msg.RealValue = (decimal)cd.AW;
-                msg.CurDate = h2o.ReadDate;
-                msg.Level = 2;
-                msg.PrevData = DateTime.Now;
-                list.Add(msg);
-            }
+        //        msg.Type = (int)AlarmType.Content;
+        //        msg.CurGasID = h2o.ID;
+        //        msg.AlarmDate = h2o.ReadDate;
+        //        msg.AlarmValue = (decimal)hold.AWAlarm.Level2;
+        //        msg.GasName = "H2O_AW";
+        //        msg.Message = "H2O_AW Threshold_Alarm";
+        //        msg.RealValue = (decimal)cd.AW;
+        //        msg.CurDate = h2o.ReadDate;
+        //        msg.Level = 2;
+        //        msg.PrevData = DateTime.Now;
+        //        list.Add(msg);
+        //    }
 
-            if (cd.T >= hold.TAlarm.Level1 && h2o.T < hold.TAlarm.Level2)
-            {
-                AlarmMsgAll msg = new AlarmMsgAll();
+        //    if (cd.T >= hold.TAlarm.Level1 && h2o.T < hold.TAlarm.Level2)
+        //    {
+        //        AlarmMsgAll msg = new AlarmMsgAll();
 
-                msg.Type = (int)AlarmType.Content;
-                msg.CurGasID = h2o.ID;
-                msg.AlarmDate = h2o.ReadDate;
-                msg.AlarmValue = (decimal)hold.TAlarm.Level1;
-                msg.GasName = "H2O_T";
-                msg.Message = "H2O_T Threshold_Alarm";
-                msg.RealValue = (decimal)cd.T;
-                msg.CurDate = h2o.ReadDate;
-                msg.Level = 1;
-                msg.PrevData = DateTime.Now;
-                list.Add(msg);
-            }
-            else if (cd.T >= hold.TAlarm.Level2)
-            {
-                AlarmMsgAll msg = new AlarmMsgAll();
+        //        msg.Type = (int)AlarmType.Content;
+        //        msg.CurGasID = h2o.ID;
+        //        msg.AlarmDate = h2o.ReadDate;
+        //        msg.AlarmValue = (decimal)hold.TAlarm.Level1;
+        //        msg.GasName = "H2O_T";
+        //        msg.Message = "H2O_T Threshold_Alarm";
+        //        msg.RealValue = (decimal)cd.T;
+        //        msg.CurDate = h2o.ReadDate;
+        //        msg.Level = 1;
+        //        msg.PrevData = DateTime.Now;
+        //        list.Add(msg);
+        //    }
+        //    else if (cd.T >= hold.TAlarm.Level2)
+        //    {
+        //        AlarmMsgAll msg = new AlarmMsgAll();
  
-                msg.Type = (int)AlarmType.Content;
-                msg.CurGasID = h2o.ID;
-                msg.AlarmDate = h2o.ReadDate;
-                msg.AlarmValue = (decimal)hold.TAlarm.Level2;
-                msg.GasName = "H2O_T";
-                msg.Message = "H2O_T Threshold_Alarm";
-                msg.RealValue = (decimal)cd.T;
-                msg.CurDate = h2o.ReadDate;
-                msg.Level = 2;
-                msg.PrevData = DateTime.Now;
-                list.Add(msg);
-            }
+        //        msg.Type = (int)AlarmType.Content;
+        //        msg.CurGasID = h2o.ID;
+        //        msg.AlarmDate = h2o.ReadDate;
+        //        msg.AlarmValue = (decimal)hold.TAlarm.Level2;
+        //        msg.GasName = "H2O_T";
+        //        msg.Message = "H2O_T Threshold_Alarm";
+        //        msg.RealValue = (decimal)cd.T;
+        //        msg.CurDate = h2o.ReadDate;
+        //        msg.Level = 2;
+        //        msg.PrevData = DateTime.Now;
+        //        list.Add(msg);
+        //    }
 
-            if (cd.PPM >= hold.PPMAlarm.Level1 && cd.PPM < hold.PPMAlarm.Level2)
-            {
-                AlarmMsgAll msg = new AlarmMsgAll();
+        //    if (cd.Mst >= hold.PPMAlarm.Level1 && cd.Mst < hold.PPMAlarm.Level2)
+        //    {
+        //        AlarmMsgAll msg = new AlarmMsgAll();
  
-                msg.Type = (int)AlarmType.Content;
-                msg.CurGasID = h2o.ID;
-                msg.AlarmDate = h2o.ReadDate;
-                msg.AlarmValue = (decimal)hold.PPMAlarm.Level1;
-                msg.GasName = "H2O_PPM";
-                msg.Message = "H2O_PPM Threshold_Alarm";
-                msg.RealValue = (decimal)cd.PPM;
-                msg.CurDate = h2o.ReadDate;
-                msg.Level = 1;
-                msg.PrevData = DateTime.Now;
-                list.Add(msg);
-            }
-            else if (cd.PPM >= hold.PPMAlarm.Level2)
-            {
-                AlarmMsgAll msg = new AlarmMsgAll();
+        //        msg.Type = (int)AlarmType.Content;
+        //        msg.CurGasID = h2o.ID;
+        //        msg.AlarmDate = h2o.ReadDate;
+        //        msg.AlarmValue = (decimal)hold.PPMAlarm.Level1;
+        //        msg.GasName = "H2O_Mst";
+        //        msg.Message = "H2O_Mst Threshold_Alarm";
+        //        msg.RealValue = (decimal)cd.Mst;
+        //        msg.CurDate = h2o.ReadDate;
+        //        msg.Level = 1;
+        //        msg.PrevData = DateTime.Now;
+        //        list.Add(msg);
+        //    }
+        //    else if (cd.Mst >= hold.PPMAlarm.Level2)
+        //    {
+        //        AlarmMsgAll msg = new AlarmMsgAll();
      
-                msg.Type = (int)AlarmType.Content;
-                msg.CurGasID = h2o.ID;
-                msg.AlarmDate = h2o.ReadDate;
-                msg.AlarmValue = (decimal)hold.PPMAlarm.Level2;
-                msg.GasName = "H2O_PPM";
-                msg.Message = "H2O_PPM Threshold_Alarm";
-                msg.RealValue = (decimal)cd.PPM;
-                msg.CurDate = h2o.ReadDate;
-                msg.Level = 2;
-                msg.PrevData = DateTime.Now;
-                list.Add(msg);
-            }
+        //        msg.Type = (int)AlarmType.Content;
+        //        msg.CurGasID = h2o.ID;
+        //        msg.AlarmDate = h2o.ReadDate;
+        //        msg.AlarmValue = (decimal)hold.PPMAlarm.Level2;
+        //        msg.GasName = "H2O_Mst";
+        //        msg.Message = "H2O_Mst Threshold_Alarm";
+        //        msg.RealValue = (decimal)cd.Mst;
+        //        msg.CurDate = h2o.ReadDate;
+        //        msg.Level = 2;
+        //        msg.PrevData = DateTime.Now;
+        //        list.Add(msg);
+        //    }
 
-            return list;
-        }
+        //    return list;
+        //}
 
 
 
@@ -1154,7 +1154,7 @@ namespace WebApplication1.Diagnosis
         /// <param name="dg"></param>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static List<AlarmMsgAll> GasAlarm(ContentData dg, ContentData absdg, ContentData reldg,
+        public static List<AlarmMsgAll> GasAlarm(RunningState dg, RunningState absdg, RunningState reldg,
             EnvironmentSetting setting, AlarmAll hold)
         {
             if (dg == null || absdg == null || reldg == null || setting == null || hold == null)
@@ -1197,9 +1197,9 @@ namespace WebApplication1.Diagnosis
             float[] lvValue = new float[8];
             byte[] alm = null;
             
-            //获得PPM告警信息            //包装告警信息
+            //获得Mst告警信息            //包装告警信息
             alm = Gas_Anly_Step2_ThresholdAlarm(dg.ID, hold, data, 0, ref lvValue);
-            alarmDesc = "PPM Threshold Alarm";
+            alarmDesc = "Mst Threshold Alarm";
             for (int i = 0; i < 8 && alm[i] > 0; i++)
             {
                 AlarmMsgAll msg = new AlarmMsgAll();
@@ -1268,10 +1268,10 @@ namespace WebApplication1.Diagnosis
         /// <param name="dg"></param>
         /// <param name="setting"></param>
         /// <returns></returns>
-        public static AnlyInformation GasDiagnose(String devId, ContentData dg, ContentData absdg, ContentData reldg,
-            EnvironmentSetting setting, DiagnoseSet diagSet)
+        public static AnlyInformation GasDiagnose(String devId, RunningState dg, RunningState absdg, RunningState reldg,
+            EnvironmentSetting setting, AlarmAll aa)
         {
-            if (dg == null || absdg == null || reldg == null || setting == null || diagSet == null)
+            if (dg == null || absdg == null || reldg == null || setting == null || aa == null)
             { return null; }
             //if (dg.DeviceID != absdg.DeviceID || dg.DeviceID != reldg.DeviceID)
             //{ return null; }
@@ -1308,7 +1308,7 @@ namespace WebApplication1.Diagnosis
             try
             {
                 //判断是否故障
-                bool fault = Gas_Anly_Step2_FaultChk(int.Parse(devId), diagSet, data, absSpeed, relSpeed);
+                bool fault = Gas_Anly_Step2_FaultChk(int.Parse(devId), aa, data, absSpeed, relSpeed);
                 if (fault == true)
                 {
                     //判断故障类型

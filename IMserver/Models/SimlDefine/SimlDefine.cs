@@ -42,8 +42,11 @@ namespace IMserver.Models.SimlDefine
         [Display(Name = "总烃")]
         public float TotHyd { get; set; }
 
+        [Display(Name = "总可燃气体")]
+        public float TotGas;              //总可燃气体
+
         [Display(Name = "微水")] //微水浓度
-        public float PPM { get; set; }
+        public float Mst { get; set; }
 
         [Display(Name = "微水温度")]
         public float T { get; set; }
@@ -51,31 +54,31 @@ namespace IMserver.Models.SimlDefine
         [Display(Name = "微水活性")]
         public float AW { get; set; }
 
- 
+
     }
 
-    public class RawData
-    {
-        public DateTime SampleTime { get; set; }
+    //public class RawData
+    //{
+    //    public DateTime SampleTime { get; set; }
 
-        [MaxLength(7)]
-        public float[] Density{get;set;}
+    //    [MaxLength(7)]
+    //    public float[] Density{get;set;}
 
-        public float RawPPM { get; set; }
+    //    public float RawPPM { get; set; }
        
-        public ushort RawAW { get; set; }
+    //    public ushort RawAW { get; set; }
        
-        public ushort RawT { get; set; }
+    //    public ushort RawT { get; set; }
 
 
-        [MaxLength(5000)]
-        public ushort[] RawSixGax{get;set;}
+    //    [MaxLength(5000)]
+    //    public ushort[] RawSixGax{get;set;}
 
-        [MaxLength(2000)]
-        public ushort[] RawCO2{get;set;}
+    //    [MaxLength(2000)]
+    //    public ushort[] RawCO2{get;set;}
         
 
-    }
+    //}
 
     #region 配置信息定义
     //环境及外围控制
@@ -261,23 +264,12 @@ namespace IMserver.Models.SimlDefine
         public int Interval { get; set; }
 
 
-        [Display(Name = "报警功能设置")]
-        public DiagnoseSet DiagSet { get; set; }
+        //[Display(Name = "报警功能设置")]
+        //public DiagnoseSet DiagSet { get; set; }
 
-        public GasAlarm H2Alarm { get; set; }
-        public GasAlarm COAlarm { get; set; }
-        public GasAlarm CH4Alarm { get; set; }
-        public GasAlarm C2H2Alarm { get; set; }
-        public GasAlarm C2H4Alarm { get; set; }
-        public GasAlarm C2H6Alarm { get; set; }
-        public GasAlarm CO2Alarm { get; set; }
-
-
-        public GasAlarm TotHydAlarm { get; set; }
-        public GasAlarm PPMAlarm { get; set; }
-        public GasAlarm AWAlarm { get; set; }
-        public GasAlarm TAlarm { get; set; }
-
+        [MaxLength(11)]
+        public GasAlarm[] GasAlarm;  //各个报警设置，顺序h2,co,ch4,c2h2,c2h4,c2h6,co2,TotHyd,Mst,AW,T
+       
 
     }
 
@@ -627,22 +619,6 @@ namespace IMserver.Models.SimlDefine
     }
 
 
-    //系统设置
-    //public class SysSetting
-    //{
-    //    public string MasterIP;//指向上位机IP
-    //    public ushort MasterPort;//指向上位机端口号
-    //    public ushort ComBaud;//串口波特率
-    //    public ushort ComData;//串口数据位
-    //    public ushort ComStop;//串口停止位
-    //    public ushort ComCheck;//串口奇偶校验
-    //    public string NetCardIP;// 网卡IP
-    //    public ushort NetCardPort;//网卡端口号
-    //    public ushort SubnetMask;//网卡子网掩码
-    //    public ushort Gateway;//网卡网关
-    //}
-
-
     //检测辅助控制,,传感器室，冷井，色谱柱的
     public class JianCeFuZhu
     {
@@ -678,7 +654,7 @@ namespace IMserver.Models.SimlDefine
         public float RelLevel2 { get; set; }
 
         [Display(Name = "报警门限值触发条件")]
-        public float AlarmNumber { get; set; }
+        public float AlarmContent { get; set; }
 
         [Display(Name = "绝对产气速率触发")]
         public float AbsRateAlarmNumber { get; set; }
@@ -694,32 +670,6 @@ namespace IMserver.Models.SimlDefine
         public float Level2 { get; set; }
     }
 
-    //气体其它数据
-    public class SGasOtherData
-    {
-        public ushort workCount;
-        public byte rcvFinishSig;
-        public byte workFlowId;
-        public ushort[] leftPos;
-        public ushort[] midPos;
-        public ushort[] rightPos;
-        public float[] area;
-        public ushort calcTime;
-    }
-
-    //气体自动诊断触发
-    public class DiagnoseSet
-    {
-        public decimal contentH2;         //注意值
-        public decimal contentC2H2;
-        public decimal contentAll;
-        public decimal AbsH2;             //绝对产气速率
-        public decimal AbsC2H2;
-        public decimal AbsAll;
-        public decimal AbsCO;
-        public decimal AbsCO2;
-        public decimal RelAll;            //相对产气速率
-    }
 
     
 
@@ -751,6 +701,12 @@ namespace IMserver.Models.SimlDefine
     #endregion
 
 
+
+    public class RawData
+    {
+        public ushort[] RawSixGax;
+        public ushort[] RawCO2;
+    }
 
 
 
