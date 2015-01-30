@@ -1,6 +1,10 @@
 
 namespace IMserver.Models
 {
+
+    //剩余界面内容
+
+
     using MongoDB.Bson;
     using MongoDB.Bson.Serialization.Attributes;
     using MongoDB.Driver;
@@ -17,7 +21,6 @@ namespace IMserver.Models
         public ObjectId DataID { get; set; }  //使该条数据唯一的编号
 
         [Display(Name = "设备号")]
-
         public string DevID;
         public DateTime Time_Stamp { get; set; }  //时间戳
 
@@ -30,23 +33,13 @@ namespace IMserver.Models
 
         //气体其它数据
         //public SGasOtherData OtherData;
-
         #endregion
 
-
-
         //状态/控制信息
-       
         public StateCtrol SC{ get; set; }
 
-     
-
-      
         // 诊断分析
-
         public AnlyInformation AnalyInfo { get; set; }
-
-
 
         //告警信息
         public enum AlarmType

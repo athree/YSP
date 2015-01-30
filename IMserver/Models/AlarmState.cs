@@ -8,6 +8,10 @@ using System.Web;
 
 namespace IMserver.Models
 {
+
+    //报警界面
+
+
     [BsonDiscriminator("alarmstate")]
     public class AlarmState
     {
@@ -21,12 +25,8 @@ namespace IMserver.Models
         public string AutoDiagnose; //自动诊断设置
         public int Interval;     //自动告警功能启用最小日期
 
-
-
         public DateTime NextSampleTime;   //下次采样时间
         public float GasPressure;      //载气压力检测实际值
-
-
 
         public float VacuPres { get; set; }//（脱气机）真空度压力检测值
         public float OilPres { get; set; }//油压检测值
@@ -39,7 +39,6 @@ namespace IMserver.Models
 
         public char TuoQiTimes { get; set; }//脱气次数查询/设置
         public char ChangeTimes { get; set; }//置换次数查询/设置
-
 
         public float SensorRoomT;    //传感器室温度实际采样值
         public float LengJingT;    //冷井温度实际采样值
