@@ -109,6 +109,10 @@
     <Compile Include="CommonFuncs\L_MBS.cs" />
     <Compile Include="CommonFuncs\MyDictionary.cs" />
     <Compile Include="CommonFuncs\TimeHandle.cs" />
+    <Compile Include="Data_Warehousing\AddAlarmState.cs" />
+    <Compile Include="Data_Warehousing\AddConfig.cs" />
+    <Compile Include="Data_Warehousing\AddRunningState.cs" />
+    <Compile Include="Data_Warehousing\AddSIML.cs" />
     <Compile Include="DBService\MongoHelper.cs" />
     <Compile Include="DBService\YSPservice.cs" />
     <Compile Include="HandleData.cs" />

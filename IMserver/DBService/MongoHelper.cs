@@ -27,7 +27,8 @@ namespace IMserver.DBservice
             _mongodb= _mongoServer.GetDatabase(con.DatabaseName);
             Collection = _mongodb.GetCollection<T>(typeof(T).Name.ToLower());
         }
-
+      
+        
         //public IList<T> FindAll()
         //{
         //    return Collection.FindAll().ToList();
@@ -48,8 +49,6 @@ namespace IMserver.DBservice
             var query = Query<T>.Size<bool>(expression,num);
             var document = Collection.Find(query).AsQueryable();
             return document;
-          
-          
         }
         public T FindOneBy(Expression<Func<T, bool>> expression)
         {

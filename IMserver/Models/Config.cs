@@ -9,6 +9,10 @@ using IMserver.Models.SimlDefine;
 
 namespace IMserver.Models
 {
+
+    //配置界面
+
+
     [BsonDiscriminator("config")]
     public class Config
     {
@@ -17,7 +21,7 @@ namespace IMserver.Models
 
         [Key, Required, Display(Name = "设备号")]
         public string DevID { get; set; }
-
+        public DateTime Time_Stamp { get; set; }
 
         //环境及外围设置
         public OutSideSetting OutSideSet { get; set; }
