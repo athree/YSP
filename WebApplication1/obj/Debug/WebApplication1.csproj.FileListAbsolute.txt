@@ -531,3 +531,10 @@ E:\Git\YSP\YSP\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyRe
 E:\Git\YSP\YSP\WebApplication1\obj\Debug\WebApplication1.dll
 E:\Git\YSP\YSP\WebApplication1\obj\Debug\WebApplication1.pdb
 E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\Microsoft.QualityTools.Testing.Fakes.resources.dll
+E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Core.resources.dll
+E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.Owin.resources.dll
+E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\Microsoft.AspNet.Identity.EntityFramework.resources.dll
+E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
+E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
+E:\Git\YSP\YSP\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll

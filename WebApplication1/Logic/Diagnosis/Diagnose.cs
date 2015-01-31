@@ -1160,7 +1160,7 @@ namespace WebApplication1.Diagnosis
             if (dg == null || absdg == null || reldg == null || setting == null || hold == null)
             { return null; }
             if (dg.ID != absdg.ID || dg.ID != reldg.ID)
-            { return null; }
+            { return null; } 
 
             string devId = dg.ID.ToString();
 
