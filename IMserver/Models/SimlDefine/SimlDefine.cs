@@ -181,15 +181,20 @@ namespace IMserver.Models.SimlDefine
     public class SystemSetting
     {
         public string SoftwareRelease { get; set; }// 软件版本
+
         //系统支持模块
         public char SuCO2 { get; set; }                        //二氧化碳模块，1:支持，0：不支持
         public char SuH2O { get; set; }                        //微水模块，1:支持，0：不支持
         public char TuoQi_Mode { get; set; }		            //0:真空脱气，1:膜脱气,2:顶空脱气
+
+
     }
+
 
     //脱气控制
     public class TuoQiSetting
     {
+
         #region ZKTQ 真空脱气
 
         public ushort Cycle_Tick { get; set; }//循环时间查询/设置
@@ -201,6 +206,7 @@ namespace IMserver.Models.SimlDefine
 
 
         #endregion
+
 
         #region MoTQuery 膜脱气
         public ushort YouBengKeep_Tick { get; set; }			//油泵持续时间,4*60*60 [0-65535] (秒)
@@ -216,6 +222,8 @@ namespace IMserver.Models.SimlDefine
 
         #endregion
 
+
+
         #region DKTQ 顶空脱气
 
 
@@ -227,16 +235,20 @@ namespace IMserver.Models.SimlDefine
         public ushort ChangeValveWork_Tick { get; set; }//置换阀工作时间
 
         #endregion
+
     }
 
 
     //检测辅助设置
     public class JCFZSetting
     {
+
+
         public JianCeFuZhu SensorRoom { get; set; }  //传感器室
         public JianCeFuZhu LengJing { get; set; }   //冷井
         public JianCeFuZhu SePuZhu { get; set; }   //色谱柱
     }
+
 
     //报警及分析
     public class AlarmAll
@@ -251,14 +263,16 @@ namespace IMserver.Models.SimlDefine
         [Display(Name = "自动告警诊断功能启用最小日期"), Range(0, 100)]
         public int Interval { get; set; }
 
+
         //[Display(Name = "报警功能设置")]
         //public DiagnoseSet DiagSet { get; set; }
 
         [MaxLength(11)]
-        public GasAlarm[] GasAlarm{get; set;}  //各个报警设置，顺序h2,co,ch4,c2h2,c2h4,c2h6,co2,TotHyd,Mst,AW,T
+        public GasAlarm[] GasAlarm;  //各个报警设置，顺序h2,co,ch4,c2h2,c2h4,c2h6,co2,TotHyd,Mst,AW,T
        
 
     }
+
     #endregion
 
 
@@ -367,6 +381,7 @@ namespace IMserver.Models.SimlDefine
     }
 
     #endregion
+
 
     #region 诊断告警相关定义
 
@@ -542,6 +557,12 @@ namespace IMserver.Models.SimlDefine
 
     #endregion
 
+
+
+   
+
+
+
     #region 各部分相关定义
 
 
@@ -678,6 +699,8 @@ namespace IMserver.Models.SimlDefine
 
 
     #endregion
+
+
 
     public class RawData
     {
