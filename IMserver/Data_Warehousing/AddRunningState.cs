@@ -18,28 +18,118 @@ namespace IMserver.Data_Warehousing
         public static bool Warehousing(Dictionary<ushort , object> middata , byte devid)
         {
             RunningState rs = new RunningState();
+
             rs.DevID = devid.ToString();
             rs.ReadDate = DateTime.Now;
 
-            rs.AW = (float)middata[173];
-            rs.C2H2 = (float)middata[170];
-            rs.C2H4 = (float)middata[171];
-            rs.C2H6 = (float)middata[172];
-            rs.CH4 = (float)middata[168];
-            rs.CO = (float)middata[167];
-            rs.CO2 = (float)middata[169];
-            rs.GasPressure = (float)middata[177];
-            rs.H2 = (float)middata[166];
-            rs.LengJingT = (float)middata[63];
-            rs.Mst = (float)middata[174];
-            rs.OilTemprature = (float)middata[87];
-            rs.SensorRoomT = (float)middata[62];
-            rs.SePuZhuT = (float)middata[64];
-            rs.T = (float)middata[174];
-            rs.Temprature_In = (float)middata[88];
-            rs.Temprature_Out = (float)middata[89];
-            rs.TotGas = rs.C2H2 + rs.C2H4 + rs.C2H6 + rs.CH4 + rs.CO + rs.H2;　//总可燃气体
-            rs.TotHyd = (float)middata[176];
+            //为了避免不足一个类的数据字典来填充，这里使用switch-case语法，兼容直接的类成员罗列赋值
+            foreach(KeyValuePair<ushort , object> kvp in middata)
+            {
+                switch (kvp.Key)
+                {
+                    case 62:
+                        {
+                            rs.SensorRoomT = (float)kvp.Value;
+                            break;
+                        }
+                    case 63:
+                        {
+                            rs.LengJingT = (float)kvp.Value;
+                            break;
+                        }
+                    case 64:
+                        {
+                            rs.SePuZhuT = (float)kvp.Value;
+                            break;
+                        }
+                    case 87:
+                        {
+                            rs.OilTemprature = (float)kvp.Value;
+                            break;
+                        }
+                    case 88:
+                        {
+                            rs.Temprature_In = (float)kvp.Value;
+                            break;
+                        }
+                    case 89:
+                        {
+                            rs.Temprature_Out = (float)kvp.Value;
+                            break;
+                        }
+                    case 166:
+                        {
+                            rs.H2 = (float)kvp.Value;
+                            rs.TotGas += rs.H2;
+                            break;
+                        }
+                    case 167:
+                        {
+                            rs.CO = (float)kvp.Value;
+                            rs.TotGas += rs.CO;
+                            break;
+                        }
+                    case 168:
+                        {
+                            rs.CH4 = (float)kvp.Value;
+                            rs.TotGas += rs.CH4;
+                            break;
+                        }
+                    case 169:
+                        {
+                            rs.CO2 = (float)kvp.Value;
+                            break;
+                        }
+                    case 170:
+                        {
+                            rs.C2H2 = (float)kvp.Value;
+                            rs.TotGas += rs.C2H2;
+                            break;
+                        }
+                    case 171:
+                        {
+                            rs.C2H4 = (float)kvp.Value;
+                            rs.TotGas += rs.C2H4;
+                            break;
+                        }
+                    case 172:
+                        {
+                            rs.C2H6 = (float)kvp.Value;
+                            rs.TotGas += rs.C2H6;
+                            break;
+                        }
+                    case 173:
+                        {
+                            rs.AW = (float)kvp.Value;
+                            break;
+                        }
+                    case 174:
+                        {
+                            rs.T = (float)kvp.Value;
+                            break;
+                        }
+                    case 175:
+                        {
+                            rs.Mst = (float)kvp.Value;
+                            break;
+                        }
+                    case 176:
+                        {
+                            rs.TotHyd = (float)kvp.Value;
+                            break;
+                        }
+                    case 177:
+                        {
+                            rs.GasPressure = (float)kvp.Value;
+                            break;
+                        }
+                    default:
+                        {
+                            break;
+                        }
+                }
+            }
+            //rs.TotGas在响应读到可燃气体的时候累加
             return Warehousing(rs);
         }
 

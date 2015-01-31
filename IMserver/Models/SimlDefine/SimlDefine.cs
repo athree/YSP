@@ -84,41 +84,28 @@ namespace IMserver.Models.SimlDefine
     //环境及外围控制
     public class OutSideSetting
     {
-
-
         public ushort FengShanKeep_Tick { get; set; }		//风扇预吹保持时间(以脱气开始时间为准),5*60 [0-65535] (秒)
-        public ushort FengShanWork_Tick { get; set; }		//风扇吹尾保持时间(用于换气),5*60	[0-65535]	(秒)？？？？？？？？风扇停止时间？？
-
-        public ushort AirControlStart { get; set; }//柜体空调采样前开启时刻
-        public ushort AirControlWork_Tick { get; set; }//柜体空调连续工作时间
-        public ushort BanReDaiStart_Tick { get; set; } //伴热带采样前开始时刻
-        public ushort BanReDaiWork_Tick { get; set; }//伴热带采样前工作时间
-        public ushort DrainStart { get; set; }//载气发生器排水阀启动时刻
-        public ushort DrainWork_Tick { get; set; }//载气发生器排水阀工作时间
+        public ushort FengShanWork_Tick { get; set; }		//风扇吹尾保持时间(用于换气),5*60	[0-65535](秒)？？风扇停止时间？？
+        public ushort AirControlStart { get; set; }         //柜体空调采样前开启时刻
+        public ushort AirControlWork_Tick { get; set; }     //柜体空调连续工作时间
+        public ushort BanReDaiStart_Tick { get; set; }      //伴热带采样前开始时刻
+        public ushort BanReDaiWork_Tick { get; set; }       //伴热带采样前工作时间
+        public ushort DrainStart { get; set; }              //载气发生器排水阀启动时刻
+        public ushort DrainWork_Tick { get; set; }          //载气发生器排水阀工作时间
     }
 
 
     //分析计算参数
     public class AnalysisParameter
     {
-
-        public EnvironmentSetting EnviSet;
-
+        public EnvironmentSetting EnviSet { get; set; }
         [MaxLength(2)]
         public H2oFixPara[] H2oFix { get; set; }  //微水修正参数 AW,T
         //public H2oFixPara T { get; set; }
-
-
         [MaxLength(7)]
         public GasFixPara[] GasFix{get;set;}  //气体修正参数  H2,CO,CH4,C2H2,C2H4,C2H6,CO2
-   
-
         public ushort EraseStart { get; set; }  //剔除区间开始
         public ushort EraseEnd { get; set; }   //剔除区间结尾
-
-
-
-
     }
 
 
@@ -164,9 +151,6 @@ namespace IMserver.Models.SimlDefine
         public ushort CO2GasWork_Tick { get; set; }  //CO2气路工作时间
 
         public char BiaoDingTimes { get; set; }  //标定次数  1-5次
-
-    
-
     }
 
     //采样开始控制?????????????????????????????????????????????
@@ -242,8 +226,6 @@ namespace IMserver.Models.SimlDefine
     //检测辅助设置
     public class JCFZSetting
     {
-
-
         public JianCeFuZhu SensorRoom { get; set; }  //传感器室
         public JianCeFuZhu LengJing { get; set; }   //冷井
         public JianCeFuZhu SePuZhu { get; set; }   //色谱柱
@@ -253,7 +235,6 @@ namespace IMserver.Models.SimlDefine
     //报警及分析
     public class AlarmAll
     {
-
         [Display(Name = "自动阀值告警")]
         public string AutoAlarm { get; set; }
 
@@ -263,12 +244,15 @@ namespace IMserver.Models.SimlDefine
         [Display(Name = "自动告警诊断功能启用最小日期"), Range(0, 100)]
         public int Interval { get; set; }
 
-
         //[Display(Name = "报警功能设置")]
         //public DiagnoseSet DiagSet { get; set; }
 
-        [MaxLength(11)]
-        public GasAlarm[] GasAlarm;  //各个报警设置，顺序h2,co,ch4,c2h2,c2h4,c2h6,co2,TotHyd,Mst,AW,T
+        [MaxLength(7)]
+        public GasAlarm[] GasAlarm { get; set; }  //各个报警设置，顺序h2,co,ch4,c2h2,c2h4,c2h6,co2
+        public TotHyd_GasAlarm thga { get; set; } //TotHyd
+        public PPM_GasAlarm pa { get; set; } //Mst、PPM
+        public AW_GasAlarm awa { get; set; } //AW--活性
+        public T_GasAlarm ta { get; set; } //T--温度
        
 
     }
@@ -622,7 +606,6 @@ namespace IMserver.Models.SimlDefine
     //检测辅助控制,,传感器室，冷井，色谱柱的
     public class JianCeFuZhu
     {
-
         public ushort Start;//启动开始时刻
         public ushort Work_Tick;//连续工作时间
         public float TempSet;//温度设置值
@@ -661,6 +644,52 @@ namespace IMserver.Models.SimlDefine
 
         [Display(Name = "相对产气速率触发")]
         public float RelRateAlarmNumer { get; set; }
+    }
+
+    public class PPM_GasAlarm
+    {
+        [Display(Name = "一级报警")]
+        public float Level1 { get; set; }
+
+        [Display(Name = "二级报警")]
+        public float Level2 { get; set; }
+    }
+
+    //Mst  同上
+    //public class Mst_GasAlarm
+    //{
+    //    [Display(Name = "一级报警")]
+    //    public float Level1 { get; set; }
+
+    //    [Display(Name = "二级报警")]
+    //    public float Level2 { get; set; }
+    //}
+
+    public class T_GasAlarm
+    {
+        [Display(Name = "一级报警")]
+        public float Level1 { get; set; }
+
+        [Display(Name = "二级报警")]
+        public float Level2 { get; set; }
+    }
+
+    public class AW_GasAlarm
+    {
+        [Display(Name = "一级报警")]
+        public float Level1 { get; set; }
+
+        [Display(Name = "二级报警")]
+        public float Level2 { get; set; }
+    }
+
+    public class TotHyd_GasAlarm
+    {
+        [Display(Name = "一级报警")]
+        public float Level1 { get; set; }
+
+        [Display(Name = "二级报警")]
+        public float Level2 { get; set; }
     }
 
     //报警级别
