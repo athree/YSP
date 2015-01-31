@@ -134,8 +134,7 @@ namespace IMserver
 
             shared.listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             shared.heartfd = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            //shared.hostaddress = IPAddress.Parse("219.244.93.60");
-            shared.hostaddress = IPAddress.Parse("219.244.93.125");
+            shared.hostaddress = IPAddress.Parse("219.244.93.60");
             //shared.hostpoint = new IPEndPoint(IPAddress.Parse("219.244.93.60"), 9505);
 
             shared.listenfd.Bind(new IPEndPoint(shared.hostaddress , 10000));
