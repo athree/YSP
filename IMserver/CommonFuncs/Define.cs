@@ -75,7 +75,6 @@ namespace IMserver.CommonFuncs
             [MarshalAs(UnmanagedType.ByValArray, SizeConst = 3)]
             public float[] h2oTFix;			
         }
-        //整合的微水修正参数的长度
         public static int HAP_LEN = Marshal.SizeOf(typeof(H2OAnlyParam)); 
 
         //微水修正参数AW

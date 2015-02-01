@@ -21,7 +21,8 @@ namespace IMserver.Data_Warehousing
             cf.AnalyPara.EnviSet = new EnvironmentSetting();
             cf.AnalyPara.EnviSet.oilfactor = new OilFactor();
 
-            cf.AnalyPara.H2oFix = new H2oFixPara[2];
+            cf.AnalyPara.AW = new H2oFixPara_AW();
+            cf.AnalyPara.T = new H2oFixPara_T();
 
             cf.AnalyPara.GasFix = new GasFixPara[6];
             for(int i = 0; i < 6; i++)
@@ -36,9 +37,9 @@ namespace IMserver.Data_Warehousing
             cf.AnalyPara.GasFix_CO2.p_a = new Para_A();
             cf.AnalyPara.GasFix_CO2.p_b = new Para_B();
             cf.AnalyPara.GasFix_CO2.MultiK = new GasFixK();
+            cf.AnalyPara.er = new EraseRange();
 
             cf.SampSet = new SampleSetting();
-            cf.SampStart = new SampleStartting();
             cf.SysSet = new SystemSetting();
             cf.TQSet = new TuoQiSetting();
 
@@ -141,12 +142,12 @@ namespace IMserver.Data_Warehousing
 #region 微水修正参数 AW,T 
                     case 186:            //微水修正参数 AW
                         {
-                            cf.AnalyPara.H2oFix[0] = (H2oFixPara)kvp.Value;
+                            cf.AnalyPara.AW = (H2oFixPara_AW)kvp.Value;
                             break;
                         }
                     case 187:            //微水修正参数 T
                         {
-                            cf.AnalyPara.H2oFix[1] = (H2oFixPara)kvp.Value;
+                            cf.AnalyPara.T= (H2oFixPara_T)kvp.Value;
                             break;
                         }
 #endregion
@@ -617,8 +618,11 @@ namespace IMserver.Data_Warehousing
                     //RightTMin = (ushort)kvp.Value;          //右梯度Min
                     //RightTMax = (ushort)kvp.Value;          //右梯度Max
 #endregion
-                     cf.AnalyPara.EraseStart = (ushort)kvp.Value;//剔除区间开始
-                     cf.AnalyPara.EraseEnd = (ushort)kvp.Value; //剔除区间结尾
+                    case 279:
+                        {
+                            cf.AnalyPara.er = (EraseRange)kvp.Value;
+                            break;
+                        }
 #endregion
                     //采样控制
 #region

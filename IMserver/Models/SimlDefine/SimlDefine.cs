@@ -6,9 +6,6 @@ using System.Web;
 
 namespace IMserver.Models.SimlDefine
 {
-  
-
-
     //气体微水含量
     [Serializable]
     public class ContentData
@@ -55,30 +52,7 @@ namespace IMserver.Models.SimlDefine
         public float AW { get; set; }
     }
 
-    //public class RawData
-    //{
-    //    public DateTime SampleTime { get; set; }
-
-    //    [MaxLength(7)]
-    //    public float[] Density{get;set;}
-
-    //    public float RawPPM { get; set; }
-       
-    //    public ushort RawAW { get; set; }
-       
-    //    public ushort RawT { get; set; }
-
-
-    //    [MaxLength(5000)]
-    //    public ushort[] RawSixGax{get;set;}
-
-    //    [MaxLength(2000)]
-    //    public ushort[] RawCO2{get;set;}
-        
-
-    //}
-
-    #region 配置信息定义
+#region 配置信息定义
     //环境及外围控制
     public class OutSideSetting
     {
@@ -97,14 +71,15 @@ namespace IMserver.Models.SimlDefine
     public class AnalysisParameter
     {
         public EnvironmentSetting EnviSet { get; set; }
-        [MaxLength(2)]
-        public H2oFixPara[] H2oFix { get; set; }  //微水修正参数 AW,T
-        //public H2oFixPara T { get; set; }
+        public H2oFixPara_AW AW { get; set; }  //微水修正参数 AW,T
+        public H2oFixPara_T T { get; set; }
+
         [MaxLength()]
         public GasFixPara[] GasFix{ get ; set ; }  //气体修正参数  H2,CO,CH4,C2H2,C2H4,C2H6
         public GasFixPara_CO2 GasFix_CO2 { get; set; } //气体修正参数  CO2
-        public ushort EraseStart { get; set; }  //剔除区间开始
-        public ushort EraseEnd { get; set; }   //剔除区间结尾
+        public EraseRange er { get; set; }
+        //public ushort EraseStart { get; set; }  //色谱图剔除区间开始
+        //public ushort EraseEnd { get; set; }   //色谱图剔除区间结尾
     }
 
 
@@ -146,8 +121,6 @@ namespace IMserver.Models.SimlDefine
         public char BiaoDingTimes { get; set; }  //标定次数  1-5次
     }
 
-    
-
     //系统设置
     public class SystemSetting
     {
@@ -157,7 +130,6 @@ namespace IMserver.Models.SimlDefine
         public char SuH2O { get; set; }                        //微水模块，1:支持，0：不支持
         public char TuoQi_Mode { get; set; }		            //0:真空脱气，1:膜脱气,2:顶空脱气
     }
-
 
     //脱气控制
     public class TuoQiSetting
@@ -201,7 +173,6 @@ namespace IMserver.Models.SimlDefine
         #endregion
     }
 
-
     //检测辅助设置
     public class JCFZSetting
     {
@@ -209,7 +180,6 @@ namespace IMserver.Models.SimlDefine
         public JianCeFuZhu LengJing { get; set; }   //冷井
         public JianCeFuZhu SePuZhu { get; set; }   //色谱柱
     }
-
 
     //报警及分析
     public class AlarmAll
@@ -232,8 +202,7 @@ namespace IMserver.Models.SimlDefine
     }
  #endregion
 
-
-    #region 状态控制信息定义
+#region 状态控制信息定义
     //真空状态/控制
     public class ZhenKongStateCtrl
     {
@@ -277,7 +246,6 @@ namespace IMserver.Models.SimlDefine
     {
         public char LengJingSwitch { get; set; } //（手动）冷井开关
         public char SensorRoomCooler { get; set; }  //（手动）传感器室制冷
-
         public float SensorRoomT;    //传感器室温度实际采样值
         public float LengJingT;    //冷井温度实际采样值
         public float SePuZhuT;    //色谱柱温度实际采样值
@@ -336,27 +304,18 @@ namespace IMserver.Models.SimlDefine
         //public SysSetting Set1 { get; set; }  //指向上位机1，串口1，网卡1
         //public SysSetting Set2 { get; set; }  //指向上位机2，串口2，网卡2
     }
+#endregion
 
-    #endregion
-
-
-    #region 诊断告警相关定义
+#region 诊断告警相关定义
 
     // 诊断分析
     public class AnlyInformation
     {
-
         public ThreeValue threevar;	                    //三比值编码
-
         public DevidTriAnlyInfo devidInfo;		//大卫三角形分析结果
-
         public Ratio ratio;					    //立体图示法所需参数
-
-
         public string Desc;	                    //分析结果
-
         public string chDesc;
-
         public string enDesc;
     }
        
@@ -364,7 +323,6 @@ namespace IMserver.Models.SimlDefine
 
     public struct DevidTriAnlyInfo
     {
-
         public decimal percent_C2H2;	            // %C2H2
 
         public decimal percent_C2H4;	            // %C2H4
@@ -399,7 +357,6 @@ namespace IMserver.Models.SimlDefine
 
         public string Desc;		                    // 分析结果
     }
-
 
     //告警信息--这个信息不是通信传输上来的信息
 
@@ -474,10 +431,9 @@ namespace IMserver.Models.SimlDefine
             set { _level = value; }
         }
     }
-    #endregion
+#endregion
 
-    #region 各部分相关定义
-
+#region 各部分相关定义
 
     //气体修正参数
     public class GasFixPara
@@ -505,49 +461,6 @@ namespace IMserver.Models.SimlDefine
         [Range(1, 10.00), Display(Name = "离线/在线计算偏差基值")]   //离线/在线计算偏差值J，12个
         public double J { get; set; } 
     }
-
-    public class Para_A
-    {
-        [Display(Name = "峰顶点位置"), Range(0, 5000)]
-        public ushort PeakPoint { get; set; }
-
-        [Display(Name = "峰顶范围起点"), Range(0, 5000)]
-        public ushort PeakLeft { get; set; }
-
-        [Display(Name = "峰顶范围结束点"), Range(0, 5000)]
-        public ushort PeakRight { get; set; }
-        [Display(Name = "峰顶宽度"), Range(0, 1000)]
-        public ushort PeakWidth { get; set; }
-    }
-    public class Para_B
-    {
-        [Display(Name = "左梯度Min"), Range(0, 1000)]
-        public ushort LeftTMin { get; set; }
-
-        [Display(Name = "左梯度Max"), Range(0, 1000)]
-        public ushort LeftTMax { get; set; }
-
-        [Display(Name = "右梯度Min"), Range(0, 1000)]
-        public ushort RightTMin { get; set; }
-        [Display(Name = "右梯度Max"), Range(0, 1000)]
-        public ushort RightTMax { get; set; }
-    }
-
-
-    //气体修正K值
-    public struct GasFixK
-    {
-        public float k, mi, ni;                     //K值，柱修正系数，脱气率修正系数
-        public float areaMin;               //该K值对应的最小面积
-        public float areaMax;               //该K值对应的最大面积
-    }
-
-    //微水修正参数
-    public class H2oFixPara
-    {
-        public float A, K, B;
-    }
-
 
     //检测辅助控制,,传感器室，冷井，色谱柱的
     public class JianCeFuZhu
@@ -608,16 +521,6 @@ namespace IMserver.Models.SimlDefine
         public float Level2 { get; set; }
     }
 
-    //Mst  同上
-    //public class Mst_GasAlarm
-    //{
-    //    [Display(Name = "一级报警")]
-    //    public float Level1 { get; set; }
-
-    //    [Display(Name = "二级报警")]
-    //    public float Level2 { get; set; }
-    //}
-
     public class T_GasAlarm
     {
         [Display(Name = "一级报警")]
@@ -652,10 +555,6 @@ namespace IMserver.Models.SimlDefine
         public float Level2 { get; set; }
     }
 
-
-    
-
-
     //环境设置,海拔、油压等
 
     public class EnvironmentSetting
@@ -674,8 +573,67 @@ namespace IMserver.Models.SimlDefine
 
         public OilFactor oilfactor{ get; set; }         //油品系数
     }
+    
+#endregion
 
-       //油品系数
+#region  最小操作单元需要提出来的类，用于兼容define中定义的解析数据所需
+
+    //气体填充参数A
+    public class Para_A
+    {
+        [Display(Name = "峰顶点位置"), Range(0, 5000)]
+        public ushort PeakPoint { get; set; }
+
+        [Display(Name = "峰顶范围起点"), Range(0, 5000)]
+        public ushort PeakLeft { get; set; }
+
+        [Display(Name = "峰顶范围结束点"), Range(0, 5000)]
+        public ushort PeakRight { get; set; }
+        [Display(Name = "峰顶宽度"), Range(0, 1000)]
+        public ushort PeakWidth { get; set; }
+    }
+
+    //气体填充参数B
+    public class Para_B
+    {
+        [Display(Name = "左梯度Min"), Range(0, 1000)]
+        public ushort LeftTMin { get; set; }
+
+        [Display(Name = "左梯度Max"), Range(0, 1000)]
+        public ushort LeftTMax { get; set; }
+
+        [Display(Name = "右梯度Min"), Range(0, 1000)]
+        public ushort RightTMin { get; set; }
+        [Display(Name = "右梯度Max"), Range(0, 1000)]
+        public ushort RightTMax { get; set; }
+    }
+
+    //气体修正K值/多级K值
+    public struct GasFixK
+    {
+        public float k;                     //K值
+        public float mi;                    //柱修正系数
+        public float ni;                    //脱气率修正系数
+        public float areaMin;               //该K值对应的最小面积
+        public float areaMax;               //该K值对应的最大面积
+    }
+
+    //微水修正参数--不能通用，虽然一样，因为这样无法按操作单元区分
+    public class H2oFixPara_AW
+    {
+        public float A;
+        public float K;
+        public float B;
+    }
+
+    public class H2oFixPara_T
+    {
+        public float A;
+        public float K;
+        public float B;
+    }
+
+    //油品系数
     public class OilFactor
     {
         [Display(Name = "油品系数A"), Range(0, 5000)]
@@ -685,21 +643,19 @@ namespace IMserver.Models.SimlDefine
         public float B { get; set; }            //油品系数B（4bytes）
     }
 
-    #endregion
+    //油色谱剔除区间
+    public class EraseRange
+    {
+        public ushort start;
+        public ushort end;
+    }
 
-
-
+#endregion
     public class RawData
     {
         public ushort[] RawSixGax;
         public ushort[] RawCO2;
     }
-
-
-
-
-
-
 }
 
 
