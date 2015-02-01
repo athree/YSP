@@ -61,7 +61,9 @@
                                         </asp:TextBox>
                                </td>
                                <td>
-                                    <asp:Button runat="server" CssClass="btn btn-primary" ID="BT_Data" OnClick="BT_Data_Click" Text="提取数据"></asp:Button>   
+                                    <%--<asp:Button runat="server" CssClass="btn btn-primary" ID="BT_Data" OnClick="BT_Data_Click" Text="提取数据"></asp:Button>--%>  
+                                    <input type="button" runat="server" class="btn btn-primary" id="BT_Data" onclick="BT_Data_Click" text="提取数据"/> 
+                               
                                </td>
                            </tr>
                        </table>
@@ -166,7 +168,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_166" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                     
                                     <td>
                                     <a class="twinkle" href="../DevAlarm/YSP_A" target="_blank"></a>
@@ -177,7 +179,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_167" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -189,7 +191,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_169" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                 
                                     <td>
                                     <a class="ntwinkle" href="../DevAlarm/YSP_A" target="_blank"></a>
@@ -200,7 +202,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_168" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -212,7 +214,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_170" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                               
                                     <td>
                                     <a class="ntwinkle" href="../DevAlarm/YSP_A" target="_blank"></a>
@@ -223,7 +225,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_171" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -235,7 +237,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_172" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                 
                                     <td>
                                     <a class="ntwinkle" href="../DevAlarm/YSP_A" target="_blank"></a>
@@ -246,7 +248,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_176" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -258,7 +260,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_rs" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                     <td>
                                     <a class="ntwinkle" href="../DevAlarm/YSP_A" target="_blank"></a>
                                         </td>
@@ -268,7 +270,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_175" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -291,7 +293,7 @@
                                     <td>
                                         <asp:Label runat="server" ID="LB_173" Text="20"></asp:Label>
                                     </td>
-                                    <td>PPM</td>
+                                    <td>ppm</td>
                                 </tr>
                                 </tbody>
                             </table>

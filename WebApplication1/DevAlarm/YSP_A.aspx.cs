@@ -17,9 +17,10 @@ namespace WebApplication1.DevAlarm
 {
     public partial class YSP_A : System.Web.UI.Page
     {
-        public MongoHelper<SIML> _SIML=new MongoHelper<SIML>();       
+        public MongoHelper<AlarmState> _as=new MongoHelper<AlarmState>();       
         public string devId = "";
         public string devSite, devType, devName;
+        public AlarmState myAs;
         
 
 
@@ -65,6 +66,7 @@ namespace WebApplication1.DevAlarm
                 Session["DiagFlag"] = 0;
                 
                 Timer1.Enabled = false;
+                InitCtrls();
                 
             }
             if (Session["DevID"] != null)
@@ -88,6 +90,44 @@ namespace WebApplication1.DevAlarm
                 this.Panel_Result.Visible = true;
             }
 
+        }
+
+        private void InitCtrls()
+        {
+            Expression<Func<AlarmState, bool>> ex = p => p.DevID == devId;
+            myAs = _as.FindOneBy(ex);
+            if (myAs == null)
+            {
+                Response.Write("<script>alert('我需要传输该设备信息！')</script>");
+                return;
+            }
+            else
+            {
+                SW_286.Checked = myAs.aa.AutoAlarm == '0' ? false : true;
+                SW_287.Checked = myAs.aa.AutoDiagnose == '0' ? false : true;
+                LB_288.Text = myAs.aa.Interval.ToString();
+
+                LB_135.Text = myAs.NextSampleTime.ToString();
+                LB_145.Text = myAs.GasPressure.ToString();
+                
+                LB_64.Text = myAs.SePuZhuT.ToString();
+                LB_62.Text = myAs.SensorRoomT.ToString();
+                LB_63.Text = myAs.LengJingT.ToString();
+
+                LB_136.Text = myAs.SampleInterval.ToString();
+                LB_154.Text = myAs.PLCTime.ToString();
+
+                LB_11.Text = myAs.VacuPres.ToString();
+                LB_13.Text = myAs.OilPres.ToString();
+                LB_14.Text = myAs.YouBeiLevel.ToString();
+                LB_15.Text = myAs.QiBeiLevel.ToString();
+                LB_16.Text = myAs.QiGangForw.ToString();
+                LB_17.Text = myAs.QiGangBackw.ToString();
+                LB_18.Text = myAs.YouGangForw.ToString();
+                LB_19.Text = myAs.YouGangBackw.ToString();
+                LB_7.Text = myAs.TuoQiTimes.ToString();
+                LB_8.Text = myAs.ChangeTimes.ToString();
+            }
         }
 
         private void BindSelectedData()
