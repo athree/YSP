@@ -32,9 +32,6 @@ namespace IMserver.Models
         //采样控制
         public SampleSetting SampSet { get; set; }
 
-        //采样开始控制
-        public SampleStartting SampStart { get; set; }
-
         //系统设置
         public SystemSetting SysSet { get; set; }
 
