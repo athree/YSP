@@ -725,7 +725,10 @@ namespace IMserver.Models.SimlDefine
         [Display(Name = "油品系数B"), Range(0, 5000)]
         public float oilFactorB { get; set; }            //油品系数B（4bytes）
     }
-
+    public class OilFactor
+    {
+ 
+    }
 
     #endregion
 
