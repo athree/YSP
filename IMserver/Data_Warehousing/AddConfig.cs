@@ -11,7 +11,7 @@ namespace IMserver.Data_Warehousing
 {
     public class AddConfig
     {
-        public bool Warehousing(Dictionary<ushort, object> middata, byte devid)
+        public static bool Warehousing(Dictionary<ushort, object> middata, byte devid)
         {
             Config cf = new Config();
             #region 类及内嵌类的初始化
@@ -975,7 +975,7 @@ namespace IMserver.Data_Warehousing
                         }
                     case 72:
                         {
-                            cf.JCFZSet.LengJing.TempPID = (float)kvp.Value;T//温度控制PID范围
+                            cf.JCFZSet.LengJing.TempPID = (float)kvp.Value;//温度控制PID范围
                             break;
                         }
                     #endregion
@@ -1021,12 +1021,12 @@ namespace IMserver.Data_Warehousing
 #region
                     case 286:
                         {
-                            cf.Alarm.AutoAlarm = kvp.Value.ToString();
+                            cf.Alarm.AutoAlarm = (char)kvp.Value;
                             break;
                         }
                     case 287:
                         {
-                            cf.Alarm.AutoDiagnose = kvp.Value.ToString();
+                            cf.Alarm.AutoDiagnose = (char)kvp.Value;
                             break;
                         }
                     case 288:

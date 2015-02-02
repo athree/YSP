@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using IMserver.CommonFuncs;
+using IMserver.Models.SimlDefine;
 
 namespace IMserver.SubFuncs
 {
@@ -25,8 +26,6 @@ namespace IMserver.SubFuncs
         //    return handleunitbytes;
         //}
         #endregion
-        
-
         /// <summary>
         /// 读数据
         /// </summary>
@@ -328,50 +327,63 @@ namespace IMserver.SubFuncs
                 //ushort[2]==EraseRange
                 case 5:
                     {
-                        temp = (Define.EraseRange)ByteStruct.BytesToStruct(src , 
-                                                                           typeof(Define.EraseRange));
+                        //temp = (Define.EraseRange)ByteStruct.BytesToStruct(src , 
+                        //                                                   typeof(Define.EraseRange));
+                        temp = (EraseRange)ByteStruct.BytesToStruct(src , 
+                                                                           typeof(EraseRange));
                         break;
                     }
                 //ushort[4]==GasFixPara_A
                 case 6:
                     {
-                        temp = (Define.GasFixPara_A)ByteStruct.BytesToStruct(src,
-                                                                             typeof(Define.GasFixPara_A));
+                        //temp = (Define.GasFixPara_A)ByteStruct.BytesToStruct(src,
+                        //                                                     typeof(Define.GasFixPara_A));
+                        temp = (Para_A)ByteStruct.BytesToStruct(src,
+                                                                             typeof(Para_A));
                         break;
                     }
                 //ushort[4]==GasFixPara_B
                 case 7:
                     {
-                        temp = (Define.GasFixPara_B)ByteStruct.BytesToStruct(src,
-                                                                             typeof(Define.GasFixPara_B));
+                        temp = (Para_B)ByteStruct.BytesToStruct(src,
+                                                                             typeof(Para_B));
                         break;
                     }
-                //float[2]==EnvironmentSetting
+                //float[2]==EnvironmentSetting--油品系数
                 case 8:
                     {
-                        temp = (Define.EnvironmentSetting)ByteStruct.BytesToStruct(src,
-                                                                             typeof(Define.EnvironmentSetting));
+                        //temp = (Define.EnvironmentSetting)ByteStruct.BytesToStruct(src,
+                        //                                                     typeof(Define.EnvironmentSetting));
+                        temp = (OilFactor)ByteStruct.BytesToStruct(src,
+                                                                             typeof(OilFactor));
                         break;
                     }
                 //float[3]==H2OAnlyParam_AW
                 case 9:
                     {
-                        temp = (Define.H2OAnlyParam_AW)ByteStruct.BytesToStruct(src,
-                                                                             typeof(Define.H2OAnlyParam_AW));
+                        //temp = (Define.H2OAnlyParam_AW)ByteStruct.BytesToStruct(src,
+                        //                                                     typeof(Define.H2OAnlyParam_AW));
+                        temp = (H2oFixPara_AW)ByteStruct.BytesToStruct(src,
+                                                                             typeof(H2oFixPara_AW));
                         break;
                     }
                 //float[3]==H2OAnlyParam_T
                 case 10:
                     {
-                        temp = (Define.H2OAnlyParam_T)ByteStruct.BytesToStruct(src,
-                                                                             typeof(Define.H2OAnlyParam_T));
+                        //temp = (Define.H2OAnlyParam_T)ByteStruct.BytesToStruct(src,
+                        //                                                     typeof(Define.H2OAnlyParam_T));
+                        temp = (H2oFixPara_T)ByteStruct.BytesToStruct(src,
+                                                                             typeof(H2oFixPara_T));
                         break;
                     }
                 //float[5]==GasFixParameters
                 case 11:
                     {
-                        temp = (Define.GasFixParameters)ByteStruct.BytesToStruct(src,
-                                                                             typeof(Define.GasFixParameters));
+                        //temp = (Define.GasFixParameters)ByteStruct.BytesToStruct(src,
+                        //                                                     typeof(Define.GasFixParameters));
+                        temp = (GasFixK)ByteStruct.BytesToStruct(src,
+                                                                             typeof(GasFixK));
+                        
                         break;
                     }
                 default:

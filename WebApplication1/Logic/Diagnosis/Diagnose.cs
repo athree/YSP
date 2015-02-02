@@ -51,17 +51,28 @@ namespace WebApplication1.Diagnosis
             ushort[] fw = new ushort[6];
             for (int i = 0; i < 6; i++)         //六组份出峰区间
             {
-                mid[i] = fpList[i].PeakPoint;
-                left[i] = fpList[i].PeakLeft;
-                right[i] = fpList[i].PeakRight;
-                lx[i] = fpList[i].LeftTMax;
-                rx[i] = fpList[i].RightTMax;
-                ly[i] = fpList[i].LeftTMin;
-                ry[i] = fpList[i].RightTMin;
-                fw[i] = fpList[i].PeakWidth;
+                //mid[i] = fpList[i].PeakPoint;
+                //left[i] = fpList[i].PeakLeft;
+                //right[i] = fpList[i].PeakRight;
+                //lx[i] = fpList[i].LeftTMax;
+                //rx[i] = fpList[i].RightTMax;
+                //ly[i] = fpList[i].LeftTMin;
+                //ry[i] = fpList[i].RightTMin;
+                //fw[i] = fpList[i].PeakWidth;
+                //上面注释为修改最小集合类之前，之后为修改最小集合类之后的组织
+                mid[i] = fpList[i].p_a.PeakPoint;
+                left[i] = fpList[i].p_a.PeakLeft;
+                right[i] = fpList[i].p_a.PeakRight;
+                lx[i] = fpList[i].p_b.LeftTMax;
+                rx[i] = fpList[i].p_b.RightTMax;
+                ly[i] = fpList[i].p_b.LeftTMin;
+                ry[i] = fpList[i].p_b.RightTMin;
+                fw[i] = fpList[i].p_a.PeakWidth;
             }
-            ushort co2Left = fpList[6].PeakLeft;  //CO2出峰区间
-            ushort co2Right = fpList[6].PeakRight;
+            //ushort co2Left = fpList[6].PeakLeft;  //CO2出峰区间
+            //ushort co2Right = fpList[6].PeakRight;
+            ushort co2Left = fpList[6].p_a.PeakLeft;  //CO2出峰区间
+            ushort co2Right = fpList[6].p_a.PeakRight;
             //六组分采原始数据
           
             ushort[] sampleData=raw.RawSixGax;
@@ -72,8 +83,10 @@ namespace WebApplication1.Diagnosis
               
 
             //将剔除区间的数据拟合为直线
-            int start = anlycfg.EraseStart;
-            int end = anlycfg.EraseEnd;
+            //int start = anlycfg.EraseStart;
+            //int end = anlycfg.EraseEnd;
+            int start = anlycfg.er.start;
+            int end = anlycfg.er.end;
             if (end - start > 0 && start < sampleData.Length && end < sampleData.Length)
             {
                 int n = end - start;
@@ -453,8 +466,11 @@ namespace WebApplication1.Diagnosis
             Config cfg = _ysp.GetCFG(_data.DevID);
             //if (_data.WorkFlow == null || cfg.SampStart.SampleTime == null)
             //{ return false; }
-            if (cfg.SampStart.SampleTime == null)
-            { return false; }
+
+            if (_data.ReadDate == null)
+            { 
+                return false;
+            }
 
             //设备号
             string deviceID = _data.DevID;
@@ -467,7 +483,7 @@ namespace WebApplication1.Diagnosis
             //}
 
             //采样日期
-            DateTime sampleTime = cfg.SampStart.SampleTime;
+            //DateTime sampleTime = _data.ReadDate;
 
             //分析参数配置
             AnalysisParameter anlyParams = null;

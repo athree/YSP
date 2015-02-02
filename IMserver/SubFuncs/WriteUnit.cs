@@ -5,6 +5,7 @@ using System.Text;
 using IMserver.CommonFuncs;
 using System.Net;
 using System.Net.Sockets;
+using IMserver.Models.SimlDefine;
 
 namespace IMserver.SubFuncs
 {
@@ -125,6 +126,7 @@ namespace IMserver.SubFuncs
         }
         
         /// <summary>
+        /// 先版本
         /// 获取下设帧数据域内容
         /// 数据字典的键需要拆分成标志和类型（以空格隔开），方便组织
         /// ！注意：dictionary的可以通过参数传递或者共享同步变量得来
@@ -764,7 +766,8 @@ namespace IMserver.SubFuncs
                     //ushort[2]
                     case 5:
                         {
-                            Define.EraseRange temp = new Define.EraseRange();
+                            //Define.EraseRange temp = new Define.EraseRange();
+                            EraseRange temp = new EraseRange();
                             temp.start = ushort.Parse(((string[])kvp.Value)[0]);
                             temp.end = ushort.Parse(((string[])kvp.Value)[1]);
                             retdict.Add(newkey , temp);
@@ -773,7 +776,8 @@ namespace IMserver.SubFuncs
                     //ushort[4]
                     case 6:
                         {
-                            Define.GasFixPara_A temp = new Define.GasFixPara_A();
+                            //Define.GasFixPara_A temp = new Define.GasFixPara_A();
+                            Para_A temp = new Para_A();
                             temp.PeakPoint = ushort.Parse(((string[])kvp.Value)[0]);
                             temp.PeakLeft = ushort.Parse(((string[])kvp.Value)[1]);
                             temp.PeakRight = ushort.Parse(((string[])kvp.Value)[2]);
@@ -784,47 +788,52 @@ namespace IMserver.SubFuncs
                     //ushort[4]
                     case 7:
                         {
-                            Define.GasFixPara_B temp = new Define.GasFixPara_B();
-                            temp.Left_YMin = ushort.Parse(((string[])kvp.Value)[0]);
-                            temp.Left_XMax = ushort.Parse(((string[])kvp.Value)[1]);
-                            temp.Right_YMin = ushort.Parse(((string[])kvp.Value)[2]);
-                            temp.Right_XMax = ushort.Parse(((string[])kvp.Value)[3]);
+                            //Define.GasFixPara_B temp = new Define.GasFixPara_B();
+                            Para_B temp = new Para_B();
+                            temp.LeftTMin = ushort.Parse(((string[])kvp.Value)[0]);
+                            temp.LeftTMax = ushort.Parse(((string[])kvp.Value)[1]);
+                            temp.RightTMin = ushort.Parse(((string[])kvp.Value)[2]);
+                            temp.RightTMax = ushort.Parse(((string[])kvp.Value)[3]);
                             retdict.Add(newkey, temp);
                             break;
                         }
                     //float[2]
                     case 8:
                         {
-                            Define.EnvironmentSetting temp = new Define.EnvironmentSetting();
-                            temp.oilFactorA = float.Parse(((string[])kvp.Value)[0]);
-                            temp.oilFactorB = float.Parse(((string[])kvp.Value)[1]);
+                            //Define.EnvironmentSetting temp = new Define.EnvironmentSetting();
+                            OilFactor temp = new OilFactor();
+                            temp.A = float.Parse(((string[])kvp.Value)[0]);
+                            temp.B = float.Parse(((string[])kvp.Value)[1]);
                             retdict.Add(newkey , temp);
                             break;
                         }
                     //float[3]
                     case 9:
                         {
-                            Define.H2OAnlyParam_AW temp = new Define.H2OAnlyParam_AW();
-                            temp.H2OAnlyParam_AW_A = float.Parse(((string[])kvp.Value)[0]);
-                            temp.H2OAnlyParam_AW_K = float.Parse(((string[])kvp.Value)[1]);
-                            temp.H2OAnlyParam_AW_B = float.Parse(((string[])kvp.Value)[2]);
+                            //Define.H2OAnlyParam_AW temp = new Define.H2OAnlyParam_AW();
+                            H2oFixPara_AW temp = new H2oFixPara_AW();
+                            temp.A = float.Parse(((string[])kvp.Value)[0]);
+                            temp.K = float.Parse(((string[])kvp.Value)[1]);
+                            temp.B = float.Parse(((string[])kvp.Value)[2]);
                             retdict.Add(newkey , temp);
                             break;
                         }
                     //float[3]
                     case 10:
                         {
-                            Define.H2OAnlyParam_T temp = new Define.H2OAnlyParam_T();
-                            temp.H2OAnlyParam_T_A = float.Parse(((string[])kvp.Value)[0]);
-                            temp.H2OAnlyParam_T_K = float.Parse(((string[])kvp.Value)[1]);
-                            temp.H2OAnlyParam_T_B = float.Parse(((string[])kvp.Value)[2]);
+                            //Define.H2OAnlyParam_T temp = new Define.H2OAnlyParam_T();
+                            H2oFixPara_T temp = new H2oFixPara_T();
+                            temp.A = float.Parse(((string[])kvp.Value)[0]);
+                            temp.K = float.Parse(((string[])kvp.Value)[1]);
+                            temp.B = float.Parse(((string[])kvp.Value)[2]);
                             retdict.Add(newkey, temp);
                             break;
                         }
                     //float[5]
                     case 11:
                         {
-                            Define.GasFixParameters temp = new Define.GasFixParameters();
+                            //Define.GasFixParameters temp = new Define.GasFixParameters();
+                            GasFixK temp = new GasFixK();
                             temp.k = float.Parse(((string[])kvp.Value)[0]);
                             temp.mi = float.Parse(((string[])kvp.Value)[1]);
                             temp.ni = float.Parse(((string[])kvp.Value)[2]);

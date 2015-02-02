@@ -9,6 +9,7 @@ using System.Threading;
 using System.Runtime.InteropServices;
 using IMserver.CommonFuncs;
 using IMserver.SubFuncs;
+using IMserver.Data_Warehousing;
 
 namespace IMserver
 {
@@ -673,6 +674,33 @@ namespace IMserver
                                                                                         datatemp,
                                                                                         ref errornum,
                                                                                         error);
+                                if (0 == errornum)
+                                {
+                                    //读取数据（开始界面）
+                                    if ((byte)MSGEncoding.ReadUint.ReadData == comstruct.msgSubType)
+                                    {
+                                        AddRunningState.Warehousing(result , comstruct.destID);
+                                    }
+                                    else   //读取配置信息
+                                        if ((byte)MSGEncoding.ReadUint.Readcfg == comstruct.msgSubType)
+                                        {
+                                            AddConfig.Warehousing(result , comstruct.destID);
+                                        }
+                                        else  //这里应该是状态控制
+                                            if ((byte)MSGEncoding.ReadUint.GetDevStatus == comstruct.msgSubType)
+                                            {
+                                                //这个还未完成，无法到达
+                                                AddSIML.Warehousing(result , comstruct.destID);
+                                            }
+                                            else
+                                            {
+                                                AddAlarmState.Warehousing(result, comstruct.destID);
+                                            }
+                                }
+                                else
+                                {
+                                    //读取操作单元过程出错！
+                                }
                                 afret.result = result;
                                 afret.multipacketover = true;
                             }
@@ -691,9 +719,32 @@ namespace IMserver
                                 }
 
                                 int result = WriteUnit.MsgHandle(error, ref errornum, datatemp, units);
+
                                 if (1 == result)
                                 {
                                     //MessageBox.Show("handledata-aftersend:写操作单元成功！");
+
+                                    //初始界面
+                                    if ((byte)MSGEncoding.WriteUint.WriteData == comstruct.msgSubType)
+                                    {
+                                        AddRunningState.Warehousing(rawobj, comstruct.destID);
+                                    }
+                                    else   //写下配置信息
+                                        if ((byte)MSGEncoding.WriteUint.Setcfg == comstruct.msgSubType)
+                                        {
+                                            AddConfig.Warehousing(rawobj, comstruct.destID);
+                                        }
+                                        else  //这里应该是状态控制
+                                            if ((byte)MSGEncoding.WriteUint.ControlDev == comstruct.msgSubType)
+                                            {
+                                                //这个还未完成，无法到达
+                                                AddSIML.Warehousing(rawobj, comstruct.destID);
+                                            }
+                                            else  //这里应该是写报警
+                                            {
+                                                AddAlarmState.Warehousing(rawobj, comstruct.destID);
+                                            }
+
                                 }
                                 else
                                 {

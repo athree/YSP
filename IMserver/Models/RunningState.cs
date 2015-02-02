@@ -10,10 +10,9 @@ using MongoDB.Bson.Serialization;
 
 namespace IMserver.Models
 {
-    public class rsIdGenerator:IIdGenerator{}
+    public class rsIdGenerator : IIGenerator{}
 
     //运行状态界面  
-
 
     [BsonDiscriminator("runningstate")]
     public class RunningState

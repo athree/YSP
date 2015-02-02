@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Runtime.InteropServices;
 
 namespace IMserver.Models.SimlDefine
 {
@@ -579,6 +580,7 @@ namespace IMserver.Models.SimlDefine
 #region  最小操作单元需要提出来的类，用于兼容define中定义的解析数据所需
 
     //气体填充参数A
+    [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public class Para_A
     {
         [Display(Name = "峰顶点位置"), Range(0, 5000)]
@@ -594,6 +596,7 @@ namespace IMserver.Models.SimlDefine
     }
 
     //气体填充参数B
+    [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public class Para_B
     {
         [Display(Name = "左梯度Min"), Range(0, 1000)]
@@ -609,6 +612,7 @@ namespace IMserver.Models.SimlDefine
     }
 
     //气体修正K值/多级K值
+    [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public struct GasFixK
     {
         public float k;                     //K值
@@ -619,6 +623,7 @@ namespace IMserver.Models.SimlDefine
     }
 
     //微水修正参数--不能通用，虽然一样，因为这样无法按操作单元区分
+    [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public class H2oFixPara_AW
     {
         public float A;
@@ -626,6 +631,7 @@ namespace IMserver.Models.SimlDefine
         public float B;
     }
 
+    [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public class H2oFixPara_T
     {
         public float A;
@@ -634,6 +640,7 @@ namespace IMserver.Models.SimlDefine
     }
 
     //油品系数
+    [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public class OilFactor
     {
         [Display(Name = "油品系数A"), Range(0, 5000)]
@@ -644,6 +651,7 @@ namespace IMserver.Models.SimlDefine
     }
 
     //油色谱剔除区间
+    [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public class EraseRange
     {
         public ushort start;

@@ -38,12 +38,12 @@ namespace IMserver.Data_Warehousing
                 {
                     case 286:
                         {
-                            als.aa.AutoAlarm = kvp.Value.ToString();
+                            als.aa.AutoAlarm = (char)kvp.Value;
                             break;
                         }
                     case 287:
                         {
-                            als.aa.AutoDiagnose = kvp.Value.ToString();
+                            als.aa.AutoDiagnose = (char)kvp.Value;
                             break;
                         }
                     case 288:

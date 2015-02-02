@@ -780,8 +780,10 @@ namespace WebApplication1.DevDebug
                     EnvironmentSetting EnviSet = myCfg.AnalyPara.EnviSet;
                     TB_182.Text = EnviSet.voltage.ToString();
                     TB_184.Text = EnviSet.altitude.ToString();
-                    TB_183_1.Text = EnviSet.oilFactorA.ToString();
-                    TB_183_2.Text = EnviSet.oilFactorB.ToString();
+                    //TB_183_1.Text = EnviSet.oilFactorA.ToString();
+                    //TB_183_2.Text = EnviSet.oilFactorB.ToString();
+                    TB_183_1.Text = EnviSet.oilfactor.A.ToString();
+                    TB_183_2.Text = EnviSet.oilfactor.B.ToString();
                     TB_180.Text = EnviSet.oilDensity.ToString();
                     TB_181.Text = EnviSet.oilTotal.ToString();
                 }
