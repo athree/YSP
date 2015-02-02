@@ -18,8 +18,8 @@ namespace WebApplication1.DevData
 {
     public partial class YSP : System.Web.UI.Page
     {
-        protected MongoHelper<SIML> _siml = new MongoHelper<SIML>();
-        protected SIML mySiml;
+        protected MongoHelper<RunningState> _rs = new MongoHelper<RunningState>();
+        protected RunningState myRs;
         public string devId,devSite,devName,devType;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,30 +35,49 @@ namespace WebApplication1.DevData
             Session["SelectedData"] = null;
             Session["SelectedAbs"] = null;
             Session["SelectedRel"] = null;
-            SIML_GetItem();
+            InitCtrls();
         }
-        public void SIML_GetItem()
+        public void InitCtrls()
         {
-            Expression<Func<SIML, bool>> ex = p => p.DevID == devId;
-            mySiml = _siml.FindOneBy(ex);
-            if (mySiml == null)
+            Expression<Func<RunningState, bool>> ex = p => p.DevID == devId;
+            myRs = _rs.FindOneBy(ex);
+            if (myRs == null)
             {
-                Response.Write("<script>alert('未找到相应设备信息！')</script>");
+                Response.Write("<script>alert('我需要传输该设备信息！')</script>");
                 return;
             }
-            Session["DataID"] = mySiml.DataID.ToString();
-            
+            else
+            {
+                LB_89.Text = myRs.Temprature_Out.ToString();
+                LB_88.Text = myRs.Temprature_In.ToString();
+                LB_145.Text = myRs.GasPressure.ToString();
+                LB_87.Text = myRs.OilTemprature.ToString();
+                LB_64.Text = myRs.SePuZhuT.ToString();
+                LB_62.Text = myRs.SensorRoomT.ToString();
+                LB_63.Text = myRs.LengJingT.ToString();
+
+                LB_166.Text = myRs.H2.ToString();
+                LB_167.Text = myRs.CO.ToString();
+                LB_169.Text = myRs.CO2.ToString();
+                LB_168.Text = myRs.CH4.ToString();
+                LB_170.Text = myRs.C2H2.ToString();
+                LB_171.Text = myRs.C2H4.ToString();
+                LB_172.Text = myRs.C2H6.ToString();
+                LB_176.Text = myRs.TotHyd.ToString();
+                LB_rs.Text = myRs.TotGas.ToString();
+                LB_175.Text = myRs.Mst.ToString();
+                LB_174.Text = myRs.T.ToString();
+                LB_173.Text = myRs.AW.ToString();
+            }
+           
         }
 
-        public OutSideStateCtrl OutSideSC_GetItem()
-        {
-            return mySiml.SC.OutSideSC;
-        }
-      
+       
         protected void BT_Data_Click(object sender, EventArgs e)
         {
             MyDictionary initialize = new MyDictionary();
-            BT_Data.Text = "hello";
+            //BT_Data.text = "hello";
+            BT_Data.Value = "hello";
             IMServerUDP current = new IMServerUDP();
             ushort[] require = { 88, 87, 89, 86, 63, 61, 62, 165, 168, 169, 171, 173, 166, 167, 170, 175, 174, 172 };
             //初步测试期间不加心跳，故未能初始化Define.id_ip_port字典，这里添加以下，实际byte-ipendpoint的映射是在心跳处理中添加
@@ -89,6 +108,8 @@ namespace WebApplication1.DevData
                 object value = lady.ElementAt(i).Value;
             }
                 #endregion
+
+          
         }
     }
 }

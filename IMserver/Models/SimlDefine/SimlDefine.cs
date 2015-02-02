@@ -185,10 +185,10 @@ namespace IMserver.Models.SimlDefine
     public class AlarmAll
     {
         [Display(Name = "自动阀值告警")]
-        public string AutoAlarm { get; set; }
+        public char AutoAlarm { get; set; }
 
         [Display(Name = " 自动诊断")]
-        public string AutoDiagnose { get; set; }
+        public char AutoDiagnose { get; set; }
 
         [Display(Name = "自动告警诊断功能启用最小日期"), Range(0, 100)]
         public int Interval { get; set; }
