@@ -75,13 +75,10 @@ namespace WebApplication1.DevData
        
         protected void BT_Data_Click(object sender, EventArgs e)
         {
-            MyDictionary initialize = new MyDictionary();
-            //BT_Data.text = "hello";
-            BT_Data.Value = "hello";
-            IMServerUDP current = new IMServerUDP();
+            BT_Data.Text= "hello";
             ushort[] require = { 88, 87, 89, 86, 63, 61, 62, 165, 168, 169, 171, 173, 166, 167, 170, 175, 174, 172 };
             //初步测试期间不加心跳，故未能初始化Define.id_ip_port字典，这里添加以下，实际byte-ipendpoint的映射是在心跳处理中添加
-            Define.id_ip_port.Add(0x01, new IPEndPoint(IPAddress.Parse("219.244.93.127"), 9999));
+            Define.id_ip_port.Add(0x01, new IPEndPoint(IPAddress.Parse("219.244.93.127"), 8888));
             //MyDictionary.ID_IP[0x01] = "219.244.93.127";
             //MyDictionary.ID_PORT[0x01] = 9999;
             //发送摘要缓冲
@@ -90,7 +87,7 @@ namespace WebApplication1.DevData
             compare.destID = 0x01;
             //读操作单元的配置参数
             compare.msgType = (byte)MSGEncoding.MsgType.ReadUnit;
-            compare.msgSubType = (byte)MSGEncoding.ReadUint.GetDevStatus;
+            compare.msgSubType = (byte)MSGEncoding.ReadUint.ReadData;
             compare.msgVer = MSGEncoding.msgVer;
             compare.msgDir = (byte)MSGEncoding.MsgDir.Request;
             //由于一个触发可能发送多包，所以编码在packet中组织，哈希入表也在packet中组织
@@ -98,18 +95,117 @@ namespace WebApplication1.DevData
             byte temp = PrepareData.AddRequire(compare, require);
             //缓冲三秒
             while (!HandleData.hello.readone)
-            { }
+            {
+                Thread.Sleep(100);
+            }
                 //为了跳出循环，这里不再复位标志位
             #region 赋值界面
+            //修改为从数据库读取
             Dictionary<ushort, object> lady = (Dictionary<ushort , object>)HandleData.hello.result;
             for (int i = 0; i < lady.Count; i++)
             {
                 ushort key = lady.ElementAt(i).Key;
                 object value = lady.ElementAt(i).Value;
+                switch (key)
+                {
+                    case 62:
+                        {
+                            LB_62.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 63:
+                        {
+                            LB_63.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 64:
+                        {
+                            LB_64.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 87:
+                        {
+                            LB_87.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 88:
+                        {
+                            LB_88.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 89:
+                        {
+                            LB_89.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 145:
+                        {
+                            LB_145.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 166:
+                        {
+                            LB_166.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 167:
+                        {
+                            LB_167.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 168:
+                        {
+                            LB_168.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 169:
+                        {
+                            LB_169.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 170:
+                        {
+                            LB_170.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 171:
+                        {
+                            LB_171.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 172:
+                        {
+                            LB_172.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 173:
+                        {
+                            LB_173.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 174:
+                        {
+                            LB_174.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 175:
+                        {
+                            LB_175.Text = ((float)value).ToString();
+                            break;
+                        }
+                    case 176:
+                        {
+                            LB_176.Text = ((float)value).ToString();
+                            break;
+                        }
+                    default://总可燃气体
+                        {
+                            LB_rs.Text = "why";
+                            break;
+                        }
+                }
             }
                 #endregion
-
-          
         }
     }
 }

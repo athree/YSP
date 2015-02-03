@@ -28,7 +28,11 @@
                         <a>通讯</a>
                         </div>
                 </div>
-              
+               <asp:ScriptManager runat="server"></asp:ScriptManager>
+                <asp:UpdatePanel ID="UP_1" runat="server">
+                    <ContentTemplate>
+
+                   
                 <div class="modal-body" id="myModalBody" style="height:350px">
                    <div id="alarmDiv" style="width:100%;height:55px">
                        <table>
@@ -61,8 +65,8 @@
                                         </asp:TextBox>
                                </td>
                                <td>
-                                    <%--<asp:Button runat="server" CssClass="btn btn-primary" ID="BT_Data" OnClick="BT_Data_Click" Text="提取数据"></asp:Button>--%>  
-                                    <input type="button" runat="server" class="btn btn-primary" id="BT_Data" onclick="BT_Data_Click" text="提取数据"/> 
+                                    <asp:Button runat="server" CssClass="btn btn-primary" ID="BT_Data" OnClick="BT_Data_Click" Text="提取数据"></asp:Button>  
+                                    <%--<input type="button" runat="server" class="btn btn-primary" id="BT_Data" onclick="BT_Data_Click" value="提取数据"/>--%> 
                                
                                </td>
                            </tr>
@@ -300,6 +304,8 @@
                     </div>
                 </div>
 
+                         </ContentTemplate>
+                </asp:UpdatePanel>
                    
             </div>
             </div>

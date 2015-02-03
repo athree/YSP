@@ -70,6 +70,10 @@ namespace IMserver
                         IMServerUDP.shared.heartfd.SendTo(temp, remotecli);
                     }
                 }
+                else 
+                {
+                    Thread.Sleep(50);
+                }
             }
         }
 
@@ -100,7 +104,7 @@ namespace IMserver
         public static void HeartTimer()
         {
             TimerTick requiretimeoutcheck = new TimerTick(1000, HeartTimeHandle);
-            requiretimeoutcheck.StartTimer();
+            //requiretimeoutcheck.StartTimer();
         }
     }
 }

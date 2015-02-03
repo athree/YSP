@@ -10,7 +10,19 @@ using MongoDB.Bson.Serialization;
 
 namespace IMserver.Models
 {
-    public class rsIdGenerator : IIGenerator{}
+    public class rsIdGenerator : IIdGenerator
+    {
+        private static int id = 0;
+        public object GenerateId(object container, object document)
+        {
+            return id++;
+        }
+
+        public bool IsEmpty(object id)
+        {
+            return (0 == (int)id) ? true : false;
+        }
+    }
 
     //运行状态界面  
 

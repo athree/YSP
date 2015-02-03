@@ -135,7 +135,6 @@ namespace IMserver
             shared.listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             shared.heartfd = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             shared.hostaddress = IPAddress.Parse("219.244.93.60");
-            //shared.hostpoint = new IPEndPoint(IPAddress.Parse("219.244.93.60"), 9505);
 
             shared.listenfd.Bind(new IPEndPoint(shared.hostaddress , 10000));
             shared.heartfd.Bind(new IPEndPoint(shared.hostaddress , 8888));
@@ -147,7 +146,7 @@ namespace IMserver
 
             //先接收一条消息，然后开启发送和接受线程
             byte[] connectcheck = new byte[PrepareData.BUS_FRAME_MINLEN];
-            IPEndPoint client = new IPEndPoint(IPAddress.Parse("219.244.93.127"), 9999);
+            IPEndPoint client = new IPEndPoint(IPAddress.Parse("219.244.93.127"), 8888);
             shared.remotepoint = (EndPoint)client;
             //shared.listenfd.ReceiveFrom(connectcheck , ref shared.remotepoint);
             //MessageBox.Show("服务器接收到数据！");
@@ -191,7 +190,7 @@ namespace IMserver
         public void TimeCheck()
         {
             TimerTick requiretimeoutcheck = new TimerTick(1000, TimerTick.UpdateTimer);
-            requiretimeoutcheck.StartTimer();
+            //requiretimeoutcheck.StartTimer();
         }
         /// <summary>
         /// 作为一个线程处理方法，当有连接时，为了不耽误执行完构造函数返回web端进行其他工作
@@ -402,10 +401,13 @@ namespace IMserver
                 if (Define.send_queue.Count != 0)
                 {
                     Define.SendQueueItem temp = Define.send_queue.Dequeue();
+                    //Define.SendQueueItem temp2 = new Define.SendQueueItem();
+                    //temp2.senddata = temp.senddata;
+                    //temp2.destpoint = new IPEndPoint(IPAddress.Parse("219.244.93.127") , 7777);
                     //这里设置为-1，一直等待到套接口可写
                     if (shared.listenfd.Poll(-1, SelectMode.SelectWrite))
                     {
-                        shared.listenfd.SendTo(temp.senddata, temp.destpoint);
+                        int a = shared.listenfd.SendTo(temp.senddata, temp.destpoint);
                         //history.AppendText("新发出一条消息！\r\n");
                     }
                     else

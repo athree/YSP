@@ -148,8 +148,10 @@ namespace IMserver.CommonFuncs
         public static volatile Queue<Define.SendQueueItem> send_queue = new Queue<Define.SendQueueItem>();
         //信息接收队列
         public static volatile Queue<Define.RecvQueueItem> recv_queue = new Queue<Define.RecvQueueItem>();
+
         //提交消息计时表
         //public static Hashtable existime = new Hashtable();
+
         public static volatile Dictionary<byte, int> existime = new Dictionary<byte, int>();
         //超时的未响应队列
         public static volatile Queue<Define.SendQueueItem> send_queue_timeout = new Queue<SendQueueItem>();

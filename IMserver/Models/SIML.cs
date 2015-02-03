@@ -25,6 +25,8 @@ namespace IMserver.Models
         // 诊断分析
         public AnlyInformation AnalyInfo { get; set; }
 
+        public AlarmMsgAll[] AlarmMsg { get; set; }
+
         //告警信息
         public enum AlarmType
         {
@@ -32,8 +34,6 @@ namespace IMserver.Models
             Absolute,               //绝对产期速率超标
             Relative                //相对产期速率超标
         }
-
-        public AlarmMsgAll[] AlarmMsg { get; set; }
 
         //出峰顺序
         public enum PeekOrder
