@@ -46,11 +46,11 @@
         </div>
         
         <div class="col-md-3">
-            <h2>运行日志</h2>
+            <h2>数据备份</h2>
             <p>
             </p>
             <p>
-                <a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301950">查看 &raquo;</a>
+                <a class="btn btn-default" href="Data/DataBak">查看 &raquo;</a>
             </p>
         </div>
     </div>

@@ -244,6 +244,7 @@
     <Content Include="bin\zh-Hans\Microsoft.Owin.Security.Twitter.resources.dll" />
     <Content Include="bin\zh-Hans\System.Web.Optimization.resources.dll" />
     <Content Include="Content\bootstrap-superhero.css" />
+    <Content Include="Data\DataBak.aspx" />
     <Content Include="DevAlarm\YSP_A.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -413,6 +414,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\CommStart.cs" />
+    <Compile Include="Data\DataBak.aspx.cs">
+      <DependentUpon>DataBak.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Data\DataBak.aspx.designer.cs">
+      <DependentUpon>DataBak.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DevAlarm\YSP_A.aspx.cs">
       <DependentUpon>YSP_A.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
