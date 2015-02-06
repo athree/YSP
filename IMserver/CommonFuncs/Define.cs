@@ -34,6 +34,7 @@ namespace IMserver.CommonFuncs
             public byte[] recvdata;
         }
 
+        #region  最小操作单元对应的类，已经把对这些类的引用转移到model.simldefine中
         //气体填充参数A
         [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
         public struct GasFixPara_A
@@ -141,6 +142,7 @@ namespace IMserver.CommonFuncs
             public float oilFactorB;          
         }
         public static int ES_LEN = Marshal.SizeOf(typeof(EnvironmentSetting));
+        #endregion
 
         //定时器的实现机制是否为跨线程，不知，这里暂且将都添加volatile修饰
 

@@ -10,6 +10,7 @@ using System.Timers;
 using IMserver.CommonFuncs;
 using IMserver.SubFuncs;
 using System.IO;
+using System.Diagnostics;
 
 
 namespace IMserver
@@ -49,62 +50,6 @@ namespace IMserver
 
     public class IMServerUDP:TimerTick
     {
-        /// <summary>
-        /// 启动UDP服务，接受UDP消息
-        /// 使用一个套接口来监听远端终结点的连接（UDP报文）请求
-        /// 如果有连接（UDP报文）那么就开出一个线程来操作，线程中进行任务请求
-        /// socket.receivefrom(buffer , ref endpoint)函数的第二个参数为参考传入，外部必须定义并初始化，后期返回修改值，即远端结点
-        /// </summary>
-        //public static void StartUDP(TextBox BaseHistory , TextBox BaseMessage)
-        //{
-        //    int recv;
-        //    byte [] bytes = new byte[1024];
-        //    //调试用，用来测试UDP数据传输的WEB下的textbox控件
-        //    history = BaseHistory;
-        //    message = BaseMessage;
-        //    /*
-        //     * 目前只针对一个连接进行处理
-        //     * 这个套接口是在中心发出短信请求连接后建立来监听的
-        //     * 即这个监听套接口只负责处理第一个连接到中心的终端
-        //     */
-        //    listenfd = new Socket(AddressFamily.InterNetwork , SocketType.Dgram , ProtocolType.Udp);
-
-        //    IPEndPoint hostpoint = new IPEndPoint(IPAddress.Parse("219.244.93.60"), 12346);
-        //    listenfd.Bind(hostpoint);
-
-        //    history.AppendText(TimeHandle.getcurrenttime().ToString()+": \r\n"+"waiting for a client ..."+"\r\n");
-
-        //    IPEndPoint client = new IPEndPoint(IPAddress.Any , 0);
-        //    //EndPoint remote = (EndPoint)client;
-        //    remotepoint = (EndPoint)client;
-        //    recv = listenfd.ReceiveFrom(bytes, ref remotepoint);//接受客户端发过来的消息，并存储客户端的终结点信息
-             
-        //    history.AppendText(TimeHandle.getcurrenttime().ToString() + ": \r\n" + remotepoint.ToString() + "已连接到本服务器！\r\n");
-        //    history.AppendText(TimeHandle.getcurrenttime().ToString()+": \r\n"+Encoding.ASCII.GetString(bytes)+"\r\n");
-
-        //    #region  忽略多线程的情况，暂时只考虑一个套接口负责一个连接，且不再处理其他设备的连接
-        //    //ParameterizedThreadStart _newoneclient = new ParameterizedThreadStart(HandleListen);
-        //    //Thread newoneclient = new Thread(_newoneclient);
-        //    //newoneclient.Start(remotepoint);
-        //    //MessageBox.Show(Thread.CurrentThread.ManagedThreadId.ToString());
-        //    #endregion
-
-        //    #region   测试时未分线程时部分的注释
-        //    //string wel = "welcome to my test server!";
-        //    //bytes = Encoding.ASCII.GetBytes(wel);
-        //    //listenfd.SendTo(bytes , remote);
-        //    ////listenfd.Connect();
-
-        //    //for (; ; )
-        //    //{
-        //    //    bytes = new byte[1024];
-        //    //    recv = listenfd.ReceiveFrom(bytes , ref remote);
-        //    //    history.AppendText(TimeHandle.getcurrenttime().ToString()+": \r\n"+Encoding.ASCII.GetString(bytes , 0 , recv)+"\r\n");
-        //    //    listenfd.SendTo(bytes , remote);
-        //    //}
-        //    #endregion
-        //}
-
         #region  为构造引用类型已封装为单独的类
         //private IPEndPoint hostpoint;            //服务器段即本地IPEndPoint
         //private Socket listenfd;                 //处理本次通信的套接口
@@ -136,8 +81,8 @@ namespace IMserver
             shared.heartfd = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             shared.hostaddress = IPAddress.Parse("219.244.93.60");
 
-            shared.listenfd.Bind(new IPEndPoint(shared.hostaddress , 10000));
-            shared.heartfd.Bind(new IPEndPoint(shared.hostaddress , 8888));
+            shared.listenfd.Bind(new IPEndPoint(shared.hostaddress, 10000));
+            shared.heartfd.Bind(new IPEndPoint(shared.hostaddress, 10000));
 
             //开启心跳包检测线程
             Thread Heartlisten = new Thread(new ThreadStart(HeartBeat.HeartCheck));
@@ -146,7 +91,7 @@ namespace IMserver
 
             //先接收一条消息，然后开启发送和接受线程
             byte[] connectcheck = new byte[PrepareData.BUS_FRAME_MINLEN];
-            IPEndPoint client = new IPEndPoint(IPAddress.Parse("219.244.93.127"), 8888);
+            IPEndPoint client = new IPEndPoint(IPAddress.Parse("223.104.11.107"), 9999);
             shared.remotepoint = (EndPoint)client;
             //shared.listenfd.ReceiveFrom(connectcheck , ref shared.remotepoint);
             //MessageBox.Show("服务器接收到数据！");
@@ -525,313 +470,313 @@ namespace IMserver
         {
             shared.donerecvflag = true;
         }
+    }
+}
 
-        #region  原始的aftersend方法
-        /// <summary>
-        /// 发送之后的一切处理过程
-        /// aftersend方法中的error和errornum等需要外部交互的变量在整合是调出
-        /// </summary>
-        /// <param name="comstruct">发送数据的核对留样</param>
-        /// <param name="sender">各类数据帧组织所需要的数据结构（ushort[]、dictionary<string , string>）
-        ///                      没有专门设置一个缓冲队列来处理</param>
-        /// <param name= "downwrite">专门为文件的读写做已读字节的标注，即下次开始读写的位置</param>
-        /// <return><\return>
-        /*public static void AfterSend(PrepareData.Compare comstruct, object sender , ushort donewrite)
+#region  原始的aftersend方法
+/// <summary>
+/// 发送之后的一切处理过程
+/// aftersend方法中的error和errornum等需要外部交互的变量在整合是调出
+/// </summary>
+/// <param name="comstruct">发送数据的核对留样</param>
+/// <param name="sender">各类数据帧组织所需要的数据结构（ushort[]、dictionary<string , string>）
+///                      没有专门设置一个缓冲队列来处理</param>
+/// <param name= "downwrite">专门为文件的读写做已读字节的标注，即下次开始读写的位置</param>
+/// <return><\return>
+/*public static void AfterSend(PrepareData.Compare comstruct, object sender , ushort donewrite)
+{
+    ushort errornum = 0;
+    Dictionary<ushort, ushort> error = new Dictionary<ushort, ushort>();
+
+    byte[] datatemp;
+    while (shared.donerecvflag != true)
+    {   
+        Thread.Sleep(50);
+    }
+
+    shared.donerecvflag = false;
+    MessageBox.Show("发送后接收到返回帧！");
+    datatemp = new byte[shared.recvnum];
+    Array.Copy(shared.recvbuffer , 0 , datatemp , 0 , shared.recvnum);
+
+    #region 开始写处理数据方法之前的想法
+    ///首先拿读操作单元做例子
+    ///相应的方法
+    ///提取数据包传入相应的方法
+    ///检测数据包的合法性（错误否，请求相应是否一致）
+    ///数据如可，并通过标志位通知WEB
+    #endregion
+
+    int retcode;
+    int frametype = HandleData.TypeofFrame(datatemp).frametype;
+
+    if (0 == frametype)
+    {
+        retcode = HandleData.FrameInCheck(datatemp, comstruct);
+    }
+    else
+        if (1 == frametype)
         {
-            ushort errornum = 0;
-            Dictionary<ushort, ushort> error = new Dictionary<ushort, ushort>();
+            retcode = HandleData.FrameOutCheck(datatemp, comstruct);
+        }
+        else
+        {
+            retcode = 0;
+            MessageBox.Show("长帧和短帧类型判断错误！");
+        }
 
-            byte[] datatemp;
-            while (shared.donerecvflag != true)
-            {   
-                Thread.Sleep(50);
-            }
-
-            shared.donerecvflag = false;
-            MessageBox.Show("发送后接收到返回帧！");
-            datatemp = new byte[shared.recvnum];
-            Array.Copy(shared.recvbuffer , 0 , datatemp , 0 , shared.recvnum);
-
-            #region 开始写处理数据方法之前的想法
-            ///首先拿读操作单元做例子
-            ///相应的方法
-            ///提取数据包传入相应的方法
-            ///检测数据包的合法性（错误否，请求相应是否一致）
-            ///数据如可，并通过标志位通知WEB
-            #endregion
-
-            int retcode;
-            int frametype = HandleData.TypeofFrame(datatemp).frametype;
-
-            if (0 == frametype)
-            {
-                retcode = HandleData.FrameInCheck(datatemp, comstruct);
-            }
-            else
-                if (1 == frametype)
+    if (33 == retcode)
+    {
+        switch (comstruct.msgType)
+        {
+                //通信测试
+            case (byte)MSGEncoding.MsgType.LoopBack:
                 {
-                    retcode = HandleData.FrameOutCheck(datatemp, comstruct);
+                    //对于loopback来说的sender为发送下去的通信测试帧的CRC校验码=>改为发送的字节数组原始数据
+                    //通过比对CRC校验码（返回）=>不如直接字节数组比较方便
+                    byte[] rawdata = (byte[])sender;
+                    bool result = LoopBack.MsgHandle(datatemp , rawdata);
                 }
-                else
+                break;
+                //读操作单元
+            case (byte)MSGEncoding.MsgType.ReadUnit:
                 {
-                    retcode = 0;
-                    MessageBox.Show("长帧和短帧类型判断错误！");
+                    //目前来看公用error和errornum
+                    Dictionary<ushort, object> hello = ReadUnit.MsgHandle((ushort[])sender, comstruct,
+                                               datatemp, ref errornum, error);
+                    history.AppendText("做出的请求响应为：\r\n");
+                    for (int i = 0; i < hello.Count; i++)
+                    {
+                        history.AppendText(hello.ElementAt(i).Key.ToString() + " : " + hello.ElementAt(i).Value.ToString() + "\r\n");
+                    }
                 }
-
-            if (33 == retcode)
-            {
-                switch (comstruct.msgType)
+                break;
+                //写操作单元
+            case (byte)MSGEncoding.MsgType.WriteUnit:
                 {
-                        //通信测试
-                    case (byte)MSGEncoding.MsgType.LoopBack:
+                    //通过提取转换得来的操作单元的数组
+                    ushort[] unit = new ushort[10];
+                    int result = WriteUnit.MsgHandle(error , ref errornum , datatemp , unit);
+                    if (1 == result)
+                    {
+                        MessageBox.Show("写操作单元成功！");
+                    }
+                    else 
+                    {
+                        MessageBox.Show("写操作单元存在错误！");
+                    }
+                }
+                break;
+                //读文件
+            case (byte)MSGEncoding.MsgType.ReadFile:
+                {
+                    //交互过程
+                    ushort Error = 0;
+                    ushort index = 0;
+                    ReadFile.Parameter com = (ReadFile.Parameter)sender;
+                    //这些在第一次组包的时候都已初始化
+                    string path = "s:\\" + com.filename + ".txt";
+                    //com.start = 0;
+                    //com.readbytes = 0;
+                    FileStream filerecv = new FileStream(path , FileMode.OpenOrCreate , FileAccess.Write);
+                LoopRead:
+                    int thisdone = ReadFile.MsgHandle(filerecv, datatemp, ref Error);
+                    //如果写入0字节，那么有两种情况：A，文件读取完毕（error为0）B，文件读取出错（error不为0）
+                    if (0 == thisdone)
+                    {
+                        //文件读取完成
+                        if (0 == Error)
                         {
-                            //对于loopback来说的sender为发送下去的通信测试帧的CRC校验码=>改为发送的字节数组原始数据
-                            //通过比对CRC校验码（返回）=>不如直接字节数组比较方便
-                            byte[] rawdata = (byte[])sender;
-                            bool result = LoopBack.MsgHandle(datatemp , rawdata);
+                            filerecv.Close();
+                            //MessageBox.Show("文件读取完成！");
+                            goto ReadRightQuit;
                         }
-                        break;
-                        //读操作单元
-                    case (byte)MSGEncoding.MsgType.ReadUnit:
+                        //文件读取出错
+                        else 
                         {
-                            //目前来看公用error和errornum
-                            Dictionary<ushort, object> hello = ReadUnit.MsgHandle((ushort[])sender, comstruct,
-                                                       datatemp, ref errornum, error);
-                            history.AppendText("做出的请求响应为：\r\n");
-                            for (int i = 0; i < hello.Count; i++)
-                            {
-                                history.AppendText(hello.ElementAt(i).Key.ToString() + " : " + hello.ElementAt(i).Value.ToString() + "\r\n");
-                            }
+                            //MessageBox.Show("读取文件时出错！");
+                            goto ReadWrongQuit;
                         }
-                        break;
-                        //写操作单元
-                    case (byte)MSGEncoding.MsgType.WriteUnit:
+                    }
+                    //如果读取到大于0的字节，说明正在读取文件，如果读取到小于指定读取字节个数，应该是文件读完，
+                    //但是为了统一写文件，这个交互之后再次发送请求，下面解析到请求读取超过文件长度的信息，
+                    //会返回文件读取结束（读到0字节并且error=0）
+                    else
+                    {
+                        index += (ushort)thisdone;
+                        com.start = index;
+                        com.readbytes = ReadFile.MAX;
+                        IMServerUDP.shared.sendbuffer = PrepareData.Packetization(comstruct , com , ref donewrite);
+                        IMServerUDP.shared.udpsendflag = true;
+                        IMServerUDP.shared.udprecvflag = true;
+
+                        while (shared.donerecvflag != true)
                         {
-                            //通过提取转换得来的操作单元的数组
-                            ushort[] unit = new ushort[10];
-                            int result = WriteUnit.MsgHandle(error , ref errornum , datatemp , unit);
-                            if (1 == result)
-                            {
-                                MessageBox.Show("写操作单元成功！");
-                            }
-                            else 
-                            {
-                                MessageBox.Show("写操作单元存在错误！");
-                            }
+                            Thread.Sleep(50);
                         }
-                        break;
-                        //读文件
-                    case (byte)MSGEncoding.MsgType.ReadFile:
+                        shared.donerecvflag = false;
+                        MessageBox.Show("读文件过程接收到后续帧！");
+                        datatemp = new byte[IMServerUDP.shared.recvnum];
+                        Array.Copy(IMServerUDP.shared.recvbuffer, 0, datatemp, 0, IMServerUDP.shared.recvnum);
+                        frametype = HandleData.TypeofFrame(datatemp);
+                        if (0 == frametype)
                         {
-                            //交互过程
-                            ushort Error = 0;
-                            ushort index = 0;
-                            ReadFile.Parameter com = (ReadFile.Parameter)sender;
-                            //这些在第一次组包的时候都已初始化
-                            string path = "s:\\" + com.filename + ".txt";
-                            //com.start = 0;
-                            //com.readbytes = 0;
-                            FileStream filerecv = new FileStream(path , FileMode.OpenOrCreate , FileAccess.Write);
-                        LoopRead:
-                            int thisdone = ReadFile.MsgHandle(filerecv, datatemp, ref Error);
-                            //如果写入0字节，那么有两种情况：A，文件读取完毕（error为0）B，文件读取出错（error不为0）
-                            if (0 == thisdone)
+                            retcode = HandleData.FrameInCheck(datatemp, comstruct);
+                        }
+                        else
+                            if (1 == frametype)
                             {
-                                //文件读取完成
-                                if (0 == Error)
-                                {
-                                    filerecv.Close();
-                                    //MessageBox.Show("文件读取完成！");
-                                    goto ReadRightQuit;
-                                }
-                                //文件读取出错
-                                else 
-                                {
-                                    //MessageBox.Show("读取文件时出错！");
-                                    goto ReadWrongQuit;
-                                }
+                                retcode = HandleData.FrameOutCheck(datatemp, comstruct);
                             }
-                            //如果读取到大于0的字节，说明正在读取文件，如果读取到小于指定读取字节个数，应该是文件读完，
-                            //但是为了统一写文件，这个交互之后再次发送请求，下面解析到请求读取超过文件长度的信息，
-                            //会返回文件读取结束（读到0字节并且error=0）
                             else
                             {
-                                index += (ushort)thisdone;
-                                com.start = index;
-                                com.readbytes = ReadFile.MAX;
-                                IMServerUDP.shared.sendbuffer = PrepareData.Packetization(comstruct , com , ref donewrite);
+                                retcode = 0;
+                                goto ReadWrongQuit;
+                                //MessageBox.Show("读文件过程的后续帧的长帧和短帧类型判断错误！");
+                            }
+                        if (33 == retcode)
+                        {
+                            goto LoopRead;
+                        }
+                        else
+                        {
+                            //MessageBox.Show("读文件过程后续帧的校验存在错误!");
+                            goto ReadWrongQuit;
+                        }
+                    }
+                ReadWrongQuit:
+                    {
+                        MessageBox.Show("读文件过程存在错误：校验、读取错误等");
+                        goto ReadQuit;
+                    }
+                ReadRightQuit:
+                    {
+                        MessageBox.Show("读文件过程完成！");
+                        goto ReadQuit;
+                    }
+                ReadQuit:
+                    {
+                        MessageBox.Show("度文件过程从AfterSend方法跳出！");
+                }
+                }
+                break;
+                //写文件
+            case (byte)MSGEncoding.MsgType.WriteFile:
+                {
+                    //写文件的交互过程，需要传结构体，结构体中数据需要返回并有这里参考循环
+                    //本函数中传入的donewrite为after之前packet中读取的字节数
+                    ushort errorcode = 0;
+                    WriteFile.Parameter para = (WriteFile.Parameter)sender;
+                    //返回帧中上送的下位机写入的字节数
+                LoopWrite:
+                    ushort done = WriteFile.MsgHandle(datatemp , ref errorcode);
+                    if (0 != errorcode)
+                    {
+                        //有错误发生时的响应帧
+                        goto WriteWrongQuit;
+                        //MessageBox.Show("写文件过程有错误发生！");
+                    }
+                    else
+                    {
+                        //服务器发送 文件写 结束帧后下位机的正常响应
+                        if (0 == done)
+                        {
+                            //正常结束
+                            goto WriteRightQuit;
+                        }
+                        //正常响应下位机接收到服务器的文件数据并写入的正常响应
+                        else
+                        {
+                            if (done != donewrite)
+                            {
+                                goto WriteWrongQuit;//传下的字节数和真正写入的字节数不一致（各种检测机制保证一致，这里预防）
+                            }
+                            else
+                            {
+                                //只修改读文件的起始位置，读取的字节数通过加入的loopback方法测试得到
+                                para.start += done;
+                                IMServerUDP.shared.sendbuffer = PrepareData.Packetization(comstruct, para , ref donewrite);
                                 IMServerUDP.shared.udpsendflag = true;
                                 IMServerUDP.shared.udprecvflag = true;
-
-                                while (shared.donerecvflag != true)
+                                while (!IMServerUDP.shared.donerecvflag)
                                 {
                                     Thread.Sleep(50);
                                 }
-                                shared.donerecvflag = false;
-                                MessageBox.Show("读文件过程接收到后续帧！");
+
+                                MessageBox.Show("写文件过程接收到后续帧！");
                                 datatemp = new byte[IMServerUDP.shared.recvnum];
                                 Array.Copy(IMServerUDP.shared.recvbuffer, 0, datatemp, 0, IMServerUDP.shared.recvnum);
-                                frametype = HandleData.TypeofFrame(datatemp);
-                                if (0 == frametype)
-                                {
-                                    retcode = HandleData.FrameInCheck(datatemp, comstruct);
-                                }
-                                else
-                                    if (1 == frametype)
-                                    {
-                                        retcode = HandleData.FrameOutCheck(datatemp, comstruct);
-                                    }
-                                    else
-                                    {
-                                        retcode = 0;
-                                        goto ReadWrongQuit;
-                                        //MessageBox.Show("读文件过程的后续帧的长帧和短帧类型判断错误！");
-                                    }
+                                retcode = HandleData.FrameInCheck(datatemp, comstruct);
                                 if (33 == retcode)
                                 {
-                                    goto LoopRead;
+                                    goto LoopWrite;//接收到了数据，并判断还未发送完文件，循环处理
                                 }
                                 else
                                 {
-                                    //MessageBox.Show("读文件过程后续帧的校验存在错误!");
-                                    goto ReadWrongQuit;
+                                    goto WriteWrongQuit;
                                 }
                             }
-                        ReadWrongQuit:
-                            {
-                                MessageBox.Show("读文件过程存在错误：校验、读取错误等");
-                                goto ReadQuit;
-                            }
-                        ReadRightQuit:
-                            {
-                                MessageBox.Show("读文件过程完成！");
-                                goto ReadQuit;
-                            }
-                        ReadQuit:
-                            {
-                                MessageBox.Show("度文件过程从AfterSend方法跳出！");
                         }
-                        }
-                        break;
-                        //写文件
-                    case (byte)MSGEncoding.MsgType.WriteFile:
-                        {
-                            //写文件的交互过程，需要传结构体，结构体中数据需要返回并有这里参考循环
-                            //本函数中传入的donewrite为after之前packet中读取的字节数
-                            ushort errorcode = 0;
-                            WriteFile.Parameter para = (WriteFile.Parameter)sender;
-                            //返回帧中上送的下位机写入的字节数
-                        LoopWrite:
-                            ushort done = WriteFile.MsgHandle(datatemp , ref errorcode);
-                            if (0 != errorcode)
-                            {
-                                //有错误发生时的响应帧
-                                goto WriteWrongQuit;
-                                //MessageBox.Show("写文件过程有错误发生！");
-                            }
-                            else
-                            {
-                                //服务器发送 文件写 结束帧后下位机的正常响应
-                                if (0 == done)
-                                {
-                                    //正常结束
-                                    goto WriteRightQuit;
-                                }
-                                //正常响应下位机接收到服务器的文件数据并写入的正常响应
-                                else
-                                {
-                                    if (done != donewrite)
-                                    {
-                                        goto WriteWrongQuit;//传下的字节数和真正写入的字节数不一致（各种检测机制保证一致，这里预防）
-                                    }
-                                    else
-                                    {
-                                        //只修改读文件的起始位置，读取的字节数通过加入的loopback方法测试得到
-                                        para.start += done;
-                                        IMServerUDP.shared.sendbuffer = PrepareData.Packetization(comstruct, para , ref donewrite);
-                                        IMServerUDP.shared.udpsendflag = true;
-                                        IMServerUDP.shared.udprecvflag = true;
-                                        while (!IMServerUDP.shared.donerecvflag)
-                                        {
-                                            Thread.Sleep(50);
-                                        }
-
-                                        MessageBox.Show("写文件过程接收到后续帧！");
-                                        datatemp = new byte[IMServerUDP.shared.recvnum];
-                                        Array.Copy(IMServerUDP.shared.recvbuffer, 0, datatemp, 0, IMServerUDP.shared.recvnum);
-                                        retcode = HandleData.FrameInCheck(datatemp, comstruct);
-                                        if (33 == retcode)
-                                        {
-                                            goto LoopWrite;//接收到了数据，并判断还未发送完文件，循环处理
-                                        }
-                                        else
-                                        {
-                                            goto WriteWrongQuit;
-                                        }
-                                    }
-                                }
-                            }
-                        WriteWrongQuit:
-                            {
-                                MessageBox.Show("写文件过程可能为后续帧错误，或者校验错误或者。。。");
-                                goto WriteQuit;
-                            }
-                        WriteRightQuit:
-                            {
-                                MessageBox.Show("写文件过程成功完成！");
-                                goto WriteQuit;
-                            }
-                        WriteQuit:
-                            {
-                                MessageBox.Show("写文件过程从Aftersend中退出！");
-                            }
-                        }
-                        break;
-                        //获取文件信息
-                        //独属于获取文件信息的错误代码
-                    case (byte)MSGEncoding.MsgType.GetFileInfo:
-                        {
-                            ushort sorterror = 0;
-                            Dictionary<long, ushort> fileinfo = GetFileInfo.MsgHandle(ref sorterror , datatemp);
-                            MessageBox.Show("获取文件信息处理完成！");
-                        }
-                        break;
-                        //读缓冲区
-                    case (byte)MSGEncoding.MsgType.ReadBuffer:
-                        {
-                            //根据请求的数据帧的子类型确定返回值
-                            object result = ReadBuffer.MsgHandle(datatemp , comstruct.msgSubType);
-                        }
-                        break;
-                        //获取错误信息
-                        //查询出现错误情况，后期结合具体情况讨论
-                    case (byte)MSGEncoding.MsgType.GetErrorInfo:
-                        {
-                            string errorexplain = GetErrorInfo.MsgHandle(datatemp);
-                            if (null == errorexplain)
-                            {
-                                MessageBox.Show("获取错误信息失败，内容上的失败，因为已经经过校验");
-                            }
-                            else
-                            {
-                                MessageBox.Show("获取错误信息成功！");
-                            }
-                        }
-                        break;
-                    default:
-                        {
-                            MessageBox.Show("接收帧的类型错误！");
-                        }
-                        break;
+                    }
+                WriteWrongQuit:
+                    {
+                        MessageBox.Show("写文件过程可能为后续帧错误，或者校验错误或者。。。");
+                        goto WriteQuit;
+                    }
+                WriteRightQuit:
+                    {
+                        MessageBox.Show("写文件过程成功完成！");
+                        goto WriteQuit;
+                    }
+                WriteQuit:
+                    {
+                        MessageBox.Show("写文件过程从Aftersend中退出！");
+                    }
                 }
+                break;
+                //获取文件信息
+                //独属于获取文件信息的错误代码
+            case (byte)MSGEncoding.MsgType.GetFileInfo:
+                {
+                    ushort sorterror = 0;
+                    Dictionary<long, ushort> fileinfo = GetFileInfo.MsgHandle(ref sorterror , datatemp);
+                    MessageBox.Show("获取文件信息处理完成！");
+                }
+                break;
+                //读缓冲区
+            case (byte)MSGEncoding.MsgType.ReadBuffer:
+                {
+                    //根据请求的数据帧的子类型确定返回值
+                    object result = ReadBuffer.MsgHandle(datatemp , comstruct.msgSubType);
+                }
+                break;
+                //获取错误信息
+                //查询出现错误情况，后期结合具体情况讨论
+            case (byte)MSGEncoding.MsgType.GetErrorInfo:
+                {
+                    string errorexplain = GetErrorInfo.MsgHandle(datatemp);
+                    if (null == errorexplain)
+                    {
+                        MessageBox.Show("获取错误信息失败，内容上的失败，因为已经经过校验");
+                    }
+                    else
+                    {
+                        MessageBox.Show("获取错误信息成功！");
+                    }
+                }
+                break;
+            default:
+                {
+                    MessageBox.Show("接收帧的类型错误！");
+                }
+                break;
+        }
 
-            }
-            else
-            {
-                MessageBox.Show("接收的数据帧存在错误！");
-            }
-
-        }*/
-        #endregion
     }
-}
+    else
+    {
+        MessageBox.Show("接收的数据帧存在错误！");
+    }
+
+}*/
+#endregion

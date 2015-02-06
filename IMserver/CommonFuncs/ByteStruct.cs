@@ -16,14 +16,20 @@ namespace IMserver.CommonFuncs
         /// <returns>返回byte字节数组</returns>
         public static byte[] StructToBytes(object structobj)
         {
-            //Object obj = structobj; 
-            int size = Marshal.SizeOf(structobj);                   //获取目标结构体的大小
-            byte[] bytes = new byte[size];                         //申请等同大小的字节数组空间,这样申请为返回值
-            IntPtr structptr = Marshal.AllocHGlobal(size);          //申请非托管状态下的等同大小的内存空间，用来做中间转换
-            Marshal.StructureToPtr(structobj, structptr, false);  //将托管状态下的对象空间数据封送到非托管内存块
-            Marshal.Copy(structptr, bytes, 0, size);             //将内存空间拷贝到字节数组
-            Marshal.FreeHGlobal(structptr);                         //释放非托管内存空间
-            return bytes;
+            try
+            {
+                int size = Marshal.SizeOf(structobj);                   //获取目标结构体的大小
+                byte[] bytes = new byte[size];                         //申请等同大小的字节数组空间,这样申请为返回值
+                IntPtr structptr = Marshal.AllocHGlobal(size);          //申请非托管状态下的等同大小的内存空间，用来做中间转换
+                Marshal.StructureToPtr(structobj, structptr, false);  //将托管状态下的对象空间数据封送到非托管内存块
+                Marshal.Copy(structptr, bytes, 0, size);             //将内存空间拷贝到字节数组
+                Marshal.FreeHGlobal(structptr);                         //释放非托管内存空间
+                return bytes;
+            }
+            catch (Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
 
 
@@ -36,20 +42,27 @@ namespace IMserver.CommonFuncs
         /// <returns>返回转换后恶结构体</returns>
         public static object BytesToStruct(byte[] bytes , Type type)
         {
-            if(null == bytes)
+            try
             {
-                return null;
+                if (null == bytes)
+                {
+                    return null;
+                }
+                int size = Marshal.SizeOf(type);
+                if (size > bytes.Length)
+                {
+                    return null;
+                }
+                IntPtr structPtr = Marshal.AllocHGlobal(size);           //申请等同大小的非托管状态下的内存空间
+                Marshal.Copy(bytes, 0, structPtr, size);                 //将byte数组拷到分配好的内存空间，只拷贝size大小的空间
+                object obj = Marshal.PtrToStructure(structPtr, type);    //将内存空间转换为目标结构体
+                Marshal.FreeHGlobal(structPtr);                          //释放内存空间
+                return obj;                                              //返回结构体
             }
-            int size = Marshal.SizeOf(type);
-            if (size > bytes.Length)
+            catch (Exception ep)
             {
-                return null;
+                throw new Exception(ep.Message);
             }
-            IntPtr structPtr = Marshal.AllocHGlobal(size);           //申请等同大小的非托管状态下的内存空间
-            Marshal.Copy(bytes, 0, structPtr, size);                 //将byte数组拷到分配好的内存空间，只拷贝size大小的空间
-            object obj = Marshal.PtrToStructure(structPtr, type);    //将内存空间转换为目标结构体
-            Marshal.FreeHGlobal(structPtr);                          //释放内存空间
-            return obj;                                              //返回结构体
         }
     }
 }

@@ -108,6 +108,7 @@
     <Compile Include="CommonFuncs\Define.cs" />
     <Compile Include="CommonFuncs\L_MBS.cs" />
     <Compile Include="CommonFuncs\MyDictionary.cs" />
+    <Compile Include="CommonFuncs\StrToEP.cs" />
     <Compile Include="CommonFuncs\TimeHandle.cs" />
     <Compile Include="Data_Warehousing\AddAlarmState.cs" />
     <Compile Include="Data_Warehousing\AddConfig.cs" />
@@ -124,6 +125,7 @@
     <Compile Include="Models\DevInfo.cs" />
     <Compile Include="Models\DevSite.cs" />
     <Compile Include="Models\DevType.cs" />
+    <Compile Include="Models\DevID_EP.cs" />
     <Compile Include="Models\RunningState.cs" />
     <Compile Include="Models\IdentityConfig.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -148,7 +150,12 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\SysLog\SysLog.csproj">
+      <Project>{11b303f2-c141-4eaf-90a2-786ec776c162}</Project>
+      <Name>SysLog</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

@@ -543,8 +543,15 @@ namespace IMserver.Data_Warehousing
         /// <returns></returns>
         public static bool Warehousing(AlarmState als)
         {
-            MongoHelper<AlarmState> mhas = new MongoHelper<AlarmState>();
-            return mhas.Insert(als);
+            try
+            {
+                MongoHelper<AlarmState> mhas = new MongoHelper<AlarmState>();
+                return mhas.Insert(als);
+            }
+            catch (Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
     }
 }

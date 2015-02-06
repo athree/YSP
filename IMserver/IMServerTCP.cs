@@ -44,9 +44,6 @@ namespace IMserver
             testtemp.what = 2;
         }
         #endregion
-        //static TextBox history;
-        //static TextBox message;
-        //static Label CurrentThread;
         static Socket connfd = null;
         static Socket listenfd = null;
 
@@ -116,16 +113,6 @@ namespace IMserver
             connfd.Send(buffer);
         }
 
-        #region   重载发送函数
-        /// <summary>
-        /// 通用情况下的发送，重载示例
-        /// 这里因为是发送程序，所以没有涉及到多线程下的参数传递
-        /// </summary>
-        /// <param name="bytes"></param>
-        public void sendmessage(byte[] bytes)
-        { }
-        #endregion
-
         /// <summary>
         /// 在  线程2   中执行的接受数据的方法
         /// </summary>
@@ -138,8 +125,6 @@ namespace IMserver
                 byte[] buffer = new byte[1024];
                 int length = commsocket.Receive(buffer);
                 string mess = Encoding.UTF8.GetString(buffer, 0, length);
-                //history.AppendText("local--" + TimeHandle.getcurrenttime() + ":\r\n" + mess + "\r\n");
-                //CurrentThread.Text = Thread.CurrentThread.ManagedThreadId.ToString();
             }
         }
 
@@ -150,6 +135,7 @@ namespace IMserver
         {
             byte []hello = new byte[1024];
             hello = Encoding.ASCII.GetBytes("hello");
+            
             //MessageBox.Show(hello.Length.ToString());
         }
     }

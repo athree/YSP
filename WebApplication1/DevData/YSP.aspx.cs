@@ -78,7 +78,7 @@ namespace WebApplication1.DevData
             BT_Data.Text= "hello";
             ushort[] require = { 88, 87, 89, 86, 63, 61, 62, 165, 168, 169, 171, 173, 166, 167, 170, 175, 174, 172 };
             //初步测试期间不加心跳，故未能初始化Define.id_ip_port字典，这里添加以下，实际byte-ipendpoint的映射是在心跳处理中添加
-            Define.id_ip_port.Add(0x01, new IPEndPoint(IPAddress.Parse("219.244.93.127"), 8888));
+            Define.id_ip_port.Add(0x01, new IPEndPoint(IPAddress.Parse("223.104.11.107"), 9999));
             //MyDictionary.ID_IP[0x01] = "219.244.93.127";
             //MyDictionary.ID_PORT[0x01] = 9999;
             //发送摘要缓冲

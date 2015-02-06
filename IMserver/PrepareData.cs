@@ -702,9 +702,6 @@ namespace IMserver
             return pr.packetnum;
         }
 
-        public static void Test_AddRequire(byte[] data)
-        {
-        }
     }
 }
 

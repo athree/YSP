@@ -10,6 +10,7 @@ using System.Runtime.InteropServices;
 using IMserver.CommonFuncs;
 using IMserver.SubFuncs;
 using IMserver.Data_Warehousing;
+using SysLog;
 
 namespace IMserver
 {
@@ -676,26 +677,33 @@ namespace IMserver
                                                                                         error);
                                 if (0 == errornum)
                                 {
-                                    //读取数据（开始界面）
-                                    if ((byte)MSGEncoding.ReadUint.ReadData == comstruct.msgSubType)
+                                    try
                                     {
-                                        AddRunningState.Warehousing(result , comstruct.destID);
-                                    }
-                                    else   //读取配置信息
-                                        if ((byte)MSGEncoding.ReadUint.Readcfg == comstruct.msgSubType)
+                                        //读取数据（开始界面）
+                                        if ((byte)MSGEncoding.ReadUint.ReadData == comstruct.msgSubType)
                                         {
-                                            AddConfig.Warehousing(result , comstruct.destID);
+                                            AddRunningState.Warehousing(result, comstruct.destID);
                                         }
-                                        else  //这里应该是状态控制
-                                            if ((byte)MSGEncoding.ReadUint.GetDevStatus == comstruct.msgSubType)
+                                        else   //读取配置信息
+                                            if ((byte)MSGEncoding.ReadUint.Readcfg == comstruct.msgSubType)
                                             {
-                                                //这个还未完成，无法到达
-                                                AddSIML.Warehousing(result , comstruct.destID);
+                                                AddConfig.Warehousing(result, comstruct.destID);
                                             }
-                                            else
-                                            {
-                                                AddAlarmState.Warehousing(result, comstruct.destID);
-                                            }
+                                            else  //这里应该是状态控制
+                                                if ((byte)MSGEncoding.ReadUint.GetDevStatus == comstruct.msgSubType)
+                                                {
+                                                    //这个还未完成，无法到达
+                                                    AddSIML.Warehousing(result, comstruct.destID);
+                                                }
+                                                else
+                                                {
+                                                    AddAlarmState.Warehousing(result, comstruct.destID);
+                                                }
+                                    }
+                                    catch (Exception ep)
+                                    {
+                                        LogException(ep);
+                                    }
                                 }
                                 else
                                 {
@@ -723,28 +731,33 @@ namespace IMserver
                                 if (1 == result)
                                 {
                                     //MessageBox.Show("handledata-aftersend:写操作单元成功！");
-
-                                    //初始界面
-                                    if ((byte)MSGEncoding.WriteUint.WriteData == comstruct.msgSubType)
+                                    try
                                     {
-                                        AddRunningState.Warehousing(rawobj, comstruct.destID);
-                                    }
-                                    else   //写下配置信息
-                                        if ((byte)MSGEncoding.WriteUint.Setcfg == comstruct.msgSubType)
+                                        //初始界面
+                                        if ((byte)MSGEncoding.WriteUint.WriteData == comstruct.msgSubType)
                                         {
-                                            AddConfig.Warehousing(rawobj, comstruct.destID);
+                                            AddRunningState.Warehousing(rawobj, comstruct.destID);
                                         }
-                                        else  //这里应该是状态控制
-                                            if ((byte)MSGEncoding.WriteUint.ControlDev == comstruct.msgSubType)
+                                        else   //写下配置信息
+                                            if ((byte)MSGEncoding.WriteUint.Setcfg == comstruct.msgSubType)
                                             {
-                                                //这个还未完成，无法到达
-                                                AddSIML.Warehousing(rawobj, comstruct.destID);
+                                                AddConfig.Warehousing(rawobj, comstruct.destID);
                                             }
-                                            else  //这里应该是写报警
-                                            {
-                                                AddAlarmState.Warehousing(rawobj, comstruct.destID);
-                                            }
-
+                                            else  //这里应该是状态控制
+                                                if ((byte)MSGEncoding.WriteUint.ControlDev == comstruct.msgSubType)
+                                                {
+                                                    //这个还未完成，无法到达
+                                                    AddSIML.Warehousing(rawobj, comstruct.destID);
+                                                }
+                                                else  //这里应该是写报警
+                                                {
+                                                    AddAlarmState.Warehousing(rawobj, comstruct.destID);
+                                                }
+                                    }
+                                    catch (Exception ep)
+                                    {
+                                        LogException(ep);
+                                    }
                                 }
                                 else
                                 {
@@ -903,6 +916,22 @@ namespace IMserver
             }
             afret.errorcode = retcode;
             return afret;
+        }
+
+        /// <summary>
+        /// 异常信息写入日志
+        /// </summary>
+        /// <param name="ex"></param>
+        private static void LogException(Exception ex)
+        {
+            using (ILog log = new FileLog())
+            {
+                log.Write("Exception from Class: HandleData");
+                log.Write("Exception:" + ex.Message);
+                log.Write(ex.StackTrace);
+                log.Write("时间：" + DateTime.Now.ToString());
+                log.Write("----------------------------------------------------------");
+            }
         }
     }
 }
