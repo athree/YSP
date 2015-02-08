@@ -8,6 +8,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using IMserver.Models;
 using IMserver;
+using System.Web.Security;
 
 namespace WebApplication1.Account
 {
@@ -19,27 +20,15 @@ namespace WebApplication1.Account
             private set;
         }
 
-        private bool HasPassword(ApplicationUserManager manager)
-        {
-            return manager.HasPassword(User.Identity.GetUserId());
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
             if (!IsPostBack)
             {
                 // 确定要呈现的节
-                if (HasPassword(manager))
-                {
-                    changePasswordHolder.Visible = true;
-                }
-                else
-                {
-                    setPassword.Visible = true;
-                    changePasswordHolder.Visible = false;
-                }
+
+                changePasswordHolder.Visible = true;
+
 
                 // 呈现成功消息
                 var message = Request.QueryString["m"];
@@ -55,45 +44,19 @@ namespace WebApplication1.Account
         {
             if (IsValid)
             {
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                IdentityResult result = manager.ChangePassword(User.Identity.GetUserId(), CurrentPassword.Text, NewPassword.Text);
-                if (result.Succeeded)
+                bool changePasswordSucceeded;
+                try
                 {
-                    var user = manager.FindById(User.Identity.GetUserId());
-                    IdentityHelper.SignIn(manager, user, isPersistent: false);
-                    Response.Redirect("~/Account/Manage?m=ChangePwdSuccess");
+                    MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
+                    changePasswordSucceeded = currentUser.ChangePassword(CurrentPassword.Text, NewPassword.Text);
                 }
-                else
+                catch (Exception)
                 {
-                    AddErrors(result);
+                    changePasswordSucceeded = false;
                 }
             }
         }
 
-        protected void SetPassword_Click(object sender, EventArgs e)
-        {
-            if (IsValid)
-            {
-                // 创建本地登录信息并将本地帐户链接到用户
-                var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-                IdentityResult result = manager.AddPassword(User.Identity.GetUserId(), password.Text);
-                if (result.Succeeded)
-                {
-                    Response.Redirect("~/Account/Manage?m=SetPwdSuccess");
-                }
-                else
-                {
-                    AddErrors(result);
-                }
-            }
-        }
 
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
-        }
     }
 }

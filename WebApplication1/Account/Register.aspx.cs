@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Owin;
 using IMserver.Models;
 using IMserver;
+using System.Web.Security;
 
 namespace WebApplication1.Account
 {
@@ -14,22 +15,17 @@ namespace WebApplication1.Account
     {
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var user = new IMserver.Models.ApplicationUser() { UserName = UserName.Text };
-            IdentityResult result = manager.Create(user, Password.Text);
-            if (result.Succeeded)
-            {
-                // 有关如何启用帐户确认和密码重置的详细信息，请访问 http://go.microsoft.com/fwlink/?LinkID=320771
-                //string code = manager.GenerateEmailConfirmationToken(user.Id);
-                //string callbackUrl = IdentityHelper.GetUserConfirmationRedirectUrl(code, user.Id, Request);
-                //manager.SendEmail(user.Id, "确认你的帐户", "请通过单击 <a href=\"" + callbackUrl + "\">此处 </a> 来确认你的帐户。");
+            MembershipCreateStatus createStatus;
+            Membership.CreateUser(UserName.Text, Password.Text, null, null, null, true, null, out createStatus);
 
-                IdentityHelper.SignIn(manager, user, isPersistent: false);
-                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
-            }
-            else 
+            if (createStatus == MembershipCreateStatus.Success)
             {
-                ErrorMessage.Text = result.Errors.FirstOrDefault();
+                FormsAuthentication.SetAuthCookie(UserName.Text, false /* createPersistentCookie */);
+                Response.Redirect(Request.QueryString["ReturnUrl"], true);
+            }
+            else
+            {
+                ErrorMessage.Text = createStatus.ToString();
             }
         }
     }

@@ -21,46 +21,20 @@ namespace WebApplication1.Account
             private set;
         }
 
-        private bool HasPassword(ApplicationUserManager manager)
-        {
-            return manager.HasPassword(User.Identity.GetUserId());
-        }
-
-        public bool HasPhoneNumber { get; private set; }
-
-        public bool TwoFactorEnabled { get; private set; }
-
-        public bool TwoFactorBrowserRemembered { get; private set; }
 
         public int LoginsCount { get; set; }
 
         protected void Page_Load()
         {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
 
-            HasPhoneNumber = String.IsNullOrEmpty(manager.GetPhoneNumber(User.Identity.GetUserId()));
-
-            // 在设置双重身份验证后启用此功能
-            //PhoneNumber.Text = manager.GetPhoneNumber(User.Identity.GetUserId()) ?? String.Empty;
-
-            TwoFactorEnabled = manager.GetTwoFactorEnabled(User.Identity.GetUserId());
-
-            LoginsCount = manager.GetLogins(User.Identity.GetUserId()).Count;
 
             var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
 
             if (!IsPostBack)
             {
-                // 确定要呈现的节
-                if (HasPassword(manager))
-                {
-                    ChangePassword.Visible = true;
-                }
-                else
-                {
-                    CreatePassword.Visible = true;
-                    ChangePassword.Visible = false;
-                }
+
+                ChangePassword.Visible = true;
+
 
                 // 呈现成功消息
                 var message = Request.QueryString["m"];
@@ -90,39 +64,5 @@ namespace WebApplication1.Account
             }
         }
 
-        // 从用户信息中删除电话号码
-        protected void RemovePhone_Click(object sender, EventArgs e)
-        {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            var result = manager.SetPhoneNumber(User.Identity.GetUserId(), null);
-            if (!result.Succeeded)
-            {
-                return;
-            }
-            var user = manager.FindById(User.Identity.GetUserId());
-            if (user != null)
-            {
-                IdentityHelper.SignIn(manager, user, isPersistent: false);
-                Response.Redirect("/Account/Manage?m=RemovePhoneNumberSuccess");
-            }
-        }
-
-        // DisableTwoFactorAuthentication
-        protected void TwoFactorDisable_Click(object sender, EventArgs e)
-        {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.SetTwoFactorEnabled(User.Identity.GetUserId(), false);
-
-            Response.Redirect("/Account/Manage");
-        }
-
-        //EnableTwoFactorAuthentication 
-        protected void TwoFactorEnable_Click(object sender, EventArgs e)
-        {
-            var manager = Context.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            manager.SetTwoFactorEnabled(User.Identity.GetUserId(), true);
-
-            Response.Redirect("/Account/Manage");
-        }
     }
 }
