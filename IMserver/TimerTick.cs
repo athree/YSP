@@ -14,7 +14,7 @@ namespace IMserver
         private System.Timers.Timer loopevent;    //定时器
         public int counter;                       //提供定时方法的时基计数
         public int cnt;                           //定义计时门限
-        //超出30秒清除发送后等待队列
+        //超出3分钟清除发送后等待队列
         public static int count = 180;            //相应的消息已经存在的时间标签
 
         /// <summary>
