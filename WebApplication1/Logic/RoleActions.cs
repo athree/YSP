@@ -13,16 +13,17 @@ using System.Configuration;
 
 namespace WebApplication1.Logic
 {
-    internal class RoleActions
+    public class RoleActions
     {
-        internal void createRole()
-        {
-            MongoRoleProvider roleProvider = new MongoRoleProvider();
-            NameValueCollection config = new NameValueCollection();
-
+        protected NameValueCollection config;
+        public RoleActions() {
+            config = new NameValueCollection();
             System.Web.Configuration.MembershipSection configSection = (System.Web.Configuration.MembershipSection)ConfigurationManager.GetSection("system.web/membership");
             config.Add(configSection.Providers[0].Parameters);
-
+        }
+        internal void createRole()
+        {
+            MongoRoleProvider roleProvider = new MongoRoleProvider();  
 
             roleProvider.Initialize("MongoMembershipProvider", config);
 
@@ -31,11 +32,8 @@ namespace WebApplication1.Logic
                 roleProvider.CreateRole("Admin");
                 if (!roleProvider.IsUserInRole("admin", "Admin"))
                 {
-                    MongoMembershipProvider membershipProvider = new MongoMembershipProvider();
-                    MembershipCreateStatus createStatus = new MembershipCreateStatus();
-                    membershipProvider.Initialize("MongoMembershipProvider", config);
-                    membershipProvider.CreateUser("admin", "admin123", null, null, null, true, null, out createStatus);
-                    if (createStatus == MembershipCreateStatus.Success)
+                    
+                    if (createUser("admin", "admin123", null))
                     {
                         roleProvider.AddUsersToRoles(new[] { "admin" }, new[] { "Admin" });
                     }
@@ -47,6 +45,25 @@ namespace WebApplication1.Logic
             }
             
             }
+        public bool createUser(string userName,string password,string email)
+        {
+            MongoMembershipProvider membershipProvider = new MongoMembershipProvider();
+            MembershipCreateStatus createStatus = new MembershipCreateStatus();
+            membershipProvider.Initialize("MongoMembershipProvider", config);
+            membershipProvider.CreateUser(userName, password, email, null, null, true, null, out createStatus);
+            if(createStatus==MembershipCreateStatus.Success)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+
+
+
+        }
+      
     }
 

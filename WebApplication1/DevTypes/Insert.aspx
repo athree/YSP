@@ -3,7 +3,7 @@
     <div>
 		<p>&nbsp;</p>
         <asp:FormView runat="server" ID="MyFormView"
-            ItemType="WebApplication1.Models.DevType" DefaultMode="Insert"
+            ItemType="IMserver.Models.DevType" DefaultMode="Insert"
             InsertItemPosition="FirstItem" InsertMethod="InsertItem"
             OnItemCommand="ItemCommand" RenderOuterTable="false">
             <InsertItemTemplate>

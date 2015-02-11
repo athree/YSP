@@ -8,7 +8,7 @@
     <div>
         <asp:ListView id="ListView1" runat="server"
             DataKeyNames="DevID" 
-			ItemType="WebApplication1.Models.DevInfo"
+			ItemType="IMserver.Models.DevInfo"
             SelectMethod="GetData">
             <EmptyDataTemplate>
                 当前无数据！

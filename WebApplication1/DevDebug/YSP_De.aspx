@@ -271,7 +271,7 @@
                                 <%-- 计算参数 xml --%>
                                 <div class="tab-pane fade" id="calParam">
                                     <%-- <asp:FormView runat="server" DefaultMode="ReadOnly"
-                                RenderOuterTable="false" ID="calParaForm" ItemType="WebApplication1.Models.GasFixPara" SelectMethod="GasFixPara_GetItem">
+                                RenderOuterTable="false" ID="calParaForm" ItemType="IMserver.Models.GasFixPara" SelectMethod="GasFixPara_GetItem">
                                 <EmptyDataTemplate>
                                     <p>无数据！</p>
                                 </EmptyDataTemplate>

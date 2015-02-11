@@ -8,6 +8,7 @@ using Owin;
 using IMserver.Models;
 using IMserver;
 using System.Web.Security;
+using WebApplication1.Logic;
 
 namespace WebApplication1.Account
 {
@@ -15,10 +16,9 @@ namespace WebApplication1.Account
     {
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            MembershipCreateStatus createStatus;
-            Membership.CreateUser(UserName.Text, Password.Text, null, null, null, true, null, out createStatus);
-
-            if (createStatus == MembershipCreateStatus.Success)
+            RoleActions roleA=new RoleActions();
+            bool createStatus = roleA.createUser(UserName.Text, Password.Text, null);          
+            if (createStatus)
             {
                 FormsAuthentication.SetAuthCookie(UserName.Text, false /* createPersistentCookie */);
                 Response.Redirect(Request.QueryString["ReturnUrl"], true);
