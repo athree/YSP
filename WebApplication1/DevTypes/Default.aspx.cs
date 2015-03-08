@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using System.Data.Entity;
 using IMserver.DBservice;
-using System.Data.Entity.Validation;
 using IMserver.Models;
 
 namespace WebApplication1.DevTypes

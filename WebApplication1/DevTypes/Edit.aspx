@@ -1,4 +1,4 @@
-﻿<%@ Page Title="修改设备信息" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Edit.aspx.cs" Inherits="WebApplication1.DevTypes.Edit" %>
+﻿<%@ Page Title="修改设备类型" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Edit.aspx.cs" Inherits="WebApplication1.DevTypes.Edit" %>
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div>
 		<p>&nbsp;</p>

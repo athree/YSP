@@ -125,12 +125,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -401,7 +395,9 @@
     <Content Include="TempImages\GaugePic_000021.png" />
     <Content Include="TempImages\GaugePic_000022.png" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -829,6 +825,10 @@
     <ProjectReference Include="..\IMserver\IMserver.csproj">
       <Project>{209e5f3d-eb8e-4507-8805-12c07951e1de}</Project>
       <Name>IMserver</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysLog\SysLog.csproj">
+      <Project>{11b303f2-c141-4eaf-90a2-786ec776c162}</Project>
+      <Name>SysLog</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -1,8 +1,8 @@
-﻿<%@ Page Title="删除设备" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Delete.aspx.cs" Inherits="WebApplication1.DevTypes.Delete" %>
+﻿<%@ Page Title="删除设备类型" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Delete.aspx.cs" Inherits="WebApplication1.DevTypes.Delete" %>
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div>
 		<p>&nbsp;</p>
-        <h3>确定删除该设备？</h3>
+        <h3>确定删除该设备类型？</h3>
         <asp:FormView runat="server"
             ItemType="IMserver.Models.DevType" DataKeyNames="TypeId"
             DeleteMethod="DeleteItem" SelectMethod="GetItem"
@@ -16,7 +16,7 @@
                            
 							<div class="row">
 								<div class="col-sm-2 text-right">
-									<strong>类别</strong>
+									<strong>类型</strong>
 								</div>
 								<div class="col-sm-4">
 									<asp:DynamicControl runat="server" DataField="TypeName" ID="TypeName" Mode="ReadOnly" />
