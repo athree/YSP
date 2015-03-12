@@ -16,8 +16,22 @@
     <script src="../Scripts/My97DatePicker/WdatePicker.js"></script>
     <script src="../Scripts/bootstrap-switch.js"></script>
     <script>
-        $(function () {
+        
+            function load(){ Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler); }
+            function EndRequestHandler() { getCss(); }
+            function getCss() {
+                //开关的生成
+                $("input[type='checkbox']").bootstrapSwitch();
+                $("input[type='radio']").bootstrapSwitch("radioAllOff", true);
 
+                //$(".meny input[type!=submit]").attr("class", "form-control");
+                $(".meny select").width(87).height(21);
+                $(".meny input[type!=submit]").width(87).height(21);
+                $("#kModal input[type='text']").attr("class", "form-control").width(55).height(5);
+            }
+
+            $(function () {
+                    getCss();
             //开关的生成
             $("input[type='checkbox']").bootstrapSwitch();
             $("input[type='radio']").bootstrapSwitch("radioAllOff", true);
@@ -86,7 +100,7 @@
             $('.modal-body input').attr("class", "form-control");
             $(".modal-body input[type='text']").css("height", "28px");
             $("#fixParamModal input[type='text']").css("width", "66px");
-            $("#kModal input[type='text']").attr("class", "form-control").width(55).height(5);;
+            $("#kModal input[type='text']").attr("class", "form-control").width(55).height(5);
             //$(".col-sm-3").width("20%");
             //$("#currentState").height(window.innerHeight*0.3).width(window.innerWidth*0.7);
 
@@ -119,11 +133,12 @@
             })
 
 
+            
 
         })
     </script>
 </head>
-<body>
+<body onload="load()">
     <form runat="server" id="Form1" style="position: absolute; top: 3px">
         <asp:ValidationSummary runat="server" CssClass="alert alert-danger" />
         <asp:ScriptManager runat="server"></asp:ScriptManager>
@@ -2242,6 +2257,10 @@
                                             </td>
                                         </tr>
                                     </table>
+
+
+                                    <%--<asp:TextBox ID="KError" runat="server" CssClass="alert" Width="600px">提示：K1行不能为空,柱修正系数，脱气率修正系数和基准值不能为空.</asp:TextBox>--%>
+
                                     <table style="width: 100%">
                                         <tr>
                                             <td>

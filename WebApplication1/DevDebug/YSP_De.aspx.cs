@@ -163,6 +163,21 @@ namespace WebApplication1.DevDebug
             TextBox[] TB_KX_MaxArea = { TB_K1_MaxArea, TB_K2_MaxArea, TB_K3_MaxArea, TB_K4_MaxArea, TB_K5_MaxArea, TB_K6_MaxArea, TB_K7_MaxArea, TB_K8_MaxArea, TB_K9_MaxArea, TB_K10_MaxArea, TB_K11_MaxArea, TB_K12_MaxArea };
             TextBox[] TB_KX_MinArea = { TB_K1_MinArea, TB_K2_MinArea, TB_K3_MinArea, TB_K4_MinArea, TB_K5_MinArea, TB_K6_MinArea, TB_K7_MinArea, TB_K8_MinArea, TB_K9_MinArea, TB_K10_MinArea, TB_K11_MinArea, TB_K12_MinArea };
             TextBox[] TB_JIZHI = { TB_JIZHI1, TB_JIZHI2, TB_JIZHI3, TB_JIZHI4, TB_JIZHI5, TB_JIZHI6, TB_JIZHI7, TB_JIZHI8, TB_JIZHI9, TB_JIZHI10, TB_JIZHI11, TB_JIZHI12 };
+            //if (TB_K1.Text == "" || TB_MI1.Text == "" || TB_NI1.Text == "" || TB_K1_MaxArea.Text == "" || TB_K1_MinArea.Text == "" || TB_JIZHI1.Text=="")
+            //{
+            //    KError.CssClass = "alert alert-danger";              
+            //    return;
+            //}
+            //for (int i = 0; i < K_NUM; i++)
+            //{
+            //    if (TB_MIX[i].Text == "" || TB_NIX[i].Text == "" || TB_JIZHI[i].Text=="")
+            //    {
+            //        KError.CssClass = "alert alert-danger";
+            //        return;
+
+            //    }
+                    
+            //}
             for (int i = 0; i < K_NUM; i++)
             {
 

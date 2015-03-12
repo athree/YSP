@@ -82,8 +82,8 @@ namespace IMserver
             //shared.hostaddress = IPAddress.Parse("219.244.93.60");
             shared.hostaddress = IPAddress.Parse("219.244.93.125");
 
-            shared.listenfd.Bind(new IPEndPoint(shared.hostaddress, 10001));
-            shared.heartfd.Bind(new IPEndPoint(shared.hostaddress, 9998));
+            shared.listenfd.Bind(new IPEndPoint(shared.hostaddress, 10000));
+            shared.heartfd.Bind(new IPEndPoint(shared.hostaddress, 9999));
 
             //开启心跳包检测线程
             Thread Heartlisten = new Thread(new ThreadStart(HeartBeat.HeartCheck));

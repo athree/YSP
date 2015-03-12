@@ -52,9 +52,9 @@
                         </div>
                     </div>
                 </div>
-                <p>
+               <%-- <p>
                     <asp:HyperLink runat="server" ID="RegisterHyperLink" ViewStateMode="Disabled">注册为新用户</asp:HyperLink>
-                </p>
+                </p>--%>
                 <p>
                     <%-- 在为密码重置功能启用帐户确认后，启用此项
                     <asp:HyperLink runat="server" ID="ForgotPasswordHyperLink" ViewStateMode="Disabled">忘记了密码?</asp:HyperLink>

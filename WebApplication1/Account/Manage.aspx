@@ -20,7 +20,7 @@
                     <dd>
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[更改]" Visible="false" ID="ChangePassword" runat="server" />                       
                     </dd>
-                    </dd>
+                   
                 </dl>
             </div>
         </div>

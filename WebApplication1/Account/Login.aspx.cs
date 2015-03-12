@@ -7,6 +7,7 @@ using Owin;
 using IMserver.Models;
 using IMserver;
 using System.Web.Security;
+using System.Security.Principal;
 
 namespace WebApplication1.Account
 {
@@ -14,15 +15,8 @@ namespace WebApplication1.Account
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            RegisterHyperLink.NavigateUrl = "Register";
-            // 在为密码重置功能启用帐户确认后，启用此项
-            //ForgotPasswordHyperLink.NavigateUrl = "Forgot";
-            //////////OpenAuthLogin.ReturnUrl = Request.QueryString["ReturnUrl"];
-        //////    var returnUrl = HttpUtility.UrlEncode(Request.QueryString["ReturnUrl"]);
-        //////    if (!String.IsNullOrEmpty(returnUrl))
-        //////    {
-        //////        RegisterHyperLink.NavigateUrl += "?ReturnUrl=" + returnUrl;
-        //////    }
+            //RegisterHyperLink.NavigateUrl = "Register";
+            
        }
 
         //protected void LogIn(object sender, EventArgs e)
@@ -40,7 +34,7 @@ namespace WebApplication1.Account
         //        switch (result)
         //        {
         //            case SignInStatus.Success:
-        //                IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                      //IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
         //                break;
         //            case SignInStatus.LockedOut:
         //                Response.Redirect("/Account/Lockout");
@@ -63,12 +57,68 @@ namespace WebApplication1.Account
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(UserName.Text, Password.Text))
+                string username = UserName.Text;
+                string password = Password.Text;
+                bool isPersistent = RememberMe.Checked;
+                if (Membership.ValidateUser(username,password))
                 {
+                    ////WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
+                    ////string[] roles = new string[5];
+                    ////if (windowsIdentity.IsAuthenticated)
+                    ////{
+                    ////    // Add custom NetworkUser role.
+                    ////    roles[0] = "Admin";
+                    ////}
+                    ////if (windowsIdentity.IsGuest)
+                    ////{
+                    ////    // Add custom GuestUser role.
+                    ////    roles[1] = "GuestUser";
+                    ////}
 
-                    FormsAuthentication.SetAuthCookie(UserName.Text, RememberMe.Checked);
+                    ////if (windowsIdentity.IsSystem)
+                    ////{
+                    ////    // Add custom SystemUser role.
+                    ////    roles[2] = "SystemUser";
+                    ////}
 
-                    Response.Redirect(Request.QueryString["ReturnUrl"], true);
+                    //FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), isPersistent, "Admin", FormsAuthentication.FormsCookiePath);
+
+                    //// Encrypt the ticket.
+                    //string encTicket = FormsAuthentication.Encrypt(ticket);
+
+                    ////FormsIdentity fIdentity = new FormsIdentity(ticket);
+
+
+                    //// Create the cookie.
+                    ////Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+
+                    //////string authenticationType = windowsIdentity.AuthenticationType;
+                    //////GenericIdentity genericIdentity = new GenericIdentity(username, authenticationType);
+
+                    ////// Construct a GenericPrincipal object based on the generic identity
+                    ////// and custom roles for the user.
+                    ////GenericPrincipal genericPrincipal = new GenericPrincipal(fIdentity, roles);
+                    ////HttpContext.Current.User = genericPrincipal;
+
+
+
+
+
+
+                    FormsAuthentication.SetAuthCookie(username, isPersistent);
+                    Response.Redirect(FormsAuthentication.GetRedirectUrl(username, isPersistent));
+
+
+                    //string myUrl = Request.QueryString["ReturnUrl"];
+                    //if(myUrl!=null)
+                    //{
+                    //    Response.Redirect(Request.QueryString["ReturnUrl"], true);
+                    //}
+                    //else
+                    //{
+                    //    Response.Redirect("~/Default", true);
+                    //}
+                    
 
                 }
                 else
