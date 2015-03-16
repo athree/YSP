@@ -63,35 +63,19 @@ namespace WebApplication1.Account
                 bool isPersistent = RememberMe.Checked;
                 if (Membership.ValidateUser(username,password))
                 {
-                    ////WindowsIdentity windowsIdentity = WindowsIdentity.GetCurrent();
-                    ////string[] roles = new string[5];
-                    ////if (windowsIdentity.IsAuthenticated)
-                    ////{
-                    ////    // Add custom NetworkUser role.
-                    ////    roles[0] = "Admin";
-                    ////}
-                    ////if (windowsIdentity.IsGuest)
-                    ////{
-                    ////    // Add custom GuestUser role.
-                    ////    roles[1] = "GuestUser";
-                    ////}
 
-                    ////if (windowsIdentity.IsSystem)
-                    ////{
-                    ////    // Add custom SystemUser role.
-                    ////    roles[2] = "SystemUser";
-                    ////}
+                    RoleActions roleAct = new RoleActions();
+                    string roles = roleAct.GetRolesForUser(username);
 
-                    //FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), isPersistent, "Admin", FormsAuthentication.FormsCookiePath);
+                    FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, username, DateTime.Now, DateTime.Now.AddMinutes(30), isPersistent, roles, FormsAuthentication.FormsCookiePath);
 
-                    //// Encrypt the ticket.
-                    //string encTicket = FormsAuthentication.Encrypt(ticket);
-
-                    ////FormsIdentity fIdentity = new FormsIdentity(ticket);
+                    // Encrypt the ticket.
+                    string encTicket = FormsAuthentication.Encrypt(ticket);
 
 
-                    //// Create the cookie.
-                    ////Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+
+                    // Create the cookie.
+                    Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
 
                     //////string authenticationType = windowsIdentity.AuthenticationType;
                     //////GenericIdentity genericIdentity = new GenericIdentity(username, authenticationType);
@@ -102,23 +86,12 @@ namespace WebApplication1.Account
                     ////HttpContext.Current.User = genericPrincipal;
 
 
-                    RoleActions roleAct = new RoleActions();
-                    string roles = roleAct.GetRolesForUser(username);
+                    
                    
-                    FormsAuthentication.SetAuthCookie(username+"|"+roles, isPersistent);
+                    //FormsAuthentication.SetAuthCookie(username+"|"+roles, isPersistent);
                     Response.Redirect(FormsAuthentication.GetRedirectUrl(username, isPersistent));
 
-                    //string myUrl = Request.QueryString["ReturnUrl"];
-                    //if(myUrl!=null)
-                    //{
-                    //    Response.Redirect(Request.QueryString["ReturnUrl"], true);
-                    //}
-                    //else
-                    //{
-                    //    Response.Redirect("~/Default", true);
-                    //}
-                    
-
+                 
                 }
                 else
                 {

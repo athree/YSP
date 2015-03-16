@@ -39,6 +39,9 @@
                 <asp:Label ID="Label2" runat="server" Text='<%# Eval("Username") %>'></asp:Label>
             </td>
             <td>
+                <asp:Label ID="Label3" runat="server" Text='<%# Eval("CreationDate") %>'></asp:Label>
+            </td>
+            <td>
                 <asp:Label ID="Label1" runat="server" Text='<%# Eval("LastLoginDate") %>'></asp:Label>
             </td>
                 <td><asp:LinkButton runat="server" ID="DeleteUser" Text="删除" CommandName="Delete" /></td>

@@ -64,11 +64,16 @@ namespace WebApplication1.Logic
         public string GetRolesForUser(string userName)
         {
             string[] roles=roleProvider.GetRolesForUser(userName);
-            if(roles.Length>1)
+            int strLen=roles.Length;
+            if(strLen==0)
+            {
+                return "";
+            }
+            if(strLen>1)
             {
                 for (int k = 1; k < roles.Length;k++ )
                 {
-                    roles[0] =roles[0]+"|"+ roles[k];
+                    roles[0] =roles[0]+","+ roles[k];
                 }
             }
             return roles[0];

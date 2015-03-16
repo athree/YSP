@@ -33,6 +33,8 @@
                             <asp:RequiredFieldValidator runat="server" ControlToValidate="NewPassword"
                                 CssClass="text-danger" ErrorMessage="“新密码”字段是必填字段。"
                                 ValidationGroup="ChangePassword" />
+                            <asp:RegularExpressionValidator runat="server" ValidationExpression="\w{6,15}" ControlToValidate="NewPassword"
+                    CssClass="text-danger" ErrorMessage="密码为6-15位数字或字母组合！" />
                         </div>
                     </div>
                     <div class="form-group">

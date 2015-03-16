@@ -7,6 +7,7 @@ using WebApplication1.App_Start;
 using System.Timers;
 using System.Diagnostics;
 using SysLog;
+using System.Web.Security;
 
 namespace WebApplication1
 {
@@ -109,5 +110,35 @@ namespace WebApplication1
             DateTime bakT = new DateTime(nextT.Year, nextT.Month, 1, 0, 0, 0);
             timer.Interval = (bakT - currentT).TotalMilliseconds;
         }
+
+
+
+
+        public void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+            //获取当前请求中保存有用户身份票据的Cookie  
+            HttpCookie ticketCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+
+            //如该Cookie不为空，如存在身份票据，解析票据信息，创建用户标识，获取用户角色  
+            if (ticketCookie != null)
+            {
+                //获取用户票据  
+                FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(ticketCookie.Value);
+
+                string[] roles = ticket.UserData.Split(',');
+
+                //创建用户标识  
+                FormsIdentity identity = new FormsIdentity(ticket);
+
+                //创建用户身份主体信息  
+                System.Security.Principal.GenericPrincipal user = new System.Security.Principal.GenericPrincipal(identity, roles);
+
+                //把由用户标识，角色信息组成的户身份主体信息保存在User属性中  
+                HttpContext.Current.User = user;
+            }
+        }    
+    
+    
     }
+
 }

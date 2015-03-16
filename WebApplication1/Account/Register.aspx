@@ -24,6 +24,8 @@
                 <asp:TextBox runat="server" ID="Password" TextMode="Password" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="Password"
                     CssClass="text-danger" ErrorMessage="“密码”字段是必填字段。" />
+                <asp:RegularExpressionValidator runat="server" ValidationExpression="\w{6,15}" ControlToValidate="Password"
+                    CssClass="text-danger" ErrorMessage="密码为6-15位数字或字母组合！" />
             </div>
         </div>
         <div class="form-group">
