@@ -10,6 +10,7 @@ using Microsoft.Owin.Security;
 using Owin;
 using IMserver.Models;
 using IMserver;
+using System.Web.Security;
 
 namespace WebApplication1.Account
 {
@@ -28,7 +29,7 @@ namespace WebApplication1.Account
         {
 
 
-            var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
+            //var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
 
             if (!IsPostBack)
             {
@@ -53,15 +54,18 @@ namespace WebApplication1.Account
                     successMessage.Visible = !String.IsNullOrEmpty(SuccessMessage);
                 }
             }
-        }
+            //if (HttpContext.Current.User.IsInRole("Admin"))
+            //{
+            //    ManageUsers.Visible = true;
+            //}
 
-
-        private void AddErrors(IdentityResult result)
-        {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
+            //private void AddErrors(IdentityResult result)
+            //{
+            //    foreach (var error in result.Errors)
+            //    {
+            //        ModelState.AddModelError("", error);
+            //    }
+            //}
         }
 
     }

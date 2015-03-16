@@ -16,16 +16,16 @@ namespace WebApplication1.Logic
     public class RoleActions
     {
         protected NameValueCollection config;
+        protected MongoRoleProvider roleProvider;
         public RoleActions() {
             config = new NameValueCollection();
             System.Web.Configuration.MembershipSection configSection = (System.Web.Configuration.MembershipSection)ConfigurationManager.GetSection("system.web/membership");
             config.Add(configSection.Providers[0].Parameters);
+            roleProvider = new MongoRoleProvider();
+            roleProvider.Initialize("MongoMembershipProvider", config);
         }
         internal void createRole()
-        {
-            MongoRoleProvider roleProvider = new MongoRoleProvider();  
-
-            roleProvider.Initialize("MongoMembershipProvider", config);
+        {           
 
             if (!roleProvider.RoleExists("Admin"))
             {
@@ -59,6 +59,20 @@ namespace WebApplication1.Logic
             {
                 return false;
             }
+        }
+
+        public string GetRolesForUser(string userName)
+        {
+            string[] roles=roleProvider.GetRolesForUser(userName);
+            if(roles.Length>1)
+            {
+                for (int k = 1; k < roles.Length;k++ )
+                {
+                    roles[0] =roles[0]+"|"+ roles[k];
+                }
+            }
+            return roles[0];
+            
         }
 
 

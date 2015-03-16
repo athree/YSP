@@ -42,9 +42,10 @@ namespace WebApplication1.Account
 
         protected void ChangePassword_Click(object sender, EventArgs e)
         {
+            bool changePasswordSucceeded=false;
             if (IsValid)
             {
-                bool changePasswordSucceeded;
+                
                 try
                 {
                     MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
@@ -55,7 +56,17 @@ namespace WebApplication1.Account
                     changePasswordSucceeded = false;
                 }
             }
+            if (changePasswordSucceeded)
+            {
+                
+                Response.Redirect("~/Account/Manage?m=ChangePwdSuccess");
+            }
+            else
+            {
+                ErrorMsg.Visible = true;
+            }
         }
+
 
 
     }

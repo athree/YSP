@@ -8,6 +8,7 @@ using IMserver.Models;
 using IMserver;
 using System.Web.Security;
 using System.Security.Principal;
+using WebApplication1.Logic;
 
 namespace WebApplication1.Account
 {
@@ -101,13 +102,11 @@ namespace WebApplication1.Account
                     ////HttpContext.Current.User = genericPrincipal;
 
 
-
-
-
-
-                    FormsAuthentication.SetAuthCookie(username, isPersistent);
+                    RoleActions roleAct = new RoleActions();
+                    string roles = roleAct.GetRolesForUser(username);
+                   
+                    FormsAuthentication.SetAuthCookie(username+"|"+roles, isPersistent);
                     Response.Redirect(FormsAuthentication.GetRedirectUrl(username, isPersistent));
-
 
                     //string myUrl = Request.QueryString["ReturnUrl"];
                     //if(myUrl!=null)

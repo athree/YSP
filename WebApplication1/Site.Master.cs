@@ -65,10 +65,22 @@ namespace WebApplication1
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.User.IsInRole("Administrator"))
+            
+            //if (HttpContext.Current.User.IsInRole("Admin"))
+            //{
+            //    ManageUsers.Visible = true;
+            //}
+            string currentUser=HttpContext.Current.User.Identity.Name;
+            if (currentUser != "")
             {
-                ManageUsers.Visible = true;
+                string userRole = currentUser.Split('|')[1];
+                if (userRole == "admin")
+                {
+                    ManageUsers.Visible = true;
+                }
+
             }
+            
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)

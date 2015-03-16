@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="创建新用户" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="WebApplication1.Account.Register" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-    <h2><%: Title %>.</h2>
-    <p class="text-danger">
-        <asp:Literal runat="server" ID="ErrorMessage" />
-    </p>
+    <h2 class="text-info"><%: Title %>.</h2>
+    
 
-    <div class="form-horizontal">
-        <h4>创建新用户</h4>
-        <hr />
+    <div class="form-horizontal">              
+        <h4 class="text-danger">
+        <asp:Literal runat="server" ID="ErrorMessage" />
+       </h4>
+             
         <asp:ValidationSummary runat="server" CssClass="text-danger" />
         <div class="form-group">
             <asp:Label runat="server" AssociatedControlID="UserName" CssClass="col-md-2 control-label">用户名</asp:Label>

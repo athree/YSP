@@ -2,7 +2,7 @@
 
 
 <asp:Content ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
+    <h2 class="text-info"><%: Title %>：</h2>
 
     <div>
         <asp:PlaceHolder runat="server" ID="successMessage" Visible="false" ViewStateMode="Disabled">
@@ -16,11 +16,10 @@
                 <h4>更改你的帐户设置</h4>
                 <hr />
                 <dl class="dl-horizontal">
-                    <dt>密码:</dt>
+                    <dt>密码：</dt>
                     <dd>
                         <asp:HyperLink NavigateUrl="/Account/ManagePassword" Text="[更改]" Visible="false" ID="ChangePassword" runat="server" />                       
-                    </dd>
-                   
+                    </dd>                   
                 </dl>
             </div>
         </div>

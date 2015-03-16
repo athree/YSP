@@ -16,17 +16,24 @@ namespace WebApplication1.Account
     {
         protected void CreateUser_Click(object sender, EventArgs e)
         {
-            RoleActions roleA=new RoleActions();
-            bool createStatus = roleA.createUser(UserName.Text, Password.Text, null);          
-            if (createStatus)
+            string userName = UserName.Text;
+            string password = Password.Text;
+            MembershipUser newUser=null;
+            try
             {
-                FormsAuthentication.SetAuthCookie(UserName.Text, false /* createPersistentCookie */);
-                Response.Redirect(Request.QueryString["ReturnUrl"], true);
+                newUser = Membership.CreateUser(userName, password);
             }
-            else
+            catch(Exception ex)
             {
-                ErrorMessage.Text = createStatus.ToString();
+                ErrorMessage.Text = ex.Message;
+            }     
+            
+               
+            if (newUser!=null)
+            {
+                ErrorMessage.Text = "恭喜， "+userName+"  用户已成功创建！";
             }
+          
         }
     }
 }

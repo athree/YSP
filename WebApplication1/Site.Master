@@ -51,7 +51,7 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">                        
-                        <li><a runat="server" id="ManageUsers" visible="false" href="ApplicationUsers/Default">用户管理</a></li>
+                        <li><a runat="server" id="ManageUsers" visible="false" href="~/Account/ManageUsers">用户管理</a></li>
                         <li><a runat="server" href="~/Map">分布情况</a></li>
                         <li><a runat="server" href="~/DevSites/Default">站点管理</a></li>
                         <li><a runat="server" href="~/DevInfoes/Default">设备管理</a></li>
@@ -68,7 +68,7 @@
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">你好， <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">你好， <%: Context.User.Identity.GetUserName().Split('|')[0]  %> !</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="注销" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
