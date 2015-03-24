@@ -315,10 +315,13 @@
     <Content Include="obj\Debug\edmxResourcesToEmbed\Models\DevModel.msl" />
     <Content Include="obj\Debug\edmxResourcesToEmbed\Models\DevModel.ssdl" />
     <Content Include="obj\Debug\WebApplication1.csprojFakesResolveAssemblyReference.cache" />
+    <Content Include="DevDebug\GetGcVal.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\echarts-all.js" />
+    <Content Include="Scripts\event.js" />
     <Content Include="Scripts\getLocate.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -508,6 +511,9 @@
     </Compile>
     <Compile Include="DevData\YSP.aspx.designer.cs">
       <DependentUpon>YSP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DevDebug\GetGcVal.ashx.cs">
+      <DependentUpon>GetGcVal.ashx</DependentUpon>
     </Compile>
     <Compile Include="DevDebug\YSP_De.aspx.cs">
       <DependentUpon>YSP_De.aspx</DependentUpon>

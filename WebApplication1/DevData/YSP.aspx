@@ -66,8 +66,7 @@
                                </td>
                                <td>
                                     <asp:Button runat="server" CssClass="btn btn-primary" ID="BT_Data" OnClick="BT_Data_Click" Text="提取数据"></asp:Button>  
-                                    <%--<input type="button" runat="server" class="btn btn-primary" id="BT_Data" onclick="BT_Data_Click" value="提取数据"/>--%> 
-                               
+                                   
                                </td>
                            </tr>
                        </table>
