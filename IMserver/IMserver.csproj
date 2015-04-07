@@ -132,7 +132,6 @@
     <Compile Include="Models\SIML.cs" />
     <Compile Include="Models\SimlDefine\SimlDefine.cs" />
     <Compile Include="Models\SimlDefine\StateCtrol.cs" />
-    <Compile Include="MongoHelper.cs" />
     <Compile Include="MSGEncoding.cs" />
     <Compile Include="PreLinkMsg.cs" />
     <Compile Include="PrepareData.cs" />

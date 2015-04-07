@@ -16,7 +16,7 @@ namespace IMserver
 {
     public class HeartBeat
     {
-        public const ushort heartinterval = 30;      //默认的两个心跳包之间的间隔
+        public const ushort heartinterval = 30;      //运行的两个心跳之间的最大间隔
         public const int Head_LEN = 7;              //帧内数据域长度
         public const string _FRAME_HEAD = "XYBUS";              //帧头
         public static byte[] BUS_FLAG = new byte[]        //数据帧头字节数组
@@ -34,7 +34,7 @@ namespace IMserver
         public static int Default_Len = 64;
 
         /// <summary>
-        /// 心跳检测，看和loopback组合
+        /// 概述：心跳检测，看和loopback组合，回射接收到的正确心跳包
         /// </summary>
         public static void HeartCheck()
         {
@@ -57,7 +57,6 @@ namespace IMserver
                         if (8 == temp.Length)
                         {
                             byte temp_id = hb.myid;
-
 
                             //已经存在的设备
                             if (Define.heartcheck.Keys.Contains(temp_id))
@@ -91,7 +90,7 @@ namespace IMserver
                                 stp.Insert(temp_de);
                             }
                             //接收到心跳包，原样返回,是在以上处理完成之后发送
-                            IMServerUDP.shared.heartfd.SendTo(temp, remotecli);
+                            //IMServerUDP.shared.heartfd.SendTo(temp, remotecli);
                         }
                     }
                     catch (Exception ep)

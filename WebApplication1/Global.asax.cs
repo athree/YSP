@@ -6,6 +6,7 @@ using WebApplication1.Logic;
 using WebApplication1.App_Start;
 using System.Timers;
 using System.Diagnostics;
+using SysLog;
 
 namespace WebApplication1
 {
@@ -25,9 +26,15 @@ namespace WebApplication1
             // 在应用程序启动时运行的代码
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //注册通信相关的初始化项目，准备工作
-            CommStart.CommConfig();
-
+            try
+            {
+                //注册通信相关的初始化项目，准备工作
+                CommStart cs = new CommStart();
+            }
+            catch(Exception ep)
+            {
+                LogException(ep);
+            }
          
             //创建管理员角色和用户
             RoleActions roleActions = new RoleActions();
@@ -42,7 +49,7 @@ namespace WebApplication1
             }
             setInterval();
             timer.Elapsed += new ElapsedEventHandler(DataBak);
-            timer.Start();
+            //timer.Start();
 
         }
 
@@ -86,6 +93,18 @@ namespace WebApplication1
             DateTime nextT = currentT.AddMonths(mInterval);
             DateTime bakT = new DateTime(nextT.Year, nextT.Month, 1, 0, 0, 0);
             timer.Interval = (bakT - currentT).TotalMilliseconds;
+        }
+
+        private void LogException(Exception ex)
+        {
+            using (ILog log = new FileLog())
+            {
+                log.Write("Exception from Class: "+this.ToString());
+                log.Write("Exception:" + ex.Message);
+                log.Write(ex.StackTrace);
+                log.Write("时间：" + DateTime.Now.ToString());
+                log.Write("----------------------------------------------------------");
+            }
         }
     }
 }

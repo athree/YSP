@@ -131,6 +131,7 @@ namespace IMserver
         //定时更新计时字典
         public static void UpdateTimer(object source, System.Timers.ElapsedEventArgs e)
         {
+            #region
             //顺序遍历存在问题，要foreach扫描
             //for (int i = 0; i < Define.existime.Count; i++)
             //{
@@ -157,6 +158,7 @@ namespace IMserver
             //        Define.existime[kvp.Key]--;
             //    }
             //}
+            #endregion
             Dictionary<byte, int>.KeyCollection dict_kc = Define.existime.Keys;
             List<byte> removecache = new List<byte>();
             List<byte> updatecache = new List<byte>();

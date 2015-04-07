@@ -26,6 +26,7 @@ namespace IMserver.SubFuncs
         //    return handleunitbytes;
         //}
         #endregion
+
         /// <summary>
         /// 读数据
         /// </summary>

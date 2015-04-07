@@ -12,6 +12,7 @@ namespace IMserver.Data_Warehousing
     {
         /// <summary>
         /// 通信结果入库
+        /// !!!异常
         /// </summary>
         /// <param name="middata">调用此方法入库默认传入的数据字典为请求的完成无误响应</param>
         /// <returns></returns>
@@ -130,18 +131,33 @@ namespace IMserver.Data_Warehousing
                 }
             }
             //rs.TotGas在响应读到可燃气体的时候累加
-            return Warehousing(rs);
+            try
+            {
+                return Warehousing(rs);
+            }
+            catch(Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
 
         /// <summary>
         /// 前台操作入库或者直接类映射入库
+        /// !!!异常
         /// </summary>
         /// <param name="directdata">与数据库集合对应的类</param>
         /// <returns></returns>
         public static bool Warehousing(RunningState directdata)
         {
-            MongoHelper<RunningState> rs = new MongoHelper<RunningState>();
-            return rs.Insert(directdata);
+            try
+            {
+                MongoHelper<RunningState> rs = new MongoHelper<RunningState>();
+                return rs.Insert(directdata);
+            }
+            catch (Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
     }
 }

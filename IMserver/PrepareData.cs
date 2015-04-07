@@ -224,7 +224,7 @@ namespace IMserver
                         break;
                     }
                 //其他（向设备查询Error Code的详细解释）
-                case (byte)MSGEncoding.MsgType.GetErrorInfo:
+                case (byte)MSGEncoding.MsgType.Other:
                     {
                         //向设备查询Error Code的详细解释
                         frame = GetErrorInfo.ExplainError(example.destID, (ushort)data);
@@ -471,7 +471,8 @@ namespace IMserver
                         break;
                     }
                 //其他（向设备查询Error Code的详细解释）
-                case (byte)MSGEncoding.MsgType.GetErrorInfo:
+                //虽然将error code拉到了other中，但是另一个成员只做主动上送不做组包下发
+                case (byte)MSGEncoding.MsgType.Other:
                     {
                         //向设备查询Error Code的详细解释
                         frame = GetErrorInfo.ExplainError(example.destID, (ushort)data);
@@ -636,6 +637,7 @@ namespace IMserver
         {
             //根据destID获取目标主机的IP和port，这里如果发送多个数据需多次跟数据库通信
             //麻烦，所以可以一次性将ip和port读到数据字典
+            //指定终端设备号，通过查询心跳维护的DEVID-IP-PORT字典获取endpoint
             IPEndPoint endpointtemp = Define.id_ip_port[0x01];
             PacketRet pr = Packetization(example, data);
             //加入发送队列

@@ -11,6 +11,12 @@ namespace IMserver.Data_Warehousing
 {
     public class AddConfig
     {
+        /// <summary>
+        /// !!!异常
+        /// </summary>
+        /// <param name="middata"></param>
+        /// <param name="devid"></param>
+        /// <returns></returns>
         public static bool Warehousing(Dictionary<ushort, object> middata, byte devid)
         {
             Config cf = new Config();
@@ -1418,13 +1424,32 @@ namespace IMserver.Data_Warehousing
                         }
                 }
             }
-            return Warehousing(cf);
+            try
+            {
+                return Warehousing(cf);
+            }
+            catch (Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
 
+        /// <summary>
+        /// !!!异常
+        /// </summary>
+        /// <param name="cf"></param>
+        /// <returns></returns>
         public static bool Warehousing(Config cf)
         {
-            MongoHelper<Config> mhas = new MongoHelper<Config>();
-            return mhas.Insert(cf);
+            try
+            {
+                MongoHelper<Config> mhas = new MongoHelper<Config>();
+                return mhas.Insert(cf);
+            }
+            catch (Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
     }
 }

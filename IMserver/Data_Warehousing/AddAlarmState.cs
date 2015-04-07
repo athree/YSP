@@ -12,6 +12,7 @@ namespace IMserver.Data_Warehousing
     {
         /// <summary>
         /// 后台解析到数据字典转换后存入数据库
+        /// ！！！异常
         /// </summary>
         /// <param name="middata"></param>
         /// <param name="devid"></param>
@@ -533,11 +534,19 @@ namespace IMserver.Data_Warehousing
                             }
                 }
             }
-            return Warehousing(als);
+            try
+            {
+                return Warehousing(als);
+            }
+            catch(Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
 
         /// <summary>
         /// 重载，用于web端已准备类的数据操作
+        /// ！！！异常
         /// </summary>
         /// <param name="als"></param>
         /// <returns></returns>

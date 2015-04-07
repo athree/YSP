@@ -97,6 +97,7 @@ namespace IMserver.CommonFuncs
 
         /// <summary>
         /// 计算指定开始位置和长度的数组的CRC
+        /// ！！！异常
         /// </summary>
         /// <param name="buffer">待计算的数组</param>
         /// <param name="index">开始位置</param>
@@ -108,11 +109,17 @@ namespace IMserver.CommonFuncs
             {
                 return 0;
             }
-
-            byte[] temp = new byte[len];
-            //数组拷贝
-            Array.Copy(buffer, index, temp, 0, len);
-            return CalculateCrc16(temp);
+            try
+            {
+                byte[] temp = new byte[len];
+                //数组拷贝
+                Array.Copy(buffer, index, temp, 0, len);
+                return CalculateCrc16(temp);
+            }
+            catch(Exception ep)
+            {
+                throw new Exception("array.copy ："+ep.Message);
+            }
         }
 
         /// <summary>

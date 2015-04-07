@@ -12,13 +12,30 @@ namespace IMserver.CommonFuncs
 {
     public class StrToEP
     {
+        /// <summary>
+        /// 远端终结点类型的字符串形式转换为终结点类
+        /// ！！！异常
+        /// </summary>
+        /// <param name="temp"></param>
+        /// <returns></returns>
         public IPEndPoint trans(string temp)
         {
-            IPAddress IPadr = IPAddress.Parse(temp.Split(':')[0]);
-            IPEndPoint EndPoint = new IPEndPoint(IPadr, int.Parse(temp.Split(':')[1]));
-            return EndPoint;
+            try
+            {
+                IPAddress IPadr = IPAddress.Parse(temp.Split(':')[0]);
+                IPEndPoint EndPoint = new IPEndPoint(IPadr, int.Parse(temp.Split(':')[1]));
+                return EndPoint;
+            }
+            catch(Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
 
+        /// <summary>
+        /// 将设备号到IP与端口的映射提到内存
+        /// ！！！异常
+        /// </summary>
         public StrToEP()
         {
             MongoHelper<DevID_EP> mhde = new MongoHelper<DevID_EP>();

@@ -11,6 +11,7 @@ namespace IMserver.CommonFuncs
         /// <summary>
         /// 结构体类型转换为byte字节数组
         /// 进行类型转换之前需在object和struct之间经alloc转换
+        /// ！！！异常
         /// </summary>
         /// <param name="structobj">要转换的结构体</param>
         /// <returns>返回byte字节数组</returns>
@@ -36,6 +37,7 @@ namespace IMserver.CommonFuncs
         /// <summary>
         /// byte数组转化为指定的结构体
         /// 如果超过指定的长度那么返回错误
+        /// ！！！异常
         /// </summary>
         /// <param name="bytes">要转换的byte字节数组</param>
         /// <param name="type">结构体类型</param>
