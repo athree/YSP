@@ -4,7 +4,7 @@
 		<p>&nbsp;</p>
         <h3>确定删除该设备？</h3>
         <asp:FormView runat="server"
-            ItemType="WebApplication1.Models.DevInfo" DataKeyNames="DevID"
+            ItemType="IMserver.Models.DevInfo" DataKeyNames="DevID"
             DeleteMethod="DeleteItem" SelectMethod="GetItem"
             OnItemCommand="ItemCommand" RenderOuterTable="false">
             <EmptyDataTemplate>

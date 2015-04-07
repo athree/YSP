@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication1.SiteMaster" EnableViewState="false"%>
 
 <!DOCTYPE html>
 
@@ -18,7 +18,7 @@
 </head>
 <body>
     <form runat="server">
-        <asp:ScriptManager runat="server">
+         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--若要了解有关在 ScriptManager 中绑定脚本的详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--框架脚本--%>
@@ -51,11 +51,11 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">                        
-                        <li><a runat="server" id="ManageUsers" visible="false" href="ApplicationUsers/Default">用户管理</a></li>
+                        <li><a runat="server" id="ManageUsers" visible="false" href="~/Account/ManageUsers">用户管理</a></li>
                         <li><a runat="server" href="~/Map">分布情况</a></li>
                         <li><a runat="server" href="~/DevSites/Default">站点管理</a></li>
                         <li><a runat="server" href="~/DevInfoes/Default">设备管理</a></li>
-                        <li><a runat="server" href="~/DevTypes/Default">设备类别</a></li>
+                        <li><a runat="server" href="~/DevTypes/Default">设备类型</a></li>
                         <li><a runat="server" href="~/">运行日志</a></li>
                         <li><a runat="server" href="~/About">关于</a></li>
                         <li><a runat="server" href="~/Contact">联系方式</a></li>
@@ -63,13 +63,12 @@
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <%--<li><a runat="server" href="~/Account/Register">注册</a></li>--%>
                                 <li><a runat="server" href="~/account/login">登录</a></li>
                             </ul>
                         </AnonymousTemplate>
                         <LoggedInTemplate>
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">你好， <%: Context.User.Identity.GetUserName()  %> !</a></li>
+                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">你好， <%: Context.User.Identity.GetUserName().Split('|')[0]  %> !</a></li>
                                 <li>
                                     <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="注销" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
                                 </li>
@@ -88,6 +87,7 @@
                 <p>&copy; <%: DateTime.Now.Year %> - 远程调试系统</p>
             </footer>
         </div>
+       
     </form>
 </body>
 </html>

@@ -19,7 +19,7 @@ namespace IMserver.Models
         public string DevID { get; set; }
         public DateTime Time_Stamp { get; set; }  //时间戳
 
-        //状态/控制信息
+        //状态/控制信息  ,需要传输
         public StateCtrol SC{ get; set; }
 
         // 诊断分析

@@ -4,7 +4,7 @@
 		<p>&nbsp;</p>
         <h3>确定删除该站点？</h3>
         <asp:FormView runat="server"
-            ItemType="WebApplication1.Models.DevSite" DataKeyNames="LocateID"
+            ItemType="IMserver.Models.DevSite" DataKeyNames="LocateID"
             DeleteMethod="DeleteItem" SelectMethod="GetItem"
             OnItemCommand="ItemCommand" RenderOuterTable="false">
             <EmptyDataTemplate>

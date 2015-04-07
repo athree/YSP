@@ -3,7 +3,7 @@
     <div>
 		<p>&nbsp;</p>
         <asp:FormView runat="server" ID="MyFormView"
-            ItemType="WebApplication1.Models.DevInfo" DefaultMode="Insert"
+            ItemType="IMserver.Models.DevInfo" DefaultMode="Insert"
             InsertItemPosition="FirstItem" InsertMethod="InsertItem"
             OnItemCommand="ItemCommand" RenderOuterTable="false">
             <InsertItemTemplate>
@@ -16,7 +16,7 @@
                     <div class="form-group">
                         <asp:Label runat="server" CssClass="col-sm-2 control-label">设备类型</asp:Label>
                             <div class="col-sm-3">
-                                <asp:DropDownList runat="server" ID="MyDevType" SelectMethod="GetDevType" ItemType="WebApplication1.Models.DevType" DataTextField="TypeName" DataValueField="TypeName" CssClass="form-control DDDropDownList"/>
+                                <asp:DropDownList runat="server" ID="MyDevType" SelectMethod="GetDevType" ItemType="IMserver.Models.DevType" DataTextField="TypeName" DataValueField="TypeName" CssClass="form-control DDDropDownList"/>
                             </div>
 
                     </div>
@@ -24,7 +24,7 @@
                     <div class="form-group">
                     <asp:Label runat="server" CssClass="col-sm-2 control-label">单位名称</asp:Label>
                     <div class="col-sm-3">
-                    <asp:DropDownList runat="server" ID="MyCompName" SelectMethod="GetDevSite" ItemType="WebApplication1.Models.DevSite" DataTextField="CompName" DataValueField="CompName" CssClass="form-control DDDropDownList" />	
+                    <asp:DropDownList runat="server" ID="MyCompName" SelectMethod="GetDevSite" ItemType="IMserver.Models.DevSite" DataTextField="CompName" DataValueField="CompName" CssClass="form-control DDDropDownList" />	
 					</div>
                     </div>      
                     <asp:DynamicControl Mode="Insert" DataField="GPRSID" runat="server"/>              

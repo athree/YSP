@@ -3,7 +3,7 @@
     <div>
 		<p>&nbsp;</p>
         <asp:FormView runat="server"
-            ItemType="WebApplication1.Models.DevSite" DefaultMode="Edit" DataKeyNames="LocateID"
+            ItemType="IMserver.Models.DevSite" DefaultMode="Edit" DataKeyNames="LocateID"
             UpdateMethod="UpdateItem" SelectMethod="GetItem"
             OnItemCommand="ItemCommand" RenderOuterTable="false">
             <EmptyDataTemplate>

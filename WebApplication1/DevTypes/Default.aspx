@@ -1,14 +1,14 @@
-﻿<%@ Page Title="设备列表" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.DevTypes.Default" %>
+﻿<%@ Page Title="设备类型" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Default.aspx.cs" Inherits="WebApplication1.DevTypes.Default" %>
 <%@ Register TagPrefix="FriendlyUrls" Namespace="Microsoft.AspNet.FriendlyUrls" %>
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <h2 class="text-info"><%:Title %></h2>
     <p>
-        <asp:HyperLink runat="server" NavigateUrl="Insert" Text="添加新类别" />
+        <asp:HyperLink runat="server" NavigateUrl="Insert" Text="添加新类型" />
     </p>
     <div>
         <asp:ListView id="ListView1" runat="server"
             DataKeyNames="TypeID" 
-			ItemType="WebApplication1.Models.DevType"
+			ItemType="IMserver.Models.DevType"
             SelectMethod="GetData">
             <EmptyDataTemplate>
                 当前无数据！
@@ -19,10 +19,10 @@
                         <tr class="warning">
                             
                             <th>
-								<asp:LinkButton Text="设备类别" CommandName="Sort" CommandArgument="Type" runat="Server" />
+								<asp:LinkButton Text="设备类型" CommandName="Sort" CommandArgument="Type" runat="Server" />
 							</th>
                            
-                            <th>&nbsp;</th>
+                            <th>操作</th>
                         </tr>
                     </thead>
                     <tbody>

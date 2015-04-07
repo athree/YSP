@@ -3,6 +3,7 @@
      <p>备份路径：D:\data\backup</p>
     <span>当前自动备份间隔：</span>
     <asp:Label runat="server" ID="LB_mIn"></asp:Label>
+    <span>个月</span>
     <div>       
         <span>修改备份间隔：</span>
     <asp:DropDownList runat="server" ID="DD_BakInter">

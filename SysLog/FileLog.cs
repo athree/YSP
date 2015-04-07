@@ -26,6 +26,7 @@ namespace SysLog
     {
         private string _filePath;
         private StreamWriter _sw;
+        private StreamReader _sr;
 
         public FileLog()
         {
@@ -50,9 +51,25 @@ namespace SysLog
             _sw = new StreamWriter(_filePath, true, Encoding.Default);
         }
 
+        public FileLog(string path)
+        {
+            _filePath = path;            
+           
+        }
+
         public void Write(string str)
         {
+            _sw = new StreamWriter(_filePath, false, Encoding.Default);
             _sw.WriteLine(str);
+        }
+      
+        public string Read()
+        {
+            FileStream fs = File.Open(_filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);          
+            _sr = new StreamReader(fs, System.Text.Encoding.Default);
+            string fileContent = _sr.ReadToEnd();
+            _sr.Dispose();
+            return fileContent;
         }
 
         public void Dispose()

@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using IMserver.DBservice;
+﻿using IMserver.DBservice;
 using IMserver.Models;
 using IMserver.Models.SimlDefine;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.UI.WebControls;
 
 
 namespace WebApplication1.DevDebug
@@ -20,6 +16,8 @@ namespace WebApplication1.DevDebug
         protected Config myCfg;
         protected StateCtrol mySC;
         protected string devId;
+        protected Dictionary<string,string> gcVal=new Dictionary<string,string>();
+        protected Dictionary<string, bool> swVal = new Dictionary<string, bool>();
 
         #region InitLabel
         public static string Device = Language.Selected["Device"];
@@ -63,6 +61,7 @@ namespace WebApplication1.DevDebug
 
         #endregion
 
+       
       
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -77,6 +76,12 @@ namespace WebApplication1.DevDebug
                 if (Session["DevName"] != null)
                     ViewState["DevName"] = Session["DevName"].ToString();
                 initControl();
+                /////////////////测试用
+                gcVal.Add("12", "55");
+                if (gcVal.Count > 0)
+                    Session["gcVal"]=gcVal;
+                if(swVal.Count>0)
+                    Session["swVal"] = swVal;
             }
             //获得传过来的设备编号,,,,测试直接用11
             //devId = ViewState["DevID"].ToString();
@@ -92,13 +97,9 @@ namespace WebApplication1.DevDebug
         {
            
                      
-                    FillSysSet();
-                   
-                    FillAnalyPara();
-                                     
-                    FillCtrlParam();                  
-
-                    
+                    FillSysSet();                   
+                    FillAnalyPara();                                     
+                    FillCtrlParam(); 
                     FillStateCtrol();
 
 
@@ -163,6 +164,7 @@ namespace WebApplication1.DevDebug
             TextBox[] TB_KX_MaxArea = { TB_K1_MaxArea, TB_K2_MaxArea, TB_K3_MaxArea, TB_K4_MaxArea, TB_K5_MaxArea, TB_K6_MaxArea, TB_K7_MaxArea, TB_K8_MaxArea, TB_K9_MaxArea, TB_K10_MaxArea, TB_K11_MaxArea, TB_K12_MaxArea };
             TextBox[] TB_KX_MinArea = { TB_K1_MinArea, TB_K2_MinArea, TB_K3_MinArea, TB_K4_MinArea, TB_K5_MinArea, TB_K6_MinArea, TB_K7_MinArea, TB_K8_MinArea, TB_K9_MinArea, TB_K10_MinArea, TB_K11_MinArea, TB_K12_MinArea };
             TextBox[] TB_JIZHI = { TB_JIZHI1, TB_JIZHI2, TB_JIZHI3, TB_JIZHI4, TB_JIZHI5, TB_JIZHI6, TB_JIZHI7, TB_JIZHI8, TB_JIZHI9, TB_JIZHI10, TB_JIZHI11, TB_JIZHI12 };
+           
             for (int i = 0; i < K_NUM; i++)
             {
 
@@ -955,8 +957,11 @@ namespace WebApplication1.DevDebug
                 if (mySC.ZhenKongSC != null)
                 {
                     LB_11.Text = mySC.ZhenKongSC.VacuPres.ToString();
+                    gcVal.Add("11", LB_11.Text);
                     LB_12.Text = mySC.ZhenKongSC.QiBengPres.ToString();
+                    gcVal.Add("12", LB_12.Text);
                     LB_13.Text = mySC.ZhenKongSC.OilPres.ToString();
+                    gcVal.Add("13", LB_13.Text);
                     LB_14.Text = mySC.ZhenKongSC.YouBeiLevel.ToString();
                     LB_15.Text = mySC.ZhenKongSC.QiBeiLevel.ToString();
                     LB_16.Text = mySC.ZhenKongSC.QiGangForw.ToString();
@@ -967,18 +972,29 @@ namespace WebApplication1.DevDebug
 
                     SW_21.Checked = mySC.ZhenKongSC.OilPump == '0' ? false : true;
                     TB_22.Text = mySC.ZhenKongSC.OilPumpRoV.ToString();
+                    gcVal.Add("22", TB_22.Text);
                     SW_23.Checked = mySC.ZhenKongSC.OilValve == '0' ? false : true;
+                    swVal.Add("23", SW_23.Checked);
                     SW_24.Checked = mySC.ZhenKongSC.YV10 == '0' ? false : true;
+                    swVal.Add("24", SW_24.Checked);
                     SW_25.Checked = mySC.ZhenKongSC.YV11 == '0' ? false : true;
+                    swVal.Add("25", SW_25.Checked);
                     SW_26.Checked = mySC.ZhenKongSC.YV12 == '0' ? false : true;
+                    swVal.Add("26", SW_26.Checked);
                     SW_27.Checked = mySC.ZhenKongSC.YV14 == '0' ? false : true;
+                    swVal.Add("27", SW_27.Checked);
                     SW_28.Checked = mySC.ZhenKongSC.YV15 == '0' ? false : true;
+                    swVal.Add("28", SW_28.Checked);
 
                     SW_33.Checked = mySC.ZhenKongSC.QiBeng == '0' ? false : true;
                     SW_29.Checked = mySC.ZhenKongSC.YV4 == '0' ? false : true;
+                    swVal.Add("29", SW_29.Checked);
                     SW_30.Checked = mySC.ZhenKongSC.YV5 == '0' ? false : true;
+                    swVal.Add("30", SW_30.Checked);
                     SW_31.Checked = mySC.ZhenKongSC.YV6 == '0' ? false : true;
+                    swVal.Add("31", SW_31.Checked);
                     SW_32.Checked = mySC.ZhenKongSC.YV7 == '0' ? false : true;
+                    swVal.Add("32", SW_32.Checked);
                 }
                 if (mySC.DingKongSC != null)
                 {
@@ -992,19 +1008,28 @@ namespace WebApplication1.DevDebug
                 {
                     SW_59.Checked = mySC.JCFZSC.LengJingSwitch == '0' ? false : true;
                     SW_60.Checked = mySC.JCFZSC.SensorRoomCooler == '0' ? false : true;
+                    swVal.Add("60", SW_60.Checked);
                     LB_62.Text = mySC.JCFZSC.SensorRoomT.ToString();
+                    gcVal.Add("62", LB_62.Text);
                     LB_63.Text = mySC.JCFZSC.LengJingT.ToString();
+                    gcVal.Add("63", LB_63.Text);
                     LB_64.Text = mySC.JCFZSC.SePuZhuT.ToString();
+                    gcVal.Add("64", LB_64.Text);
                 }
                 if (mySC.OutSideSC != null)
                 {
                     LB_87.Text = mySC.OutSideSC.OilTemprature.ToString();
+                    gcVal.Add("87", LB_87.Text);
                     LB_88.Text = mySC.OutSideSC.Temprature_In.ToString();
+                    gcVal.Add("88", LB_88.Text);
                     LB_89.Text = mySC.OutSideSC.Temprature_Out.ToString();
+                    gcVal.Add("89", LB_89.Text);
                     LB_96.Text = mySC.OutSideSC.BanReDaiT.ToString();
+                    gcVal.Add("96", LB_96.Text);
 
                     SW_92.Checked = mySC.OutSideSC.QiBengSwitch == '0' ? false : true;
                     SW_93.Checked = mySC.OutSideSC.AirControlSwitch == '0' ? false : true;
+                    swVal.Add("93", SW_93.Checked);
                     SW_94.Checked = mySC.OutSideSC.BanReDaiStart == '0' ? false : true;
                     SW_95.Checked = mySC.OutSideSC.DrainSwitch == '0' ? false : true;
 
@@ -1013,16 +1038,21 @@ namespace WebApplication1.DevDebug
                 {
                     SW_133.Checked = mySC.SampSC.StandardStart == '0' ? false : true;
                     SW_134.Checked = mySC.SampSC.SampleStart == '0' ? false : true;
+                    swVal.Add("134", SW_134.Checked);
 
                     TB_135.Text = mySC.SampSC.NextSampleTime.ToString();
                     TB_136.Text = mySC.SampSC.SampleInterval.ToString();
                     TB_145.Text = mySC.SampSC.GasPressure.ToString();
+                    gcVal.Add("12", TB_145.Text);
                     SW_138.Checked = mySC.SampSC.SixGaxStart == '0' ? false : true;
+                    swVal.Add("138", SW_138.Checked);
                     SW_139.Checked = mySC.SampSC.H2oHeatStart == '0' ? false : true;
                     SW_140.Checked = mySC.SampSC.H2oStart == '0' ? false : true;
                     SW_141.Checked = mySC.SampSC.DingLiangStart == '0' ? false : true;
                     SW_142.Checked = mySC.SampSC.ChuiSaoStart == '0' ? false : true;
+                    swVal.Add("142", SW_142.Checked);
                     SW_143.Checked = mySC.SampSC.CO2ChangeStart == '0' ? false : true;
+                    swVal.Add("143", SW_143.Checked);
                     SW_144.Checked = mySC.SampSC.ChuiQiStart == '0' ? false : true;
 
                 }

@@ -32,7 +32,7 @@
 
                     </div>
                         <div class="modal-body">
-                             <asp:FormView runat="server" ItemType="WebApplication1.Models.DevSite" DefaultMode="Insert"
+                             <asp:FormView runat="server" ItemType="IMserver.Models.DevSite" DefaultMode="Insert"
                                  InsertItemPosition="FirstItem" InsertMethod="InsertItem"
                                  OnItemCommand="ItemCommand" RenderOuterTable="false">
                                  <InsertItemTemplate>

@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Security.Principal;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -49,34 +46,35 @@ namespace WebApplication1
 
         protected void master_Page_PreLoad(object sender, EventArgs e)
         {
-            if (!IsPostBack)
-            {
-                // 设置 Anti-XSRF 令牌
-                ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey;
-                ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
-            }
-            else
-            {
-                // 验证 Anti-XSRF 令牌
-                if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
-                    || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
-                {
-                    throw new InvalidOperationException("Anti-XSRF 令牌验证失败。");
-                }
-            }
+            //if (!IsPostBack)
+            //{
+            //    // 设置 Anti-XSRF 令牌
+            //    ViewState[AntiXsrfTokenKey] = Page.ViewStateUserKey;
+            //    ViewState[AntiXsrfUserNameKey] = Context.User.Identity.Name ?? String.Empty;
+            //}
+            //else
+            //{
+            //    // 验证 Anti-XSRF 令牌
+            //    if ((string)ViewState[AntiXsrfTokenKey] != _antiXsrfTokenValue
+            //        || (string)ViewState[AntiXsrfUserNameKey] != (Context.User.Identity.Name ?? String.Empty))
+            //    {
+            //        throw new InvalidOperationException("Anti-XSRF 令牌验证失败。");
+            //    }
+            //}
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (HttpContext.Current.User.IsInRole("Administrator"))
+            if (HttpContext.Current.User.IsInRole("Admin"))
             {
                 ManageUsers.Visible = true;
-            }
+            }         
+            
         }
 
         protected void Unnamed_LoggingOut(object sender, LoginCancelEventArgs e)
         {
-            Context.GetOwinContext().Authentication.SignOut();
+            FormsAuthentication.SignOut();
         }
     }
 

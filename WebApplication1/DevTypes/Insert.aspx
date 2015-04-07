@@ -1,9 +1,9 @@
-﻿<%@ Page Title="添加设备" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Insert.aspx.cs" Inherits="WebApplication1.DevTypes.Insert" %>
+﻿<%@ Page Title="添加设备类型" Language="C#" MasterPageFile="~/Site.Master" CodeBehind="Insert.aspx.cs" Inherits="WebApplication1.DevTypes.Insert" %>
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <div>
 		<p>&nbsp;</p>
         <asp:FormView runat="server" ID="MyFormView"
-            ItemType="WebApplication1.Models.DevType" DefaultMode="Insert"
+            ItemType="IMserver.Models.DevType" DefaultMode="Insert"
             InsertItemPosition="FirstItem" InsertMethod="InsertItem"
             OnItemCommand="ItemCommand" RenderOuterTable="false">
             <InsertItemTemplate>

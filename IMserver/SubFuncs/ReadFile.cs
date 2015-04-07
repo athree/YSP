@@ -229,7 +229,7 @@ namespace IMserver.SubFuncs
                             {
                                 //不论存在还是不存在都使用create模式，如果文件存在那么就直接覆盖
                                 string filename = sender.filename.ToString();
-                                string path = "d:\\ "+filename+".txt";
+                                string path = "d:\\data\\ "+filename+".txt";
                                 //如果指定位置已经存在该文件
                                 if (File.Exists(path))
                                 {

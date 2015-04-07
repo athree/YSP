@@ -53,6 +53,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MongoDB.Driver.dll</HintPath>
     </Reference>
+    <Reference Include="MongoMembership">
+      <HintPath>..\packages\MongoMembership.0.1.0\lib\MongoMembership.dll</HintPath>
+    </Reference>
     <Reference Include="MWArray, Version=2.14.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\new\MWArray.dll</HintPath>
@@ -122,12 +125,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -172,6 +169,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Account\ManageUsers.aspx" />
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Antlr3.Runtime.pdb" />
     <Content Include="bin\AspNet.ScriptManager.bootstrap.dll" />
@@ -251,8 +249,6 @@
     <Content Include="Account\Manage.aspx" />
     <Content Include="Account\ManagePassword.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Account\ResetPassword.aspx" />
-    <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="DevData\GIS.aspx" />
@@ -319,10 +315,13 @@
     <Content Include="obj\Debug\edmxResourcesToEmbed\Models\DevModel.msl" />
     <Content Include="obj\Debug\edmxResourcesToEmbed\Models\DevModel.ssdl" />
     <Content Include="obj\Debug\WebApplication1.csprojFakesResolveAssemblyReference.cache" />
+    <Content Include="DevDebug\GetGcVal.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\echarts-all.js" />
+    <Content Include="Scripts\event.js" />
     <Content Include="Scripts\getLocate.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -400,7 +399,9 @@
     <Content Include="TempImages\GaugePic_000021.png" />
     <Content Include="TempImages\GaugePic_000022.png" />
     <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Bundle.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
@@ -413,6 +414,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Account\ManageUsers.aspx.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ManageUsers.aspx.designer.cs">
+      <DependentUpon>ManageUsers.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\CommStart.cs" />
     <Compile Include="Data\DataBak.aspx.cs">
       <DependentUpon>DataBak.aspx</DependentUpon>
@@ -455,20 +463,6 @@
     </Compile>
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\ResetPassword.aspx.cs">
-      <DependentUpon>ResetPassword.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\ResetPassword.aspx.designer.cs">
-      <DependentUpon>ResetPassword.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Account\ResetPasswordConfirmation.aspx.cs">
-      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Account\ResetPasswordConfirmation.aspx.designer.cs">
-      <DependentUpon>ResetPasswordConfirmation.aspx</DependentUpon>
     </Compile>
     <Compile Include="addMyMarkers.ashx.cs">
       <DependentUpon>addMyMarkers.ashx</DependentUpon>
@@ -517,6 +511,9 @@
     </Compile>
     <Compile Include="DevData\YSP.aspx.designer.cs">
       <DependentUpon>YSP.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DevDebug\GetGcVal.ashx.cs">
+      <DependentUpon>GetGcVal.ashx</DependentUpon>
     </Compile>
     <Compile Include="DevDebug\YSP_De.aspx.cs">
       <DependentUpon>YSP_De.aspx</DependentUpon>

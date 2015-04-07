@@ -127,8 +127,6 @@
     <Compile Include="Models\DevType.cs" />
     <Compile Include="Models\DevID_EP.cs" />
     <Compile Include="Models\RunningState.cs" />
-    <Compile Include="Models\IdentityConfig.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\SIML.cs" />
     <Compile Include="Models\SimlDefine\SimlDefine.cs" />
     <Compile Include="Models\SimlDefine\StateCtrol.cs" />
