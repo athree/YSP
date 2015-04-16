@@ -30,7 +30,8 @@ namespace WebApplication1
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //注册通信相关的初始化项目，准备工作
-            CommStart.CommConfig();
+
+            CommStart cd = new CommStart() ;
 
          
             //创建管理员角色和用户

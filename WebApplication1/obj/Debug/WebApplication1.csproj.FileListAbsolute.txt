@@ -527,3 +527,9 @@ E:\Git\YSP\WebApplication1\bin\zh-Hans\Microsoft.Owin.resources.dll
 E:\Git\YSP\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
 E:\Git\YSP\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
 E:\Git\YSP\WebApplication1\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\MongoMembership.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\SysLog.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\EntityFramework.dll
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\SysLog.pdb
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\MongoMembership.pdb
+C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.QualityTools.Testing.Fakes.resources.dll

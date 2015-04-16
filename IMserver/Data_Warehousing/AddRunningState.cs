@@ -10,13 +10,7 @@ namespace IMserver.Data_Warehousing
 {
     public class AddRunningState
     {
-        /// <summary>
-        /// 通信结果入库
-        /// !!!异常
-        /// </summary>
-        /// <param name="middata">调用此方法入库默认传入的数据字典为请求的完成无误响应</param>
-        /// <returns></returns>
-        public static bool Warehousing(Dictionary<ushort , object> middata , byte devid)
+        public static RunningState Dict2Class(Dictionary<ushort, object> middata, byte devid)
         {
             RunningState rs = new RunningState();
 
@@ -24,7 +18,7 @@ namespace IMserver.Data_Warehousing
             rs.ReadDate = DateTime.Now;
 
             //为了避免不足一个类的数据字典来填充，这里使用switch-case语法，兼容直接的类成员罗列赋值
-            foreach(KeyValuePair<ushort , object> kvp in middata)
+            foreach (KeyValuePair<ushort, object> kvp in middata)
             {
                 switch (kvp.Key)
                 {
@@ -130,6 +124,17 @@ namespace IMserver.Data_Warehousing
                         }
                 }
             }
+            return rs;
+        }
+        /// <summary>
+        /// 通信结果入库
+        /// !!!异常
+        /// </summary>
+        /// <param name="middata">调用此方法入库默认传入的数据字典为请求的完成无误响应</param>
+        /// <returns></returns>
+        public static bool Warehousing(Dictionary<ushort , object> middata , byte devid)
+        {
+            RunningState rs = Dict2Class(middata , devid);
             //rs.TotGas在响应读到可燃气体的时候累加
             try
             {
