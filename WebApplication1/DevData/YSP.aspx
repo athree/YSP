@@ -52,16 +52,16 @@
                            <tr>
                                <td >
                                    
-                                   <asp:DropDownList runat="server" width="110px">
+                                   <asp:DropDownList runat="server" width="110px" ID="AlarmList">
                             </asp:DropDownList>
                                </td>
                                <td>
-                                    <asp:TextBox runat="server" onFocus="WdatePicker({isShowClear:false})" ID="TB_Time" CssClass="col-sm-8">                  
+                                    <asp:TextBox runat="server" onFocus="WdatePicker({isShowClear:false})" ID="BeginTime" CssClass="col-sm-8">                  
                                         </asp:TextBox>
                                </td>
                                <td>
                                   
-                        <asp:TextBox runat="server" onFocus="WdatePicker({isShowClear:false})" ID="TextBox1" CssClass="col-sm-8">                  
+                                    <asp:TextBox runat="server" onFocus="WdatePicker({isShowClear:false})" ID="EndTime" CssClass="col-sm-8">                  
                                         </asp:TextBox>
                                </td>
                                <td>

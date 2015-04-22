@@ -11,6 +11,7 @@ namespace IMserver.SubFuncs
         /// <summary>
         /// LoopBack测试一般只会用在文件传输上，指定的文件的内容通过CRC校验可以确保是否一样
         /// 无须按字节对比，或者equal  还是字节对比快
+        /// WCF：并非测试通信宽度，测试指定长度的通信状况
         /// </summary>
         /// <param name="destid"></param>
         /// <param name="testlen"></param>
@@ -39,14 +40,24 @@ namespace IMserver.SubFuncs
         /// <returns></returns>
         public static byte[] GetData(ushort testlen)
         {
-            byte[] tempdata;
-            List<byte> _tempdata = new List<byte>();
-            //循环为指定长度的数据域添加对256（一个字节表示）的余数
+            byte[] tempdata = new byte[testlen];
+
+            //生成随机数
+            Random r = new Random();
             for (int i = 0; i < testlen; i++)
             {
-                _tempdata.Add((byte)(i%256));
+                tempdata[i] = new byte();
+                tempdata[i] = (byte)r.Next();
             }
-            tempdata = _tempdata.ToArray<byte>();
+
+            //循环为指定长度的数据域添加对256（一个字节表示）的余数
+            //List<byte> _tempdata = new List<byte>();
+            //for (int i = 0; i < testlen; i++)
+            //{
+            //    _tempdata.Add((byte)(i % 256));
+            //}
+            //tempdata = _tempdata.ToArray<byte>();
+
             return tempdata;
         }
 

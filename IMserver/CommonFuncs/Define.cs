@@ -154,17 +154,24 @@ namespace IMserver.CommonFuncs
         //提交消息计时表
         //public static Hashtable existime = new Hashtable();
 
+        //发送数据包的计时对
         public static volatile Dictionary<byte, int> existime = new Dictionary<byte, int>();
+
         //超时的未响应队列
         public static volatile Queue<Define.SendQueueItem> send_queue_timeout = new Queue<SendQueueItem>();
+
         //远端终结点的链表集合，方便使用select扫描（在RecvMsg中）
         public static volatile List<EndPoint> endpointlist = new List<EndPoint>();
+
         //编号和发送摘要缓存
         public static volatile Hashtable index_obj = new Hashtable();
+
         //编号和数据包附加描述信息
         public static volatile Hashtable index_com = new Hashtable();
+
         //用于记录终端发送心跳包的时间
         public static volatile Dictionary<byte, ushort> heartcheck = new Dictionary<byte, ushort>();
+
         //用于记录设备ID到IP和端口的查询字典
         public static volatile Dictionary<byte, IPEndPoint> id_ip_port = new Dictionary<byte, IPEndPoint>();
     }

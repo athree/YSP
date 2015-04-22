@@ -220,6 +220,15 @@ namespace WebApplication1.DevDebug {
         protected global::System.Web.UI.WebControls.TextBox TextBox64;
         
         /// <summary>
+        /// H2K 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button H2K;
+        
+        /// <summary>
         /// TextBox2 控件。
         /// </summary>
         /// <remarks>
@@ -290,6 +299,15 @@ namespace WebApplication1.DevDebug {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox65;
+        
+        /// <summary>
+        /// COK 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button COK;
         
         /// <summary>
         /// TextBox3 控件。
@@ -364,6 +382,15 @@ namespace WebApplication1.DevDebug {
         protected global::System.Web.UI.WebControls.TextBox TextBox66;
         
         /// <summary>
+        /// CH4K 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CH4K;
+        
+        /// <summary>
         /// TextBox4 控件。
         /// </summary>
         /// <remarks>
@@ -434,6 +461,15 @@ namespace WebApplication1.DevDebug {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox67;
+        
+        /// <summary>
+        /// C2H2K 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button C2H2K;
         
         /// <summary>
         /// TextBox5 控件。
@@ -508,6 +544,15 @@ namespace WebApplication1.DevDebug {
         protected global::System.Web.UI.WebControls.TextBox TextBox68;
         
         /// <summary>
+        /// C2H4K 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button C2H4K;
+        
+        /// <summary>
         /// TextBox6 控件。
         /// </summary>
         /// <remarks>
@@ -580,6 +625,15 @@ namespace WebApplication1.DevDebug {
         protected global::System.Web.UI.WebControls.TextBox TextBox69;
         
         /// <summary>
+        /// C2H6K 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button C2H6K;
+        
+        /// <summary>
         /// TextBox14 控件。
         /// </summary>
         /// <remarks>
@@ -650,6 +704,15 @@ namespace WebApplication1.DevDebug {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TextBox70;
+        
+        /// <summary>
+        /// CO2K 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CO2K;
         
         /// <summary>
         /// tb_EraseRangeStart 控件。
@@ -1921,6 +1984,24 @@ namespace WebApplication1.DevDebug {
         protected global::System.Web.UI.WebControls.Label LB_154;
         
         /// <summary>
+        /// SelectGas 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SelectGas;
+        
+        /// <summary>
+        /// ShowDiag 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ShowDiag;
+        
+        /// <summary>
         /// UpdatePanel1 控件。
         /// </summary>
         /// <remarks>
@@ -1946,6 +2027,17 @@ namespace WebApplication1.DevDebug {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.Timer Timer1;
+        
+        
+       
+        
+        /// <summary>
+        /// TextBox49 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
         
         /// <summary>
         /// Panel1 控件。

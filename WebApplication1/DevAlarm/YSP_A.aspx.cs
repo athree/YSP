@@ -12,6 +12,8 @@ using IMserver.DBservice;
 using IMserver.Models.SimlDefine;
 using IMserver.Models;
 using System.Data;
+using IMserver;
+using IMserver.Data_Warehousing;
 
 namespace WebApplication1.DevAlarm
 {
@@ -98,7 +100,34 @@ namespace WebApplication1.DevAlarm
             myAs = _as.FindOneBy(ex);
             if (myAs == null)
             {
-                Response.Write("<script>alert('我需要传输该设备信息！')</script>");
+                Response.Write("<script>alert('需要传输该设备信息！')</script>");
+                Dictionary<ushort, object> asDic = new GetData().GetAS();
+                for (int i = 0; i < asDic.Count; i++)
+                {
+                    ushort key = asDic.ElementAt(i).Key;
+                    object value = asDic.ElementAt(i).Value;
+                    Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
+                    if (LB != null)
+                    {
+                        LB.Text = ((float)value).ToString();
+                    }
+                    else
+                    {
+                        CheckBox CB = (CheckBox)Page.FindControl("SW_" + key);
+                        CB.Checked=value.ToString()=="0"?false:true;
+
+                    }
+                                    
+                }
+
+                try
+                {
+                    AddAlarmState.Warehousing(asDic, Byte.Parse(devId));
+                }
+                catch (Exception e)
+                {
+
+                }
                 return;
             }
             else

@@ -19,7 +19,7 @@ namespace IMserver
             ReadFile = 0x04,       //读文件
             WriteFile = 0x05,      //写文件到设备
             ReadBuffer = 0x06,     //读缓存
-            GetErrorInfo = 0xA0    //其他（向设备查询Error Code的详细解释）
+            Other = 0xA0    //其他（向设备查询Error Code的详细解释）
         }
         #endregion
 
@@ -67,7 +67,8 @@ namespace IMserver
 
         public enum Other
         {
-            GetErrorInfo = 0x00         //向设备查询Error Code的详细解释
+            GetErrorInfo = 0x00,         //向设备查询Error Code的详细解释
+            GetAlarmInfo = 0x01,         //下位机自动上送的报警信息
         }
 #endregion
 

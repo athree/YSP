@@ -11,12 +11,12 @@ namespace IMserver.Data_Warehousing
     public class AddAlarmState
     {
         /// <summary>
-        /// 后台解析到数据字典转换后存入数据库
+        /// 数据字典的解析数据到类的转换
         /// </summary>
-        /// <param name="middata"></param>
-        /// <param name="devid"></param>
+        /// <param name="middata">数据字典组织的数据</param>
+        /// <param name="devid">设备号</param>
         /// <returns></returns>
-        public static bool Warehousing(Dictionary<ushort, object> middata, byte devid)
+        public static AlarmState Dict2Class(Dictionary<ushort, object> middata , byte devid)
         {
             AlarmState als = new AlarmState();
             als.aa = new Models.SimlDefine.AlarmAll();
@@ -32,7 +32,7 @@ namespace IMserver.Data_Warehousing
 
             als.DevID = devid.ToString();
             als.Time_Stamp = DateTime.Now;
-            foreach(KeyValuePair<ushort , object> kvp in middata)
+            foreach (KeyValuePair<ushort, object> kvp in middata)
             {
                 switch (kvp.Key)
                 {
@@ -528,16 +528,37 @@ namespace IMserver.Data_Warehousing
                         }
                     #endregion
                     default:
-                            {
-                                break;
-                            }
+                        {
+                            break;
+                        }
                 }
             }
-            return Warehousing(als);
+            return als;
+        }
+
+        /// <summary>
+        /// 后台解析到数据字典转换后存入数据库
+        /// ！！！异常
+        /// </summary>
+        /// <param name="middata"></param>
+        /// <param name="devid"></param>
+        /// <returns></returns>
+        public static bool Warehousing(Dictionary<ushort, object> middata, byte devid)
+        {
+            AlarmState als = Dict2Class(middata, devid);
+            try
+            {
+                return Warehousing(als);
+            }
+            catch(Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
 
         /// <summary>
         /// 重载，用于web端已准备类的数据操作
+        /// ！！！异常
         /// </summary>
         /// <param name="als"></param>
         /// <returns></returns>

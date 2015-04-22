@@ -116,6 +116,7 @@
     <Compile Include="Data_Warehousing\AddSIML.cs" />
     <Compile Include="DBService\MongoHelper.cs" />
     <Compile Include="DBService\YSPservice.cs" />
+    <Compile Include="GetData.cs" />
     <Compile Include="HandleData.cs" />
     <Compile Include="HeartBeat.cs" />
     <Compile Include="IMServerTCP.cs" />

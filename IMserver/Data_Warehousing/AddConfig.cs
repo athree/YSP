@@ -11,7 +11,7 @@ namespace IMserver.Data_Warehousing
 {
     public class AddConfig
     {
-        public static bool Warehousing(Dictionary<ushort, object> middata, byte devid)
+        public static Config Dict2Class(Dictionary<ushort, object> middata, byte devid)
         {
             Config cf = new Config();
             #region 类及内嵌类的初始化
@@ -25,7 +25,7 @@ namespace IMserver.Data_Warehousing
             cf.AnalyPara.T = new H2oFixPara_T();
 
             cf.AnalyPara.GasFix = new GasFixPara[6];
-            for(int i = 0; i < 6; i++)
+            for (int i = 0; i < 6; i++)
             {
                 cf.AnalyPara.GasFix[i].p_a = new Para_A();
                 cf.AnalyPara.GasFix[i].p_b = new Para_B();
@@ -54,7 +54,7 @@ namespace IMserver.Data_Warehousing
             cf.Alarm.ta = new T_GasAlarm();
             cf.Alarm.pa = new PPM_GasAlarm();
             cf.Alarm.awa = new AW_GasAlarm();
-#endregion
+            #endregion
             cf.DevID = devid.ToString();
             cf.Time_Stamp = DateTime.Now;
 
@@ -63,7 +63,7 @@ namespace IMserver.Data_Warehousing
                 switch (kvp.Key)
                 {
                     //环境及外围设置
-#region
+                    #region
                     case 97:
                         {
                             cf.OutSideSet.FengShanKeep_Tick = (ushort)kvp.Value;	//([电柜]风扇持续工作时间)风扇预吹保持时间(以脱气开始时间为准),5*60 [0-65535] (秒)
@@ -71,7 +71,7 @@ namespace IMserver.Data_Warehousing
                         }
                     case 98:
                         {
-                            cf.OutSideSet.FengShanWork_Tick =	(ushort)kvp.Value;	//（[电柜]风扇停止时间)风扇吹尾保持时间(用于换气),5*60	[0-65535](秒)？？风扇停止时间？？
+                            cf.OutSideSet.FengShanWork_Tick = (ushort)kvp.Value;	//（[电柜]风扇停止时间)风扇吹尾保持时间(用于换气),5*60	[0-65535](秒)？？风扇停止时间？？
                             break;
                         }
                     case 99:
@@ -104,10 +104,10 @@ namespace IMserver.Data_Warehousing
                             cf.OutSideSet.DrainWork_Tick = (ushort)kvp.Value;         //载气发生器排水阀工作时间
                             break;
                         }
-#endregion
+                    #endregion
                     //分析计算参数
-#region
-#region  环境设置,海拔、油压等
+                    #region
+                    #region  环境设置,海拔、油压等
                     case 184:
                         {
                             cf.AnalyPara.EnviSet.altitude = (ushort)kvp.Value;            //海拔高度（2bytes）：米
@@ -138,8 +138,8 @@ namespace IMserver.Data_Warehousing
                     //        cf.AnalyPara.EnviSet.oilFactorB = (float)kvp.Value;           //油品系数B（4bytes
                     //        break;
                     //    }
-#endregion
-#region 微水修正参数 AW,T 
+                    #endregion
+                    #region 微水修正参数 AW,T
                     case 186:            //微水修正参数 AW
                         {
                             cf.AnalyPara.AW = (H2oFixPara_AW)kvp.Value;
@@ -147,13 +147,13 @@ namespace IMserver.Data_Warehousing
                         }
                     case 187:            //微水修正参数 T
                         {
-                            cf.AnalyPara.T= (H2oFixPara_T)kvp.Value;
+                            cf.AnalyPara.T = (H2oFixPara_T)kvp.Value;
                             break;
                         }
-#endregion
-#region 气体修正参数  H2,CO,CH4,C2H2,C2H4,C2H6,CO2
-#region  //H2
-                    case 189: 
+                    #endregion
+                    #region 气体修正参数  H2,CO,CH4,C2H2,C2H4,C2H6,CO2
+                    #region  //H2
+                    case 189:
                         {
                             cf.AnalyPara.GasFix[0].p_a = (Para_A)kvp.Value;
                             break;
@@ -224,9 +224,9 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     //cf.AnalyPara.GasFix[0].J  不在传输的范围这里不做注释
-#endregion
-#region //CO
-                    case 204: 
+                    #endregion
+                    #region //CO
+                    case 204:
                         {
                             cf.AnalyPara.GasFix[1].p_a = (Para_A)kvp.Value;
                             break;
@@ -297,9 +297,9 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     //cf.AnalyPara.GasFix[0].J  不在传输的范围这里不做注释
-#endregion
-#region //CH4
-                    case 219: 
+                    #endregion
+                    #region //CH4
+                    case 219:
                         {
                             cf.AnalyPara.GasFix[2].p_a = (Para_A)kvp.Value;
                             break;
@@ -370,9 +370,9 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     //cf.AnalyPara.GasFix[0].J  不在传输的范围这里不做注释
-#endregion
-#region //C2H2
-                    case 234:  
+                    #endregion
+                    #region //C2H2
+                    case 234:
                         {
                             cf.AnalyPara.GasFix[3].p_a = (Para_A)kvp.Value;
                             break;
@@ -443,9 +443,9 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     //cf.AnalyPara.GasFix[0].J  不在传输的范围这里不做注释
-#endregion
-#region //C2H4
-                    case 249:  
+                    #endregion
+                    #region //C2H4
+                    case 249:
                         {
                             cf.AnalyPara.GasFix[4].p_a = (Para_A)kvp.Value;
                             break;
@@ -516,9 +516,9 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     //cf.AnalyPara.GasFix[0].J  不在传输的范围这里不做注释
-#endregion
-#region //C2H6
-                    case 264:  
+                    #endregion
+                    #region //C2H6
+                    case 264:
                         {
                             cf.AnalyPara.GasFix[5].p_a = (Para_A)kvp.Value;
                             break;
@@ -589,9 +589,9 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     //cf.AnalyPara.GasFix[0].J  不在传输的范围这里不做注释
-#endregion
-#region  //CO2
-                    case 281:  
+                    #endregion
+                    #region  //CO2
+                    case 281:
                         {
                             cf.AnalyPara.GasFix_CO2.p_a = (Para_A)kvp.Value;
                             break;
@@ -600,14 +600,14 @@ namespace IMserver.Data_Warehousing
                         {
                             cf.AnalyPara.GasFix_CO2.p_b = (Para_B)kvp.Value;
                             break;
-                        }     
+                        }
                     case 283:
                         {
                             cf.AnalyPara.GasFix_CO2.MultiK = (GasFixK)kvp.Value;
                             break;
                         }
                     //cf.AnalyPara.GasFix[0].J  不在传输的范围这里不做注释
-#endregion
+                    #endregion
                     //PeakPoint = (ushort)kvp.Value;          //峰顶点位置
                     //PeakLeft = (ushort)kvp.Value;           //峰顶范围起点
                     //PeakRight = (ushort)kvp.Value;          //峰顶范围结束点
@@ -617,74 +617,74 @@ namespace IMserver.Data_Warehousing
                     //LeftTMax = (ushort)kvp.Value;           //左梯度Max
                     //RightTMin = (ushort)kvp.Value;          //右梯度Min
                     //RightTMax = (ushort)kvp.Value;          //右梯度Max
-#endregion
+                    #endregion
                     case 279:
                         {
                             cf.AnalyPara.er = (EraseRange)kvp.Value;
                             break;
                         }
-#endregion
+                    #endregion
                     //采样控制
-#region
-#region 初始参数
+                    #region
+                    #region 初始参数
                     case 107:
                         {
-                            cf.SampSet.ChuiSaoBefore_Tick =  (ushort)kvp.Value;     //采样前吹扫阀工作时间 0-3600s
+                            cf.SampSet.ChuiSaoBefore_Tick = (ushort)kvp.Value;     //采样前吹扫阀工作时间 0-3600s
                             break;
                         }
                     case 108:
                         {
-                            cf.SampSet.DingLiangWork_Tick =	(ushort)kvp.Value;  	//定量阀开启后的持续时间，18s	[0-65535](秒)
+                            cf.SampSet.DingLiangWork_Tick = (ushort)kvp.Value;  	//定量阀开启后的持续时间，18s	[0-65535](秒)
                             break;
                         }
                     case 109:
                         {
-                            cf.SampSet.ChuiSaoDelay_Tick =	(ushort)kvp.Value;  	//定量阀打开后，吹扫阀延迟打开的时间，2s [0-65535]	(秒)
+                            cf.SampSet.ChuiSaoDelay_Tick = (ushort)kvp.Value;  	//定量阀打开后，吹扫阀延迟打开的时间，2s [0-65535]	(秒)
                             break;
                         }
                     case 110:
                         {
-                            cf.SampSet.ChuiSaoAfter_Tick =	(ushort)kvp.Value;  	//采样结束吹扫阀工作时间  0-3600s
+                            cf.SampSet.ChuiSaoAfter_Tick = (ushort)kvp.Value;  	//采样结束吹扫阀工作时间  0-3600s
                             break;
                         }
-#endregion
-#region 微水采样
+                    #endregion
+                    #region 微水采样
                     case 115:
                         {
                             cf.SampSet.H2oDelayStart_Tick = (ushort)kvp.Value;  //微水传感器延时开始加热时刻
-                             break;
+                            break;
                         }
                     case 116:
                         {
                             cf.SampSet.H2oSampStart_Tick = (ushort)kvp.Value; //微水传感器采样开始时间
-                             break;
+                            break;
                         }
                     case 117:
                         {
                             cf.SampSet.H2oSampInterval = (ushort)kvp.Value;		//采样间隔,100	[1-255]	(10ms为单位)
-                             break;
+                            break;
                         }
                     case 118:
                         {
                             cf.SampSet.H2oAwSampNum = (ushort)kvp.Value;		//微水AW的采样点数	[1-10]
-                             break;
+                            break;
                         }
                     case 119:
                         {
                             cf.SampSet.H2oTSampNum = (ushort)kvp.Value;			//微水T的采样点数	[1-10]
-                             break;
+                            break;
                         }
-#endregion
-#region 气体采样控制,六组分+CO2
+                    #endregion
+                    #region 气体采样控制,六组分+CO2
                     case 111:
                         {
-                             cf.SampSet.HuiFuBeforeStart = (ushort)kvp.Value;//六组分传感器恢复阀采样前开始时刻
-                             break;
+                            cf.SampSet.HuiFuBeforeStart = (ushort)kvp.Value;//六组分传感器恢复阀采样前开始时刻
+                            break;
                         }
                     case 112:
                         {
-                             cf.SampSet.HuiFuBeforeWork_Tick = (ushort)kvp.Value;//六组分传感器恢复阀采样前工作时间
-                             break;
+                            cf.SampSet.HuiFuBeforeWork_Tick = (ushort)kvp.Value;//六组分传感器恢复阀采样前工作时间
+                            break;
                         }
                     case 113:
                         {
@@ -756,10 +756,10 @@ namespace IMserver.Data_Warehousing
                             cf.SampSet.BiaoDingTimes = (char)kvp.Value;   //标定次数  1-5次
                             break;
                         }
-#endregion
-#endregion
+                    #endregion
+                    #endregion
                     //采样开始控制 --已经删除
-#region
+                    #region
                     //case 135:
                     //    {
                     //        cf.SampStart.SampleTime = TimerTick.TimeSpanToDate((long)kvp.Value); //开始采样时间，年月日时分秒\/下次采样时间
@@ -775,9 +775,9 @@ namespace IMserver.Data_Warehousing
                     //        cf.SampStart.aheadTime = (ushort)kvp.Value;                //工作流程提前时间,0, [0-65535]	(秒)
                     //        break;
                     //    }
-#endregion
+                    #endregion
                     //系统设置
-#region
+                    #region
                     case 149:
                         {
                             cf.SysSet.SoftwareRelease = Encoding.ASCII.GetString((byte[])kvp.Value);    // 软件版本
@@ -798,9 +798,9 @@ namespace IMserver.Data_Warehousing
                             cf.SysSet.TuoQi_Mode = (char)kvp.Value; 		            //0:真空脱气，1:膜脱气,2:顶空脱气
                             break;
                         }
-#endregion
+                    #endregion
                     //脱气设置
-#region
+                    #region
                     #region 真空脱气
                     case 4:
                         {
@@ -856,7 +856,7 @@ namespace IMserver.Data_Warehousing
                         }
                     case 40:
                         {
-                            cf.TQSet.QiBengKeepOn_Tick =	(ushort)kvp.Value;	//气泵连续工作时间,2*60 [0-65535] (秒)
+                            cf.TQSet.QiBengKeepOn_Tick = (ushort)kvp.Value;	//气泵连续工作时间,2*60 [0-65535] (秒)
                             break;
                         }
                     case 41:
@@ -886,7 +886,7 @@ namespace IMserver.Data_Warehousing
                             cf.TQSet.CleanPumpStart = (ushort)kvp.Value;//清洗泵开始工作时刻
                             break;
                         }
-                   case 54:
+                    case 54:
                         {
                             cf.TQSet.CleanPumpWork_Time = (ushort)kvp.Value;//清洗泵工作时间
                             break;
@@ -902,9 +902,9 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     #endregion
-#endregion
+                    #endregion
                     //检测辅助设置
-#region
+                    #region
                     #region 传感器
                     case 78:
                         {
@@ -1016,9 +1016,9 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     #endregion
-#endregion
+                    #endregion
                     //报警及分析配置
-#region
+                    #region
                     case 286:
                         {
                             cf.Alarm.AutoAlarm = (char)kvp.Value;
@@ -1411,20 +1411,51 @@ namespace IMserver.Data_Warehousing
                             break;
                         }
                     #endregion
-#endregion
+                    #endregion
                     default:
                         {
                             break;
                         }
                 }
             }
-            return Warehousing(cf);
+            return cf;
         }
 
+        /// <summary>
+        /// !!!异常
+        /// </summary>
+        /// <param name="middata"></param>
+        /// <param name="devid"></param>
+        /// <returns></returns>
+        public static bool Warehousing(Dictionary<ushort, object> middata, byte devid)
+        {
+            Config cf = Dict2Class(middata , devid);
+            try
+            {
+                return Warehousing(cf);
+            }
+            catch (Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
+        }
+
+        /// <summary>
+        /// !!!异常
+        /// </summary>
+        /// <param name="cf"></param>
+        /// <returns></returns>
         public static bool Warehousing(Config cf)
         {
-            MongoHelper<Config> mhas = new MongoHelper<Config>();
-            return mhas.Insert(cf);
+            try
+            {
+                MongoHelper<Config> mhas = new MongoHelper<Config>();
+                return mhas.Insert(cf);
+            }
+            catch (Exception ep)
+            {
+                throw new Exception(ep.Message);
+            }
         }
     }
 }

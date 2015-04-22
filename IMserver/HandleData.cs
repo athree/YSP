@@ -28,6 +28,7 @@ namespace IMserver
             public bool readone;
             public object result;
         }
+
         public static temporary hello = new temporary();
 
         //编号和检查返回代码的封装
@@ -75,27 +76,27 @@ namespace IMserver
         /// 直到在指定的可接受时间内接收到指定的长度，并调用长帧的处理方法
         /// 如果接收到的数据是短帧，返回0，并调用短帧处理方法
         /// </returns>
-        public static int TypeofFrame(byte []data , object no)
-        {
-            //framedata = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(data, typeof(PrepareData.Msg_Bus));
-            //接收帧为长帧，发送帧也为长帧
-            if (data.Length > PrepareData.BUS_FRAME_MINLEN &&
-                IMServerUDP.shared.sendbuffer.Length > PrepareData.BUS_FRAME_MINLEN)
-                return 2;
-            else
-                //接收帧为短帧，发送帧为长帧
-                if (data.Length == PrepareData.BUS_FRAME_MINLEN &&
-                    IMServerUDP.shared.sendbuffer.Length > PrepareData.BUS_FRAME_MINLEN)
-                    return 1;
-                else
-                    //接收帧为长帧，发送帧为短帧
-                    if (data.Length > PrepareData.BUS_FRAME_MINLEN &&
-                        IMServerUDP.shared.sendbuffer.Length == PrepareData.BUS_FRAME_MINLEN)
-                        return -1;
-                    else
-                        //错误
-                        return 0;
-        }
+        //public static int TypeofFrame(byte []data , object no)
+        //{
+        //    //framedata = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(data, typeof(PrepareData.Msg_Bus));
+        //    //接收帧为长帧，发送帧也为长帧
+        //    if (data.Length > PrepareData.BUS_FRAME_MINLEN &&
+        //        IMServerUDP.shared.sendbuffer.Length > PrepareData.BUS_FRAME_MINLEN)
+        //        return 2;
+        //    else
+        //        //接收帧为短帧，发送帧为长帧
+        //        if (data.Length == PrepareData.BUS_FRAME_MINLEN &&
+        //            IMServerUDP.shared.sendbuffer.Length > PrepareData.BUS_FRAME_MINLEN)
+        //            return 1;
+        //        else
+        //            //接收帧为长帧，发送帧为短帧
+        //            if (data.Length > PrepareData.BUS_FRAME_MINLEN &&
+        //                IMServerUDP.shared.sendbuffer.Length == PrepareData.BUS_FRAME_MINLEN)
+        //                return -1;
+        //            else
+        //                //错误
+        //                return 0;
+        //}
 
         /// <summary>
         /// 重载：只判断接收帧，不讨论发送帧，发送帧由发送简介结构体
@@ -133,67 +134,67 @@ namespace IMserver
         /// </summary>
         /// <param name="recvframe">接收数据数据结构体</param>
         /// <returns></returns>
-        public static int FrameInCheck(byte[] b_recvframe, PrepareData.Msg_Bus justsend)
-        {
-            string frame_flag = Encoding.ASCII.GetString(b_recvframe, 0, 8); ;
-            //MessageBox.Show(frame_flag);
-            //无效的数据包(通过帧头检测来确认)
-            if (PrepareData.FRAME_HEAD != frame_flag)
-            {
-                return (int)MSGEncoding.LastError.InvalidPackage;
-            }
-            else
-            {
-                PrepareData.Msg_Bus s_recvframe = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(b_recvframe , 
-                                                                                                typeof(PrepareData.Msg_Bus));
-                ushort crctemp = CRC16.CalculateCrc16(b_recvframe, PrepareData.CRCStart, PrepareData.CRCStop);
+        //public static int FrameInCheck(byte[] b_recvframe, PrepareData.Msg_Bus justsend)
+        //{
+        //    string frame_flag = Encoding.ASCII.GetString(b_recvframe, 0, 8); ;
+        //    //MessageBox.Show(frame_flag);
+        //    //无效的数据包(通过帧头检测来确认)
+        //    if (PrepareData.FRAME_HEAD != frame_flag)
+        //    {
+        //        return (int)MSGEncoding.LastError.InvalidPackage;
+        //    }
+        //    else
+        //    {
+        //        PrepareData.Msg_Bus s_recvframe = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(b_recvframe , 
+        //                                                                                        typeof(PrepareData.Msg_Bus));
+        //        ushort crctemp = CRC16.CalculateCrc16(b_recvframe, PrepareData.CRCStart, PrepareData.CRCStop);
 
-                //CRC校验失败
-                if (s_recvframe.crc16 != crctemp)
-                {
-                    return (int)MSGEncoding.LastError.InvalidCRC;
-                }
-                //源设备号错误
-                else
-                    if (s_recvframe.srcID != justsend.srcID)
-                    {
-                        return (int)MSGEncoding.LastError.SrcIDError;
-                    }
-                    //目标设备号错误
-                    else
-                        if (s_recvframe.destID != justsend.destID)
-                        {
-                            return (int)MSGEncoding.LastError.DestIDError;
-                        }
-                        //错误的消息版本号
-                        else
-                            if (s_recvframe.msgVer != justsend.msgVer)
-                            {
-                                return (int)MSGEncoding.LastError.InvalidMsgVer;
-                            }
-                            //消息方向错误
-                            else
-                                if (s_recvframe.msgDir != justsend.msgDir)
-                                {
-                                    return (int)MSGEncoding.LastError.MsgDirError;
-                                }
-                                //消息类型错误
-                                else
-                                    if (s_recvframe.msgType != justsend.msgType)
-                                    {
-                                        return (int)MSGEncoding.LastError.MsgTypeError;
-                                    }
-                                    //子消息类型错误
-                                    else
-                                        if (s_recvframe.msgSubType != justsend.msgSubType)
-                                        {
-                                            return (int)MSGEncoding.LastError.MsgSubTypeError;
-                                        }
-                                        //消息检测通过正常
-                                        else
-                                            return 33;
-            }
-        }
+        //        //CRC校验失败
+        //        if (s_recvframe.crc16 != crctemp)
+        //        {
+        //            return (int)MSGEncoding.LastError.InvalidCRC;
+        //        }
+        //        //源设备号错误
+        //        else
+        //            if (s_recvframe.srcID != justsend.srcID)
+        //            {
+        //                return (int)MSGEncoding.LastError.SrcIDError;
+        //            }
+        //            //目标设备号错误
+        //            else
+        //                if (s_recvframe.destID != justsend.destID)
+        //                {
+        //                    return (int)MSGEncoding.LastError.DestIDError;
+        //                }
+        //                //错误的消息版本号
+        //                else
+        //                    if (s_recvframe.msgVer != justsend.msgVer)
+        //                    {
+        //                        return (int)MSGEncoding.LastError.InvalidMsgVer;
+        //                    }
+        //                    //消息方向错误
+        //                    else
+        //                        if (s_recvframe.msgDir != justsend.msgDir)
+        //                        {
+        //                            return (int)MSGEncoding.LastError.MsgDirError;
+        //                        }
+        //                        //消息类型错误
+        //                        else
+        //                            if (s_recvframe.msgType != justsend.msgType)
+        //                            {
+        //                                return (int)MSGEncoding.LastError.MsgTypeError;
+        //                            }
+        //                            //子消息类型错误
+        //                            else
+        //                                if (s_recvframe.msgSubType != justsend.msgSubType)
+        //                                {
+        //                                    return (int)MSGEncoding.LastError.MsgSubTypeError;
+        //                                }
+        //                                //消息检测通过正常
+        //                                else
+        //                                    return 33;
+        //    }
+        //}
 
         /// <summary>
         /// 当接收到的数据位短帧时，FrameInCheck
@@ -203,70 +204,70 @@ namespace IMserver
         /// </summary>
         /// <param name="recvframe">接收到的数据字节数组</param>
         /// <returns></returns>
-        public static int FrameInCheck(byte[] b_recvframe, byte[] justsend)
-        {
-            PrepareData.Msg_Bus send = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(justsend , typeof(PrepareData.Msg_Bus));
+        //public static int FrameInCheck(byte[] b_recvframe, byte[] justsend)
+        //{
+        //    PrepareData.Msg_Bus send = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(justsend , typeof(PrepareData.Msg_Bus));
 
-            string frame_flag= Encoding.ASCII.GetString(b_recvframe , 0 , 8);
-            //MessageBox.Show(frame_flag);
-            //无效的数据包(通过帧头检测来确认)
-            if (!PrepareData.FRAME_HEAD.Equals(frame_flag))
-            {
-                return (int)MSGEncoding.LastError.InvalidPackage;
-            }
-            else
-            {
-                //承接接收到数据（字节数组）的结构体
-                PrepareData.Msg_Bus s_recvframe = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(b_recvframe,
-                                                                                                typeof(PrepareData.Msg_Bus));
-                ushort crctemp = CRC16.CalculateCrc16(b_recvframe, 0, b_recvframe.Length-2);
+        //    string frame_flag= Encoding.ASCII.GetString(b_recvframe , 0 , 8);
+        //    //MessageBox.Show(frame_flag);
+        //    //无效的数据包(通过帧头检测来确认)
+        //    if (!PrepareData.FRAME_HEAD.Equals(frame_flag))
+        //    {
+        //        return (int)MSGEncoding.LastError.InvalidPackage;
+        //    }
+        //    else
+        //    {
+        //        //承接接收到数据（字节数组）的结构体
+        //        PrepareData.Msg_Bus s_recvframe = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(b_recvframe,
+        //                                                                                        typeof(PrepareData.Msg_Bus));
+        //        ushort crctemp = CRC16.CalculateCrc16(b_recvframe, 0, b_recvframe.Length-2);
 
-                //CRC校验失败
-                if (s_recvframe.crc16 != crctemp)
-                {
-                    return (int)MSGEncoding.LastError.InvalidCRC;
-                }
-                //源设备号错误
-                else
-                    if(s_recvframe.srcID != send.srcID)
-                    {
-                        return (int)MSGEncoding.LastError.SrcIDError;
-                    }
-                //目标设备号错误
-                else
-                    if(s_recvframe.destID != send.srcID)
-                    {
-                        return (int)MSGEncoding.LastError.DestIDError;
-                    }
-                //错误的消息版本号
-                else
-                    if(s_recvframe.msgVer != send.msgVer)
-                    {
-                        return (int)MSGEncoding.LastError.InvalidMsgVer;
-                    }
-                //消息方向错误
-                else
-                    if(s_recvframe.msgDir != (byte)MSGEncoding.MsgDir.Response)
-                    {
-                        return (int)MSGEncoding.LastError.MsgDirError;
-                    }
-                //消息类型错误
-                else
-                    if(s_recvframe.msgType != send.msgType)
-                    {
-                        return (int)MSGEncoding.LastError.MsgTypeError;
-                    }
-                //子消息类型错误
-                else
-                    if (s_recvframe.msgSubType != send.msgSubType)
-                    {
-                        return (int)MSGEncoding.LastError.MsgSubTypeError;
-                    }
-                //消息检测通过正常
-                else
-                        return 33;
-            }
-        }
+        //        //CRC校验失败
+        //        if (s_recvframe.crc16 != crctemp)
+        //        {
+        //            return (int)MSGEncoding.LastError.InvalidCRC;
+        //        }
+        //        //源设备号错误
+        //        else
+        //            if(s_recvframe.srcID != send.srcID)
+        //            {
+        //                return (int)MSGEncoding.LastError.SrcIDError;
+        //            }
+        //        //目标设备号错误
+        //        else
+        //            if(s_recvframe.destID != send.srcID)
+        //            {
+        //                return (int)MSGEncoding.LastError.DestIDError;
+        //            }
+        //        //错误的消息版本号
+        //        else
+        //            if(s_recvframe.msgVer != send.msgVer)
+        //            {
+        //                return (int)MSGEncoding.LastError.InvalidMsgVer;
+        //            }
+        //        //消息方向错误
+        //        else
+        //            if(s_recvframe.msgDir != (byte)MSGEncoding.MsgDir.Response)
+        //            {
+        //                return (int)MSGEncoding.LastError.MsgDirError;
+        //            }
+        //        //消息类型错误
+        //        else
+        //            if(s_recvframe.msgType != send.msgType)
+        //            {
+        //                return (int)MSGEncoding.LastError.MsgTypeError;
+        //            }
+        //        //子消息类型错误
+        //        else
+        //            if (s_recvframe.msgSubType != send.msgSubType)
+        //            {
+        //                return (int)MSGEncoding.LastError.MsgSubTypeError;
+        //            }
+        //        //消息检测通过正常
+        //        else
+        //                return 33;
+        //    }
+        //}
 
         /// <summary>
         /// 用于接收端在没有发送数据对照的情况下校验数据帧
@@ -275,33 +276,33 @@ namespace IMserver
         /// </summary>
         /// <param name="recvframe">接收到的数据字节数组或者截取长帧中的短帧部分</param>
         /// <returns></returns>
-        public static int FrameInCheck(byte[] b_recvframe)
-        {
-            string frame_flag = Encoding.ASCII.GetString(b_recvframe, 0, 8);
-            //无效的数据包(通过帧头检测来确认)
-            if (!PrepareData.FRAME_HEAD.Equals(frame_flag))
-            {
-                return (int)MSGEncoding.LastError.InvalidPackage;
-            }
-            else
-            {
-                //承接接收到数据（字节数组）的结构体
-                PrepareData.Msg_Bus s_recvframe = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(b_recvframe,
-                                                                                                typeof(PrepareData.Msg_Bus));
-                ushort crctemp = CRC16.CalculateCrc16(b_recvframe, 0, 24);
+        //public static int FrameInCheck(byte[] b_recvframe)
+        //{
+        //    string frame_flag = Encoding.ASCII.GetString(b_recvframe, 0, 8);
+        //    //无效的数据包(通过帧头检测来确认)
+        //    if (!PrepareData.FRAME_HEAD.Equals(frame_flag))
+        //    {
+        //        return (int)MSGEncoding.LastError.InvalidPackage;
+        //    }
+        //    else
+        //    {
+        //        //承接接收到数据（字节数组）的结构体
+        //        PrepareData.Msg_Bus s_recvframe = (PrepareData.Msg_Bus)ByteStruct.BytesToStruct(b_recvframe,
+        //                                                                                        typeof(PrepareData.Msg_Bus));
+        //        ushort crctemp = CRC16.CalculateCrc16(b_recvframe, 0, 24);
 
-                //CRC校验失败
-                if (s_recvframe.crc16 != crctemp)
-                {
-                    return (int)MSGEncoding.LastError.InvalidCRC;
-                }
-                //消息检测通过正常
-                else
-                {
-                    return 33;
-                }
-            }
-        }
+        //        //CRC校验失败
+        //        if (s_recvframe.crc16 != crctemp)
+        //        {
+        //            return (int)MSGEncoding.LastError.InvalidCRC;
+        //        }
+        //        //消息检测通过正常
+        //        else
+        //        {
+        //            return 33;
+        //        }
+        //    }
+        //}
 
         /// <summary>
         /// 当接收到的数据位短帧时，FrameInCheck
@@ -407,9 +408,18 @@ namespace IMserver
                 if (crccalc != crcrecv)
                 {
                     //MessageBox.Show("帧外数据CRC校验错误！");
-                    return 44;
+                    try
+                    {
+                        return 44;
+                    }
+                    finally
+                    {
+                        throw new Exception("handledata.cs-(int)frameoutcheck-帧外数据CRC校验错误！");
+                    }
+                    
                 }
                 else
+                    //同于frameincheck的正确返回结果
                     return 33;
             }
         }
@@ -516,7 +526,16 @@ namespace IMserver
                 if (crccalc != crcrecv)
                 {
                     //MessageBox.Show("帧外数据CRC校验错误！");
-                    incheckret.retcode = 44;
+                    try
+                    {
+                        incheckret.retcode = 44;
+                        return incheckret;
+                    }
+                    finally
+                    {
+                        throw new Exception("HandleData.cs-(CheckRet)FrameOutCheck_New-帧外数据CRC校验错误！");
+                    }
+                    //incheckret.retcode = 44;
                 }
                 else
                     incheckret.retcode = 33;
@@ -526,49 +545,56 @@ namespace IMserver
 
         ///不需要在这里检测接收到的响应是否与发送的请求相对应
         ///如果不对应，会在返回的数据中显示错误代码，全帧的合理性由CRC决定
-        public static int FrameOutCheck(byte[] b_recvframe)
-        {
-            //ushort crcbycalc = CRC16.CalculateCrc16(b_recvframe, 0, b_recvframe.Length - 2);
-            //byte[] data = new byte[2];
-            //Array.Copy(b_recvframe, b_recvframe.Length - 2, data, 0, 2);
-            //ushort crcinframe = (ushort)ByteStruct.BytesToStruct(data , typeof(ushort));
-            //if (crcinframe == crcbycalc)
-            //{
-            //    return 33;
-            //}
-            //else
-            //{
-            //    return 44;
-            //}
-            byte[] framein = new byte[PrepareData.BUS_FRAME_MINLEN];
-            byte[] frameout = new byte[b_recvframe.Length - PrepareData.BUS_FRAME_MINLEN];
-            Array.Copy(b_recvframe, 0, framein, 0, PrepareData.BUS_FRAME_MINLEN);
-            Array.Copy(b_recvframe, PrepareData.BUS_FRAME_MINLEN, frameout, 0, frameout.Length);
-            int incheckcode = FrameInCheck(framein);
+        //public static int FrameOutCheck(byte[] b_recvframe)
+        //{
+        //    //ushort crcbycalc = CRC16.CalculateCrc16(b_recvframe, 0, b_recvframe.Length - 2);
+        //    //byte[] data = new byte[2];
+        //    //Array.Copy(b_recvframe, b_recvframe.Length - 2, data, 0, 2);
+        //    //ushort crcinframe = (ushort)ByteStruct.BytesToStruct(data , typeof(ushort));
+        //    //if (crcinframe == crcbycalc)
+        //    //{
+        //    //    return 33;
+        //    //}
+        //    //else
+        //    //{
+        //    //    return 44;
+        //    //}
+        //    byte[] framein = new byte[PrepareData.BUS_FRAME_MINLEN];
+        //    byte[] frameout = new byte[b_recvframe.Length - PrepareData.BUS_FRAME_MINLEN];
+        //    Array.Copy(b_recvframe, 0, framein, 0, PrepareData.BUS_FRAME_MINLEN);
+        //    Array.Copy(b_recvframe, PrepareData.BUS_FRAME_MINLEN, frameout, 0, frameout.Length);
+        //    int incheckcode = FrameInCheck(framein);
 
-            //帧内数据错误，如果有帧外数据也不再检测，直接返回帧内的错误代码
-            if (incheckcode != 33)
-            {
-                return incheckcode;
-            }
-            else
-            {
-                //帧外数据的CRC校验
-                ushort crccalc = CRC16.CalculateCrc16(frameout, 0, frameout.Length - 2);
-                byte[] crcbytes = new byte[2];
-                Array.Copy(frameout, frameout.Length - 2, crcbytes, 0, 2);
-                ushort crcrecv = (ushort)ByteStruct.BytesToStruct(crcbytes, typeof(ushort));
+        //    //帧内数据错误，如果有帧外数据也不再检测，直接返回帧内的错误代码
+        //    if (incheckcode != 33)
+        //    {
+        //        return incheckcode;
+        //    }
+        //    else
+        //    {
+        //        //帧外数据的CRC校验
+        //        ushort crccalc = CRC16.CalculateCrc16(frameout, 0, frameout.Length - 2);
+        //        byte[] crcbytes = new byte[2];
+        //        Array.Copy(frameout, frameout.Length - 2, crcbytes, 0, 2);
+        //        ushort crcrecv = (ushort)ByteStruct.BytesToStruct(crcbytes, typeof(ushort));
 
-                //判断发送数据是否有错误
-                if (crccalc != crcrecv)
-                {
-                    //MessageBox.Show("帧外数据CRC校验错误！");
-                    return 44;
-                }
-                else
-                    return 33;
-            }
-        }
+        //        //判断发送数据是否有错误
+        //        if (crccalc != crcrecv)
+        //        {
+        //            //MessageBox.Show("帧外数据CRC校验错误！");
+        //            return 44;
+        //        }
+        //        else
+        //            return 33;
+        //    }
+        //}
+
+        //static delegate void updatepage(object para);
+        //public void testinvoke(object para)
+        //{
+        //    LB_62.Text = "UP";
+        //    LB_63.Text = "DOWN";
+        //}
 
         /// <summary>
         /// 用于消息处理线程，定时扫描接受队列，如果存在待处理项目，就出队处理
@@ -584,10 +610,18 @@ namespace IMserver
                     //处理完成之后清除计时队列中的对应项
                     AF_Ret temp = AfterSend(drq.recvdata);
 
+                    //AfterSend();中处理存在错误，不会清除请求缓存，只当过滤此包
+                    //未细分错误类型
+                    if (temp.errorcode !=33)
+                    {
+                        continue;
+                    }
+
                     //读操作单元专项开始
                     hello.result = temp.result;
                     hello.readone = true;
                     //读操作单元专项结束
+                    //updatepage update = new updatepage();
 
                     byte packetnum = temp.packetnum;//aftersend处理后返回的编号
                     if (true == temp.multipacketover)
@@ -624,6 +658,12 @@ namespace IMserver
 
             int retcode = 0;
             HandleData.TypeRet hdtr = HandleData.TypeofFrame(datatemp);
+            //数据包长度检查出错，直接进行错误返回
+            if (hdtr.frametype <= 0)
+            {
+                afret.errorcode = -3;
+                return afret;
+            }
             afret.packetnum = hdtr.packetnum;
             //取得摘要信息
             PrepareData.Compare comstruct = (PrepareData.Compare)Define.index_com[hdtr.packetnum];
@@ -646,8 +686,16 @@ namespace IMserver
                     }
                     else
                     {
-                        retcode = 0;
+                        //retcode = 0;
                         //MessageBox.Show("长帧和短帧类型判断错误！");
+                        try
+                        {
+                            retcode = 0;
+                        }
+                        finally
+                        {
+                            throw new Exception("handledata.cs--(af-ret)aftersend:长帧和短帧类型判断错误！");
+                        }
                     }
 
                 //在这之前的framecheck已经对接收帧和compare做了对比，不存在是以解析出的帧描述消息或者
@@ -746,7 +794,7 @@ namespace IMserver
                                             else  //这里应该是状态控制
                                                 if ((byte)MSGEncoding.WriteUint.ControlDev == comstruct.msgSubType)
                                                 {
-                                                    //这个还未完成，无法到达
+                                                    //这个还未完成，无法到达，addsiml方法中无业务逻辑
                                                     AddSIML.Warehousing(rawobj, comstruct.destID);
                                                 }
                                                 else  //这里应该是写报警
@@ -762,6 +810,7 @@ namespace IMserver
                                 else
                                 {
                                     //MessageBox.Show("handledata-aftersend:写操作单元存在错误！");
+                                    throw new Exception("handledata.cs--(af-ret)aftersend:写操作单元存在错误！");
                                 }
                                 afret.multipacketover = true;
                             }
@@ -850,9 +899,9 @@ namespace IMserver
                         //独属于获取文件信息的错误代码
                         case (byte)MSGEncoding.MsgType.GetFileInfo:
                             {
-                                ushort sorterror = 0;
-                                Dictionary<long, ushort> fileinfo = GetFileInfo.MsgHandle(ref sorterror, datatemp);
-                                if (0 == sorterror)
+                                ushort finderror = 0;
+                                Dictionary<long, ushort> fileinfo = GetFileInfo.MsgHandle(ref finderror, datatemp);
+                                if (0 == finderror)
                                 {
                                     //MessageBox.Show("handledata-aftersend:获取文件信息处理完成！");
                                     for (int i = 0; i < fileinfo.Count; i++)
@@ -878,17 +927,25 @@ namespace IMserver
                             break;
                         //获取错误信息
                         //查询出现错误情况，后期结合具体情况讨论
-                        case (byte)MSGEncoding.MsgType.GetErrorInfo:
+                        case (byte)MSGEncoding.MsgType.Other:
                             {
-                                string errorexplain = GetErrorInfo.MsgHandle(datatemp);
-                                if (null == errorexplain)
+                                if ((int)MSGEncoding.Other.GetErrorInfo == comstruct.msgSubType)
                                 {
-                                    //MessageBox.Show("获取错误信息失败，内容上的失败，因为已经经过校验");
+                                    string errorexplain = GetErrorInfo.MsgHandle(datatemp);
+                                    if (null == errorexplain)
+                                    {
+                                        //MessageBox.Show("获取错误信息失败，内容上的失败，因为已经经过校验");
+                                    }
+                                    else
+                                    {
+                                        //MessageBox.Show("获取错误信息成功！");
+                                        //MessageBox.Show(errorexplain);
+                                    }
                                 }
+                                //默认的就是报警信息
                                 else
                                 {
-                                    //MessageBox.Show("获取错误信息成功！");
-                                    //MessageBox.Show(errorexplain);
+
                                 }
                                 afret.multipacketover = true;
                             }

@@ -1,14 +1,13 @@
 ﻿using IMserver;
-using IMserver.CommonFuncs;
+using IMserver.Data_Warehousing;
 using IMserver.DBservice;
 using IMserver.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Net;
-using System.Threading;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace WebApplication1.DevData
 {
@@ -39,7 +38,124 @@ namespace WebApplication1.DevData
             myRs = _rs.FindOneBy(ex);
             if (myRs == null)
             {
-                Response.Write("<script>alert('我需要传输该设备信息！')</script>");
+                Response.Write("<script>alert('需要传输该设备信息！')</script>");
+                Dictionary<ushort, object> rsDic =  new GetData().GetRS();
+                for (int i = 0; i < rsDic.Count; i++)
+                {
+                    ushort key = rsDic.ElementAt(i).Key;
+                    object value = rsDic.ElementAt(i).Value;
+                    Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
+                    LB.Text = ((float)value).ToString();
+                    #region switch语句前台赋值，已注释
+                    //switch (key)
+                    //{
+                    //    case 62:
+                    //        {
+                    //            LB_62.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 63:
+                    //        {
+                    //            LB_63.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 64:
+                    //        {
+                    //            LB_64.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 87:
+                    //        {
+                    //            LB_87.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 88:
+                    //        {
+                    //            LB_88.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 89:
+                    //        {
+                    //            LB_89.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 145:
+                    //        {
+                    //            LB_145.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 166:
+                    //        {
+                    //            LB_166.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 167:
+                    //        {
+                    //            LB_167.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 168:
+                    //        {
+                    //            LB_168.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 169:
+                    //        {
+                    //            LB_169.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 170:
+                    //        {
+                    //            LB_170.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 171:
+                    //        {
+                    //            LB_171.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 172:
+                    //        {
+                    //            LB_172.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 173:
+                    //        {
+                    //            LB_173.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 174:
+                    //        {
+                    //            LB_174.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 175:
+                    //        {
+                    //            LB_175.Text = ((float)value).ToString();
+                    //            break;
+                    //        }
+                    //    case 176:
+                    //        {
+                    //            LB_176.Text = ((float)value).ToString();                            
+                    //            break;
+                    //        }
+                    //    default://总可燃气体
+                    //        {
+                    //            LB_rs.Text = "why";
+                    //            break;
+                    //        }
+
+                    //}
+                    #endregion
+                }
+                try
+                {
+                    AddRunningState.Warehousing(rsDic, Byte.Parse(devId));
+                }
+                catch (Exception e)
+                {
+
+                }
                 return;
             }
             else
@@ -72,136 +188,15 @@ namespace WebApplication1.DevData
         protected void BT_Data_Click(object sender, EventArgs e)
         {
             BT_Data.Text= "hello";
-            ushort[] require = { 88, 87, 89, 86, 63, 61, 62, 165, 168, 169, 171, 173, 166, 167, 170, 175, 174, 172 };
-            //初步测试期间不加心跳，故未能初始化Define.id_ip_port字典，这里添加以下，实际byte-ipendpoint的映射是在心跳处理中添加
-            Define.id_ip_port.Add(0x01, new IPEndPoint(IPAddress.Parse("223.104.11.107"), 9999));
-            //MyDictionary.ID_IP[0x01] = "219.244.93.127";
-            //MyDictionary.ID_PORT[0x01] = 9999;
-            //发送摘要缓冲
-            PrepareData.Compare compare = new PrepareData.Compare();
-            compare.srcID = 0x00;
-            compare.destID = 0x01;
-            //读操作单元的配置参数
-            compare.msgType = (byte)MSGEncoding.MsgType.ReadUnit;
-            compare.msgSubType = (byte)MSGEncoding.ReadUint.ReadData;
-            compare.msgVer = MSGEncoding.msgVer;
-            compare.msgDir = (byte)MSGEncoding.MsgDir.Request;
-            //由于一个触发可能发送多包，所以编码在packet中组织，哈希入表也在packet中组织
-            //触发组包
-            byte temp = PrepareData.AddRequire(compare, require);
-            //缓冲三秒
-            while (!HandleData.hello.readone)
-            {
-                Thread.Sleep(100);
+            //按照用户选取的时间段获得历史数据 
+            if (new GetData().GetRS(BeginTime.Text, EndTime.Text))
+            { }
+            else {
+                ///出错处理
             }
-                //为了跳出循环，这里不再复位标志位
-            #region 赋值界面
-            //修改为从数据库读取
-            Dictionary<ushort, object> lady = (Dictionary<ushort , object>)HandleData.hello.result;
-            for (int i = 0; i < lady.Count; i++)
-            {
-                ushort key = lady.ElementAt(i).Key;
-                object value = lady.ElementAt(i).Value;
-                switch (key)
-                {
-                    case 62:
-                        {
-                            LB_62.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 63:
-                        {
-                            LB_63.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 64:
-                        {
-                            LB_64.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 87:
-                        {
-                            LB_87.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 88:
-                        {
-                            LB_88.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 89:
-                        {
-                            LB_89.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 145:
-                        {
-                            LB_145.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 166:
-                        {
-                            LB_166.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 167:
-                        {
-                            LB_167.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 168:
-                        {
-                            LB_168.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 169:
-                        {
-                            LB_169.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 170:
-                        {
-                            LB_170.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 171:
-                        {
-                            LB_171.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 172:
-                        {
-                            LB_172.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 173:
-                        {
-                            LB_173.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 174:
-                        {
-                            LB_174.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 175:
-                        {
-                            LB_175.Text = ((float)value).ToString();
-                            break;
-                        }
-                    case 176:
-                        {
-                            LB_176.Text = ((float)value).ToString();
-                            break;
-                        }
-                    default://总可燃气体
-                        {
-                            LB_rs.Text = "why";
-                            break;
-                        }
-                }
-            }
-                #endregion
+                          
         }
+
+       
     }
 }

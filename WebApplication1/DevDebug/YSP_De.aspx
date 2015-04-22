@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YSP_De.aspx.cs" Inherits="WebApplication1.DevDebug.YSP_De" %>
+﻿  <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YSP_De.aspx.cs" Inherits="WebApplication1.DevDebug.YSP_De" %>
 
 <%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 
@@ -28,6 +28,11 @@
                 $(".meny select").width(87).height(21);
                 $(".meny input[type!=submit]").width(87).height(21);
                 $("#kModal input[type='text']").attr("class", "form-control").width(55).height(5);
+            }
+            function showKModal() {
+                setTimeout(function () {
+                    $('#kModal').modal('show');
+                }, 1000);
             }
 
             $(function () {
@@ -94,8 +99,10 @@
             $("#Form1").width($("body")[0].clientWidth);
             //$("#currentState").height($("#Form1").height()* 0.48);
 
-            $("#fixParamModal a").text("设置").click(function () { $("#kModal").modal('show'); });
+            //$("#fixParamModal a").text("设置").click(function () { $("#kModal").modal('show'); });
             $("#calParam table a").text("设置").click(function () { $("#kModal").modal('show'); });
+            $("#calParam input[type=submit]").text("设置").click(showKModal);
+
 
             $('.modal-body input').attr("class", "form-control");
             $(".modal-body input[type='text']").css("height", "28px");
@@ -133,8 +140,6 @@
             })
 
 
-            
-
         })
     </script>
 </head>
@@ -144,14 +149,14 @@
         <asp:ScriptManager runat="server"></asp:ScriptManager>
         <h2><%=ViewState["DevSite"]%> > <%=ViewState["DevType"]%> > <%=ViewState["DevName"]%></h2>
         <asp:ValidationSummary runat="server" CssClass="alert alert-danger" />
-        <%--整体页面--%>
+        <!--整体页面-->
         <div class="meny-right">
-            <%--各种设置参数--%>
+            <!--各种设置参数-->
             <div class="meny" style="height: 95%; width: 32%">
                 <div style="position: absolute; left: 0px; top: 0px">
                     <a class="btn btn-primary" id="closeM">..>>>>>>>></a>
                 </div>
-                <%-- 参数设置 --%>
+                <!-- 参数设置 -->
                 <div id="devParam">
 
                     <div class="panel panel-default" style="height: 90%; overflow: scroll; width: 99%;">
@@ -160,7 +165,7 @@
                         </div>
                         <div class="panel-body">
 
-                            <%-- 标签页标题 --%>
+                            <!-- 标签页标题 -->
                             <div id="paramTab">
 
                                 <ul id="myTab" class="nav nav-pills">
@@ -173,10 +178,10 @@
 
                             </div>
 
-                            <%-- 标签页内容 --%>
+                            <!-- 标签页内容 -->
                             <div id="paramContent" class="tab-content">
 
-                                <%-- 系统设置  表格--%>
+                                <!-- 系统设置  表格-->
                                 <div class="tab-pane fade active in" id="sysSet">
 
                                     <asp:UpdatePanel runat="server" ID="UP_SysSet">
@@ -283,81 +288,9 @@
 
 
 
-                                <%-- 计算参数 xml --%>
+                                <!-- 计算参数 xml -->
                                 <div class="tab-pane fade" id="calParam">
-                                    <%-- <asp:FormView runat="server" DefaultMode="ReadOnly"
-                                RenderOuterTable="false" ID="calParaForm" ItemType="IMserver.Models.GasFixPara" SelectMethod="GasFixPara_GetItem">
-                                <EmptyDataTemplate>
-                                    <p>无数据！</p>
-                                </EmptyDataTemplate>
-                                <ItemTemplate>
-                                    <fieldset class="form-horizontal">
-                                        <table class="table table-striped table-hover ">
-                                            <tbody>
-
-                                                <tr class="active">
-                                                    <td>设备选择<asp:DropDownList ID="DevDrop" runat="server"></asp:DropDownList></td>
-                                                    <td>气体选择<asp:DropDownList ID="GasDrop" runat="server"></asp:DropDownList></td>
-                                                </tr>
-                                                <tr class="active">
-                                                    <td>
-                                                        <asp:DynamicControl runat="server" DataField="LeftStart" Mode="Edit" />
-                                                    </td>
-                                                    <td>
-                                                        <asp:DynamicControl runat="server" DataField="RightStart" Mode="Edit" />
-                                                    </td>
-                                                </tr>
-                                                <tr class="active">
-                                                    <td>
-                                                        <asp:DynamicControl runat="server" DataField="LeftTmin" Mode="Edit" />
-                                                    </td>
-                                                    <td>
-                                                        <asp:DynamicControl runat="server" DataField="LeftTMax" Mode="Edit" />
-                                                    </td>
-                                                </tr>
-                                                <tr class="active">
-                                                    <td>
-                                                        <asp:DynamicControl runat="server" DataField="RightTMin" Mode="Edit" />
-                                                    </td>
-                                                    <td>
-                                                        <asp:DynamicControl runat="server" DataField="RightTMax" Mode="Edit" />
-                                                    </td>
-                                                </tr>
-                                                <tr class="active">
-                                                    <td>
-                                                        <asp:DynamicControl runat="server" DataField="PeakWidth" Mode="Edit" />
-                                                    </td>
-                                                    <td>
-                                                        <asp:DynamicControl runat="server" DataField="MultiK" Mode="Edit" />
-                                                    </td>
-                                                </tr>
-                                                <tr class="active">
-                                                    <td>
-                                                        <p class="btn btn-default" data-toggle="modal" data-target="#kModal">K值设定</p>
-                                                    </td>
-                                                    <td>
-                                                        <p class="btn btn-default" data-toggle="modal" data-target="#jModal">J值设定</p>
-                                                    </td>
-                                                </tr>
-
-                                            </tbody>
-
-                                        </table>
-                                    </fieldset>
-                                </ItemTemplate>
-                            </asp:FormView>--%>
-                                    <%-- <table class="table table-striped table-hover ">
-                                        <tbody>
-                                            
-                                           
-                                            <tr class="active">
-                                                <td>修正参数</td>
-                                                <td>
-                                                    <p class="btn btn-info" data-toggle="modal" data-target="#fixParamModal">修改</p>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>--%>
+                                 
                                     <table class="table table-stripped table-hover">
                                         <thead>
                                             <tr>
@@ -413,8 +346,8 @@
                                                 <asp:TextBox ID="TextBox64" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <a id="LB_K_CO"></a>
-
+                                                <!--<a id="LB_K_CO"></a>-->
+                                                <asp:Button ID="H2K" runat="server" OnClick="H2K_Click" OnClientClick="showKModal()"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -445,7 +378,8 @@
                                                 <asp:TextBox ID="TextBox65" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <a id="LB_K_CO0"></a>
+                                                <!--<a id="LB_K_CO0"></a>-->
+                                                <asp:Button ID="COK" runat="server" OnClick="COK_Click"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -476,7 +410,8 @@
                                                 <asp:TextBox ID="TextBox66" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <a id="LB_K_CO1"></a>
+                                                <!--<a id="LB_K_CO1"></a>-->
+                                                <asp:Button ID="CH4K" runat="server" OnClick="CH4K_Click"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -507,7 +442,8 @@
                                                 <asp:TextBox ID="TextBox67" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <a id="LB_K_CO2"></a>
+                                                <!--<a id="LB_K_CO2"></a>-->
+                                                <asp:Button ID="C2H2K" runat="server" OnClick="C2H2K_Click"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -538,7 +474,9 @@
                                                 <asp:TextBox ID="TextBox68" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <a id="LB_K_CO3"></a>
+                                                <!--<a id="LB_K_CO3"></a>-->
+                                                <asp:Button ID="C2H4K" runat="server" OnClick="C2H4K_Click"/>
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -569,7 +507,9 @@
                                                 <asp:TextBox ID="TextBox69" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <a id="LB_K_CO4"></a>
+                                                <!--<a id="LB_K_CO4"></a>-->
+                                                <asp:Button ID="C2H6K" runat="server" OnClick="C2H6K_Click"/>
+
                                             </td>
                                         </tr>
                                         <tr>
@@ -600,7 +540,9 @@
                                                 <asp:TextBox ID="TextBox70" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <a id="LB_K_CO5"></a>
+                                                <!--<a id="LB_K_CO5"></a>-->
+                                                <asp:Button ID="CO2K" runat="server" OnClick="CO2K_Click"/>
+
                                             </td>
                                         </tr>
 
@@ -671,11 +613,11 @@
                                 </div>
 
 
-                                <%-- 控制参数--%>
+                                <!-- 控制参数-->
                                 <div class="tab-pane fade" id="ctrlParam">
                                     <asp:UpdatePanel runat="server" ID="UP_CtrlParam">
                                         <ContentTemplate>
-                                            <%--脱气装置--%>
+                                            <!--脱气装置-->
                                             <div class="panel panel-info">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
@@ -813,7 +755,7 @@
                                                 </div>
                                             </div>
 
-                                            <%--检测辅助控制--%>
+                                            <!--检测辅助控制-->
                                             <div class="panel panel-success">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
@@ -956,7 +898,7 @@
                                                 </div>
                                             </div>
 
-                                            <%--环境及外围控制检测--%>
+                                            <!--环境及外围控制检测-->
                                             <div class="panel panel-danger">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
@@ -1015,7 +957,7 @@
                                                 </div>
                                             </div>
 
-                                            <%--采样设置--%>
+                                            <!--采样设置-->
                                             <div class="panel panel-warning">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
@@ -1206,12 +1148,12 @@
                                 </div>
 
 
-                                <%-- 状态/控制 --%>
+                                <!-- 状态/控制 -->
                                 <div class="tab-pane fade" id="stateCtrl">
                                     <asp:UpdatePanel runat="server" ID="UP_StateCtrl">
                                         <ContentTemplate>
 
-                                            <%--脱气装置--%>
+                                            <!--脱气装置-->
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
@@ -1335,7 +1277,7 @@
                                             </div>
 
 
-                                            <%--检测辅助控制--%>
+                                            <!--检测辅助控制-->
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
@@ -1369,7 +1311,7 @@
                                             </div>
 
 
-                                            <%--环境及外围控制检测--%>
+                                            <!--环境及外围控制检测-->
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
@@ -1427,7 +1369,7 @@
                                             </div>
 
 
-                                            <%--采样设置--%>
+                                            <!--采样设置-->
                                             <div class="panel panel-default">
                                                 <div class="panel-heading">
                                                     <h4 class="panel-title">
@@ -1506,19 +1448,19 @@
 
 
 
-            <%--运行图和谱图--%>
+            <!--运行图和谱图-->
             <div class="contents">
 
 
-                <%--打开右侧隐藏菜单--%>
+                <!--打开右侧隐藏菜单-->
                 <div style="float: right; height: 20%; text-align: center">
                     <a class="btn btn-primary" id="openM"><<<<<<<<...</a>
                 </div>
 
-                <%-- 设备运行图 --%>
+                <!-- 设备运行图 -->
 
                 
-                    <div>
+                <div>
                 <div class="col-md-2 form-group">
 
                     <asp:Button ID="ExecuteButton" runat="server" class="btn btn-primary" Text="立即启动" OnClick="ExecuteButton_Click" />
@@ -1555,11 +1497,11 @@
 
 
                 
-                <%--实时谱图--%>
+                <!--实时谱图-->
 
                 <div id="tempChart">
 
-                    <%--<table class="table table-striped form-group" style="text-align: center">
+                    <!--<table class="table table-striped form-group" style="text-align: center">
                         <tbody>
 
                             <tr>
@@ -1574,7 +1516,7 @@
                             </tr>
                         </tbody>
 
-                    </table>--%>
+                    </table>-->
                     <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="UpdatePanel1">
 
                         <ContentTemplate>
@@ -1618,10 +1560,7 @@
         </div>
 
 
-
-
-
-        <%-- 修正参数 --%>
+        <!-- 修正参数 -->
         <div class="modal fade" id="fixParamModal" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="True">
             <div class="modal-dialog" style="width: 800px">
@@ -1634,7 +1573,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <%-- <table class="table table-stripped table-hover">
+                        <!-- <table class="table table-stripped table-hover">
                             <thead>
                                 <tr>
                                     <th style="width: 70px">
@@ -1934,7 +1873,7 @@
                                     <asp:TextBox ID="TB_T_B" runat="server" Width="50px">0</asp:TextBox>
                                 </td>
                             </tr>
-                        </table>--%>
+                        </table>-->
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default"
@@ -1951,7 +1890,7 @@
         </div>
 
 
-        <%--K值设置窗口--%>
+        <!--K值设置窗口-->
         <div class="modal fade" id="kModal" tabindex="-1" role="dialog"
             aria-labelledby="myModalLabel" aria-hidden="True">
             <div class="modal-dialog" style="width: 800px">
@@ -1966,7 +1905,7 @@
 
                     <div class="modal-body">
                         <asp:Panel ID="Panel1" runat="server">
-                            <asp:UpdatePanel ID="UpdatePanelK" runat="server">
+                            <asp:UpdatePanel ID="UpdatePanelK" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
 
                                     <table style="width: 758px; border-width: 1px; border-color: #cccccc" class="table table-stripped">
@@ -2281,6 +2220,15 @@
                                     </table>
 
                                 </ContentTemplate>
+                                <Triggers>
+                                    <asp:AsyncPostBackTrigger ControlID="H2K" />
+                                    <asp:AsyncPostBackTrigger ControlID="COK" />
+                                    <asp:AsyncPostBackTrigger ControlID="CH4K" />
+                                    <asp:AsyncPostBackTrigger ControlID="C2H2K" />
+                                    <asp:AsyncPostBackTrigger ControlID="C2H4K" />
+                                    <asp:AsyncPostBackTrigger ControlID="C2H6K" />
+                                    <asp:AsyncPostBackTrigger ControlID="CO2K" />
+                                </Triggers>
                             </asp:UpdatePanel>
 
 

@@ -10,6 +10,10 @@ using System.Web;
 
 namespace IMserver.DBservice
 {
+    /// <summary>
+    /// mongohelper中的方法会抛出异常
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class MongoHelper<T> where T:class
     {
         private MongoClient _mongoClient;

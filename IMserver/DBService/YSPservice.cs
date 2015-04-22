@@ -10,6 +10,11 @@ namespace IMserver.DBservice
 {
     public class YSPservice
     {
+        /// <summary>
+        /// !!!异常
+        /// </summary>
+        /// <param name="devId"></param>
+        /// <returns></returns>
         public Config GetCFG(string devId)
         {
             try
@@ -21,10 +26,17 @@ namespace IMserver.DBservice
             }
             catch (Exception ex)
             {
-                return null;
+                //return null;
+                throw new Exception(ex.Message);
             }
             
         }
+
+        /// <summary>
+        /// !!!异常
+        /// </summary>
+        /// <param name="devId"></param>
+        /// <returns></returns>
         public StateCtrol GetSC(string devId)
         {
             try
@@ -36,7 +48,7 @@ namespace IMserver.DBservice
             }
             catch (Exception ex)
             {
-                return null;
+                throw new Exception(ex.Message);
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using IMserver.DBservice;
+﻿using IMserver;
+using IMserver.Data_Warehousing;
+using IMserver.DBservice;
 using IMserver.Models;
 using IMserver.Models.SimlDefine;
 using System;
@@ -95,12 +97,27 @@ namespace WebApplication1.DevDebug
         /// </summary>
         public void initControl()
         {
+            try
+            {
+                myCfg = _ysp.GetCFG(devId);
+                if (myCfg != null)
+                {
+                    if(myCfg.SysSet!=null && myCfg.AnalyPara.EnviSet!=null)
+                        FillSysSet(myCfg.SysSet,myCfg.AnalyPara.EnviSet);
+                    if(myCfg.AnalyPara!=null)
+                        FillAnalyPara(myCfg.AnalyPara);
+                    if(myCfg.TQSet!=null && myCfg.JCFZSet!=null && myCfg.OutSideSet!=null && myCfg.SampSet!=null)
+                        FillCtrlParam(myCfg.TQSet,myCfg.JCFZSet,myCfg.OutSideSet,myCfg.SampSet);
+                }
+                mySC = _ysp.GetSC(devId);
+                if(mySC!=null)
+                    FillStateCtrol(mySC);
+            }
+            catch (Exception e)
+            {
+
+            }
            
-                     
-                    FillSysSet();                   
-                    FillAnalyPara();                                     
-                    FillCtrlParam(); 
-                    FillStateCtrol();
 
 
            
@@ -727,18 +744,63 @@ namespace WebApplication1.DevDebug
         protected void ReadSys_Click(object sender, EventArgs e)
         {
             //从下位机读取系统设置
-            FillSysSet();
+            Dictionary<ushort, object> sysDic = new GetData().GetSys();
+            for (int i = 0; i < sysDic.Count; i++)
+            {
+                ushort key = sysDic.ElementAt(i).Key;
+                object value = sysDic.ElementAt(i).Value;
+                Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
+                if (LB != null)
+                {
+                    LB.Text = ((float)value).ToString();
+                }
+                else
+                {
+                    DropDownList DD = (DropDownList)Page.FindControl("DD_" + key);
+                    DD.SelectedIndex = (int)value;
+                }
+                try
+                {
+                    AddSIML.Warehousing(sysDic, Byte.Parse(devId));
+                }
+                catch (Exception exce)
+                {
+
+                }
+                return;
+
+            }
+            //FillSysSet(sysSet);
         }
 
         protected void SetSys_Click(object sender, EventArgs e)
         {
-            //系统时间下设
+            //系统设置下设
         }
 
         protected void ReadCtrl_Click(object sender, EventArgs e)
         {
             //从下位机读取控制参数
-            FillCtrlParam();
+            Dictionary<ushort, object> cpDic = new GetData().GetCP(DD_152.SelectedIndex);
+            for (int i = 0; i < cpDic.Count; i++)
+            {
+                ushort key = cpDic.ElementAt(i).Key;
+                object value = cpDic.ElementAt(i).Value;
+                Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
+                LB.Text = ((float)value).ToString();
+                
+                try
+                {
+                    AddSIML.Warehousing(cpDic, Byte.Parse(devId));
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return;
+
+            }
+            //FillCtrlParam();
         }
 
         protected void SetCtrl_Click(object sender, EventArgs e)
@@ -749,7 +811,43 @@ namespace WebApplication1.DevDebug
         protected void ReadState_Click(object sender, EventArgs e)
         {
             //从下位机读取状态/控制信息
-            FillStateCtrol();
+            Dictionary<ushort, object> scDic = new GetData().GetCP(DD_152.SelectedIndex);
+            for (int i = 0; i < scDic.Count; i++)
+            {
+                ushort key = scDic.ElementAt(i).Key;
+                object value = scDic.ElementAt(i).Value;
+                Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
+                if (LB != null)
+                {
+                    LB.Text = ((float)value).ToString();
+                }
+                else
+                {
+                    CheckBox CB = (CheckBox)Page.FindControl("SW_" + key);
+                    if (CB != null)
+                    {
+                        CB.Checked = value.ToString() == "0" ? false : true;
+                    }
+                    else
+                    {
+                        TextBox TB = (TextBox)Page.FindControl("TB_"+key);
+                        TB.Text = ((float)value).ToString();
+                    }                   
+                    
+                }
+
+                try
+                {
+                    AddSIML.Warehousing(scDic, Byte.Parse(devId));
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return;
+
+            }
+            //FillStateCtrol();
         }
 
         protected void SetState_Click(object sender, EventArgs e)
@@ -764,22 +862,19 @@ namespace WebApplication1.DevDebug
         /// <summary>
         ///  初始化系统设置选项卡数据
         /// </summary>
-        public void FillSysSet(){
-            myCfg = _ysp.GetCFG(devId);
+        public void FillSysSet(SystemSetting SysSet,EnvironmentSetting EnviSet){
+           
             try
             {
-                if (myCfg.SysSet != null)
-                {
-                    SystemSetting SysSet = myCfg.SysSet;
+               
                     DD_150.SelectedValue = SysSet.SuCO2.ToString();
                     DD_151.SelectedValue = SysSet.SuH2O.ToString();
                     DD_152.SelectedValue = SysSet.TuoQi_Mode.ToString();
                     TB_149.Text = SysSet.SoftwareRelease;
 
-                }
-                if (myCfg.AnalyPara.EnviSet != null)
-                {
-                    EnvironmentSetting EnviSet = myCfg.AnalyPara.EnviSet;
+                
+               
+                    
                     TB_182.Text = EnviSet.voltage.ToString();
                     TB_184.Text = EnviSet.altitude.ToString();
                     //TB_183_1.Text = EnviSet.oilFactorA.ToString();
@@ -788,11 +883,11 @@ namespace WebApplication1.DevDebug
                     TB_183_2.Text = EnviSet.oilfactor.B.ToString();
                     TB_180.Text = EnviSet.oilDensity.ToString();
                     TB_181.Text = EnviSet.oilTotal.ToString();
-                }
+                
             }
             catch (Exception ex)
             {
-                
+                throw ex;
             }
            
         }
@@ -800,18 +895,17 @@ namespace WebApplication1.DevDebug
         /// <summary>
         ///  初始化计算参数选项卡数据
         /// </summary>
-        public void FillAnalyPara()
+        public void FillAnalyPara(AnalysisParameter analyPara) //////////////////////////////未写好
         {
-            myCfg = _ysp.GetCFG(devId);
+           
             try
             {
-                if (myCfg.AnalyPara != null)
-                {
-
-                }
+                
             }
             catch(Exception ex)
             {
+              throw ex;
+
 
             }
            
@@ -820,13 +914,12 @@ namespace WebApplication1.DevDebug
         /// <summary>
         /// 初始化控制参数选项卡数据  
         /// </summary>
-        public void FillCtrlParam(){
-            myCfg = _ysp.GetCFG(devId);
+        public void FillCtrlParam(TuoQiSetting TQSet,JCFZSetting JCFZSet,OutSideSetting OutSideSet,SampleSetting SampSet){
+           
             try
             {
-                if (myCfg.TQSet != null)
+                if (TQSet != null)
                 {
-                    TuoQiSetting TQSet = myCfg.TQSet;
                     //真空脱气
                     TB_4.Text = TQSet.Cycle_Tick.ToString();
                     TB_5.Text = TQSet.EvacuTimes.ToString();
@@ -852,9 +945,9 @@ namespace WebApplication1.DevDebug
                     TB_55.Text = TQSet.ChangeValveStart.ToString();
                     TB_56.Text = TQSet.ChangeValveWork_Tick.ToString();
                 }
-                if (myCfg.JCFZSet != null)
+                if (JCFZSet != null)
                 {
-                    JCFZSetting JCFZSet = myCfg.JCFZSet;
+                   
                     //传感器室
                     if (JCFZSet.SensorRoom != null)
                     {
@@ -891,9 +984,9 @@ namespace WebApplication1.DevDebug
                     }
 
                 }
-                if (myCfg.OutSideSet != null)
+                if (OutSideSet != null)
                 {
-                    OutSideSetting OutSideSet = myCfg.OutSideSet;
+                   
                     TB_97.Text = OutSideSet.FengShanKeep_Tick.ToString();
                     TB_98.Text = OutSideSet.FengShanWork_Tick.ToString();
                     TB_99.Text = OutSideSet.AirControlStart.ToString();
@@ -903,9 +996,8 @@ namespace WebApplication1.DevDebug
                     TB_103.Text = OutSideSet.DrainStart.ToString();
                     TB_104.Text = OutSideSet.DrainWork_Tick.ToString();
                 }
-                if (myCfg.SampSet != null)
-                {
-                    SampleSetting SampSet = myCfg.SampSet;
+                if (SampSet != null)
+                {                    
                     TB_131.Text = SampSet.BiaoDingTimes.ToString();
                     TB_107.Text = SampSet.ChuiSaoBefore_Tick.ToString();
                     TB_108.Text = SampSet.DingLiangWork_Tick.ToString();
@@ -938,7 +1030,7 @@ namespace WebApplication1.DevDebug
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
            
         }
@@ -947,9 +1039,9 @@ namespace WebApplication1.DevDebug
         /// <summary>
         /// //初始化状态控制选项卡数据
         /// </summary>
-        public void FillStateCtrol()
+        public void FillStateCtrol(StateCtrol mySC)
         {
-            mySC = _ysp.GetSC(devId);
+            
             try
             {
                 if (mySC != null)
@@ -1063,14 +1155,51 @@ namespace WebApplication1.DevDebug
                     DD_156.SelectedValue = mySC.SysSC.DevState.ToString();
                     DD_157.SelectedValue = mySC.SysSC.WorkFlow.ToString();
                 }
+                if (Session["gcVal"] != null)
+                    Session["gcVal"] = gcVal;
             }
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             
             
+        }
+
+        protected void H2K_Click(object sender, EventArgs e)
+        {
+            TB_K1.Text = "1111";
+        }
+
+        protected void COK_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CH4K_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void C2H2K_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void C2H4K_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void C2H6K_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void CO2K_Click(object sender, EventArgs e)
+        {
+
         }
     }
 

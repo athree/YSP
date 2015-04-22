@@ -26,7 +26,7 @@ namespace IMserver.SubFuncs
             _frame.destID = destid;
             _frame.msgDir = (byte)MSGEncoding.MsgDir.Request;
             _frame.msgVer = MSGEncoding.msgVer;
-            _frame.msgType = (byte)MSGEncoding.MsgType.GetErrorInfo;
+            _frame.msgType = (byte)MSGEncoding.MsgType.Other;
             _frame.msgSubType = (byte)MSGEncoding.Other.GetErrorInfo;
             _frame.dataLen = (ushort)data.Length;
             donedata = PrepareData.MergeMsg(ref _frame, data);
@@ -63,6 +63,7 @@ namespace IMserver.SubFuncs
                         byte[] recvframeout = new byte[b_recvframe.Length - PrepareData.BUS_FRAME_MINLEN - 2];
                         Array.Copy(b_recvframe, PrepareData.BUS_FRAME_MINLEN, recvframeout, 0,
                                    b_recvframe.Length - PrepareData.BUS_FRAME_MINLEN - 2);
+
                         explain = Encoding.ASCII.GetString(recvframeout);
                     }
                     break;

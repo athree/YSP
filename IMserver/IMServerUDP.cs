@@ -11,6 +11,7 @@ using IMserver.CommonFuncs;
 using IMserver.SubFuncs;
 using System.IO;
 using System.Diagnostics;
+using SysLog;
 
 
 namespace IMserver
@@ -79,11 +80,11 @@ namespace IMserver
 
             shared.listenfd = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             shared.heartfd = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
-            //shared.hostaddress = IPAddress.Parse("219.244.93.60");
-            shared.hostaddress = IPAddress.Parse("219.244.93.125");
+            //shared.hostaddress = IPAddress.Parse("110.244.190.250");
+            shared.hostaddress = IPAddress.Parse("127.0.0.1");
 
-            shared.listenfd.Bind(new IPEndPoint(shared.hostaddress, 10000));
-            shared.heartfd.Bind(new IPEndPoint(shared.hostaddress, 9999));
+            shared.listenfd.Bind(new IPEndPoint(shared.hostaddress, 9999));
+            shared.heartfd.Bind(new IPEndPoint(shared.hostaddress, 10000));
 
             //开启心跳包检测线程
             Thread Heartlisten = new Thread(new ThreadStart(HeartBeat.HeartCheck));
@@ -92,7 +93,7 @@ namespace IMserver
 
             //先接收一条消息，然后开启发送和接受线程
             byte[] connectcheck = new byte[PrepareData.BUS_FRAME_MINLEN];
-            IPEndPoint client = new IPEndPoint(IPAddress.Parse("223.104.11.107"), 9999);
+            IPEndPoint client = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8888);
             shared.remotepoint = (EndPoint)client;
             //shared.listenfd.ReceiveFrom(connectcheck , ref shared.remotepoint);
             //MessageBox.Show("服务器接收到数据！");
@@ -470,6 +471,22 @@ namespace IMserver
         public void RecvDone()
         {
             shared.donerecvflag = true;
+        }
+
+        /// <summary>
+        /// 日志写入
+        /// </summary>
+        /// <param name="ex"></param>
+        private static void LogException(Exception ex)
+        {
+            using (ILog log = new FileLog())
+            {
+                log.Write("Exception from Class: HandleData");
+                log.Write("Exception:" + ex.Message);
+                log.Write(ex.StackTrace);
+                log.Write("时间：" + DateTime.Now.ToString());
+                log.Write("----------------------------------------------------------");
+            }
         }
     }
 }
