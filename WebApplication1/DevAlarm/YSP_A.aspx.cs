@@ -23,6 +23,7 @@ namespace WebApplication1.DevAlarm
         public string devId = "";
         public string devSite, devType, devName;
         public AlarmState myAs;
+        protected string ErrorMsg;
         
 
 
@@ -63,8 +64,7 @@ namespace WebApplication1.DevAlarm
             if(!IsPostBack)
             {
                 
-                Diag.ImageUrl = "~/Image/DavidDiag.bmp";               
-                ViewState["ErrorMsg"] = "";
+                Diag.ImageUrl = "~/Image/DavidDiag.bmp";   
                 Session["DiagFlag"] = 0;
                 
                 Timer1.Enabled = false;
@@ -75,7 +75,8 @@ namespace WebApplication1.DevAlarm
                 devId = Session["DevID"].ToString();
             else
             {
-                ViewState["ErrorMsg"]="session出错，请重新从地图页选择设备！";
+                ErrorMsg="session出错，请重新从地图页选择设备！";
+                Msg.Visible = true;
                 return;
             }
             if (Session["DevSite"] != null)
@@ -114,15 +115,17 @@ namespace WebApplication1.DevAlarm
                     else
                     {
                         CheckBox CB = (CheckBox)Page.FindControl("SW_" + key);
-                        CB.Checked=value.ToString()=="0"?false:true;
-
+                        if(CB!=null)
+                            CB.Checked=value.ToString()=="0"?false:true;
                     }
                                     
                 }
 
                 try
                 {
+                    asDic.Concat(new GetData().GetAttention());
                     AddAlarmState.Warehousing(asDic, Byte.Parse(devId));
+                    InitPartial(AddAlarmState.Dict2Class(asDic ,Byte.Parse(devId)));
                 }
                 catch (Exception e)
                 {
@@ -158,7 +161,103 @@ namespace WebApplication1.DevAlarm
                 LB_8.Text = myAs.ChangeTimes.ToString();
             }
         }
+        private void InitPartial(AlarmState alarmState) {
+            AlarmAll hold = alarmState.aa;
+            //含量注意值
+            tb_H2_1.Text = hold.GasAlarm[0].Level1.ToString();
+            tb_H2_2.Text = hold.GasAlarm[0].Level2.ToString();
 
+            tb_CO_1.Text = hold.GasAlarm[1].Level1.ToString();
+            tb_CO_2.Text = hold.GasAlarm[1].Level2.ToString();
+
+            tb_CH4_1.Text = hold.GasAlarm[2].Level1.ToString();
+            tb_CH4_2.Text = hold.GasAlarm[2].Level2.ToString();
+
+            tb_C2H2_1.Text = hold.GasAlarm[3].Level1.ToString();
+            tb_C2H2_2.Text = hold.GasAlarm[3].Level2.ToString();
+
+            tb_C2H4_1.Text = hold.GasAlarm[4].Level1.ToString();
+            tb_C2H4_2.Text = hold.GasAlarm[4].Level2.ToString();
+
+            tb_C2H6_1.Text = hold.GasAlarm[5].Level1.ToString();
+            tb_C2H6_2.Text = hold.GasAlarm[5].Level2.ToString();
+
+            tb_CO2_1.Text = hold.GasAlarm[6].Level1.ToString();
+            tb_CO2_2.Text = hold.GasAlarm[6].Level2.ToString();
+
+            tb_Total_1.Text = hold.GasAlarm[0].Level1.ToString();
+            tb_Total_2.Text = hold.GasAlarm[0].Level2.ToString();
+
+            tb_PPM_1.Text = hold.thga.Level1.ToString();
+            tb_PPM_2.Text = hold.thga.Level2.ToString();
+
+            tb_AW_1.Text = hold.awa.Level1.ToString();
+            tb_AW_2.Text = hold.awa.Level2.ToString();
+
+            tb_T_1.Text = hold.ta.Level1.ToString();
+            tb_T_2.Text = hold.ta.Level2.ToString();
+
+
+
+
+            //绝对产气速率注意值
+            tb_ABS_H2_1.Text = hold.GasAlarm[0].AbsLevel1.ToString();
+            tb_ABS_H2_2.Text = hold.GasAlarm[0].AbsLevel2.ToString();
+
+            tb_ABS_CO_1.Text = hold.GasAlarm[1].AbsLevel1.ToString();
+            tb_ABS_CO_2.Text = hold.GasAlarm[1].AbsLevel2.ToString();
+
+            tb_ABS_CH4_1.Text = hold.GasAlarm[2].AbsLevel1.ToString();
+            tb_ABS_CH4_2.Text = hold.GasAlarm[2].AbsLevel2.ToString();
+
+            tb_ABS_C2H2_1.Text = hold.GasAlarm[3].AbsLevel1.ToString();
+            tb_ABS_C2H2_2.Text = hold.GasAlarm[3].AbsLevel2.ToString();
+
+            tb_ABS_C2H4_1.Text = hold.GasAlarm[4].AbsLevel1.ToString();
+            tb_ABS_C2H4_2.Text = hold.GasAlarm[4].AbsLevel2.ToString();
+
+            tb_ABS_C2H6_1.Text = hold.GasAlarm[5].AbsLevel1.ToString();
+            tb_ABS_C2H6_2.Text = hold.GasAlarm[5].AbsLevel2.ToString();
+
+            tb_ABS_CO2_1.Text = hold.GasAlarm[6].AbsLevel1.ToString();
+            tb_ABS_CO2_2.Text = hold.GasAlarm[6].AbsLevel2.ToString();
+
+            tb_ABS_Total_1.Text = hold.thga.Level1.ToString();
+            tb_ABS_Total_2.Text = hold.thga.Level2.ToString();
+
+
+
+            //相对产气速率注意值
+            tb_REL_H2_1.Text = hold.GasAlarm[0].RelLevel1.ToString();
+            tb_REL_H2_2.Text = hold.GasAlarm[0].RelLevel2.ToString();
+
+            tb_REL_CO_1.Text = hold.GasAlarm[1].RelLevel1.ToString();
+            tb_REL_CO_2.Text = hold.GasAlarm[1].RelLevel2.ToString();
+
+            tb_REL_CH4_1.Text = hold.GasAlarm[2].Level1.ToString();
+            tb_REL_CH4_2.Text = hold.GasAlarm[2].RelLevel2.ToString();
+
+            tb_REL_C2H2_1.Text = hold.GasAlarm[3].RelLevel1.ToString();
+            tb_REL_C2H2_2.Text = hold.GasAlarm[3].RelLevel2.ToString();
+
+            tb_REL_C2H4_1.Text = hold.GasAlarm[4].RelLevel1.ToString();
+            tb_REL_C2H4_2.Text = hold.GasAlarm[4].RelLevel2.ToString();
+
+            tb_REL_C2H6_1.Text = hold.GasAlarm[5].RelLevel1.ToString();
+            tb_REL_C2H6_2.Text = hold.GasAlarm[5].RelLevel2.ToString();
+
+            tb_REL_CO2_1.Text = hold.GasAlarm[6].RelLevel1.ToString();
+            tb_REL_CO2_2.Text = hold.GasAlarm[6].RelLevel2.ToString();
+
+            tb_REL_Total_1.Text = hold.thga.Level1.ToString();
+            tb_REL_Total_2.Text = hold.thga.Level2.ToString();
+        
+        
+        
+        
+        
+        
+        }
         private void BindSelectedData()
         {
             DataTable dt = new DataTable();
@@ -340,22 +439,20 @@ namespace WebApplication1.DevAlarm
         {
             if (Session["SelectedData"] == null)
             {
-                ViewState["ErrorMsg"] = Language.Selected["Alert_SelData"];
-                //Response.Write("<script>$(function(){$('#ErrorMsg p').innerText='" + Language.Selected["Alert_SelData"] + "';$('#ErrorMsg').show();})</script>");
-                //Response.Write("<script>alert(" + Language.Selected["Alert_SelData"] + "')</script>");
-              
+                ErrorMsg = Language.Selected["Alert_SelData"];
+                Msg.Visible = true;               
                 return;
             }
             if (Session["SelectedAbs"] == null)
             {
-                ViewState["ErrorMsg"] = Language.Selected["Alert_SelAbs"];
-                //Response.Write("<script>alert(" + Language.Selected["Alert_SelAbs"] + "')</script>");                
+                ErrorMsg = Language.Selected["Alert_SelAbs"];
+                Msg.Visible = true; 
                 return;
             }
             if (Session["SelectedRel"] == null)
             {
-                ViewState["ErrorMsg"] = Language.Selected["Alert_SelRel"];
-                //Response.Write("<script>alert(" + Language.Selected["Alert_SelRel"] + "')</script>");
+                ErrorMsg = Language.Selected["Alert_SelRel"];
+                Msg.Visible = true;
                 return;
             }
             
@@ -365,17 +462,18 @@ namespace WebApplication1.DevAlarm
 
             if (data.ReadDate <= abs.ReadDate)
             {
-                ViewState["ErrorMsg"] = Language.Selected["Alert_TimeErr1"];
-                //Response.Write("<script>alert('" + Language.Selected["Alert_TimeErr1"] + "')</script>");
+                ErrorMsg = Language.Selected["Alert_TimeErr1"];
+                Msg.Visible = true;
                 return;
             }
             if (data.ReadDate <= rel.ReadDate)
             {
-                ViewState["ErrorMsg"] = Language.Selected["Alert_TimeErr2"];
-                //Response.Write("<script>alert('" + Language.Selected["Alert_TimeErr2"] + "')</script>");
+                ErrorMsg= Language.Selected["Alert_TimeErr2"];
+                Msg.Visible = true;
+               
                 return;
             }
-            ViewState["ErrorMsg"] = "";
+            Msg.Visible=false;
             switch (ShowDiagDrop.SelectedValue)
             {
                 case "大卫三角形法":

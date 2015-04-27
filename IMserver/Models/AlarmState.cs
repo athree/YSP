@@ -21,10 +21,7 @@ namespace IMserver.Models
         public DateTime Time_Stamp { get; set; }
 
         public AlarmAll aa { get; set; }
-        //在上面这个类中欧
-        //public string AutoAlarm { get; set; }   //自动阈值告警
-        //public string AutoDiagnose { get; set; } //自动诊断设置
-        //public int Interval { get; set; }     //自动告警功能启用最小日期
+       
         public DateTime NextSampleTime { get; set; }   //下次采样时间
         public float GasPressure { get; set; }      //载气压力检测实际值
         public float VacuPres { get; set; }//（脱气机）真空度压力检测值

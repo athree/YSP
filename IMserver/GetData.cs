@@ -1,10 +1,8 @@
-﻿using IMserver.CommonFuncs;
-using System;
+﻿using IMserver.Data_Warehousing;
+using IMserver.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Threading;
-using System.Web;
 
 namespace IMserver
 {
@@ -82,6 +80,40 @@ namespace IMserver
             return lady;
            
         }
+
+
+
+        /// <summary>
+        /// 获取气体一级二级报警注意值等设置
+        /// </summary>
+        /// <param name="devid">设备id</param>
+        /// <returns>报警状态类</returns>
+        public Dictionary<ushort, object> GetAttention()
+        {                  
+            ushort[] require = {};
+            for (int i = 291; i < 362; i++)
+            {
+                ushort[] concat = { (ushort)i };
+                require.Concat(concat);
+            }
+            //由于一个触发可能发送多包，所以编码在packet中组织，哈希入表也在packet中组织
+            //触发组包
+            byte temp = PrepareData.AddRequire(compare, require);
+            //缓冲三秒
+            while (!HandleData.hello.readone)
+            {
+                Thread.Sleep(100);
+            }
+            //为了跳出循环，这里不再复位标志位
+
+            //修改为从数据库读取
+            Dictionary<ushort, object> lady = (Dictionary<ushort, object>)HandleData.hello.result;
+            return lady;
+        }
+
+
+
+
         /// <summary>
         /// 从下位机获取系统配置信息
         /// </summary>

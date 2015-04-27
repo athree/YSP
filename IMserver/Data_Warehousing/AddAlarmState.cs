@@ -50,7 +50,7 @@ namespace IMserver.Data_Warehousing
                         {
                             als.aa.Interval = (ushort)kvp.Value;
                             break;
-                        }
+                        }                      
                     /*========================================================*/
                     #region H2报警及分析
                     case 291:	//H2气体含量注意值，一级报警
