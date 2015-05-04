@@ -15,19 +15,13 @@
         })
 
    </script>
-
-
-  
-   <div class="form-group">
+    <div class="form-group">
        
            <asp:PlaceHolder runat="server" ID="Msg" Visible="false">
                 <h3 class="text-danger"><%:ErrorMsg %>           
                 </h3>
             </asp:PlaceHolder>
-    <button type="button" class="close" data-dismiss="alert">×</button>
-    <h4>出错!</h4>
-    <p></p>
-    </div>
+    
       
              <table style="width: 100%;">
                         <tr>

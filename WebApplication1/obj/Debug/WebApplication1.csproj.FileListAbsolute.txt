@@ -506,7 +506,6 @@ C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin
 C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.Host.SystemWeb.resources.dll
 C:\Users\Administrator\Desktop\djproj\WebApplication1\bin\zh-Hans\Microsoft.Owin.Security.resources.dll
 E:\Git\YSP\WebApplication1\obj\Debug\WebApplication1.csprojFakesResolveAssemblyReference.cache
-E:\Git\YSP\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache
 E:\Git\YSP\WebApplication1\bin\WebApplication1.dll.config
 E:\Git\YSP\WebApplication1\bin\WebApplication1.dll
 E:\Git\YSP\WebApplication1\bin\WebApplication1.pdb
@@ -518,3 +517,4 @@ E:\Git\YSP\WebApplication1\bin\SysLog.pdb
 E:\Git\YSP\WebApplication1\bin\MongoMembership.pdb
 E:\Git\YSP\WebApplication1\obj\Debug\WebApplication1.dll
 E:\Git\YSP\WebApplication1\obj\Debug\WebApplication1.pdb
+E:\Git\YSP\WebApplication1\obj\Debug\WebApplication1.csprojResolveAssemblyReference.cache

@@ -21,6 +21,7 @@ namespace WebApplication1.DevDebug
         protected Dictionary<string,string> gcVal=new Dictionary<string,string>();
         protected Dictionary<string, bool> swVal = new Dictionary<string, bool>();
 
+
         #region InitLabel
         public static string Device = Language.Selected["Device"];
         public static string PressLevel = Language.Selected["PressLevel"];
@@ -78,6 +79,7 @@ namespace WebApplication1.DevDebug
                 if (Session["DevName"] != null)
                     ViewState["DevName"] = Session["DevName"].ToString();
                 initControl();
+               
                 /////////////////测试用
                 gcVal.Add("12", "55");
                 if (gcVal.Count > 0)
@@ -108,10 +110,26 @@ namespace WebApplication1.DevDebug
                         FillAnalyPara(myCfg.AnalyPara);
                     if(myCfg.TQSet!=null && myCfg.JCFZSet!=null && myCfg.OutSideSet!=null && myCfg.SampSet!=null)
                         FillCtrlParam(myCfg.TQSet,myCfg.JCFZSet,myCfg.OutSideSet,myCfg.SampSet);
+
+                    if (mySC != null)
+                        FillStateCtrol(mySC);
+                    if (myCfg.AnalyPara.GasFix[0].MultiK == null)
+                        H2K.OnClientClick = "getK(H2) ";
+                    if (myCfg.AnalyPara.GasFix[1].MultiK == null)
+                        COK.OnClientClick = "getK(CO) ";
+                    if (myCfg.AnalyPara.GasFix[2].MultiK == null)
+                        CH4K.OnClientClick = "getK(CH4) ";
+                    if (myCfg.AnalyPara.GasFix[3].MultiK == null)
+                        C2H2K.OnClientClick = "getK(C2H2) ";
+                    if (myCfg.AnalyPara.GasFix[4].MultiK == null)
+                        C2H4K.OnClientClick = "getK(C2H4) ";
+                    if (myCfg.AnalyPara.GasFix[5].MultiK == null)
+                        C2H6K.OnClientClick = "getK(C2H6) ";
+                    if (myCfg.AnalyPara.GasFix_CO2.MultiK.k == null)
+                        CO2K.OnClientClick = "getK(CO2)";
                 }
                 mySC = _ysp.GetSC(devId);
-                if(mySC!=null)
-                    FillStateCtrol(mySC);
+                
             }
             catch (Exception e)
             {
@@ -761,7 +779,7 @@ namespace WebApplication1.DevDebug
                 }
                 try
                 {
-                    AddSIML.Warehousing(sysDic, Byte.Parse(devId));
+                    AddConfig.Warehousing(sysDic, Byte.Parse(devId));
                 }
                 catch (Exception exce)
                 {
@@ -791,7 +809,7 @@ namespace WebApplication1.DevDebug
                 
                 try
                 {
-                    AddSIML.Warehousing(cpDic, Byte.Parse(devId));
+                    AddConfig.Warehousing(cpDic, Byte.Parse(devId));
                 }
                 catch (Exception ex)
                 {
@@ -838,7 +856,7 @@ namespace WebApplication1.DevDebug
 
                 try
                 {
-                    AddSIML.Warehousing(scDic, Byte.Parse(devId));
+                    AddConfig.Warehousing(scDic, Byte.Parse(devId));
                 }
                 catch (Exception ex)
                 {
@@ -895,18 +913,55 @@ namespace WebApplication1.DevDebug
         /// <summary>
         ///  初始化计算参数选项卡数据
         /// </summary>
-        public void FillAnalyPara(AnalysisParameter analyPara) //////////////////////////////未写好
+        public void FillAnalyPara(AnalysisParameter analyPara) 
         {
            
             try
             {
+                int j = 189;
+                int l;
+                for (int k = 0; k < 7; k++)  //峰顶点，位置范围，宽度，左右梯度min,max赋值
+                {
+                    l = j + 1;
+                    GasFixPara gfp = analyPara.GasFix[k];
+                    TextBox tb1 = (TextBox)Page.FindControl("TB_" + j+"_1");
+                    tb1.Text = gfp.p_a.PeakPoint.ToString();
+                    TextBox tb2 = (TextBox)Page.FindControl("TB_" + j + "_2");
+                    tb1.Text = gfp.p_a.PeakLeft.ToString();                    
+                    TextBox tb3 = (TextBox)Page.FindControl("TB_" + j + "_3");
+                    tb2.Text = gfp.p_a.PeakRight.ToString();
+                    TextBox tb4 = (TextBox)Page.FindControl("TB_" + j+"_4");
+                    tb4.Text = gfp.p_a.PeakWidth.ToString();
+                    TextBox tb5 = (TextBox)Page.FindControl("TB_" + l + "_1");
+                    tb5.Text = gfp.p_b.LeftTMin.ToString();
+                    TextBox tb6 = (TextBox)Page.FindControl("TB_" + l + "_2");
+                    tb6.Text = gfp.p_b.LeftTMax.ToString();
+                    TextBox tb7 = (TextBox)Page.FindControl("TB_" + l + "_3");
+                    tb7.Text = gfp.p_b.RightTMin.ToString();
+                    TextBox tb8 = (TextBox)Page.FindControl("TB_" + l + "_4");
+                    tb8.Text = gfp.p_b.RightTMax.ToString();
+                    j += 15;
+                }
+
+                //剔除区间
+                TB_279_1.Text = analyPara.er.start.ToString();
+                TB_279_2.Text = analyPara.er.end.ToString();
+               
+                //AW参数A,K,B
+                TB_186_1.Text = analyPara.AW.A.ToString();
+                TB_186_2.Text = analyPara.AW.K.ToString();
+                TB_186_3.Text = analyPara.AW.B.ToString();
+
+                //T参数A,K,B
+                TB_187_1.Text = analyPara.AW.A.ToString();
+                TB_187_2.Text = analyPara.AW.K.ToString();
+                TB_187_3.Text = analyPara.AW.B.ToString();
+                
                 
             }
             catch(Exception ex)
             {
               throw ex;
-
-
             }
            
         }
@@ -1169,38 +1224,75 @@ namespace WebApplication1.DevDebug
 
         protected void H2K_Click(object sender, EventArgs e)
         {
-            TB_K1.Text = "1111";
+            if (myCfg.AnalyPara.GasFix[0].MultiK != null)
+                inialK(0);
         }
 
         protected void COK_Click(object sender, EventArgs e)
         {
-
+            if (myCfg.AnalyPara.GasFix[1].MultiK != null)
+                inialK(1);
         }
 
         protected void CH4K_Click(object sender, EventArgs e)
         {
-
+            if (myCfg.AnalyPara.GasFix[2].MultiK != null)
+                inialK(2);
         }
 
         protected void C2H2K_Click(object sender, EventArgs e)
         {
-
+            if (myCfg.AnalyPara.GasFix[3].MultiK != null)
+                inialK(3);
         }
 
         protected void C2H4K_Click(object sender, EventArgs e)
         {
-
+            if (myCfg.AnalyPara.GasFix[4].MultiK != null)
+                inialK(4);
         }
 
         protected void C2H6K_Click(object sender, EventArgs e)
         {
-
+            if (myCfg.AnalyPara.GasFix[5].MultiK != null)
+                inialK(5);
         }
 
         protected void CO2K_Click(object sender, EventArgs e)
         {
-
+            if (myCfg.AnalyPara.GasFix_CO2.MultiK.k!= null)
+                inialCO2K();
         }
+
+        protected void inialK(int i) { 
+            GasFixK[] gfp=myCfg.AnalyPara.GasFix.ElementAt(i).MultiK;
+            for(int j=0;j<13;j++){
+                TextBox tbk=(TextBox)Page.FindControl("TB_K"+j);
+                tbk.Text=gfp[j].k.ToString();
+                TextBox tbmi=(TextBox)Page.FindControl("TB_MI"+j);
+                tbmi.Text=gfp[j].mi.ToString();
+                TextBox tbni=(TextBox)Page.FindControl("TB_NI"+j);
+                tbni.Text=gfp[j].ni.ToString();
+                TextBox tbamin = (TextBox)Page.FindControl("TB_K" + j + "_MinArea");
+                tbamin.Text=gfp[j].areaMin.ToString();
+                TextBox tbamax = (TextBox)Page.FindControl("TB_K" + j + "_MaxArea");
+                tbamax.Text=gfp[j].areaMax.ToString();
+                //TextBox tbjz=(TextBox)Page.FindControl("TB_JIZHI"+j);
+                //tbjz.Text=gfp[j].j.ToString();
+            }
+        
+        }
+        protected void inialCO2K()
+        {
+            GasFixK gfp = myCfg.AnalyPara.GasFix_CO2.MultiK;           
+            TB_K1.Text = gfp.k.ToString();
+            TB_MI1.Text = gfp.mi.ToString();
+            TB_NI1.Text = gfp.ni.ToString();
+            TB_K1_MinArea.Text = gfp.areaMin.ToString();
+            TB_K1_MaxArea.Text = gfp.areaMax.ToString();
+            //TB_JIZHI1.Text = gfp.J.ToString();
+        }
+
     }
 
 

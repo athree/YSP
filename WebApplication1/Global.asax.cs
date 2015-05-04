@@ -64,7 +64,7 @@ namespace WebApplication1
         /// <param name="e"></param>
         private void DataBak(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if(--mInterval[1]==0)
+            if(DateTime.Now.Day==1 && --mInterval[1]==0)
             {            
             string path = @"cd D:\mongo\bin\";
             string cmd = @"mongodump -d test -o d:\data\backup\" + DateTime.Now.ToString("yyyy-MM-dd");
@@ -108,7 +108,8 @@ namespace WebApplication1
             DateTime currentT = DateTime.Now;
             DateTime nextT = currentT.AddMonths(1);
             DateTime bakT = new DateTime(nextT.Year, nextT.Month, 1, 0, 0, 0);
-            timer.Interval = (bakT - currentT).TotalMilliseconds;
+            double sub = (bakT - currentT).TotalMilliseconds;
+            timer.Interval = sub>Int32.MaxValue?Int32.MaxValue:sub;
         }
 
 

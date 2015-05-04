@@ -68,7 +68,7 @@ namespace WebApplication1.DevAlarm
                 Session["DiagFlag"] = 0;
                 
                 Timer1.Enabled = false;
-                InitCtrls();
+                //InitCtrls();
                 
             }
             if (Session["DevID"] != null)

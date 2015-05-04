@@ -9,6 +9,7 @@ namespace IMserver
     public class GetData
     {
         protected PrepareData.Compare compare;
+        protected byte devId;
         public GetData(){
             compare = new PrepareData.Compare();            
             //初步测试期间不加心跳，故未能初始化Define.id_ip_port字典，这里添加以下，实际byte-ipendpoint的映射是在心跳处理中添加
@@ -225,5 +226,85 @@ namespace IMserver
 
         }
 
+
+        /// <summary>
+        /// 获取计算参数，即各个气体的峰顶、梯度等参数
+        /// </summary>
+        /// <returns>字典类型Dictionary<ushort,object></returns>
+        public Dictionary<ushort, object> getCalP()
+        {
+            ushort[] require = { 189,190,204,205,219,220,234,235,249,250,264,265,279,281,282 };          
+            byte temp = PrepareData.AddRequire(compare, require);           
+            while (!HandleData.hello.readone)
+            {
+                Thread.Sleep(100);
+            }
+            //为了跳出循环，这里不再复位标志位
+
+            //修改为从数据库读取
+            Dictionary<ushort, object> myDic = (Dictionary<ushort, object>)HandleData.hello.result;
+            return myDic;
+        }
+
+        public Dictionary<ushort, object> getK(string gas)
+        {
+            ushort[] require = {};
+            switch (gas)
+            {
+                case "H2":
+                    {
+                        for(ushort k=191;k<203;k++)
+                            require.Concat(new ushort[]{k});
+                        break;
+                    }
+                case "CO":
+                    {
+                        for (ushort k = 206; k < 218; k++)
+                            require.Concat(new ushort[] { k });
+                        break;
+                    }
+                case "CH4":
+                    {
+                        for (ushort k = 221; k < 233; k++)
+                            require.Concat(new ushort[] { k });
+                        break;
+                    }
+                case "C2H2":
+                    {
+                        for (ushort k = 236; k < 248; k++)
+                            require.Concat(new ushort[] { k });
+                        break;
+                    }
+                case "C2H4":
+                    {
+                        for (ushort k = 251; k < 263; k++)
+                            require.Concat(new ushort[] { k });
+                        break;
+                    }
+                case "C2H6":
+                    {
+                        for (ushort k = 266; k < 278; k++)
+                            require.Concat(new ushort[] { k });
+                        break;
+                    }
+                case "CO2":
+                    {
+                        require.Concat(new ushort[] { 283 });
+                        break;
+                    }
+                   
+            }
+            byte temp = PrepareData.AddRequire(compare, require);            
+            while (!HandleData.hello.readone)
+            {
+                Thread.Sleep(100);
+            }
+            //为了跳出循环，这里不再复位标志位
+
+            //修改为从数据库读取
+            Dictionary<ushort, object> myDic = (Dictionary<ushort, object>)HandleData.hello.result;
+            AddConfig.Warehousing(myDic, devId);
+            return myDic;
+        }
     }
 }

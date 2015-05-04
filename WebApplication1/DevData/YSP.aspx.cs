@@ -39,13 +39,13 @@ namespace WebApplication1.DevData
             if (myRs == null)
             {
                 Response.Write("<script>alert('需要传输该设备信息！')</script>");
-                Dictionary<ushort, object> rsDic =  new GetData().GetRS();
+                Dictionary<ushort, object> rsDic = new GetData().GetRS();
                 for (int i = 0; i < rsDic.Count; i++)
                 {
                     ushort key = rsDic.ElementAt(i).Key;
                     object value = rsDic.ElementAt(i).Value;
                     Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
-                    LB.Text = ((float)value).ToString();                  
+                    LB.Text = ((float)value).ToString();
                 }
                 try
                 {
