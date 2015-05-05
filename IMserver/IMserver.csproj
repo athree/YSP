@@ -135,6 +135,7 @@
     <Compile Include="PreLinkMsg.cs" />
     <Compile Include="PrepareData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SetData.cs" />
     <Compile Include="SubFuncs\GetErrorInfo.cs" />
     <Compile Include="SubFuncs\GetFileInfo.cs" />
     <Compile Include="SubFuncs\LoopBack.cs" />

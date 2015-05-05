@@ -312,6 +312,7 @@
     <Content Include="obj\Debug\edmxResourcesToEmbed\Models\DevModel.ssdl" />
     <Content Include="obj\Debug\WebApplication1.csprojFakesResolveAssemblyReference.cache" />
     <Content Include="DevDebug\GetGcVal.ashx" />
+    <Content Include="DataProcess\ysp.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap-switch.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -418,6 +419,9 @@
       <DependentUpon>ManageUsers.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\CommStart.cs" />
+    <Compile Include="DataProcess\ysp.ashx.cs">
+      <DependentUpon>ysp.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Data\DataBak.aspx.cs">
       <DependentUpon>DataBak.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -820,6 +824,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="FakesAssemblies\" />
+    <Folder Include="NewFolder1\" />
     <Folder Include="obj\Debug\Fakes\im\b\zh-Hans\" />
     <Folder Include="obj\Debug\Fakes\im\o\" />
     <Folder Include="obj\Debug\Fakes\mdbb\b\zh-Hans\" />

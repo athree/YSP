@@ -89,9 +89,10 @@ namespace WebApplication1
 
 
             mInterval[0] = mInterval[1];
+            
+            }
             //读取文件中存储的备份间隔，重新设置定时器           
             setInterval();
-            }
 
         }
 

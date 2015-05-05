@@ -793,7 +793,22 @@ namespace WebApplication1.DevDebug
 
         protected void SetSys_Click(object sender, EventArgs e)
         {
-            //系统设置下设
+            //系统设置下设........................................未完成
+            SystemSetting SysSet = new SystemSetting();            
+            SysSet.SuCO2 = DD_150.SelectedValue[0] ;
+            SysSet.SuH2O = DD_151.SelectedValue[0];
+            SysSet.TuoQi_Mode = DD_152.SelectedValue[0];
+            SysSet.SoftwareRelease = TB_149.Text;
+
+
+
+            EnvironmentSetting EnviSet = new EnvironmentSetting();
+            EnviSet.voltage=float.Parse(TB_182.Text);
+            EnviSet.altitude=ushort.Parse(TB_184.Text);
+            EnviSet.oilfactor.A=float.Parse(TB_183_1.Text);
+            EnviSet.oilfactor.B=float.Parse(TB_183_2.Text);
+            EnviSet.oilDensity=float.Parse(TB_180.Text);
+            EnviSet.oilTotal=float.Parse(TB_181.Text);
         }
 
         protected void ReadCtrl_Click(object sender, EventArgs e)
@@ -823,7 +838,36 @@ namespace WebApplication1.DevDebug
 
         protected void SetCtrl_Click(object sender, EventArgs e)
         {
-            //控制参数下设
+            //控制参数下设...............................................
+            if (TB_4.Visible == true)
+            {
+                TuoQiSetting TQSet = new TuoQiSetting();
+                //真空脱气
+                TQSet.Cycle_Tick = ushort.Parse(TB_4.Text);
+                TQSet.EvacuTimes = TB_5.Text[0];
+                TQSet.CleanTimes = TB_6.Text[0];
+                TQSet.TuoQiTimes = TB_7.Text[0];
+                TQSet.ChangeTimes = TB_8.Text[0];
+                TQSet.TuoQiEnd_Tick = TB_9.Text[0];
+
+                //膜脱气
+                TQSet.YouBengKeep_Tick = ushort.Parse(TB_36.Text);
+                TQSet.PaiQiClen_Tick = ushort.Parse(TB_37.Text);
+                TQSet.QiBengClean_Tick = ushort.Parse(TB_38.Text);
+                TQSet.PaiQiKeep_Tick = ushort.Parse(TB_39.Text);
+                TQSet.QiBengKeepOn_Tick = ushort.Parse(TB_40.Text);
+                TQSet.PainQiKeepOff_Tick = ushort.Parse(TB_41.Text);
+                TQSet.QiBengKeepOff_Tick = ushort.Parse(TB_42.Text);
+
+                //顶空脱气
+                TQSet.StirStart = ushort.Parse(TB_51.Text);
+                TQSet.StirWork_Tick = ushort.Parse(TB_52.Text);
+                TQSet.CleanPumpStart = ushort.Parse(TB_53.Text);
+                TQSet.CleanPumpWork_Time = ushort.Parse(TB_54.Text);
+                TQSet.ChangeValveStart = ushort.Parse(TB_55.Text);
+                TQSet.ChangeValveWork_Tick = ushort.Parse(TB_56.Text);
+            }
+            
         }
 
         protected void ReadState_Click(object sender, EventArgs e)
@@ -870,7 +914,8 @@ namespace WebApplication1.DevDebug
 
         protected void SetState_Click(object sender, EventArgs e)
         {
-            //状态控制下设
+            //状态控制下设。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+            
         }
 
 

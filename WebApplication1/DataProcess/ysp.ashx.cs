@@ -5,6 +5,7 @@ using System.Web;
 using System.Reflection;
 using IMserver.Models.SimlDefine;
 using IMserver.Data_Warehousing;
+using System.Web.Script.Serialization;
 
 namespace WebApplication1.DataProcess
 {
@@ -21,6 +22,7 @@ namespace WebApplication1.DataProcess
         string pageUrl = string.Empty;
         String devId = string.Empty;
         String gas = string.Empty;
+        String data = string.Empty;
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
@@ -30,6 +32,7 @@ namespace WebApplication1.DataProcess
             cmd = gRequest["cmd"];
             devId = gRequest["devId"];
             gas = gRequest["gas"]==null?string.Empty:gRequest["gas"];
+            data = gRequest["data"] == null ? string.Empty : gRequest["data"];
             MethodInfo method = typeof(ysp).GetMethod(cmd);
             if(method!=null)
             {
@@ -85,6 +88,32 @@ namespace WebApplication1.DataProcess
             }
         }
 
+
+        public void setSys(out string result)
+        {
+            bool flag = false;
+            if (data == string.Empty)
+            {
+                result = "Exception";
+                return;
+            }
+            Dictionary<ushort, object> sysDic = jsonToDic(data);
+            flag = new IMserver.SetData().setSys(sysDic);
+            result = flag ? "Success" : "Fail";
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
         /// <summary>
         /// 字典转换，将Dictionary<ushort,object>转换为Dictionary<string,ushort>，
         /// 将字典中value为ushort[]的键值对进行拆分，拆分后的key为OldKey_Index
@@ -109,6 +138,21 @@ namespace WebApplication1.DataProcess
             }
             return myDic;
         }
-        
+
+
+
+        public Dictionary<ushort, object> jsonToDic(string data)
+        {
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            try
+            {
+                //将指定的 JSON 字符串转换为 Dictionary<ushort, object> 类型的对象
+                return jss.Deserialize<Dictionary<ushort, object>>(data);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
