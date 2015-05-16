@@ -34,7 +34,7 @@ namespace IMserver.SubFuncs
         /// <param name="data"></param>
         /// <returns></returns>
         public static byte[] ReadData(byte destid, ushort[] unit)
-        {
+        {   
             byte [] donedata;
             byte[] data = GetData(unit);
             PrepareData.Msg_Bus _frame = new PrepareData.Msg_Bus();

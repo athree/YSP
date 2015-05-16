@@ -49,7 +49,7 @@ namespace IMserver
         public class AF_Ret
         {
             public byte packetnum;
-            //主要用于一帧多包发送是判断是否为处理结束包的aftersend
+            //主要用于一帧多包发送判断是否为处理结束包的aftersend
             public bool multipacketover;
             //用于返回aftersend中的一些硬错，不是数据域表示内容的错误
             //主要用于回避byte作为包编号无法表示负数，即所有0-255都用作表示报编号

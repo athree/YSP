@@ -21,7 +21,7 @@ namespace IMserver.DBservice
             {
                 MongoHelper<Config> _cfg = new MongoHelper<Config>();
                 Expression<Func<Config, bool>> ex = p => p.DevID == devId;
-                Config cfg = _cfg.FindOneBy(ex);
+                Config cfg = _cfg.FindOneBy(ex);                
                 return cfg;
             }
             catch (Exception ex)

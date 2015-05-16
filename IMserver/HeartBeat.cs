@@ -38,7 +38,7 @@ namespace IMserver
         /// </summary>
         public static void HeartCheck()
         {
-            //每一秒钟检查一次数据字典清楚超时请求
+            //每一秒钟检查一次数据字典清除超时请求
             HeartTimer();
 
             for (; ; )
@@ -64,6 +64,7 @@ namespace IMserver
                                 ushort nowtime = Define.heartcheck[temp_id];
                                 Define.heartcheck[temp_id] = heartinterval;
                                 //在这里更新可能断线后重连的终端的ID和IP与PORT
+                                //断线后设备IP更新，发来心跳设备号不会变，但是远端终结点的IP和端口会变
                                 if (!Define.id_ip_port[temp_id].Equals((IPEndPoint)remotecli))
                                 {
                                     Define.id_ip_port[temp_id] = (IPEndPoint)remotecli;

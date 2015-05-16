@@ -1,4 +1,6 @@
-﻿using IMserver.DBservice;
+﻿using IMserver;
+using IMserver.Data_Warehousing;
+using IMserver.DBservice;
 using IMserver.Models;
 using IMserver.Models.SimlDefine;
 using System;
@@ -18,6 +20,7 @@ namespace WebApplication1.DevDebug
         protected string devId;
         protected Dictionary<string,string> gcVal=new Dictionary<string,string>();
         protected Dictionary<string, bool> swVal = new Dictionary<string, bool>();
+
 
         #region InitLabel
         public static string Device = Language.Selected["Device"];
@@ -76,6 +79,7 @@ namespace WebApplication1.DevDebug
                 if (Session["DevName"] != null)
                     ViewState["DevName"] = Session["DevName"].ToString();
                 initControl();
+               
                 /////////////////测试用
                 gcVal.Add("12", "55");
                 if (gcVal.Count > 0)
@@ -95,12 +99,43 @@ namespace WebApplication1.DevDebug
         /// </summary>
         public void initControl()
         {
+            try
+            {
+                myCfg = _ysp.GetCFG(devId);
+                if (myCfg != null)
+                {
+                    if(myCfg.SysSet!=null && myCfg.AnalyPara.EnviSet!=null)
+                        FillSysSet(myCfg.SysSet,myCfg.AnalyPara.EnviSet);
+                    if(myCfg.AnalyPara!=null)
+                        FillAnalyPara(myCfg.AnalyPara);
+                    if(myCfg.TQSet!=null && myCfg.JCFZSet!=null && myCfg.OutSideSet!=null && myCfg.SampSet!=null)
+                        FillCtrlParam(myCfg.TQSet,myCfg.JCFZSet,myCfg.OutSideSet,myCfg.SampSet);
+
+                    if (mySC != null)
+                        FillStateCtrol(mySC);
+                    if (myCfg.AnalyPara.GasFix[0].MultiK == null)
+                        H2K.OnClientClick = "getK(H2) ";
+                    if (myCfg.AnalyPara.GasFix[1].MultiK == null)
+                        COK.OnClientClick = "getK(CO) ";
+                    if (myCfg.AnalyPara.GasFix[2].MultiK == null)
+                        CH4K.OnClientClick = "getK(CH4) ";
+                    if (myCfg.AnalyPara.GasFix[3].MultiK == null)
+                        C2H2K.OnClientClick = "getK(C2H2) ";
+                    if (myCfg.AnalyPara.GasFix[4].MultiK == null)
+                        C2H4K.OnClientClick = "getK(C2H4) ";
+                    if (myCfg.AnalyPara.GasFix[5].MultiK == null)
+                        C2H6K.OnClientClick = "getK(C2H6) ";
+                    if (myCfg.AnalyPara.GasFix_CO2.MultiK.k == null)
+                        CO2K.OnClientClick = "getK(CO2)";
+                }
+                mySC = _ysp.GetSC(devId);
+                
+            }
+            catch (Exception e)
+            {
+
+            }
            
-                     
-                    FillSysSet();                   
-                    FillAnalyPara();                                     
-                    FillCtrlParam(); 
-                    FillStateCtrol();
 
 
            
@@ -727,34 +762,160 @@ namespace WebApplication1.DevDebug
         protected void ReadSys_Click(object sender, EventArgs e)
         {
             //从下位机读取系统设置
-            FillSysSet();
+            Dictionary<ushort, object> sysDic = new GetData().GetSys();
+            for (int i = 0; i < sysDic.Count; i++)
+            {
+                ushort key = sysDic.ElementAt(i).Key;
+                object value = sysDic.ElementAt(i).Value;
+                Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
+                if (LB != null)
+                {
+                    LB.Text = ((float)value).ToString();
+                }
+                else
+                {
+                    DropDownList DD = (DropDownList)Page.FindControl("DD_" + key);
+                    DD.SelectedIndex = (int)value;
+                }
+                try
+                {
+                    AddConfig.Warehousing(sysDic, Byte.Parse(devId));
+                }
+                catch (Exception exce)
+                {
+
+                }
+                return;
+
+            }
+            //FillSysSet(sysSet);
         }
 
         protected void SetSys_Click(object sender, EventArgs e)
         {
-            //系统时间下设
+            //系统设置下设........................................未完成
+            SystemSetting SysSet = new SystemSetting();            
+            SysSet.SuCO2 = DD_150.SelectedValue[0] ;
+            SysSet.SuH2O = DD_151.SelectedValue[0];
+            SysSet.TuoQi_Mode = DD_152.SelectedValue[0];
+            SysSet.SoftwareRelease = TB_149.Text;
+
+
+
+            EnvironmentSetting EnviSet = new EnvironmentSetting();
+            EnviSet.voltage=float.Parse(TB_182.Text);
+            EnviSet.altitude=ushort.Parse(TB_184.Text);
+            EnviSet.oilfactor.A=float.Parse(TB_183_1.Text);
+            EnviSet.oilfactor.B=float.Parse(TB_183_2.Text);
+            EnviSet.oilDensity=float.Parse(TB_180.Text);
+            EnviSet.oilTotal=float.Parse(TB_181.Text);
         }
 
         protected void ReadCtrl_Click(object sender, EventArgs e)
         {
             //从下位机读取控制参数
-            FillCtrlParam();
+            Dictionary<ushort, object> cpDic = new GetData().GetCP(DD_152.SelectedIndex);
+            for (int i = 0; i < cpDic.Count; i++)
+            {
+                ushort key = cpDic.ElementAt(i).Key;
+                object value = cpDic.ElementAt(i).Value;
+                Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
+                LB.Text = ((float)value).ToString();
+                
+                try
+                {
+                    AddConfig.Warehousing(cpDic, Byte.Parse(devId));
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return;
+
+            }
+            //FillCtrlParam();
         }
 
         protected void SetCtrl_Click(object sender, EventArgs e)
         {
-            //控制参数下设
+            //控制参数下设...............................................
+            if (TB_4.Visible == true)
+            {
+                TuoQiSetting TQSet = new TuoQiSetting();
+                //真空脱气
+                TQSet.Cycle_Tick = ushort.Parse(TB_4.Text);
+                TQSet.EvacuTimes = TB_5.Text[0];
+                TQSet.CleanTimes = TB_6.Text[0];
+                TQSet.TuoQiTimes = TB_7.Text[0];
+                TQSet.ChangeTimes = TB_8.Text[0];
+                TQSet.TuoQiEnd_Tick = TB_9.Text[0];
+
+                //膜脱气
+                TQSet.YouBengKeep_Tick = ushort.Parse(TB_36.Text);
+                TQSet.PaiQiClen_Tick = ushort.Parse(TB_37.Text);
+                TQSet.QiBengClean_Tick = ushort.Parse(TB_38.Text);
+                TQSet.PaiQiKeep_Tick = ushort.Parse(TB_39.Text);
+                TQSet.QiBengKeepOn_Tick = ushort.Parse(TB_40.Text);
+                TQSet.PainQiKeepOff_Tick = ushort.Parse(TB_41.Text);
+                TQSet.QiBengKeepOff_Tick = ushort.Parse(TB_42.Text);
+
+                //顶空脱气
+                TQSet.StirStart = ushort.Parse(TB_51.Text);
+                TQSet.StirWork_Tick = ushort.Parse(TB_52.Text);
+                TQSet.CleanPumpStart = ushort.Parse(TB_53.Text);
+                TQSet.CleanPumpWork_Time = ushort.Parse(TB_54.Text);
+                TQSet.ChangeValveStart = ushort.Parse(TB_55.Text);
+                TQSet.ChangeValveWork_Tick = ushort.Parse(TB_56.Text);
+            }
+            
         }
 
         protected void ReadState_Click(object sender, EventArgs e)
         {
             //从下位机读取状态/控制信息
-            FillStateCtrol();
+            Dictionary<ushort, object> scDic = new GetData().GetCP(DD_152.SelectedIndex);
+            for (int i = 0; i < scDic.Count; i++)
+            {
+                ushort key = scDic.ElementAt(i).Key;
+                object value = scDic.ElementAt(i).Value;
+                Label LB = (Label)Page.FindControl("LB_" + key);  //查找前台对应label后进行赋值
+                if (LB != null)
+                {
+                    LB.Text = ((float)value).ToString();
+                }
+                else
+                {
+                    CheckBox CB = (CheckBox)Page.FindControl("SW_" + key);
+                    if (CB != null)
+                    {
+                        CB.Checked = value.ToString() == "0" ? false : true;
+                    }
+                    else
+                    {
+                        TextBox TB = (TextBox)Page.FindControl("TB_"+key);
+                        TB.Text = ((float)value).ToString();
+                    }                   
+                    
+                }
+
+                try
+                {
+                    AddConfig.Warehousing(scDic, Byte.Parse(devId));
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return;
+
+            }
+            //FillStateCtrol();
         }
 
         protected void SetState_Click(object sender, EventArgs e)
         {
-            //状态控制下设
+            //状态控制下设。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+            
         }
 
 
@@ -764,22 +925,19 @@ namespace WebApplication1.DevDebug
         /// <summary>
         ///  初始化系统设置选项卡数据
         /// </summary>
-        public void FillSysSet(){
-            myCfg = _ysp.GetCFG(devId);
+        public void FillSysSet(SystemSetting SysSet,EnvironmentSetting EnviSet){
+           
             try
             {
-                if (myCfg.SysSet != null)
-                {
-                    SystemSetting SysSet = myCfg.SysSet;
+               
                     DD_150.SelectedValue = SysSet.SuCO2.ToString();
                     DD_151.SelectedValue = SysSet.SuH2O.ToString();
                     DD_152.SelectedValue = SysSet.TuoQi_Mode.ToString();
                     TB_149.Text = SysSet.SoftwareRelease;
 
-                }
-                if (myCfg.AnalyPara.EnviSet != null)
-                {
-                    EnvironmentSetting EnviSet = myCfg.AnalyPara.EnviSet;
+                
+               
+                    
                     TB_182.Text = EnviSet.voltage.ToString();
                     TB_184.Text = EnviSet.altitude.ToString();
                     //TB_183_1.Text = EnviSet.oilFactorA.ToString();
@@ -788,11 +946,11 @@ namespace WebApplication1.DevDebug
                     TB_183_2.Text = EnviSet.oilfactor.B.ToString();
                     TB_180.Text = EnviSet.oilDensity.ToString();
                     TB_181.Text = EnviSet.oilTotal.ToString();
-                }
+                
             }
             catch (Exception ex)
             {
-                
+                throw ex;
             }
            
         }
@@ -800,19 +958,55 @@ namespace WebApplication1.DevDebug
         /// <summary>
         ///  初始化计算参数选项卡数据
         /// </summary>
-        public void FillAnalyPara()
+        public void FillAnalyPara(AnalysisParameter analyPara) 
         {
-            myCfg = _ysp.GetCFG(devId);
+           
             try
             {
-                if (myCfg.AnalyPara != null)
+                int j = 189;
+                int l;
+                for (int k = 0; k < 7; k++)  //峰顶点，位置范围，宽度，左右梯度min,max赋值
                 {
-
+                    l = j + 1;
+                    GasFixPara gfp = analyPara.GasFix[k];
+                    TextBox tb1 = (TextBox)Page.FindControl("TB_" + j+"_1");
+                    tb1.Text = gfp.p_a.PeakPoint.ToString();
+                    TextBox tb2 = (TextBox)Page.FindControl("TB_" + j + "_2");
+                    tb1.Text = gfp.p_a.PeakLeft.ToString();                    
+                    TextBox tb3 = (TextBox)Page.FindControl("TB_" + j + "_3");
+                    tb2.Text = gfp.p_a.PeakRight.ToString();
+                    TextBox tb4 = (TextBox)Page.FindControl("TB_" + j+"_4");
+                    tb4.Text = gfp.p_a.PeakWidth.ToString();
+                    TextBox tb5 = (TextBox)Page.FindControl("TB_" + l + "_1");
+                    tb5.Text = gfp.p_b.LeftTMin.ToString();
+                    TextBox tb6 = (TextBox)Page.FindControl("TB_" + l + "_2");
+                    tb6.Text = gfp.p_b.LeftTMax.ToString();
+                    TextBox tb7 = (TextBox)Page.FindControl("TB_" + l + "_3");
+                    tb7.Text = gfp.p_b.RightTMin.ToString();
+                    TextBox tb8 = (TextBox)Page.FindControl("TB_" + l + "_4");
+                    tb8.Text = gfp.p_b.RightTMax.ToString();
+                    j += 15;
                 }
+
+                //剔除区间
+                TB_279_1.Text = analyPara.er.start.ToString();
+                TB_279_2.Text = analyPara.er.end.ToString();
+               
+                //AW参数A,K,B
+                TB_186_1.Text = analyPara.AW.A.ToString();
+                TB_186_2.Text = analyPara.AW.K.ToString();
+                TB_186_3.Text = analyPara.AW.B.ToString();
+
+                //T参数A,K,B
+                TB_187_1.Text = analyPara.AW.A.ToString();
+                TB_187_2.Text = analyPara.AW.K.ToString();
+                TB_187_3.Text = analyPara.AW.B.ToString();
+                
+                
             }
             catch(Exception ex)
             {
-
+              throw ex;
             }
            
         }
@@ -820,13 +1014,12 @@ namespace WebApplication1.DevDebug
         /// <summary>
         /// 初始化控制参数选项卡数据  
         /// </summary>
-        public void FillCtrlParam(){
-            myCfg = _ysp.GetCFG(devId);
+        public void FillCtrlParam(TuoQiSetting TQSet,JCFZSetting JCFZSet,OutSideSetting OutSideSet,SampleSetting SampSet){
+           
             try
             {
-                if (myCfg.TQSet != null)
+                if (TQSet != null)
                 {
-                    TuoQiSetting TQSet = myCfg.TQSet;
                     //真空脱气
                     TB_4.Text = TQSet.Cycle_Tick.ToString();
                     TB_5.Text = TQSet.EvacuTimes.ToString();
@@ -852,9 +1045,9 @@ namespace WebApplication1.DevDebug
                     TB_55.Text = TQSet.ChangeValveStart.ToString();
                     TB_56.Text = TQSet.ChangeValveWork_Tick.ToString();
                 }
-                if (myCfg.JCFZSet != null)
+                if (JCFZSet != null)
                 {
-                    JCFZSetting JCFZSet = myCfg.JCFZSet;
+                   
                     //传感器室
                     if (JCFZSet.SensorRoom != null)
                     {
@@ -891,9 +1084,9 @@ namespace WebApplication1.DevDebug
                     }
 
                 }
-                if (myCfg.OutSideSet != null)
+                if (OutSideSet != null)
                 {
-                    OutSideSetting OutSideSet = myCfg.OutSideSet;
+                   
                     TB_97.Text = OutSideSet.FengShanKeep_Tick.ToString();
                     TB_98.Text = OutSideSet.FengShanWork_Tick.ToString();
                     TB_99.Text = OutSideSet.AirControlStart.ToString();
@@ -903,9 +1096,8 @@ namespace WebApplication1.DevDebug
                     TB_103.Text = OutSideSet.DrainStart.ToString();
                     TB_104.Text = OutSideSet.DrainWork_Tick.ToString();
                 }
-                if (myCfg.SampSet != null)
-                {
-                    SampleSetting SampSet = myCfg.SampSet;
+                if (SampSet != null)
+                {                    
                     TB_131.Text = SampSet.BiaoDingTimes.ToString();
                     TB_107.Text = SampSet.ChuiSaoBefore_Tick.ToString();
                     TB_108.Text = SampSet.DingLiangWork_Tick.ToString();
@@ -938,7 +1130,7 @@ namespace WebApplication1.DevDebug
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
            
         }
@@ -947,9 +1139,9 @@ namespace WebApplication1.DevDebug
         /// <summary>
         /// //初始化状态控制选项卡数据
         /// </summary>
-        public void FillStateCtrol()
+        public void FillStateCtrol(StateCtrol mySC)
         {
-            mySC = _ysp.GetSC(devId);
+            
             try
             {
                 if (mySC != null)
@@ -1063,15 +1255,89 @@ namespace WebApplication1.DevDebug
                     DD_156.SelectedValue = mySC.SysSC.DevState.ToString();
                     DD_157.SelectedValue = mySC.SysSC.WorkFlow.ToString();
                 }
+                if (Session["gcVal"] != null)
+                    Session["gcVal"] = gcVal;
             }
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             
             
         }
+
+        protected void H2K_Click(object sender, EventArgs e)
+        {
+            if (myCfg.AnalyPara.GasFix[0].MultiK != null)
+                inialK(0);
+        }
+
+        protected void COK_Click(object sender, EventArgs e)
+        {
+            if (myCfg.AnalyPara.GasFix[1].MultiK != null)
+                inialK(1);
+        }
+
+        protected void CH4K_Click(object sender, EventArgs e)
+        {
+            if (myCfg.AnalyPara.GasFix[2].MultiK != null)
+                inialK(2);
+        }
+
+        protected void C2H2K_Click(object sender, EventArgs e)
+        {
+            if (myCfg.AnalyPara.GasFix[3].MultiK != null)
+                inialK(3);
+        }
+
+        protected void C2H4K_Click(object sender, EventArgs e)
+        {
+            if (myCfg.AnalyPara.GasFix[4].MultiK != null)
+                inialK(4);
+        }
+
+        protected void C2H6K_Click(object sender, EventArgs e)
+        {
+            if (myCfg.AnalyPara.GasFix[5].MultiK != null)
+                inialK(5);
+        }
+
+        protected void CO2K_Click(object sender, EventArgs e)
+        {
+            if (myCfg.AnalyPara.GasFix_CO2.MultiK.k!= null)
+                inialCO2K();
+        }
+
+        protected void inialK(int i) { 
+            GasFixK[] gfp=myCfg.AnalyPara.GasFix.ElementAt(i).MultiK;
+            for(int j=0;j<13;j++){
+                TextBox tbk=(TextBox)Page.FindControl("TB_K"+j);
+                tbk.Text=gfp[j].k.ToString();
+                TextBox tbmi=(TextBox)Page.FindControl("TB_MI"+j);
+                tbmi.Text=gfp[j].mi.ToString();
+                TextBox tbni=(TextBox)Page.FindControl("TB_NI"+j);
+                tbni.Text=gfp[j].ni.ToString();
+                TextBox tbamin = (TextBox)Page.FindControl("TB_K" + j + "_MinArea");
+                tbamin.Text=gfp[j].areaMin.ToString();
+                TextBox tbamax = (TextBox)Page.FindControl("TB_K" + j + "_MaxArea");
+                tbamax.Text=gfp[j].areaMax.ToString();
+                //TextBox tbjz=(TextBox)Page.FindControl("TB_JIZHI"+j);
+                //tbjz.Text=gfp[j].j.ToString();
+            }
+        
+        }
+        protected void inialCO2K()
+        {
+            GasFixK gfp = myCfg.AnalyPara.GasFix_CO2.MultiK;           
+            TB_K1.Text = gfp.k.ToString();
+            TB_MI1.Text = gfp.mi.ToString();
+            TB_NI1.Text = gfp.ni.ToString();
+            TB_K1_MinArea.Text = gfp.areaMin.ToString();
+            TB_K1_MaxArea.Text = gfp.areaMax.ToString();
+            //TB_JIZHI1.Text = gfp.J.ToString();
+        }
+
     }
 
 

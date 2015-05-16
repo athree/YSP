@@ -75,7 +75,7 @@ namespace IMserver.Models.SimlDefine
         public H2oFixPara_AW AW { get; set; }  //微水修正参数 AW,T
         public H2oFixPara_T T { get; set; }
 
-        [MaxLength()]
+        [MaxLength(6)]
         public GasFixPara[] GasFix{ get ; set ; }  //气体修正参数  H2,CO,CH4,C2H2,C2H4,C2H6
         public GasFixPara_CO2 GasFix_CO2 { get; set; } //气体修正参数  CO2
         public EraseRange er { get; set; }
@@ -591,6 +591,7 @@ namespace IMserver.Models.SimlDefine
 
         [Display(Name = "峰顶范围结束点"), Range(0, 5000)]
         public ushort PeakRight { get; set; }
+
         [Display(Name = "峰顶宽度"), Range(0, 1000)]
         public ushort PeakWidth { get; set; }
     }

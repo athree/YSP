@@ -8,6 +8,8 @@ using System.Timers;
 using System.Diagnostics;
 using SysLog;
 using System.Web.Security;
+using System.IO;
+using System.Text;
 
 namespace WebApplication1
 {
@@ -15,8 +17,6 @@ namespace WebApplication1
     {
         private static Timer timer = new System.Timers.Timer();
         private static int[] mInterval = {1,1};  //mInterval[0]存储离下次备份还剩几个月，mInterval[1]存储实际备份频率
-        FileLog bakFile = new FileLog(@"d:\data\bakSet.txt"); 
-        
 
         public static int MInterval
         {
@@ -30,8 +30,7 @@ namespace WebApplication1
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             //注册通信相关的初始化项目，准备工作
-
-            CommStart cd = new CommStart() ;
+            CommStart.CommConfig();
 
          
             //创建管理员角色和用户
@@ -45,11 +44,14 @@ namespace WebApplication1
             {
                 DataBak(timer, null);
             }
-            //第一次启动时，文件不存在，设置备份间隔为1月。文件存在则设置为文件中设置的月份。         
-            if (bakFile.Read() == null)
+            //第一次启动时，文件不存在，设置备份间隔为1月。文件存在则设置为文件中设置的月份。
+            StreamReader sr = new StreamReader(@"d:\data\bakSet.txt" , Encoding.Default);
+            if (sr.ReadToEnd() == null)
             {
-                bakFile.Write("数据备份间隔月数:1");
-                bakFile.Dispose();
+                sr.Dispose();
+                StreamWriter sw = new StreamWriter(@"d:\data\bakSet.txt" , true , Encoding.Default);
+                sw.WriteLine("数据备份间隔月数:1");
+                sw.Dispose();
             }           
             setInterval();
             timer.Elapsed += new ElapsedEventHandler(DataBak);
@@ -65,7 +67,7 @@ namespace WebApplication1
         /// <param name="e"></param>
         private void DataBak(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if(--mInterval[1]==0)
+            if(DateTime.Now.Day==1 && --mInterval[1]==0)
             {            
             string path = @"cd D:\mongo\bin\";
             string cmd = @"mongodump -d test -o d:\data\backup\" + DateTime.Now.ToString("yyyy-MM-dd");
@@ -90,9 +92,10 @@ namespace WebApplication1
 
 
             mInterval[0] = mInterval[1];
+            
+            }
             //读取文件中存储的备份间隔，重新设置定时器           
             setInterval();
-            }
 
         }
 
@@ -101,15 +104,17 @@ namespace WebApplication1
         /// </summary>
         public static void setInterval()
         {
-            FileLog bakFile = new FileLog(@"d:\data\bakSet.txt");
-            string str = bakFile.Read().Substring(9, 1);
+            StreamReader sr = new StreamReader(@"d:\data\bakSet.txt" , Encoding.Default);
+            string str = sr.ReadToEnd().Substring(9, 1);
+            sr.Dispose();
             mInterval[1] = Int32.Parse(str);
      
             //间隔1月触发
             DateTime currentT = DateTime.Now;
             DateTime nextT = currentT.AddMonths(1);
             DateTime bakT = new DateTime(nextT.Year, nextT.Month, 1, 0, 0, 0);
-            timer.Interval = (bakT - currentT).TotalMilliseconds;
+            double sub = (bakT - currentT).TotalMilliseconds;
+            timer.Interval = sub>Int32.MaxValue?Int32.MaxValue:sub;
         }
 
 

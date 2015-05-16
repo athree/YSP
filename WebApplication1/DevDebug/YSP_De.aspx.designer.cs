@@ -148,580 +148,643 @@ namespace WebApplication1.DevDebug {
         protected global::System.Web.UI.WebControls.Button SetSys;
         
         /// <summary>
-        /// TextBox1 控件。
+        /// TB_189_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox TB_189_1;
         
         /// <summary>
-        /// TextBox8 控件。
+        /// TB_189_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
+        protected global::System.Web.UI.WebControls.TextBox TB_189_2;
         
         /// <summary>
-        /// TextBox15 控件。
+        /// TB_189_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox15;
+        protected global::System.Web.UI.WebControls.TextBox TB_189_3;
         
         /// <summary>
-        /// TextBox36 控件。
+        /// TB_190_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox36;
+        protected global::System.Web.UI.WebControls.TextBox TB_190_1;
         
         /// <summary>
-        /// TextBox43 控件。
+        /// TB_190_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox43;
+        protected global::System.Web.UI.WebControls.TextBox TB_190_2;
         
         /// <summary>
-        /// TextBox50 控件。
+        /// TB_190_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox50;
+        protected global::System.Web.UI.WebControls.TextBox TB_190_3;
         
         /// <summary>
-        /// TextBox57 控件。
+        /// TB_190_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox57;
+        protected global::System.Web.UI.WebControls.TextBox TB_190_4;
         
         /// <summary>
-        /// TextBox64 控件。
+        /// TB_189_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox64;
+        protected global::System.Web.UI.WebControls.TextBox TB_189_4;
         
         /// <summary>
-        /// TextBox2 控件。
+        /// H2K 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.Button H2K;
         
         /// <summary>
-        /// TextBox9 控件。
+        /// TB_204_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
+        protected global::System.Web.UI.WebControls.TextBox TB_204_1;
         
         /// <summary>
-        /// TextBox16 控件。
+        /// TB_204_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox16;
+        protected global::System.Web.UI.WebControls.TextBox TB_204_2;
         
         /// <summary>
-        /// TextBox37 控件。
+        /// TB_204_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox37;
+        protected global::System.Web.UI.WebControls.TextBox TB_204_3;
         
         /// <summary>
-        /// TextBox44 控件。
+        /// TB_205_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox44;
+        protected global::System.Web.UI.WebControls.TextBox TB_205_1;
         
         /// <summary>
-        /// TextBox51 控件。
+        /// TB_205_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox51;
+        protected global::System.Web.UI.WebControls.TextBox TB_205_2;
         
         /// <summary>
-        /// TextBox58 控件。
+        /// TB_205_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox58;
+        protected global::System.Web.UI.WebControls.TextBox TB_205_3;
         
         /// <summary>
-        /// TextBox65 控件。
+        /// TB_205_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox65;
+        protected global::System.Web.UI.WebControls.TextBox TB_205_4;
         
         /// <summary>
-        /// TextBox3 控件。
+        /// TB_204_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox TB_204_4;
         
         /// <summary>
-        /// TextBox10 控件。
+        /// COK 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
+        protected global::System.Web.UI.WebControls.Button COK;
         
         /// <summary>
-        /// TextBox17 控件。
+        /// TB_219_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox17;
+        protected global::System.Web.UI.WebControls.TextBox TB_219_1;
         
         /// <summary>
-        /// TextBox38 控件。
+        /// TB_219_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox38;
+        protected global::System.Web.UI.WebControls.TextBox TB_219_2;
         
         /// <summary>
-        /// TextBox45 控件。
+        /// TB_219_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox45;
+        protected global::System.Web.UI.WebControls.TextBox TB_219_3;
         
         /// <summary>
-        /// TextBox52 控件。
+        /// TB_220_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox52;
+        protected global::System.Web.UI.WebControls.TextBox TB_220_1;
         
         /// <summary>
-        /// TextBox59 控件。
+        /// TB_220_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox59;
+        protected global::System.Web.UI.WebControls.TextBox TB_220_2;
         
         /// <summary>
-        /// TextBox66 控件。
+        /// TB_220_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox66;
+        protected global::System.Web.UI.WebControls.TextBox TB_220_3;
         
         /// <summary>
-        /// TextBox4 控件。
+        /// TB_220_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox TB_220_4;
         
         /// <summary>
-        /// TextBox11 控件。
+        /// TB_219_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::System.Web.UI.WebControls.TextBox TB_219_4;
         
         /// <summary>
-        /// TextBox18 控件。
+        /// CH4K 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox18;
+        protected global::System.Web.UI.WebControls.Button CH4K;
         
         /// <summary>
-        /// TextBox39 控件。
+        /// TB_234_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox39;
+        protected global::System.Web.UI.WebControls.TextBox TB_234_1;
         
         /// <summary>
-        /// TextBox46 控件。
+        /// TB_234_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox46;
+        protected global::System.Web.UI.WebControls.TextBox TB_234_2;
         
         /// <summary>
-        /// TextBox53 控件。
+        /// TB_234_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox53;
+        protected global::System.Web.UI.WebControls.TextBox TB_234_3;
         
         /// <summary>
-        /// TextBox60 控件。
+        /// TB_235_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox60;
+        protected global::System.Web.UI.WebControls.TextBox TB_235_1;
         
         /// <summary>
-        /// TextBox67 控件。
+        /// TB_235_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox67;
+        protected global::System.Web.UI.WebControls.TextBox TB_235_2;
         
         /// <summary>
-        /// TextBox5 控件。
+        /// TB_235_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox TB_235_3;
         
         /// <summary>
-        /// TextBox12 控件。
+        /// TB_235_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.TextBox TB_235_4;
         
         /// <summary>
-        /// TextBox19 控件。
+        /// TB_234_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox19;
+        protected global::System.Web.UI.WebControls.TextBox TB_234_4;
         
         /// <summary>
-        /// TextBox40 控件。
+        /// C2H2K 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox40;
+        protected global::System.Web.UI.WebControls.Button C2H2K;
         
         /// <summary>
-        /// TextBox47 控件。
+        /// TB_249_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox47;
+        protected global::System.Web.UI.WebControls.TextBox TB_249_1;
         
         /// <summary>
-        /// TextBox54 控件。
+        /// TB_249_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox54;
+        protected global::System.Web.UI.WebControls.TextBox TB_249_2;
         
         /// <summary>
-        /// TextBox61 控件。
+        /// TB_249_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox61;
+        protected global::System.Web.UI.WebControls.TextBox TB_249_3;
         
         /// <summary>
-        /// TextBox68 控件。
+        /// TB_250_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox68;
+        protected global::System.Web.UI.WebControls.TextBox TB_250_1;
         
         /// <summary>
-        /// TextBox6 控件。
+        /// TB_250_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox TB_250_2;
         
         /// <summary>
-        /// TextBox13 控件。
+        /// TB_250_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox TB_250_3;
         
         /// <summary>
-        /// TextBox20 控件。
+        /// TB_250_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox20;
+        protected global::System.Web.UI.WebControls.TextBox TB_250_4;
         
         /// <summary>
-        /// TextBox41 控件。
+        /// TB_249_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox41;
+        protected global::System.Web.UI.WebControls.TextBox TB_249_4;
         
         /// <summary>
-        /// TextBox48 控件。
+        /// C2H4K 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox48;
+        protected global::System.Web.UI.WebControls.Button C2H4K;
         
         /// <summary>
-        /// TextBox55 控件。
+        /// TB_264_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox55;
+        protected global::System.Web.UI.WebControls.TextBox TB_264_1;
         
         /// <summary>
-        /// TextBox62 控件。
+        /// TB_264_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox62;
+        protected global::System.Web.UI.WebControls.TextBox TB_264_2;
         
         /// <summary>
-        /// TextBox69 控件。
+        /// TB_264_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox69;
+        protected global::System.Web.UI.WebControls.TextBox TB_264_3;
         
         /// <summary>
-        /// TextBox14 控件。
+        /// TB_265_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox14;
+        protected global::System.Web.UI.WebControls.TextBox TB_265_1;
         
         /// <summary>
-        /// TextBox21 控件。
+        /// TB_265_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox21;
+        protected global::System.Web.UI.WebControls.TextBox TB_265_2;
         
         /// <summary>
-        /// TextBox22 控件。
+        /// TB_265_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox22;
+        protected global::System.Web.UI.WebControls.TextBox TB_265_3;
         
         /// <summary>
-        /// TextBox42 控件。
+        /// TB_265_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox42;
+        protected global::System.Web.UI.WebControls.TextBox TB_265_4;
         
         /// <summary>
-        /// TextBox49 控件。
+        /// TB_264_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox49;
+        protected global::System.Web.UI.WebControls.TextBox TB_264_4;
         
         /// <summary>
-        /// TextBox56 控件。
+        /// C2H6K 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox56;
+        protected global::System.Web.UI.WebControls.Button C2H6K;
         
         /// <summary>
-        /// TextBox63 控件。
+        /// TB_281_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox63;
+        protected global::System.Web.UI.WebControls.TextBox TB_281_1;
         
         /// <summary>
-        /// TextBox70 控件。
+        /// TB_281_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox70;
+        protected global::System.Web.UI.WebControls.TextBox TB_281_2;
         
         /// <summary>
-        /// tb_EraseRangeStart 控件。
+        /// TB_281_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_EraseRangeStart;
+        protected global::System.Web.UI.WebControls.TextBox TB_281_3;
         
         /// <summary>
-        /// tb_EraseRangeEnd 控件。
+        /// TB_282_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tb_EraseRangeEnd;
+        protected global::System.Web.UI.WebControls.TextBox TB_282_1;
         
         /// <summary>
-        /// TB_AW_A 控件。
+        /// TB_282_2 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_AW_A;
+        protected global::System.Web.UI.WebControls.TextBox TB_282_2;
         
         /// <summary>
-        /// TB_AW_K 控件。
+        /// TB_282_3 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_AW_K;
+        protected global::System.Web.UI.WebControls.TextBox TB_282_3;
         
         /// <summary>
-        /// TB_AW_B 控件。
+        /// TB_282_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_AW_B;
+        protected global::System.Web.UI.WebControls.TextBox TB_282_4;
         
         /// <summary>
-        /// TB_T_A 控件。
+        /// TB_281_4 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_T_A;
+        protected global::System.Web.UI.WebControls.TextBox TB_281_4;
         
         /// <summary>
-        /// TB_T_K 控件。
+        /// CO2K 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_T_K;
+        protected global::System.Web.UI.WebControls.Button CO2K;
         
         /// <summary>
-        /// TB_T_B 控件。
+        /// TB_279_1 控件。
         /// </summary>
         /// <remarks>
         /// 自动生成的字段。
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_T_B;
+        protected global::System.Web.UI.WebControls.TextBox TB_279_1;
+        
+        /// <summary>
+        /// TB_279_2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_279_2;
+        
+        /// <summary>
+        /// TB_186_1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_186_1;
+        
+        /// <summary>
+        /// TB_186_2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_186_2;
+        
+        /// <summary>
+        /// TB_186_3 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_186_3;
+        
+        /// <summary>
+        /// TB_187_1 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_187_1;
+        
+        /// <summary>
+        /// TB_187_2 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_187_2;
+        
+        /// <summary>
+        /// TB_187_3 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TB_187_3;
         
         /// <summary>
         /// UP_CtrlParam 控件。
@@ -1919,6 +1982,24 @@ namespace WebApplication1.DevDebug {
         /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LB_154;
+        
+        /// <summary>
+        /// SelectGas 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button SelectGas;
+        
+        /// <summary>
+        /// ShowDiag 控件。
+        /// </summary>
+        /// <remarks>
+        /// 自动生成的字段。
+        /// 若要进行修改，请将字段声明从设计器文件移到代码隐藏文件。
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button ShowDiag;
         
         /// <summary>
         /// UpdatePanel1 控件。
