@@ -26,11 +26,10 @@ namespace SysLog
     {
         private string _filePath;
         private StreamWriter _sw;
-        private StreamReader _sr;
 
         public FileLog()
         {
-            string strTime = DateTime.Now.ToString("yyyy-MM-dd-hh-mm-ss");
+            string strTime = DateTime.Now.ToString("yyyy-MM-dd");
 
             string modulePath = System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName;
             string appDirectory = System.IO.Path.GetDirectoryName(modulePath) + "\\Log\\";
@@ -51,30 +50,15 @@ namespace SysLog
             _sw = new StreamWriter(_filePath, true, Encoding.Default);
         }
 
-        public FileLog(string path)
-        {
-            _filePath = path;            
-           
-        }
-
         public void Write(string str)
         {
-            _sw = new StreamWriter(_filePath, false, Encoding.Default);
             _sw.WriteLine(str);
-        }
-      
-        public string Read()
-        {
-            FileStream fs = File.Open(_filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);          
-            _sr = new StreamReader(fs, System.Text.Encoding.Default);
-            string fileContent = _sr.ReadToEnd();
-            _sr.Dispose();
-            return fileContent;
         }
 
         public void Dispose()
         {
             _sw.Close();
         }
+
     }
 }

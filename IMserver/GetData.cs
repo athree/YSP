@@ -31,7 +31,7 @@ namespace IMserver
         /// <returns></returns>
         public Dictionary<ushort, object> GetRS()
         {
-            ushort[] require = { 88, 87, 89, 86, 63, 61, 62, 165, 168, 169, 171, 173, 166, 167, 170, 175, 174, 172 };
+            ushort[] require = { 88, 87, 89, 145, 63, 64, 62, 176, 168, 169, 171, 173, 166, 167, 170, 175, 174, 172 };
             //由于一个触发可能发送多包，所以编码在packet中组织，哈希入表也在packet中组织
             //触发组包
             byte temp = PrepareData.AddRequire(compare, require);
