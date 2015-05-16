@@ -10,11 +10,701 @@ namespace IMserver.CommonFuncs
         public static Dictionary<ushort , ushort> unittypedict = new Dictionary<ushort, ushort>();
         public static Dictionary<ushort , ushort> unitlendict = new Dictionary<ushort, ushort>();
 
-        //public static Dictionary<byte , string> ID_IP = new Dictionary<byte, string>();
-        //public static Dictionary<byte, int> ID_PORT = new Dictionary<byte, int>()；
-
         public MyDictionary()
         {
+            #region   操作单元数据类型字典
+            //真空脱气装置
+            unittypedict.Add(4, 1);	//循环时间查询/设置
+            unittypedict.Add(5, 0);	//抽空次数查询/设置
+            unittypedict.Add(6, 0);	//清洗次数查询/设置
+            unittypedict.Add(7, 0);	//脱气次数查询/设置
+            unittypedict.Add(8, 0);	//置换次数查询/设置
+            unittypedict.Add(9, 1);	//脱气机预计脱气完成时间
+            unittypedict.Add(11, 2);	//（脱气机）真空度压力检测值
+            unittypedict.Add(12, 2);	//（脱气机）气泵气压检测值
+            unittypedict.Add(13, 2);	//（脱气机）油压检测值
+            unittypedict.Add(14, 0);	//（脱气机）油杯液位状态
+            unittypedict.Add(15, 0);	//（脱气机）气杯液位状态
+            unittypedict.Add(16, 0);	//（脱气机）气缸进到位
+            unittypedict.Add(17, 0);	//（脱气机）气缸退到位
+            unittypedict.Add(18, 0);	//（脱气机）油缸进到位
+            unittypedict.Add(19, 0);	//（脱气机）油缸退到位
+            unittypedict.Add(21, 0);	//（脱气机）油泵
+            unittypedict.Add(22, 2);	//（脱气机）油泵转速控制输出
+            unittypedict.Add(23, 0);	//（脱气机）进出油阀
+            unittypedict.Add(24, 0);	//（脱气机）YV10阀
+            unittypedict.Add(25, 0);	//（脱气机）YV11阀
+            unittypedict.Add(26, 0);	//（脱气机）YV12阀
+            unittypedict.Add(27, 0);	//（脱气机）YV14阀
+            unittypedict.Add(28, 0);	//（脱气机）YV15阀
+            unittypedict.Add(29, 0);	//（脱气机）气缸YV4阀
+            unittypedict.Add(30, 0);	//（脱气机）气缸YV5阀
+            unittypedict.Add(31, 0);	//（脱气机）气缸YV6阀
+            unittypedict.Add(32, 0);	//（脱气机）气缸YV7阀
+            unittypedict.Add(33, 0);	//（脱气机）气泵
+            //膜脱气装置
+            unittypedict.Add(36, 1);	//（膜脱气）油泵连续工作时间
+            unittypedict.Add(37, 1);	//（膜脱气）排气阀清洗时间
+            unittypedict.Add(38, 1);	//（膜脱气）气泵清洗时间
+            unittypedict.Add(39, 1);	//（膜脱气）排气阀连续工作时间
+            unittypedict.Add(40, 1);	//（膜脱气）气泵连续工作时间
+            unittypedict.Add(41, 1);	//（膜脱气）排气阀间隔停止时间
+            unittypedict.Add(42, 1);	//（膜脱气）气泵间隔停止时间
+            //顶空脱气装置
+            unittypedict.Add(45, 0);	//（手动）搅拌开关（立即开始）
+            unittypedict.Add(47, 0);	//液位A
+            unittypedict.Add(48, 0);	//液位B
+            unittypedict.Add(49, 2);	//（顶空方式）搅拌缸检测温度
+            unittypedict.Add(51, 1);	//（顶空方式）搅拌开始时刻
+            unittypedict.Add(52, 1);	//（顶空方式）搅拌工作时间
+            unittypedict.Add(53, 1);	//（顶空方式）清洗泵开始工作时刻
+            unittypedict.Add(54, 1);	//（顶空方式）清洗泵工作时间
+            unittypedict.Add(55, 1);	//（顶空方式）置换阀开始工作时刻
+            unittypedict.Add(56, 1);	//（顶空方式）置换阀工作时间
+            //检测辅助控制
+            unittypedict.Add(59, 0);	//（手动）冷井开关
+            unittypedict.Add(60, 0);	//（手动）传感器室制冷
+            unittypedict.Add(62, 2);	//传感器室温度实际采样值
+            unittypedict.Add(63, 2);	//冷井温度实际采样值
+            unittypedict.Add(64, 2);	//色谱柱温度实际采样值
+            unittypedict.Add(66, 1);	//冷井启动开始时刻
+            unittypedict.Add(67, 1);	//冷井连续工作时间
+            unittypedict.Add(68, 2);	//冷井温度设置值
+            unittypedict.Add(69, 2);	//冷井温度设置P值
+            unittypedict.Add(70, 2);	//冷井温度设置I值
+            unittypedict.Add(71, 2);	//冷井温度设置D值
+            unittypedict.Add(72, 2);	//冷井温度控制PID范围
+            unittypedict.Add(73, 2);	//色谱柱温度设置值
+            unittypedict.Add(74, 2);	//色谱柱温度设置P值
+            unittypedict.Add(75, 2);	//色谱柱温度设置I值
+            unittypedict.Add(76, 2);	//色谱柱温度设置D值
+            unittypedict.Add(77, 2);	//色谱柱温度控制PID范围
+            unittypedict.Add(78, 1);	//传感器室制冷开始时刻
+            unittypedict.Add(79, 1);	//传感器室连续工作时间
+            unittypedict.Add(80, 2);	//传感器室温度设置值
+            unittypedict.Add(81, 2);	//传感器室温度设置P值
+            unittypedict.Add(82, 2);	//传感器室温度设置I值
+            unittypedict.Add(83, 2);	//传感器室温度设置D值
+            unittypedict.Add(84, 2);	//传感器室温度设置PID范围
+            //环境及外围控制检测（已编码）
+            unittypedict.Add(87, 2);	//油温检测实际值
+            unittypedict.Add(88, 2);	//柜内温度检测实际值
+            unittypedict.Add(89, 2);	//柜外温度检测实际值
+            unittypedict.Add(90, 2);	//载气发生器气泵压力检测实际值
+            unittypedict.Add(92, 0);	//载气发生器气泵开关
+            unittypedict.Add(93, 0);	//（手动）柜体空调开关
+            unittypedict.Add(94, 0);	//伴热带立即加热
+            unittypedict.Add(95, 0);	//载气发生器排水阀
+            unittypedict.Add(96, 2);	//伴热带实测温度
+            unittypedict.Add(97, 1);	//（电柜）风扇持续工作时间
+            unittypedict.Add(98, 1);	//（电柜）风扇停止时间
+            unittypedict.Add(99, 1);	//柜体空调采样前开启时刻
+            unittypedict.Add(100, 1);	//柜体空调连续工作时间
+            unittypedict.Add(101, 1);	//伴热带采样前开始时刻
+            unittypedict.Add(102, 1);	//伴热带采样前工作时间
+            unittypedict.Add(103, 1);	//载气发生器排水阀启动时刻
+            unittypedict.Add(104, 1);	//载气发生器排水阀工作时间
+            //采样控制
+            unittypedict.Add(107, 1);	//采样前吹扫阀工作时间
+            unittypedict.Add(108, 1);	//定量阀工作时间
+            unittypedict.Add(109, 1);	//定量阀打开后，吹扫阀延迟打开的时间
+            unittypedict.Add(110, 1);	//采样结束吹扫阀工作时间
+            unittypedict.Add(111, 1);	//六组分传感器恢复阀采样前开始时刻
+            unittypedict.Add(112, 1);	//六组分传感器恢复阀采样前工作时间
+            unittypedict.Add(113, 1);	//六组分传感器恢复阀采样后开始时刻
+            unittypedict.Add(114, 1);	//六组分传感器恢复阀采样后工作时间
+            unittypedict.Add(115, 1);	//微水传感器延时开始加热时刻
+            unittypedict.Add(116, 1);	//微水传感器采样开始时间
+            unittypedict.Add(117, 1);	//微水传感器采样间隔
+            unittypedict.Add(118, 1);	//微水传感器AW的采样点数
+            unittypedict.Add(119, 1);	//微水传感器T的采样点数
+            unittypedict.Add(120, 1);	//六组分传感器加热开始时刻
+            unittypedict.Add(121, 1);	//六组分传感器加热工作时间
+            unittypedict.Add(122, 1);	//采样结束六组分传感器加热工作时间
+            unittypedict.Add(123, 1);	//六组分采样间隔,
+            unittypedict.Add(124, 1);	//六组分采样点数
+            unittypedict.Add(125, 1);	//CO2传感器加热开始时刻
+            unittypedict.Add(126, 1);	//CO2传感器工作时间
+            unittypedict.Add(127, 1);	//CO2采样间隔
+            unittypedict.Add(128, 1);	//CO2采样点数
+            unittypedict.Add(129, 1);	//CO2气路切换开始时刻(以6组气体开始采样为准)
+            unittypedict.Add(130, 1);	//CO2气路工作时间
+            unittypedict.Add(131, 0);	//标定次数
+            unittypedict.Add(133, 0);	//标定（立即启动）
+            unittypedict.Add(134, 0);	//采样（立即启动）／采样手动立即启动
+            unittypedict.Add(135, 3);	//下次采样时间
+            unittypedict.Add(136, 1);	//采样间隔
+            unittypedict.Add(138, 0);	//六组分传感器手动立即启动
+            unittypedict.Add(139, 0);	//微水传感器加热手动立即启动
+            unittypedict.Add(140, 0);	//微水传感器手动立即启动
+            unittypedict.Add(141, 0);	//定量阀手动立即启动
+            unittypedict.Add(142, 0);	//吹扫阀手动立即启动
+            unittypedict.Add(143, 0);	//CO2切换阀手动立即启动
+            unittypedict.Add(144, 0);	//吹气阀手动立即启动
+            unittypedict.Add(145, 2);	//载气压力检测实际值
+            //系统设置
+            unittypedict.Add(148, 4);	//变电站名
+            unittypedict.Add(149, 4);	// 软件版本
+            unittypedict.Add(150, 0);	//（方式选择）支持CO2
+            unittypedict.Add(151, 0);	//（方式选择）支持微水
+            unittypedict.Add(152, 0);	//（方式选择）脱气方式
+            unittypedict.Add(154, 3);	//系统时间
+            unittypedict.Add(155, 0);	//油色谱设备号
+            unittypedict.Add(156, 0);	//设备状态（手动/自动方式）
+            unittypedict.Add(157, 0);	//当前工作流程
+            //unittypedict.Add(158	, 51);	//指向上位机1 IP    指向上位机1 端口号
+            //unittypedict.Add(159	, 1000);  	 //串口1波特率串口1数据位    串口1停止位    串口1奇偶校验
+            //unittypedict.Add(160	, 5155);         //网卡1 IP网卡1 端口号    网卡1 子网掩码    网卡1 网关
+            //unittypedict.Add(161	, 51);	         //指向上位机2 IP    指向上位机2 端口号
+            //unittypedict.Add(162	, 1000); 	 //串口2波特率  串口2数据位   串口2停止位   串口2奇偶校验"
+            //unittypedict.Add(163	, 5155); 	 //网卡2 IP  网卡2 端口号  网卡2 子网掩码  网卡2 网关"
+            //数据
+            unittypedict.Add(166, 2);	//H2ppm
+            unittypedict.Add(167, 2);	//COppm
+            unittypedict.Add(168, 2);	//CH4ppm
+            unittypedict.Add(169, 2);	//CO2ppm
+            unittypedict.Add(170, 2);	//C2H2ppm
+            unittypedict.Add(171, 2);	//C2H4ppm
+            unittypedict.Add(172, 2);	//C2H6ppm
+            unittypedict.Add(173, 2);	//WtrAct
+            unittypedict.Add(174, 2);	//Tmp
+            unittypedict.Add(175, 2);	//Mst
+            unittypedict.Add(176, 2);	//TotHyd
+            unittypedict.Add(177, 2);	//GasPres
+            //计算参数
+            unittypedict.Add(180, 2);	//（变压器参数）油密度
+            unittypedict.Add(181, 2);	//（变压器参数）油重（T）
+            unittypedict.Add(182, 2);	//电压等级
+            unittypedict.Add(183, 8);	//油品系数A油品系数B"
+            unittypedict.Add(184, 2);	//海拔高度
+            unittypedict.Add(186, 9);	//微水修正参数AW-A 微水修正参数AW-K 微水修正参数AW-B"
+            unittypedict.Add(187, 10);	//微水修正参数T-A 微水修正参数T-K   微水修正参数T-B"
+            unittypedict.Add(189, 6);	//H2峰顶点可能位置--H2峰顶范围起点--H2峰顶范围结束点/H2峰顶宽度"
+            unittypedict.Add(190, 7);	//H2左梯度YMin--H2左梯度XMax--H2右梯度YMin--H2右梯度XMax
+            unittypedict.Add(191, 11);	//H2 K1值--H2 K1柱修正系数--H2 K1脱气率修正系数--H2 K1最小面积--H2 K1最大面积--H2 K1离线/在线计算偏差基值"
+            unittypedict.Add(192, 11);	//H2 K2值--H2 K2柱修正系数--H2 K2脱气率修正系数--H2 K2最小面积--H2 K2最大面积--H2 K2离线/在线计算偏差基值"
+            unittypedict.Add(193, 11);	//H2 K3值--H2 K3柱修正系数--H2 K3脱气率修正系数--H2 K3最小面积--H2 K3最大面积--H2 K3离线/在线计算偏差基值"
+            unittypedict.Add(194, 11);	//H2 K4值--H2 K4柱修正系数--H2 K4脱气率修正系数--H2 K4最小面积--H2 K4最大面积--H2 K4离线/在线计算偏差基值"
+            unittypedict.Add(195, 11);	//H2 K5值--H2 K5柱修正系数--H2 K5脱气率修正系数--H2 K5最小面积--H2 K5最大面积--H2 K5离线/在线计算偏差基值"
+            unittypedict.Add(196, 11);	//H2 K6值--H2 K6柱修正系数--H2 K6脱气率修正系数--H2 K6最小面积--H2 K6最大面积--H2 K6离线/在线计算偏差基值"
+            unittypedict.Add(197, 11);	//H2 K7值--H2 K7柱修正系数--H2 K7脱气率修正系数--H2 K7最小面积--H2 K7最大面积--H2 K7离线/在线计算偏差基值"
+            unittypedict.Add(198, 11);	//H2 K8值--H2 K8柱修正系数--H2 K8脱气率修正系数--H2 K8最小面积--H2 K8最大面积--H2 K8离线/在线计算偏差基值"
+            unittypedict.Add(199, 11);	//H2 K9值--H2 K9柱修正系数--H2 K9脱气率修正系数--H2 K9最小面积--H2 K9最大面积--H2 K9离线/在线计算偏差基值"
+            unittypedict.Add(200, 11);	//H2 K10值--H2 K10柱修正系数--H2 K10脱气率修正系数--H2 K10最小面积--H2 K10最大面积--H2 K10离线/在线计算偏差基值"
+            unittypedict.Add(201, 11);	//H2 K11值--H2 K11柱修正系数--H2 K11脱气率修正系数--H2 K11最小面积--H2 K11最大面积--H2 K11离线/在线计算偏差基值"
+            unittypedict.Add(202, 11);	//H2 K12值--H2 K12柱修正系数--H2 K12脱气率修正系数--H2 K12最小面积--H2 K12最大面积--H2 K12离线/在线计算偏差基值"
+            unittypedict.Add(204, 6);	//CO峰顶点可能位置--CO峰顶范围起点--CO峰顶范围结束点--CO峰顶宽度"
+            unittypedict.Add(205, 7);	//CO左梯度YMin--CO左梯度XMax--CO右梯度YMin--CO右梯度XMax"
+            unittypedict.Add(206, 11);	//CO K1值--CO K1柱修正系数--CO K1脱气率修正系数--CO K1最小面积--CO K1最大面积--CO K1离线/在线计算偏差基值"
+            unittypedict.Add(207, 11);	//CO K2值--CO K2柱修正系数--CO K2脱气率修正系数--CO K2最小面积--CO K2最大面积--CO K2离线/在线计算偏差基值"
+            unittypedict.Add(208, 11);	//CO K3值--CO K3柱修正系数--CO K3脱气率修正系数--CO K3最小面积--CO K3最大面积--CO K3离线/在线计算偏差基值"
+            unittypedict.Add(209, 11);	//CO K4值--CO K4柱修正系数--CO K4脱气率修正系数--CO K4最小面积--CO K4最大面积--CO K4离线/在线计算偏差基值"
+            unittypedict.Add(210, 11);	//CO K5值--CO K5柱修正系数--CO K5脱气率修正系数--CO K5最小面积--CO K5最大面积--CO K5离线/在线计算偏差基值"
+            unittypedict.Add(211, 11);	//CO K6值--CO K6柱修正系数--CO K6脱气率修正系数--CO K6最小面积--CO K6最大面积--CO K6离线/在线计算偏差基值"
+            unittypedict.Add(212, 11);	//CO K7值--CO K7柱修正系数--CO K7脱气率修正系数--CO K7最小面积--CO K7最大面积--CO K7离线/在线计算偏差基值"
+            unittypedict.Add(213, 11);	//CO K8值--CO K8柱修正系数--CO K8脱气率修正系数--CO K8最小面积--CO K8最大面积--CO K8离线/在线计算偏差基值"
+            unittypedict.Add(214, 11);	//CO K9值--CO K9柱修正系数--CO K9脱气率修正系数--CO K9最小面积--CO K9最大面积--CO K9离线/在线计算偏差基值"
+            unittypedict.Add(215, 11);	//CO K10值--CO K10柱修正系数--CO K10脱气率修正系数--CO K10最小面积--CO K10最大面积--CO K10离线/在线计算偏差基值"
+            unittypedict.Add(216, 11);	//CO K11值--CO K11柱修正系数--CO K11脱气率修正系数--CO K11最小面积--CO K11最大面积--CO K11离线/在线计算偏差基值"
+            unittypedict.Add(217, 11);	//CO K12值--CO K12柱修正系数--CO K12脱气率修正系数--CO K12最小面积--CO K12最大面积--CO K12离线/在线计算偏差基值"
+            unittypedict.Add(219, 6);	//CH4峰顶点可能位置--CH4峰顶范围起点--CH4峰顶范围结束点--CH4峰顶宽度
+            unittypedict.Add(220, 7);	//CH4左梯度YMin--CH4左梯度XMax--CH4右梯度YMin--CH4右梯度XMax
+            unittypedict.Add(221, 11);	//CH4 K1值--CH4 K1柱修正系数--CH4 K1脱气率修正系数--CH4 K1最小面积--CH4 K1最大面积--CH4 K1离线/在线计算偏差基值"
+            unittypedict.Add(222, 11);	//CH4 K2值--CH4 K2柱修正系数--CH4 K2脱气率修正系数--CH4 K2最小面积--CH4 K2最大面积--CH4 K2离线/在线计算偏差基值"
+            unittypedict.Add(223, 11);	//CH4 K3值--CH4 K3柱修正系数--CH4 K3脱气率修正系数--CH4 K3最小面积--CH4 K3最大面积--CH4 K3离线/在线计算偏差基值"
+            unittypedict.Add(224, 11);	//CH4 K4值--CH4 K4柱修正系数--CH4 K4脱气率修正系数--CH4 K4最小面积--CH4 K4最大面积--CH4 K4离线/在线计算偏差基值"
+            unittypedict.Add(225, 11);	//CH4 K5值--CH4 K5柱修正系数--CH4 K5脱气率修正系数--CH4 K5最小面积--CH4 K5最大面积--CH4 K5离线/在线计算偏差基值"
+            unittypedict.Add(226, 11);	//CH4 K6值--CH4 K6柱修正系数--CH4 K6脱气率修正系数--CH4 K6最小面积--CH4 K6最大面积--CH4 K6离线/在线计算偏差基值"
+            unittypedict.Add(227, 11);	//CH4 K7值--CH4 K7柱修正系数--CH4 K7脱气率修正系数--CH4 K7最小面积--CH4 K7最大面积--CH4 K7离线/在线计算偏差基值"
+            unittypedict.Add(228, 11);	//CH4 K8值--CH4 K8柱修正系数--CH4 K8脱气率修正系数--CH4 K8最小面积--CH4 K8最大面积--CH4 K8离线/在线计算偏差基值"
+            unittypedict.Add(229, 11);	//CH4 K9值--CH4 K9柱修正系数--CH4 K9脱气率修正系数--CH4 K9最小面积--CH4 K9最大面积--CH4 K9离线/在线计算偏差基值"
+            unittypedict.Add(230, 11);	//CH4 K10值--CH4 K10柱修正系数--CH4 K10脱气率修正系数--CH4 K10最小面积--CH4 K10最大面积--CH4 K10离线/在线计算偏差基值"
+            unittypedict.Add(231, 11);	//CH4 K11值--CH4 K11柱修正系数--CH4 K11脱气率修正系数--CH4 K11最小面积--CH4 K11最大面积--CH4 K11离线/在线计算偏差基值
+            unittypedict.Add(232, 11);	//CH4 K12值--CH4 K12柱修正系数--CH4 K12脱气率修正系数--CH4 K12最小面积--CH4 K12最大面积--CH4 K12离线/在线计算偏差基值"
+            unittypedict.Add(234, 6);	//C2H2峰顶点可能位置--C2H2峰顶范围起点--C2H2峰顶范围结束点--C2H2峰顶宽度"
+            unittypedict.Add(235, 7);	//C2H2左梯度YMin--C2H2左梯度XMax--C2H2右梯度YMin--C2H2右梯度XMax"
+            unittypedict.Add(236, 11);	//C2H2 K1值--C2H2 K1柱修正系数--C2H2 K1脱气率修正系数--C2H2 K1最小面积--C2H2 K1最大面积--C2H2 K1离线/在线计算偏差基值"
+            unittypedict.Add(237, 11);	//C2H2 K2值--C2H2 K2柱修正系数--C2H2 K2脱气率修正系数--C2H2 K2最小面积--C2H2 K2最大面积--C2H2 K2离线/在线计算偏差基值"
+            unittypedict.Add(238, 11);	//C2H2 K3值--C2H2 K3柱修正系数--C2H2 K3脱气率修正系数--C2H2 K3最小面积--C2H2 K3最大面积--C2H2 K3离线/在线计算偏差基值"
+            unittypedict.Add(239, 11);	//C2H2 K4值--C2H2 K4柱修正系数--C2H2 K4脱气率修正系数--C2H2 K4最小面积--C2H2 K4最大面积--C2H2 K4离线/在线计算偏差基值"
+            unittypedict.Add(240, 11);	//C2H2 K5值--C2H2 K5柱修正系数--C2H2 K5脱气率修正系数--C2H2 K5最小面积--C2H2 K5最大面积--C2H2 K5离线/在线计算偏差基值"-
+            unittypedict.Add(241, 11);	//C2H2 K6值--C2H2 K6柱修正系数--C2H2 K6脱气率修正系数--C2H2 K6最小面积--C2H2 K6最大面积--C2H2 K6离线/在线计算偏差基值"
+            unittypedict.Add(242, 11);	//C2H2 K7值--C2H2 K7柱修正系数--C2H2 K7脱气率修正系数--C2H2 K7最小面积--C2H2 K7最大面积--C2H2 K7离线/在线计算偏差基值"
+            unittypedict.Add(243, 11);	//C2H2 K8值--C2H2 K8柱修正系数--C2H2 K8脱气率修正系数--C2H2 K8最小面积--C2H2 K8最大面积--C2H2 K8离线/在线计算偏差基值"
+            unittypedict.Add(244, 11);	//C2H2 K9值--C2H2 K9柱修正系数--C2H2 K9脱气率修正系数--C2H2 K9最小面积--C2H2 K9最大面积--C2H2 K9离线/在线计算偏差基值"
+            unittypedict.Add(245, 11);	//C2H2 K10值--C2H2 K10柱修正系数--C2H2 K10脱气率修正系数--C2H2 K10最小面积--C2H2 K10最大面积--C2H2 K10离线/在线计算偏差基值"
+            unittypedict.Add(246, 11);	//C2H2 K11值--C2H2 K11柱修正系数--C2H2 K11脱气率修正系数--C2H2 K11最小面积--C2H2 K11最大面积--C2H2 K11离线/在线计算偏差基值"
+            unittypedict.Add(247, 11);	//C2H2 K12值--C2H2 K12柱修正系数--C2H2 K12脱气率修正系数--C2H2 K12最小面积--C2H2 K12最大面积--C2H2 K12离线/在线计算偏差基值"
+            unittypedict.Add(249, 6);	//C2H4峰顶点可能位置--C2H4峰顶范围起点--C2H4峰顶范围结束点--C2H4峰顶宽度"
+            unittypedict.Add(250, 7);	//C2H4左梯度YMin--C2H4左梯度XMax--C2H4右梯度YMin--C2H4右梯度XMax"
+            unittypedict.Add(251, 11);	//C2H4 K1值--C2H4 K1柱修正系数--C2H4 K1脱气率修正系数--C2H4 K1最小面积--C2H4 K1最大面积--C2H4 K1离线/在线计算偏差基值"
+            unittypedict.Add(252, 11);	//C2H4 K2值--C2H4 K2柱修正系数--C2H4 K2脱气率修正系数--C2H4 K2最小面积--C2H4 K2最大面积--C2H4 K2离线/在线计算偏差基值"
+            unittypedict.Add(253, 11);	//C2H4 K3值--C2H4 K3柱修正系数--C2H4 K3脱气率修正系数--C2H4 K3最小面积--C2H4 K3最大面积--C2H4 K3离线/在线计算偏差基值"
+            unittypedict.Add(254, 11);	//C2H4 K4值--C2H4 K4柱修正系数--C2H4 K4脱气率修正系数--C2H4 K4最小面积--C2H4 K4最大面积--C2H4 K4离线/在线计算偏差基值"
+            unittypedict.Add(255, 11);	//C2H4 K5值--C2H4 K5柱修正系数--C2H4 K5脱气率修正系数--C2H4 K5最小面积--C2H4 K5最大面积--C2H4 K5离线/在线计算偏差基值"
+            unittypedict.Add(256, 11);	//C2H4 K6值--C2H4 K6柱修正系数--C2H4 K6脱气率修正系数--C2H4 K6最小面积--C2H4 K6最大面积--C2H4 K6离线/在线计算偏差基值"
+            unittypedict.Add(257, 11);	//C2H4 K7值--C2H4 K7柱修正系数--C2H4 K7脱气率修正系数--C2H4 K7最小面积--C2H4 K7最大面积--C2H4 K7离线/在线计算偏差基值"
+            unittypedict.Add(258, 11);	//C2H4 K8值--C2H4 K8柱修正系数--C2H4 K8脱气率修正系数--C2H4 K8最小面积--C2H4 K8最大面积--C2H4 K8离线/在线计算偏差基值"
+            unittypedict.Add(259, 11);	//C2H4 K9值--C2H4 K9柱修正系数--C2H4 K9脱气率修正系数--C2H4 K9最小面积--C2H4 K9最大面积--C2H4 K9离线/在线计算偏差基值"
+            unittypedict.Add(260, 11);	//C2H4 K10值--C2H4 K10柱修正系数--C2H4 K10脱气率修正系数--C2H4 K10最小面积--C2H4 K10最大面积--C2H4 K10离线/在线计算偏差基值"
+            unittypedict.Add(261, 11);	//C2H4 K11值--C2H4 K11柱修正系数--C2H4 K11脱气率修正系数--C2H4 K11最小面积--C2H4 K11最大面积--C2H4 K11离线/在线计算偏差基值"
+            unittypedict.Add(262, 11);	//C2H4 K12值--C2H4 K12柱修正系数--C2H4 K12脱气率修正系数--C2H4 K12最小面积--C2H4 K12最大面积--C2H4 K12离线/在线计算偏差基值"
+            unittypedict.Add(264, 6);	//C2H6峰顶点可能位置--C2H6峰顶范围起点--C2H6峰顶范围结束点--C2H6峰顶宽度"
+            unittypedict.Add(265, 7);	//C2H6左梯度YMin--C2H6左梯度XMax--C2H6右梯度YMin--C2H6右梯度XMax"
+            unittypedict.Add(266, 11);	//C2H6 K1值--C2H6 K1柱修正系数--C2H6 K1脱气率修正系数--C2H6 K1最小面积--C2H6 K1最大面积--C2H6 K1离线/在线计算偏差基值"
+            unittypedict.Add(267, 11);	//C2H6 K2值--C2H6 K2柱修正系数--C2H6 K2脱气率修正系数--C2H6 K2最小面积--C2H6 K2最大面积--C2H6 K2离线/在线计算偏差基值"
+            unittypedict.Add(268, 11);	//C2H6 K3值--C2H6 K3柱修正系数--C2H6 K3脱气率修正系数--C2H6 K3最小面积--C2H6 K3最大面积--C2H6 K3离线/在线计算偏差基值"
+            unittypedict.Add(269, 11);	//C2H6 K4值--C2H6 K4柱修正系数--C2H6 K4脱气率修正系数--C2H6 K4最小面积--C2H6 K4最大面积--C2H6 K4离线/在线计算偏差基值"
+            unittypedict.Add(270, 11);	//C2H6 K5值--C2H6 K5柱修正系数--C2H6 K5脱气率修正系数--C2H6 K5最小面积--C2H6 K5最大面积--C2H6 K5离线/在线计算偏差基值"
+            unittypedict.Add(271, 11);	//C2H6 K6值--C2H6 K6柱修正系数--C2H6 K6脱气率修正系数--C2H6 K6最小面积--C2H6 K6最大面积--C2H6 K6离线/在线计算偏差基值"
+            unittypedict.Add(272, 11);	//C2H6 K7值--C2H6 K7柱修正系数--C2H6 K7脱气率修正系数--C2H6 K7最小面积--C2H6 K7最大面积--C2H6 K7离线/在线计算偏差基值"
+            unittypedict.Add(273, 11);	//C2H6 K8值--C2H6 K8柱修正系数--C2H6 K8脱气率修正系数--C2H6 K8最小面积--C2H6 K8最大面积--C2H6 K8离线/在线计算偏差基值"
+            unittypedict.Add(274, 11);	//C2H6 K9值--C2H6 K9柱修正系数--C2H6 K9脱气率修正系数--C2H6 K9最小面积--C2H6 K9最大面积--C2H6 K9离线/在线计算偏差基值"
+            unittypedict.Add(275, 11);	//C2H6 K10值--C2H6 K10柱修正系数--C2H6 K10脱气率修正系数--C2H6 K10最小面积--C2H6 K10最大面积--C2H6 K10离线/在线计算偏差基值"
+            unittypedict.Add(276, 11);	//C2H6 K11值--C2H6 K11柱修正系数--C2H6 K11脱气率修正系数--C2H6 K11最小面积--C2H6 K11最大面积--C2H6 K11离线/在线计算偏差基值"
+            unittypedict.Add(277, 11);	//C2H6 K12值--C2H6 K12柱修正系数--C2H6 K12脱气率修正系数--C2H6 K12最小面积--C2H6 K12最大面积--C2H6 K12离线/在线计算偏差基值"
+            unittypedict.Add(279, 5);	//色谱图剔除区间起点色谱图剔除区间结束点"
+            unittypedict.Add(281, 6);	//CO2峰顶点可能位置--CO2峰顶范围起点--CO2峰顶范围结束点--CO2峰顶宽度"
+            unittypedict.Add(282, 7);	//CO2左梯度YMin--CO2左梯度XMax--CO2右梯度YMin--CO2右梯度XMax"
+            unittypedict.Add(283, 11);	//CO2 K值--CO2 K柱修正系数--CO2 K脱气率修正系数--CO2 K最小面积--CO2 K最大面积"
+            //分析及报警
+            unittypedict.Add(286, 0);	//自动阀值告警开启或关闭
+            unittypedict.Add(287, 0);	//自动诊断开启或设置
+            unittypedict.Add(288, 1);	//自动告警诊断功能启用的最小日期间隔
+            unittypedict.Add(289, 0);	//报警功能设置
+            unittypedict.Add(291, 2);	//H2气体含量注意值，一级报警
+            unittypedict.Add(292, 2);	//H2气体含量注意值，二级报警
+            unittypedict.Add(293, 2);	//CO气体含量注意值，一级报警
+            unittypedict.Add(294, 2);	//CO气体含量注意值，二级报警
+            unittypedict.Add(295, 2);	//CH4气体含量注意值，一级报警
+            unittypedict.Add(296, 2);	//CH4气体含量注意值，二级报警
+            unittypedict.Add(297, 2);	//C2H4气体含量注意值，一级报警
+            unittypedict.Add(298, 2);	//C2H4气体含量注意值，二级报警
+            unittypedict.Add(299, 2);	//C2H6气体含量注意值，一级报警
+            unittypedict.Add(300, 2);	//C2H6气体含量注意值，二级报警
+            unittypedict.Add(301, 2);	//C2H2气体含量注意值，一级报警
+            unittypedict.Add(302, 2);	//C2H2气体含量注意值，二级报警
+            unittypedict.Add(303, 2);	//CO2气体含量注意值，一级报警
+            unittypedict.Add(304, 2);	//CO2气体含量注意值，二级报警
+            unittypedict.Add(305, 2);	//总烃，一级报警
+            unittypedict.Add(306, 2);	//总烃，二级报警
+            unittypedict.Add(307, 2);	//微水（PPM），一级报警
+            unittypedict.Add(308, 2);	//微水（PPM），二级报警
+            unittypedict.Add(309, 2);	//微水（AW），一级报警
+            unittypedict.Add(310, 2);	//微水（AW），二级报警
+            unittypedict.Add(311, 2);	//微水（T），一级报警
+            unittypedict.Add(312, 2);	//微水（T），二级报警
+            unittypedict.Add(313, 2);	//H2绝对产气速率注意值ul/天，一级报警
+            unittypedict.Add(314, 2);	//H2绝对产气速率注意值ul/天，二级报警
+            unittypedict.Add(315, 2);	//H2相对产气速率注意值%/月，一级报警
+            unittypedict.Add(316, 2);	//H2相对产气速率注意值%/月，二级报警
+            unittypedict.Add(317, 2);	//H2报警门限值触发条件ul/L
+            unittypedict.Add(318, 2);	//H2绝对产气速率触发ul/天
+            unittypedict.Add(319, 2);	//H2相对产气速率触发%/月
+            unittypedict.Add(320, 2);	//CO绝对产气速率注意值ul/天，一级报警
+            unittypedict.Add(321, 2);	//CO绝对产气速率注意值ul/天，二级报警
+            unittypedict.Add(322, 2);	//CO相对产气速率注意值%/月，一级报警
+            unittypedict.Add(323, 2);	//CO相对产气速率注意值%/月，二级报警
+            unittypedict.Add(324, 2);	//CO报警门限值触发条件ul/L
+            unittypedict.Add(325, 2);	//CO绝对产气速率触发ul/天
+            unittypedict.Add(326, 2);	//CO相对产气速率触发%/月
+            unittypedict.Add(327, 2);	//CH4绝对产气速率注意值ul/天，一级报警
+            unittypedict.Add(328, 2);	//CH4绝对产气速率注意值ul/天，二级报警
+            unittypedict.Add(329, 2);	//CH4相对产气速率注意值%/月，一级报警
+            unittypedict.Add(330, 2);	//CH4相对产气速率注意值%/月，二级报警
+            unittypedict.Add(331, 2);	//CH4报警门限值触发条件ul/L
+            unittypedict.Add(332, 2);	//CH4绝对产气速率触发ul/天
+            unittypedict.Add(333, 2);	//CH4相对产气速率触发%/月
+            unittypedict.Add(334, 2);	//C2H2绝对产气速率注意值ul/天，一级报警
+            unittypedict.Add(335, 2);	//C2H2绝对产气速率注意值ul/天，二级报警
+            unittypedict.Add(336, 2);	//C2H2相对产气速率注意值%/月，一级报警
+            unittypedict.Add(337, 2);	//C2H2相对产气速率注意值%/月，二级报警
+            unittypedict.Add(338, 2);	//C2H2报警门限值触发条件ul/L
+            unittypedict.Add(339, 2);	//C2H2绝对产气速率触发ul/天
+            unittypedict.Add(340, 2);	//C2H2相对产气速率触发%/月
+            unittypedict.Add(341, 2);	//C2H4绝对产气速率注意值ul/天，一级报警
+            unittypedict.Add(342, 2);	//C2H4绝对产气速率注意值ul/天，二级报警
+            unittypedict.Add(343, 2);	//C2H4相对产气速率注意值%/月，一级报警
+            unittypedict.Add(344, 2);	//C2H4相对产气速率注意值%/月，二级报警
+            unittypedict.Add(345, 2);	//C2H4报警门限值触发条件ul/L
+            unittypedict.Add(346, 2);	//C2H4绝对产气速率触发ul/天
+            unittypedict.Add(347, 2);	//C2H4相对产气速率触发%/月
+            unittypedict.Add(348, 2);	//C2H6绝对产气速率注意值ul/天，一级报警
+            unittypedict.Add(349, 2);	//C2H6绝对产气速率注意值ul/天，二级报警
+            unittypedict.Add(350, 2);	//C2H6相对产气速率注意值%/月，一级报警
+            unittypedict.Add(351, 2);	//C2H6相对产气速率注意值%/月，二级报警
+            unittypedict.Add(352, 2);	//C2H6报警门限值触发条件ul/L
+            unittypedict.Add(353, 2);	//C2H6绝对产气速率触发ul/天
+            unittypedict.Add(354, 2);	//C2H6相对产气速率触发%/月
+            unittypedict.Add(355, 2);	//CO2绝对产气速率注意值ul/天，一级报警
+            unittypedict.Add(356, 2);	//CO2绝对产气速率注意值ul/天，二级报警
+            unittypedict.Add(357, 2);	//CO2相对产气速率注意值%/月，一级报警
+            unittypedict.Add(358, 2);	//CO2相对产气速率注意值%/月，二级报警
+            unittypedict.Add(359, 2);	//CO2报警门限值触发条件ul/L
+            unittypedict.Add(360, 2);	//CO2绝对产气速率触发ul/天
+            unittypedict.Add(361, 2);	//CO2相对产气速率触发%/月
+            unittypedict.Add(364, 0);	//设备在线查询
+            unittypedict.Add(365, 0);	//设备故障查询
+            #endregion
+
+            #region 操作单元数据长度字典
+            //真空脱气
+            unitlendict.Add(4, 2);	//循环时间查询/设置
+            unitlendict.Add(5, 1);	//抽空次数查询/设置
+            unitlendict.Add(6, 1);	//清洗次数查询/设置
+            unitlendict.Add(7, 1);	//脱气次数查询/设置
+            unitlendict.Add(8, 1);	//置换次数查询/设置
+            unitlendict.Add(9, 2);	//脱气机预计脱气完成时间
+            unitlendict.Add(11, 4);	//（脱气机）真空度压力检测值
+            unitlendict.Add(12, 4);	//（脱气机）气泵气压检测值
+            unitlendict.Add(13, 4);	//（脱气机）油压检测值
+            unitlendict.Add(14, 1);	//（脱气机）油杯液位状态
+            unitlendict.Add(15, 1);	//（脱气机）气杯液位状态
+            unitlendict.Add(16, 1);	//（脱气机）气缸进到位
+            unitlendict.Add(17, 1);	//（脱气机）气缸退到位
+            unitlendict.Add(18, 1);	//（脱气机）油缸进到位
+            unitlendict.Add(19, 1);	//（脱气机）油缸退到位
+            unitlendict.Add(21, 1);	//（脱气机）油泵
+            unitlendict.Add(22, 4);	//（脱气机）油泵转速控制输出
+            unitlendict.Add(23, 1);	//（脱气机）进出油阀
+            unitlendict.Add(24, 1);	//（脱气机）YV10阀
+            unitlendict.Add(25, 1);	//（脱气机）YV11阀
+            unitlendict.Add(26, 1);	//（脱气机）YV12阀
+            unitlendict.Add(27, 1);	//（脱气机）YV14阀
+            unitlendict.Add(28, 1);	//（脱气机）YV15阀
+            unitlendict.Add(29, 1);	//（脱气机）气缸YV4阀
+            unitlendict.Add(30, 1);	//（脱气机）气缸YV5阀
+            unitlendict.Add(31, 1);	//（脱气机）气缸YV6阀
+            unitlendict.Add(32, 1);	//（脱气机）气缸YV7阀
+            unitlendict.Add(33, 1);	//（脱气机）气泵
+            //膜脱气装置
+            unitlendict.Add(36, 2);	//（膜脱气）油泵连续工作时间
+            unitlendict.Add(37, 2);	//（膜脱气）排气阀清洗时间
+            unitlendict.Add(38, 2);	//（膜脱气）气泵清洗时间
+            unitlendict.Add(39, 2);	//（膜脱气）排气阀连续工作时间
+            unitlendict.Add(40, 2);	//（膜脱气）气泵连续工作时间
+            unitlendict.Add(41, 2);	//（膜脱气）排气阀间隔停止时间
+            unitlendict.Add(42, 2);	//（膜脱气）气泵间隔停止时间
+            //顶空脱气装置
+            unitlendict.Add(45, 1);	//（手动）搅拌开关（立即开始）
+            unitlendict.Add(48, 1);	//液位A
+            unitlendict.Add(49, 1);	//液位B
+            unitlendict.Add(50, 4);	//（顶空方式）搅拌缸检测温度
+            unitlendict.Add(51, 2);	//（顶空方式）搅拌开始时刻
+            unitlendict.Add(52, 2);	//（顶空方式）搅拌工作时间
+            unitlendict.Add(53, 2);	//（顶空方式）清洗泵开始工作时刻
+            unitlendict.Add(54, 2);	//（顶空方式）清洗泵工作时间
+            unitlendict.Add(55, 2);	//（顶空方式）置换阀开始工作时刻
+            unitlendict.Add(56, 2);	//（顶空方式）置换阀工作时间
+            //检测辅助控制
+            unitlendict.Add(59, 1);	//（手动）冷井开关
+            unitlendict.Add(60, 1);	//（手动）传感器室制冷
+            unitlendict.Add(62, 4);	//传感器室温度实际采样值
+            unitlendict.Add(63, 4);	//冷井温度实际采样值
+            unitlendict.Add(64, 4);	//色谱柱温度实际采样值
+            unitlendict.Add(66, 2);	//冷井启动开始时刻
+            unitlendict.Add(67, 2);	//冷井连续工作时间
+            unitlendict.Add(68, 4);	//冷井温度设置值
+            unitlendict.Add(69, 4);	//冷井温度设置P值
+            unitlendict.Add(70, 4);	//冷井温度设置I值
+            unitlendict.Add(71, 4);	//冷井温度设置D值
+            unitlendict.Add(72, 4);	//冷井温度控制PID范围
+            unitlendict.Add(73, 4);	//色谱柱温度设置值
+            unitlendict.Add(74, 4);	//色谱柱温度设置P值
+            unitlendict.Add(75, 4);	//色谱柱温度设置I值
+            unitlendict.Add(76, 4);	//色谱柱温度设置D值
+            unitlendict.Add(77, 4);	//色谱柱温度控制PID范围
+            unitlendict.Add(78, 2);	//传感器室制冷开始时刻
+            unitlendict.Add(79, 2);	//传感器室连续工作时间
+            unitlendict.Add(80, 4);	//传感器室温度设置值
+            unitlendict.Add(81, 4);	//传感器室温度设置P值
+            unitlendict.Add(82, 4);	//传感器室温度设置I值
+            unitlendict.Add(83, 4);	//传感器室温度设置D值
+            unitlendict.Add(84, 4);	//传感器室温度设置PID范围
+            //环境及外围控制检测（已编码）
+            unitlendict.Add(87, 4);	//油温检测实际值
+            unitlendict.Add(88, 4);	//柜内温度检测实际值
+            unitlendict.Add(89, 4);	//柜外温度检测实际值
+            unitlendict.Add(90, 4);	//载气发生器气泵压力检测实际值
+            unitlendict.Add(92, 1);	//载气发生器气泵开关
+            unitlendict.Add(93, 1);	//（手动）柜体空调开关
+            unitlendict.Add(94, 1);	//伴热带立即加热
+            unitlendict.Add(95, 1);	//载气发生器排水阀
+            unitlendict.Add(96, 4);	//伴热带实测温度
+            unitlendict.Add(97, 2);	//（电柜）风扇持续工作时间
+            unitlendict.Add(98, 2);	//（电柜）风扇停止时间
+            unitlendict.Add(99, 2);	//柜体空调采样前开启时刻
+            unitlendict.Add(100, 2);	//柜体空调连续工作时间
+            unitlendict.Add(101, 2);	//伴热带采样前开始时刻
+            unitlendict.Add(102, 2);	//伴热带采样前工作时间
+            unitlendict.Add(103, 2);	//载气发生器排水阀启动时刻
+            unitlendict.Add(104, 2);	//载气发生器排水阀工作时间
+            //采样控制
+            unitlendict.Add(107, 2);	//采样前吹扫阀工作时间
+            unitlendict.Add(108, 2);	//定量阀工作时间
+            unitlendict.Add(109, 2);	//定量阀打开后，吹扫阀延迟打开的时间
+            unitlendict.Add(110, 2);	//采样结束吹扫阀工作时间
+            unitlendict.Add(111, 2);	//六组分传感器恢复阀采样前开始时刻
+            unitlendict.Add(112, 2);	//六组分传感器恢复阀采样前工作时间
+            unitlendict.Add(113, 2);	//六组分传感器恢复阀采样后开始时刻
+            unitlendict.Add(114, 2);	//六组分传感器恢复阀采样后工作时间
+            unitlendict.Add(115, 2);	//微水传感器延时开始加热时刻
+            unitlendict.Add(116, 2);	//微水传感器采样开始时间
+            unitlendict.Add(117, 2);	//微水传感器采样间隔
+            unitlendict.Add(118, 2);	//微水传感器AW的采样点数
+            unitlendict.Add(119, 2);	//微水传感器T的采样点数
+            unitlendict.Add(120, 2);	//六组分传感器加热开始时刻
+            unitlendict.Add(121, 2);	//六组分传感器加热工作时间
+            unitlendict.Add(122, 2);	//采样结束六组分传感器加热工作时间
+            unitlendict.Add(123, 2);	//六组分采样间隔,
+            unitlendict.Add(124, 2);	//六组分采样点数
+            unitlendict.Add(125, 2);	//CO2传感器加热开始时刻
+            unitlendict.Add(126, 2);	//CO2传感器工作时间
+            unitlendict.Add(127, 2);	//CO2采样间隔
+            unitlendict.Add(128, 2);	//CO2采样点数
+            unitlendict.Add(129, 2);	//CO2气路切换开始时刻(以6组气体开始采样为准)
+            unitlendict.Add(130, 2);	//CO2气路工作时间
+            unitlendict.Add(131, 1);	//标定次数
+            unitlendict.Add(133, 1);	//标定（立即启动）
+            unitlendict.Add(134, 1);	//采样（立即启动）／采样手动立即启动
+            unitlendict.Add(135, 4);	//下次采样时间
+            unitlendict.Add(136, 2);	//采样间隔
+            unitlendict.Add(138, 1);	//六组分传感器手动立即启动
+            unitlendict.Add(139, 1);	//微水传感器加热手动立即启动
+            unitlendict.Add(140, 1);	//微水传感器手动立即启动
+            unitlendict.Add(141, 1);	//定量阀手动立即启动
+            unitlendict.Add(142, 1);	//吹扫阀手动立即启动
+            unitlendict.Add(143, 1);	//CO2切换阀手动立即启动
+            unitlendict.Add(144, 1);	//吹气阀手动立即启动
+            unitlendict.Add(145, 4);	//载气压力检测实际值
+            //系统设置
+            unitlendict.Add(148, 80);	//变电站名
+            unitlendict.Add(149, 16);	// 软件版本
+            unitlendict.Add(150, 1);	//（方式选择）支持CO2
+            unitlendict.Add(151, 1);	//（方式选择）支持微水
+            unitlendict.Add(152, 1);	//（方式选择）脱气方式
+            unitlendict.Add(154, 8);	//系统时间
+            unitlendict.Add(155, 1);	//油色谱设备号
+            unitlendict.Add(156, 1);	//设备状态（手动/自动方式）
+            unitlendict.Add(157, 1);	//当前工作流程
+            //unitlendict.Add(158, 6);	//指向上位机1 IP    指向上位机1 端口号
+            //unitlendict.Add(159, 5);	//串口1波特率   串口1数据位    串口1停止位    串口1奇偶校验
+            //unitlendict.Add(160, 14);	//网卡1 IP  网卡1 端口号    网卡1 子网掩码    网卡1 网关
+            //unitlendict.Add(161, 6);	//指向上位机2 IP    指向上位机2 端口号
+            //unitlendict.Add(162, 5);	//串口2波特率  串口2数据位   串口2停止位   串口2奇偶校验"
+            //unitlendict.Add(163, 14);	//网卡2 IP  网卡2 端口号  网卡2 子网掩码  网卡2 网关"
+            //数据
+            unitlendict.Add(166, 4);	//H2ppm
+            unitlendict.Add(167, 4);	//COppm
+            unitlendict.Add(168, 4);	//CH4ppm
+            unitlendict.Add(169, 4);	//CO2ppm
+            unitlendict.Add(170, 4);	//C2H2ppm
+            unitlendict.Add(171, 4);	//C2H4ppm
+            unitlendict.Add(172, 4);	//C2H6ppm
+            unitlendict.Add(173, 4);	//WtrAct
+            unitlendict.Add(174, 4);	//Tmp
+            unitlendict.Add(175, 4);	//Mst
+            unitlendict.Add(176, 4);	//TotHyd
+            unitlendict.Add(177, 4);	//GasPres
+            //计算参数
+            unitlendict.Add(180, 4);	//（变压器参数）油密度
+            unitlendict.Add(181, 4);	//（变压器参数）油重（T）
+            unitlendict.Add(182, 4);	//电压等级
+            unitlendict.Add(183, 8);	//油品系数A油品系数B"
+            unitlendict.Add(184, 4);	//海拔高度
+            unitlendict.Add(186, 12);	//微水修正参数AW-A 微水修正参数AW-K 微水修正参数AW-B"
+            unitlendict.Add(187, 12);	//微水修正参数T-A 微水修正参数T-K   微水修正参数T-B"
+            unitlendict.Add(189, 8);	//H2峰顶点可能位置--H2峰顶范围起点--H2峰顶范围结束点/H2峰顶宽度"
+            unitlendict.Add(190, 8);	//H2左梯度YMin--H2左梯度XMax--H2右梯度YMin--H2右梯度XMax
+            unitlendict.Add(191, 20);	//H2 K1值--H2 K1柱修正系数--H2 K1脱气率修正系数--H2 K1最小面积--H2 K1最大面积--H2 K1离线/在线计算偏差基值"
+            unitlendict.Add(192, 20);	//H2 K2值--H2 K2柱修正系数--H2 K2脱气率修正系数--H2 K2最小面积--H2 K2最大面积--H2 K2离线/在线计算偏差基值"
+            unitlendict.Add(193, 20);	//H2 K3值--H2 K3柱修正系数--H2 K3脱气率修正系数--H2 K3最小面积--H2 K3最大面积--H2 K3离线/在线计算偏差基值"
+            unitlendict.Add(194, 20);	//H2 K4值--H2 K4柱修正系数--H2 K4脱气率修正系数--H2 K4最小面积--H2 K4最大面积--H2 K4离线/在线计算偏差基值"
+            unitlendict.Add(195, 20);	//H2 K5值--H2 K5柱修正系数--H2 K5脱气率修正系数--H2 K5最小面积--H2 K5最大面积--H2 K5离线/在线计算偏差基值"
+            unitlendict.Add(196, 20);	//H2 K6值--H2 K6柱修正系数--H2 K6脱气率修正系数--H2 K6最小面积--H2 K6最大面积--H2 K6离线/在线计算偏差基值"
+            unitlendict.Add(197, 20);	//H2 K7值--H2 K7柱修正系数--H2 K7脱气率修正系数--H2 K7最小面积--H2 K7最大面积--H2 K7离线/在线计算偏差基值"
+            unitlendict.Add(198, 20);	//H2 K8值--H2 K8柱修正系数--H2 K8脱气率修正系数--H2 K8最小面积--H2 K8最大面积--H2 K8离线/在线计算偏差基值"
+            unitlendict.Add(199, 20);	//H2 K9值--H2 K9柱修正系数--H2 K9脱气率修正系数--H2 K9最小面积--H2 K9最大面积--H2 K9离线/在线计算偏差基值"
+            unitlendict.Add(200, 20);	//H2 K10值--H2 K10柱修正系数--H2 K10脱气率修正系数--H2 K10最小面积--H2 K10最大面积--H2 K10离线/在线计算偏差基值"
+            unitlendict.Add(201, 20);	//H2 K11值--H2 K11柱修正系数--H2 K11脱气率修正系数--H2 K11最小面积--H2 K11最大面积--H2 K11离线/在线计算偏差基值"
+            unitlendict.Add(202, 20);	//H2 K12值--H2 K12柱修正系数--H2 K12脱气率修正系数--H2 K12最小面积--H2 K12最大面积--H2 K12离线/在线计算偏差基值"
+            unitlendict.Add(204, 8);	//CO峰顶点可能位置--CO峰顶范围起点--CO峰顶范围结束点--CO峰顶宽度"
+            unitlendict.Add(205, 8);	//CO左梯度YMin--CO左梯度XMax--CO右梯度YMin--CO右梯度XMax"
+            unitlendict.Add(206, 20);	//CO K1值--CO K1柱修正系数--CO K1脱气率修正系数--CO K1最小面积--CO K1最大面积--CO K1离线/在线计算偏差基值"
+            unitlendict.Add(207, 20);	//CO K2值--CO K2柱修正系数--CO K2脱气率修正系数--CO K2最小面积--CO K2最大面积--CO K2离线/在线计算偏差基值"
+            unitlendict.Add(208, 20);	//CO K3值--CO K3柱修正系数--CO K3脱气率修正系数--CO K3最小面积--CO K3最大面积--CO K3离线/在线计算偏差基值"
+            unitlendict.Add(209, 20);	//CO K4值--CO K4柱修正系数--CO K4脱气率修正系数--CO K4最小面积--CO K4最大面积--CO K4离线/在线计算偏差基值"
+            unitlendict.Add(210, 20);	//CO K5值--CO K5柱修正系数--CO K5脱气率修正系数--CO K5最小面积--CO K5最大面积--CO K5离线/在线计算偏差基值"
+            unitlendict.Add(211, 20);	//CO K6值--CO K6柱修正系数--CO K6脱气率修正系数--CO K6最小面积--CO K6最大面积--CO K6离线/在线计算偏差基值"
+            unitlendict.Add(212, 20);	//CO K7值--CO K7柱修正系数--CO K7脱气率修正系数--CO K7最小面积--CO K7最大面积--CO K7离线/在线计算偏差基值"
+            unitlendict.Add(213, 20);	//CO K8值--CO K8柱修正系数--CO K8脱气率修正系数--CO K8最小面积--CO K8最大面积--CO K8离线/在线计算偏差基值"
+            unitlendict.Add(214, 20);	//CO K9值--CO K9柱修正系数--CO K9脱气率修正系数--CO K9最小面积--CO K9最大面积--CO K9离线/在线计算偏差基值"
+            unitlendict.Add(215, 20);	//CO K10值--CO K10柱修正系数--CO K10脱气率修正系数--CO K10最小面积--CO K10最大面积--CO K10离线/在线计算偏差基值"
+            unitlendict.Add(216, 20);	//CO K11值--CO K11柱修正系数--CO K11脱气率修正系数--CO K11最小面积--CO K11最大面积--CO K11离线/在线计算偏差基值"
+            unitlendict.Add(217, 20);	//CO K12值--CO K12柱修正系数--CO K12脱气率修正系数--CO K12最小面积--CO K12最大面积--CO K12离线/在线计算偏差基值"
+            unitlendict.Add(219, 8);	//CH4峰顶点可能位置--CH4峰顶范围起点--CH4峰顶范围结束点--CH4峰顶宽度
+            unitlendict.Add(220, 8);	//CH4左梯度YMin--CH4左梯度XMax--CH4右梯度YMin--CH4右梯度XMax
+            unitlendict.Add(221, 20);	//CH4 K1值--CH4 K1柱修正系数--CH4 K1脱气率修正系数--CH4 K1最小面积--CH4 K1最大面积--CH4 K1离线/在线计算偏差基值"
+            unitlendict.Add(222, 20);	//CH4 K2值--CH4 K2柱修正系数--CH4 K2脱气率修正系数--CH4 K2最小面积--CH4 K2最大面积--CH4 K2离线/在线计算偏差基值"
+            unitlendict.Add(223, 20);	//CH4 K3值--CH4 K3柱修正系数--CH4 K3脱气率修正系数--CH4 K3最小面积--CH4 K3最大面积--CH4 K3离线/在线计算偏差基值"
+            unitlendict.Add(224, 20);	//CH4 K4值--CH4 K4柱修正系数--CH4 K4脱气率修正系数--CH4 K4最小面积--CH4 K4最大面积--CH4 K4离线/在线计算偏差基值"
+            unitlendict.Add(225, 20);	//CH4 K5值--CH4 K5柱修正系数--CH4 K5脱气率修正系数--CH4 K5最小面积--CH4 K5最大面积--CH4 K5离线/在线计算偏差基值"
+            unitlendict.Add(226, 20);	//CH4 K6值--CH4 K6柱修正系数--CH4 K6脱气率修正系数--CH4 K6最小面积--CH4 K6最大面积--CH4 K6离线/在线计算偏差基值"
+            unitlendict.Add(227, 20);	//CH4 K7值--CH4 K7柱修正系数--CH4 K7脱气率修正系数--CH4 K7最小面积--CH4 K7最大面积--CH4 K7离线/在线计算偏差基值"
+            unitlendict.Add(228, 20);	//CH4 K8值--CH4 K8柱修正系数--CH4 K8脱气率修正系数--CH4 K8最小面积--CH4 K8最大面积--CH4 K8离线/在线计算偏差基值"
+            unitlendict.Add(229, 20);	//CH4 K9值--CH4 K9柱修正系数--CH4 K9脱气率修正系数--CH4 K9最小面积--CH4 K9最大面积--CH4 K9离线/在线计算偏差基值"
+            unitlendict.Add(230, 20);	//CH4 K10值--CH4 K10柱修正系数--CH4 K10脱气率修正系数--CH4 K10最小面积--CH4 K10最大面积--CH4 K10离线/在线计算偏差基值"
+            unitlendict.Add(231, 20);	//CH4 K11值--CH4 K11柱修正系数--CH4 K11脱气率修正系数--CH4 K11最小面积--CH4 K11最大面积--CH4 K11离线/在线计算偏差基值
+            unitlendict.Add(232, 20);	//CH4 K12值--CH4 K12柱修正系数--CH4 K12脱气率修正系数--CH4 K12最小面积--CH4 K12最大面积--CH4 K12离线/在线计算偏差基值"
+            unitlendict.Add(234, 8);	//C2H2峰顶点可能位置--C2H2峰顶范围起点--C2H2峰顶范围结束点--C2H2峰顶宽度"
+            unitlendict.Add(235, 8);	//C2H2左梯度YMin--C2H2左梯度XMax--C2H2右梯度YMin--C2H2右梯度XMax"
+            unitlendict.Add(236, 20);	//C2H2 K1值--C2H2 K1柱修正系数--C2H2 K1脱气率修正系数--C2H2 K1最小面积--C2H2 K1最大面积--C2H2 K1离线/在线计算偏差基值"
+            unitlendict.Add(237, 20);	//C2H2 K2值--C2H2 K2柱修正系数--C2H2 K2脱气率修正系数--C2H2 K2最小面积--C2H2 K2最大面积--C2H2 K2离线/在线计算偏差基值"
+            unitlendict.Add(238, 20);	//C2H2 K3值--C2H2 K3柱修正系数--C2H2 K3脱气率修正系数--C2H2 K3最小面积--C2H2 K3最大面积--C2H2 K3离线/在线计算偏差基值"
+            unitlendict.Add(239, 20);	//C2H2 K4值--C2H2 K4柱修正系数--C2H2 K4脱气率修正系数--C2H2 K4最小面积--C2H2 K4最大面积--C2H2 K4离线/在线计算偏差基值"
+            unitlendict.Add(240, 20);	//C2H2 K5值--C2H2 K5柱修正系数--C2H2 K5脱气率修正系数--C2H2 K5最小面积--C2H2 K5最大面积--C2H2 K5离线/在线计算偏差基值"-
+            unitlendict.Add(241, 20);	//C2H2 K6值--C2H2 K6柱修正系数--C2H2 K6脱气率修正系数--C2H2 K6最小面积--C2H2 K6最大面积--C2H2 K6离线/在线计算偏差基值"
+            unitlendict.Add(242, 20);	//C2H2 K7值--C2H2 K7柱修正系数--C2H2 K7脱气率修正系数--C2H2 K7最小面积--C2H2 K7最大面积--C2H2 K7离线/在线计算偏差基值"
+            unitlendict.Add(243, 20);	//C2H2 K8值--C2H2 K8柱修正系数--C2H2 K8脱气率修正系数--C2H2 K8最小面积--C2H2 K8最大面积--C2H2 K8离线/在线计算偏差基值"
+            unitlendict.Add(244, 20);	//C2H2 K9值--C2H2 K9柱修正系数--C2H2 K9脱气率修正系数--C2H2 K9最小面积--C2H2 K9最大面积--C2H2 K9离线/在线计算偏差基值"
+            unitlendict.Add(245, 20);	//C2H2 K10值--C2H2 K10柱修正系数--C2H2 K10脱气率修正系数--C2H2 K10最小面积--C2H2 K10最大面积--C2H2 K10离线/在线计算偏差基值"
+            unitlendict.Add(246, 20);	//C2H2 K11值--C2H2 K11柱修正系数--C2H2 K11脱气率修正系数--C2H2 K11最小面积--C2H2 K11最大面积--C2H2 K11离线/在线计算偏差基值"
+            unitlendict.Add(247, 20);	//C2H2 K12值--C2H2 K12柱修正系数--C2H2 K12脱气率修正系数--C2H2 K12最小面积--C2H2 K12最大面积--C2H2 K12离线/在线计算偏差基值"
+            unitlendict.Add(249, 8);	//C2H4峰顶点可能位置--C2H4峰顶范围起点--C2H4峰顶范围结束点--C2H4峰顶宽度"
+            unitlendict.Add(250, 8);	//C2H4左梯度YMin--C2H4左梯度XMax--C2H4右梯度YMin--C2H4右梯度XMax"
+            unitlendict.Add(251, 20);	//C2H4 K1值--C2H4 K1柱修正系数--C2H4 K1脱气率修正系数--C2H4 K1最小面积--C2H4 K1最大面积--C2H4 K1离线/在线计算偏差基值"
+            unitlendict.Add(252, 20);	//C2H4 K2值--C2H4 K2柱修正系数--C2H4 K2脱气率修正系数--C2H4 K2最小面积--C2H4 K2最大面积--C2H4 K2离线/在线计算偏差基值"
+            unitlendict.Add(253, 20);	//C2H4 K3值--C2H4 K3柱修正系数--C2H4 K3脱气率修正系数--C2H4 K3最小面积--C2H4 K3最大面积--C2H4 K3离线/在线计算偏差基值"
+            unitlendict.Add(254, 20);	//C2H4 K4值--C2H4 K4柱修正系数--C2H4 K4脱气率修正系数--C2H4 K4最小面积--C2H4 K4最大面积--C2H4 K4离线/在线计算偏差基值"
+            unitlendict.Add(255, 20);	//C2H4 K5值--C2H4 K5柱修正系数--C2H4 K5脱气率修正系数--C2H4 K5最小面积--C2H4 K5最大面积--C2H4 K5离线/在线计算偏差基值"
+            unitlendict.Add(256, 20);	//C2H4 K6值--C2H4 K6柱修正系数--C2H4 K6脱气率修正系数--C2H4 K6最小面积--C2H4 K6最大面积--C2H4 K6离线/在线计算偏差基值"
+            unitlendict.Add(257, 20);	//C2H4 K7值--C2H4 K7柱修正系数--C2H4 K7脱气率修正系数--C2H4 K7最小面积--C2H4 K7最大面积--C2H4 K7离线/在线计算偏差基值"
+            unitlendict.Add(258, 20);	//C2H4 K8值--C2H4 K8柱修正系数--C2H4 K8脱气率修正系数--C2H4 K8最小面积--C2H4 K8最大面积--C2H4 K8离线/在线计算偏差基值"
+            unitlendict.Add(259, 20);	//C2H4 K9值--C2H4 K9柱修正系数--C2H4 K9脱气率修正系数--C2H4 K9最小面积--C2H4 K9最大面积--C2H4 K9离线/在线计算偏差基值"
+            unitlendict.Add(260, 20);	//C2H4 K10值--C2H4 K10柱修正系数--C2H4 K10脱气率修正系数--C2H4 K10最小面积--C2H4 K10最大面积--C2H4 K10离线/在线计算偏差基值"
+            unitlendict.Add(261, 20);	//C2H4 K11值--C2H4 K11柱修正系数--C2H4 K11脱气率修正系数--C2H4 K11最小面积--C2H4 K11最大面积--C2H4 K11离线/在线计算偏差基值"
+            unitlendict.Add(262, 20);	//C2H4 K12值--C2H4 K12柱修正系数--C2H4 K12脱气率修正系数--C2H4 K12最小面积--C2H4 K12最大面积--C2H4 K12离线/在线计算偏差基值"
+            unitlendict.Add(264, 8);	//C2H6峰顶点可能位置--C2H6峰顶范围起点--C2H6峰顶范围结束点--C2H6峰顶宽度"
+            unitlendict.Add(265, 8);	//C2H6左梯度YMin--C2H6左梯度XMax--C2H6右梯度YMin--C2H6右梯度XMax"
+            unitlendict.Add(266, 20);	//C2H6 K1值--C2H6 K1柱修正系数--C2H6 K1脱气率修正系数--C2H6 K1最小面积--C2H6 K1最大面积--C2H6 K1离线/在线计算偏差基值"
+            unitlendict.Add(267, 20);	//C2H6 K2值--C2H6 K2柱修正系数--C2H6 K2脱气率修正系数--C2H6 K2最小面积--C2H6 K2最大面积--C2H6 K2离线/在线计算偏差基值"
+            unitlendict.Add(268, 20);	//C2H6 K3值--C2H6 K3柱修正系数--C2H6 K3脱气率修正系数--C2H6 K3最小面积--C2H6 K3最大面积--C2H6 K3离线/在线计算偏差基值"
+            unitlendict.Add(269, 20);	//C2H6 K4值--C2H6 K4柱修正系数--C2H6 K4脱气率修正系数--C2H6 K4最小面积--C2H6 K4最大面积--C2H6 K4离线/在线计算偏差基值"
+            unitlendict.Add(270, 20);	//C2H6 K5值--C2H6 K5柱修正系数--C2H6 K5脱气率修正系数--C2H6 K5最小面积--C2H6 K5最大面积--C2H6 K5离线/在线计算偏差基值"
+            unitlendict.Add(271, 20);	//C2H6 K6值--C2H6 K6柱修正系数--C2H6 K6脱气率修正系数--C2H6 K6最小面积--C2H6 K6最大面积--C2H6 K6离线/在线计算偏差基值"
+            unitlendict.Add(272, 20);	//C2H6 K7值--C2H6 K7柱修正系数--C2H6 K7脱气率修正系数--C2H6 K7最小面积--C2H6 K7最大面积--C2H6 K7离线/在线计算偏差基值"
+            unitlendict.Add(273, 20);	//C2H6 K8值--C2H6 K8柱修正系数--C2H6 K8脱气率修正系数--C2H6 K8最小面积--C2H6 K8最大面积--C2H6 K8离线/在线计算偏差基值"
+            unitlendict.Add(274, 20);	//C2H6 K9值--C2H6 K9柱修正系数--C2H6 K9脱气率修正系数--C2H6 K9最小面积--C2H6 K9最大面积--C2H6 K9离线/在线计算偏差基值"
+            unitlendict.Add(275, 20);	//C2H6 K10值--C2H6 K10柱修正系数--C2H6 K10脱气率修正系数--C2H6 K10最小面积--C2H6 K10最大面积--C2H6 K10离线/在线计算偏差基值"
+            unitlendict.Add(276, 20);	//C2H6 K11值--C2H6 K11柱修正系数--C2H6 K11脱气率修正系数--C2H6 K11最小面积--C2H6 K11最大面积--C2H6 K11离线/在线计算偏差基值"
+            unitlendict.Add(277, 20);	//C2H6 K12值--C2H6 K12柱修正系数--C2H6 K12脱气率修正系数--C2H6 K12最小面积--C2H6 K12最大面积--C2H6 K12离线/在线计算偏差基值"
+            unitlendict.Add(279, 4);	//色谱图剔除区间起点色谱图剔除区间结束点"
+            unitlendict.Add(281, 8);	//CO2峰顶点可能位置--CO2峰顶范围起点--CO2峰顶范围结束点--CO2峰顶宽度"
+            unitlendict.Add(282, 8);	//CO2左梯度YMin--CO2左梯度XMax--CO2右梯度YMin--CO2右梯度XMax"
+            unitlendict.Add(283, 20);	//CO2 K值--CO2 K柱修正系数--CO2 K脱气率修正系数--CO2 K最小面积--CO2 K最大面积"
+            //分析及报警
+            unitlendict.Add(286, 1);	//自动阀值告警开启或关闭
+            unitlendict.Add(287, 1);	//自动诊断开启或设置
+            unitlendict.Add(288, 2);	//自动告警诊断功能启用的最小日期间隔
+            unitlendict.Add(289, 1);	//报警功能设置
+            unitlendict.Add(291, 4);	//H2气体含量注意值，一级报警
+            unitlendict.Add(292, 4);	//H2气体含量注意值，二级报警
+            unitlendict.Add(293, 4);	//CO气体含量注意值，一级报警
+            unitlendict.Add(294, 4);	//CO气体含量注意值，二级报警
+            unitlendict.Add(295, 4);	//CH4气体含量注意值，一级报警
+            unitlendict.Add(296, 4);	//CH4气体含量注意值，二级报警
+            unitlendict.Add(297, 4);	//C2H4气体含量注意值，一级报警
+            unitlendict.Add(298, 4);	//C2H4气体含量注意值，二级报警
+            unitlendict.Add(299, 4);	//C2H6气体含量注意值，一级报警
+            unitlendict.Add(300, 4);	//C2H6气体含量注意值，二级报警
+            unitlendict.Add(301, 4);	//C2H2气体含量注意值，一级报警
+            unitlendict.Add(302, 4);	//C2H2气体含量注意值，二级报警
+            unitlendict.Add(303, 4);	//CO2气体含量注意值，一级报警
+            unitlendict.Add(304, 4);	//CO2气体含量注意值，二级报警
+            unitlendict.Add(305, 4);	//总烃，一级报警
+            unitlendict.Add(306, 4);	//总烃，二级报警
+            unitlendict.Add(307, 4);	//微水（PPM），一级报警
+            unitlendict.Add(308, 4);	//微水（PPM），二级报警
+            unitlendict.Add(309, 4);	//微水（AW），一级报警
+            unitlendict.Add(310, 4);	//微水（AW），二级报警
+            unitlendict.Add(311, 4);	//微水（T），一级报警
+            unitlendict.Add(312, 4);	//微水（T），二级报警
+            unitlendict.Add(313, 4);	//H2绝对产气速率注意值ul/天，一级报警
+            unitlendict.Add(314, 4);	//H2绝对产气速率注意值ul/天，二级报警
+            unitlendict.Add(315, 4);	//H2相对产气速率注意值%/月，一级报警
+            unitlendict.Add(316, 4);	//H2相对产气速率注意值%/月，二级报警
+            unitlendict.Add(317, 4);	//H2报警门限值触发条件ul/L
+            unitlendict.Add(318, 4);	//H2绝对产气速率触发ul/天
+            unitlendict.Add(319, 4);	//H2相对产气速率触发%/月
+            unitlendict.Add(320, 4);	//CO绝对产气速率注意值ul/天，一级报警
+            unitlendict.Add(321, 4);	//CO绝对产气速率注意值ul/天，二级报警
+            unitlendict.Add(322, 4);	//CO相对产气速率注意值%/月，一级报警
+            unitlendict.Add(323, 4);	//CO相对产气速率注意值%/月，二级报警
+            unitlendict.Add(324, 4);	//CO报警门限值触发条件ul/L
+            unitlendict.Add(325, 4);	//CO绝对产气速率触发ul/天
+            unitlendict.Add(326, 4);	//CO相对产气速率触发%/月
+            unitlendict.Add(327, 4);	//CH4绝对产气速率注意值ul/天，一级报警
+            unitlendict.Add(328, 4);	//CH4绝对产气速率注意值ul/天，二级报警
+            unitlendict.Add(329, 4);	//CH4相对产气速率注意值%/月，一级报警
+            unitlendict.Add(330, 4);	//CH4相对产气速率注意值%/月，二级报警
+            unitlendict.Add(331, 4);	//CH4报警门限值触发条件ul/L
+            unitlendict.Add(332, 4);	//CH4绝对产气速率触发ul/天
+            unitlendict.Add(333, 4);	//CH4相对产气速率触发%/月
+            unitlendict.Add(334, 4);	//C2H2绝对产气速率注意值ul/天，一级报警
+            unitlendict.Add(335, 4);	//C2H2绝对产气速率注意值ul/天，二级报警
+            unitlendict.Add(336, 4);	//C2H2相对产气速率注意值%/月，一级报警
+            unitlendict.Add(337, 4);	//C2H2相对产气速率注意值%/月，二级报警
+            unitlendict.Add(338, 4);	//C2H2报警门限值触发条件ul/L
+            unitlendict.Add(339, 4);	//C2H2绝对产气速率触发ul/天
+            unitlendict.Add(340, 4);	//C2H2相对产气速率触发%/月
+            unitlendict.Add(341, 4);	//C2H4绝对产气速率注意值ul/天，一级报警
+            unitlendict.Add(342, 4);	//C2H4绝对产气速率注意值ul/天，二级报警
+            unitlendict.Add(343, 4);	//C2H4相对产气速率注意值%/月，一级报警
+            unitlendict.Add(344, 4);	//C2H4相对产气速率注意值%/月，二级报警
+            unitlendict.Add(345, 4);	//C2H4报警门限值触发条件ul/L
+            unitlendict.Add(346, 4);	//C2H4绝对产气速率触发ul/天
+            unitlendict.Add(347, 4);	//C2H4相对产气速率触发%/月
+            unitlendict.Add(348, 4);	//C2H6绝对产气速率注意值ul/天，一级报警
+            unitlendict.Add(349, 4);	//C2H6绝对产气速率注意值ul/天，二级报警
+            unitlendict.Add(350, 4);	//C2H6相对产气速率注意值%/月，一级报警
+            unitlendict.Add(351, 4);	//C2H6相对产气速率注意值%/月，二级报警
+            unitlendict.Add(352, 4);	//C2H6报警门限值触发条件ul/L
+            unitlendict.Add(353, 4);	//C2H6绝对产气速率触发ul/天
+            unitlendict.Add(354, 4);	//C2H6相对产气速率触发%/月
+            unitlendict.Add(355, 4);	//CO2绝对产气速率注意值ul/天，一级报警
+            unitlendict.Add(356, 4);	//CO2绝对产气速率注意值ul/天，二级报警
+            unitlendict.Add(357, 4);	//CO2相对产气速率注意值%/月，一级报警
+            unitlendict.Add(358, 4);	//CO2相对产气速率注意值%/月，二级报警
+            unitlendict.Add(359, 4);	//CO2报警门限值触发条件ul/L
+            unitlendict.Add(360, 4);	//CO2绝对产气速率触发ul/天
+            unitlendict.Add(361, 4);	//CO2相对产气速率触发%/月
+            unitlendict.Add(364, 1);	//设备在线查询
+            unitlendict.Add(365, 1);	//设备故障查询
+            #endregion
+        }
+    }
+}
+
+#region 环境及外围控制检测
+    //double OilTemprature;		    //油温	
+    //double Temprature_In;		    //柜内温度
+    //double Temprature_Out;		//柜外温度
+    //float QiBengPres ;  		 	//载气发生器气泵压力检测实际值
+    //char QiBengSwitch ;		 	//载气发生器气泵开关
+    //char AirControlSwitch; 	 	//（手动）柜体空调开关
+    //char BanReDaiStart;		 	//伴热带立即加热
+    //char DrainSwitch;		 	    //载气发生器排水阀
+    //ushort FengShanKeep_Tick; 	//风扇预吹保持时间(以脱气开始时间为准),5*60 [0-65535] (秒)
+    //ushort FengShanLast_Tick ;	//风扇吹尾保持时间(用于换气),5*60	[0-65535]	(秒)？？？？？？？？风扇停止时间？？
+    //ushort AirControlStart ;  	//柜体空调采样前开启时刻
+    //ushort AirControlWork_Tick ;	//柜体空调连续工作时间
+    //ushort BanReDaiStart_T; 		//伴热带采样前开始时刻
+    //ushort BanReDaiWork_Tick; 	//伴热带采样前工作时间
+    //ushort DrainStart;			//载气发生器排水阀启动时刻
+    //ushort DrainWork_Tick;		//载气发生器排水阀工作时间
+#endregion
+
+/*十六进制表示操作单元
             #region   操作单元数据类型字典
             //真空脱气装置
             unittypedict.Add(0x0003, 1);	//循环时间查询/设置
@@ -344,357 +1034,4 @@ namespace IMserver.CommonFuncs
             unittypedict.Add( 0x0167	, 2);	//CO2绝对产气速率触发ul/天
             unittypedict.Add( 0x0168	, 2);	//CO2相对产气速率触发%/月
             #endregion
-
-            #region 操作单元数据长度字典
-            //真空脱气
-            unitlendict.Add(3, 2);	    //循环时间查询/设置
-            unitlendict.Add(4, 1);	    //抽空次数查询/设置
-            unitlendict.Add(5, 1);	    //清洗次数查询/设置
-            unitlendict.Add(6, 1);	    //脱气次数查询/设置
-            unitlendict.Add(7, 1);	    //置换次数查询/设置
-            unitlendict.Add(8, 2);	    //脱气机预计脱气完成时间
-            unitlendict.Add(10, 4);	//（脱气机）真空度压力检测值
-            unitlendict.Add(11, 4);	//（脱气机）气泵气压检测值
-            unitlendict.Add(12, 4);	//（脱气机）油压检测值
-            unitlendict.Add(13, 1);	//（脱气机）油杯液位状态
-            unitlendict.Add(14, 1);	//（脱气机）气杯液位状态
-            unitlendict.Add(15, 1);	//（脱气机）气缸进到位
-            unitlendict.Add(16, 1);	//（脱气机）气缸退到位
-            unitlendict.Add(17, 1);	//（脱气机）油缸进到位
-            unitlendict.Add(18, 1);	//（脱气机）油缸退到位
-            unitlendict.Add(20, 1);	//（脱气机）油泵
-            unitlendict.Add(21, 4);	//（脱气机）油泵转速控制输出
-            unitlendict.Add(22, 1);	//（脱气机）进出油阀
-            unitlendict.Add(23, 1);	//（脱气机）YV10阀
-            unitlendict.Add(24, 1);	//（脱气机）YV11阀
-            unitlendict.Add(25, 1);	//（脱气机）YV12阀
-            unitlendict.Add(26, 1);	//（脱气机）YV14阀
-            unitlendict.Add(27, 1);	//（脱气机）YV15阀
-            unitlendict.Add(28, 1);	//（脱气机）气缸YV4阀
-            unitlendict.Add(29, 1);	//（脱气机）气缸YV5阀
-            unitlendict.Add(30, 1);	//（脱气机）气缸YV6阀
-            unitlendict.Add(31, 1);	//（脱气机）气缸YV7阀
-            unitlendict.Add(32, 1);	//（脱气机）气泵
-            //膜脱气装置
-            unitlendict.Add(35, 2);	//（膜脱气）油泵连续工作时间
-            unitlendict.Add(36, 2);	//（膜脱气）排气阀清洗时间
-            unitlendict.Add(37, 2);	//（膜脱气）气泵清洗时间
-            unitlendict.Add(38, 2);	//（膜脱气）排气阀连续工作时间
-            unitlendict.Add(39, 2);	//（膜脱气）气泵连续工作时间
-            unitlendict.Add(40, 2);	//（膜脱气）排气阀间隔停止时间
-            unitlendict.Add(41, 2);	//（膜脱气）气泵间隔停止时间
-            //顶空脱气装置
-            unitlendict.Add(44, 1);	//（手动）搅拌开关（立即开始）
-            unitlendict.Add(47, 1);	//液位A
-            unitlendict.Add(48, 1);	//液位B
-            unitlendict.Add(49, 4);	//（顶空方式）搅拌缸检测温度
-            unitlendict.Add(50, 2);	//（顶空方式）搅拌开始时刻
-            unitlendict.Add(51, 2);	//（顶空方式）搅拌工作时间
-            unitlendict.Add(52, 2);	//（顶空方式）清洗泵开始工作时刻
-            unitlendict.Add(53, 2);	//（顶空方式）清洗泵工作时间
-            unitlendict.Add(54, 2);	//（顶空方式）置换阀开始工作时刻
-            unitlendict.Add(55, 2);	//（顶空方式）置换阀工作时间
-            //检测辅助控制
-            unitlendict.Add(58, 1);	//（手动）冷井开关
-            unitlendict.Add(59, 1);	//（手动）传感器室制冷
-            unitlendict.Add(61, 4);	//传感器室温度实际采样值
-            unitlendict.Add(62, 4);	//冷井温度实际采样值
-            unitlendict.Add(63, 4);	//色谱柱温度实际采样值
-            unitlendict.Add(65, 2);	//冷井启动开始时刻
-            unitlendict.Add(66, 2);	//冷井连续工作时间
-            unitlendict.Add(67, 4);	//冷井温度设置值
-            unitlendict.Add(68, 4);	//冷井温度设置P值
-            unitlendict.Add(69, 4);	//冷井温度设置I值
-            unitlendict.Add(70, 4);	//冷井温度设置D值
-            unitlendict.Add(71, 4);	//冷井温度控制PID范围
-            unitlendict.Add(72, 4);	//色谱柱温度设置值
-            unitlendict.Add(73, 4);	//色谱柱温度设置P值
-            unitlendict.Add(74, 4);	//色谱柱温度设置I值
-            unitlendict.Add(75, 4);	//色谱柱温度设置D值
-            unitlendict.Add(76, 4);	//色谱柱温度控制PID范围
-            unitlendict.Add(77, 2);	//传感器室制冷开始时刻
-            unitlendict.Add(78, 2);	//传感器室连续工作时间
-            unitlendict.Add(79, 4);	//传感器室温度设置值
-            unitlendict.Add(80, 4);	//传感器室温度设置P值
-            unitlendict.Add(81, 4);	//传感器室温度设置I值
-            unitlendict.Add(82, 4);	//传感器室温度设置D值
-            unitlendict.Add(83, 4);	//传感器室温度设置PID范围
-            //环境及外围控制检测（已编码）
-            unitlendict.Add(86, 4);	//油温检测实际值
-            unitlendict.Add(87, 4);	//柜内温度检测实际值
-            unitlendict.Add(88, 4);	//柜外温度检测实际值
-            unitlendict.Add(89, 4);	//载气发生器气泵压力检测实际值
-            unitlendict.Add(91, 1);	//载气发生器气泵开关
-            unitlendict.Add(92, 1);	//（手动）柜体空调开关
-            unitlendict.Add(93, 1);	//伴热带立即加热
-            unitlendict.Add(94, 1);	//载气发生器排水阀
-            unitlendict.Add(96, 2);	//（电柜）风扇持续工作时间
-            unitlendict.Add(97, 2);	//（电柜）风扇停止时间
-            unitlendict.Add(98, 2);	//柜体空调采样前开启时刻
-            unitlendict.Add(99, 2);	//柜体空调连续工作时间
-            unitlendict.Add(100, 2);	//伴热带采样前开始时刻
-            unitlendict.Add(101, 2);	//伴热带采样前工作时间
-            unitlendict.Add(102, 2);	//载气发生器排水阀启动时刻
-            unitlendict.Add(103, 2);	//载气发生器排水阀工作时间
-            //采样控制
-            unitlendict.Add(106, 2);	//采样前吹扫阀工作时间
-            unitlendict.Add(107, 2);	//定量阀工作时间
-            unitlendict.Add(108, 2);	//定量阀打开后，吹扫阀延迟打开的时间
-            unitlendict.Add(109, 2);	//采样结束吹扫阀工作时间
-            unitlendict.Add(110, 2);	//六组分传感器恢复阀采样前开始时刻
-            unitlendict.Add(111, 2);	//六组分传感器恢复阀采样前工作时间
-            unitlendict.Add(112, 2);	//六组分传感器恢复阀采样后开始时刻
-            unitlendict.Add(113, 2);	//六组分传感器恢复阀采样后工作时间
-            unitlendict.Add(114, 2);	//微水传感器延时开始加热时刻
-            unitlendict.Add(115, 2);	//微水传感器采样开始时间
-            unitlendict.Add(116, 2);	//微水传感器采样间隔
-            unitlendict.Add(117, 2);	//微水传感器AW的采样点数
-            unitlendict.Add(118, 2);	//微水传感器T的采样点数
-            unitlendict.Add(119, 2);	//六组分传感器加热开始时刻
-            unitlendict.Add(120, 2);	//六组分传感器加热工作时间
-            unitlendict.Add(121, 2);	//采样结束六组分传感器加热工作时间
-            unitlendict.Add(122, 2);	//六组分采样间隔,
-            unitlendict.Add(123, 2);	//六组分采样点数
-            unitlendict.Add(124, 2);	//CO2传感器加热开始时刻
-            unitlendict.Add(125, 2);	//CO2传感器工作时间
-            unitlendict.Add(126, 2);	//CO2采样间隔
-            unitlendict.Add(127, 2);	//CO2采样点数
-            unitlendict.Add(128, 2);	//CO2气路切换开始时刻(以6组气体开始采样为准)
-            unitlendict.Add(129, 2);	//CO2气路工作时间
-            unitlendict.Add(130, 1);	//标定次数
-            unitlendict.Add(132, 1);	//标定（立即启动）
-            unitlendict.Add(133, 1);	//采样（立即启动）／采样手动立即启动
-            unitlendict.Add(134, 4);	//下次采样时间
-            unitlendict.Add(135, 2);	//采样间隔
-            unitlendict.Add(137, 1);	//六组分传感器手动立即启动
-            unitlendict.Add(138, 1);	//微水传感器加热手动立即启动
-            unitlendict.Add(139, 1);	//微水传感器手动立即启动
-            unitlendict.Add(140, 1);	//定量阀手动立即启动
-            unitlendict.Add(141, 1);	//吹扫阀手动立即启动
-            unitlendict.Add(142, 1);	//CO2切换阀手动立即启动
-            unitlendict.Add(144, 4);	//载气压力检测实际值
-            //系统设置
-            unitlendict.Add(147, 80);	//变电站名
-            unitlendict.Add(148, 16);	// 软件版本
-            unitlendict.Add(149, 1);	//（方式选择）支持CO2
-            unitlendict.Add(150, 1);	//（方式选择）支持微水
-            unitlendict.Add(151, 1);	//（方式选择）脱气方式
-            unitlendict.Add(153, 8);	//系统时间
-            unitlendict.Add(154, 1);	//油色谱设备号
-            unitlendict.Add(155, 1);	//设备状态（手动/自动方式）
-            //unitlendict.Add(157, 6);	//指向上位机1 IP    指向上位机1 端口号
-            //unitlendict.Add(158, 5);	//串口1波特率   串口1数据位    串口1停止位    串口1奇偶校验
-            //unitlendict.Add(159, 14);	//网卡1 IP  网卡1 端口号    网卡1 子网掩码    网卡1 网关
-            //unitlendict.Add(160, 6);	//指向上位机2 IP    指向上位机2 端口号
-            //unitlendict.Add(161, 5);	//串口2波特率  串口2数据位   串口2停止位   串口2奇偶校验"
-            //unitlendict.Add(162, 14);	//网卡2 IP  网卡2 端口号  网卡2 子网掩码  网卡2 网关"
-            //数据
-            unitlendict.Add(165, 4);	//H2ppm
-            unitlendict.Add(166, 4);	//COppm
-            unitlendict.Add(167, 4);	//CH4ppm
-            unitlendict.Add(168, 4);	//CO2ppm
-            unitlendict.Add(169, 4);	//C2H2ppm
-            unitlendict.Add(170, 4);	//C2H4ppm
-            unitlendict.Add(171, 4);	//C2H6ppm
-            unitlendict.Add(172, 4);	//WtrAct
-            unitlendict.Add(173, 4);	//Tmp
-            unitlendict.Add(174, 4);	//Mst
-            unitlendict.Add(175, 4);	//TotHyd
-            unitlendict.Add(176, 4);	//GasPres
-            //计算参数
-            unitlendict.Add(179, 4);	//（变压器参数）油密度
-            unitlendict.Add(180, 4);	//（变压器参数）油重（T）
-            unitlendict.Add(181, 4);	//电压等级
-            unitlendict.Add(182, 8);	//油品系数A油品系数B"
-            unitlendict.Add(183, 4);	//海拔高度
-            unitlendict.Add(185, 12);	//微水修正参数AW-A 微水修正参数AW-K 微水修正参数AW-B"
-            unitlendict.Add(186, 12);	//微水修正参数T-A 微水修正参数T-K   微水修正参数T-B"
-            unitlendict.Add(188, 8);	//H2峰顶点可能位置--H2峰顶范围起点--H2峰顶范围结束点/H2峰顶宽度"
-            unitlendict.Add(189, 8);	//H2左梯度YMin--H2左梯度XMax--H2右梯度YMin--H2右梯度XMax
-            unitlendict.Add(190, 20);	//H2 K1值--H2 K1柱修正系数--H2 K1脱气率修正系数--H2 K1最小面积--H2 K1最大面积--H2 K1离线/在线计算偏差基值"
-            unitlendict.Add(191, 20);	//H2 K2值--H2 K2柱修正系数--H2 K2脱气率修正系数--H2 K2最小面积--H2 K2最大面积--H2 K2离线/在线计算偏差基值"
-            unitlendict.Add(192, 20);	//H2 K3值--H2 K3柱修正系数--H2 K3脱气率修正系数--H2 K3最小面积--H2 K3最大面积--H2 K3离线/在线计算偏差基值"
-            unitlendict.Add(193, 20);	//H2 K4值--H2 K4柱修正系数--H2 K4脱气率修正系数--H2 K4最小面积--H2 K4最大面积--H2 K4离线/在线计算偏差基值"
-            unitlendict.Add(194, 20);	//H2 K5值--H2 K5柱修正系数--H2 K5脱气率修正系数--H2 K5最小面积--H2 K5最大面积--H2 K5离线/在线计算偏差基值"
-            unitlendict.Add(195, 20);	//H2 K6值--H2 K6柱修正系数--H2 K6脱气率修正系数--H2 K6最小面积--H2 K6最大面积--H2 K6离线/在线计算偏差基值"
-            unitlendict.Add(196, 20);	//H2 K7值--H2 K7柱修正系数--H2 K7脱气率修正系数--H2 K7最小面积--H2 K7最大面积--H2 K7离线/在线计算偏差基值"
-            unitlendict.Add(197, 20);	//H2 K8值--H2 K8柱修正系数--H2 K8脱气率修正系数--H2 K8最小面积--H2 K8最大面积--H2 K8离线/在线计算偏差基值"
-            unitlendict.Add(198, 20);	//H2 K9值--H2 K9柱修正系数--H2 K9脱气率修正系数--H2 K9最小面积--H2 K9最大面积--H2 K9离线/在线计算偏差基值"
-            unitlendict.Add(199, 20);	//H2 K10值--H2 K10柱修正系数--H2 K10脱气率修正系数--H2 K10最小面积--H2 K10最大面积--H2 K10离线/在线计算偏差基值"
-            unitlendict.Add(200, 20);	//H2 K11值--H2 K11柱修正系数--H2 K11脱气率修正系数--H2 K11最小面积--H2 K11最大面积--H2 K11离线/在线计算偏差基值"
-            unitlendict.Add(201, 20);	//H2 K12值--H2 K12柱修正系数--H2 K12脱气率修正系数--H2 K12最小面积--H2 K12最大面积--H2 K12离线/在线计算偏差基值"
-            unitlendict.Add(203, 8);	//CO峰顶点可能位置--CO峰顶范围起点--CO峰顶范围结束点--CO峰顶宽度"
-            unitlendict.Add(204, 8);	//CO左梯度YMin--CO左梯度XMax--CO右梯度YMin--CO右梯度XMax"
-            unitlendict.Add(205, 20);	//CO K1值--CO K1柱修正系数--CO K1脱气率修正系数--CO K1最小面积--CO K1最大面积--CO K1离线/在线计算偏差基值"
-            unitlendict.Add(206, 20);	//CO K2值--CO K2柱修正系数--CO K2脱气率修正系数--CO K2最小面积--CO K2最大面积--CO K2离线/在线计算偏差基值"
-            unitlendict.Add(207, 20);	//CO K3值--CO K3柱修正系数--CO K3脱气率修正系数--CO K3最小面积--CO K3最大面积--CO K3离线/在线计算偏差基值"
-            unitlendict.Add(208, 20);	//CO K4值--CO K4柱修正系数--CO K4脱气率修正系数--CO K4最小面积--CO K4最大面积--CO K4离线/在线计算偏差基值"
-            unitlendict.Add(209, 20);	//CO K5值--CO K5柱修正系数--CO K5脱气率修正系数--CO K5最小面积--CO K5最大面积--CO K5离线/在线计算偏差基值"
-            unitlendict.Add(210, 20);	//CO K6值--CO K6柱修正系数--CO K6脱气率修正系数--CO K6最小面积--CO K6最大面积--CO K6离线/在线计算偏差基值"
-            unitlendict.Add(211, 20);	//CO K7值--CO K7柱修正系数--CO K7脱气率修正系数--CO K7最小面积--CO K7最大面积--CO K7离线/在线计算偏差基值"
-            unitlendict.Add(212, 20);	//CO K8值--CO K8柱修正系数--CO K8脱气率修正系数--CO K8最小面积--CO K8最大面积--CO K8离线/在线计算偏差基值"
-            unitlendict.Add(213, 20);	//CO K9值--CO K9柱修正系数--CO K9脱气率修正系数--CO K9最小面积--CO K9最大面积--CO K9离线/在线计算偏差基值"
-            unitlendict.Add(214, 20);	//CO K10值--CO K10柱修正系数--CO K10脱气率修正系数--CO K10最小面积--CO K10最大面积--CO K10离线/在线计算偏差基值"
-            unitlendict.Add(215, 20);	//CO K11值--CO K11柱修正系数--CO K11脱气率修正系数--CO K11最小面积--CO K11最大面积--CO K11离线/在线计算偏差基值"
-            unitlendict.Add(216, 20);	//CO K12值--CO K12柱修正系数--CO K12脱气率修正系数--CO K12最小面积--CO K12最大面积--CO K12离线/在线计算偏差基值"
-            unitlendict.Add(218, 8);	//CH4峰顶点可能位置--CH4峰顶范围起点--CH4峰顶范围结束点--CH4峰顶宽度
-            unitlendict.Add(219, 8);	//CH4左梯度YMin--CH4左梯度XMax--CH4右梯度YMin--CH4右梯度XMax
-            unitlendict.Add(220, 20);	//CH4 K1值--CH4 K1柱修正系数--CH4 K1脱气率修正系数--CH4 K1最小面积--CH4 K1最大面积--CH4 K1离线/在线计算偏差基值"
-            unitlendict.Add(221, 20);	//CH4 K2值--CH4 K2柱修正系数--CH4 K2脱气率修正系数--CH4 K2最小面积--CH4 K2最大面积--CH4 K2离线/在线计算偏差基值"
-            unitlendict.Add(222, 20);	//CH4 K3值--CH4 K3柱修正系数--CH4 K3脱气率修正系数--CH4 K3最小面积--CH4 K3最大面积--CH4 K3离线/在线计算偏差基值"
-            unitlendict.Add(223, 20);	//CH4 K4值--CH4 K4柱修正系数--CH4 K4脱气率修正系数--CH4 K4最小面积--CH4 K4最大面积--CH4 K4离线/在线计算偏差基值"
-            unitlendict.Add(224, 20);	//CH4 K5值--CH4 K5柱修正系数--CH4 K5脱气率修正系数--CH4 K5最小面积--CH4 K5最大面积--CH4 K5离线/在线计算偏差基值"
-            unitlendict.Add(225, 20);	//CH4 K6值--CH4 K6柱修正系数--CH4 K6脱气率修正系数--CH4 K6最小面积--CH4 K6最大面积--CH4 K6离线/在线计算偏差基值"
-            unitlendict.Add(226, 20);	//CH4 K7值--CH4 K7柱修正系数--CH4 K7脱气率修正系数--CH4 K7最小面积--CH4 K7最大面积--CH4 K7离线/在线计算偏差基值"
-            unitlendict.Add(227, 20);	//CH4 K8值--CH4 K8柱修正系数--CH4 K8脱气率修正系数--CH4 K8最小面积--CH4 K8最大面积--CH4 K8离线/在线计算偏差基值"
-            unitlendict.Add(228, 20);	//CH4 K9值--CH4 K9柱修正系数--CH4 K9脱气率修正系数--CH4 K9最小面积--CH4 K9最大面积--CH4 K9离线/在线计算偏差基值"
-            unitlendict.Add(229, 20);	//CH4 K10值--CH4 K10柱修正系数--CH4 K10脱气率修正系数--CH4 K10最小面积--CH4 K10最大面积--CH4 K10离线/在线计算偏差基值"
-            unitlendict.Add(230, 20);	//CH4 K11值--CH4 K11柱修正系数--CH4 K11脱气率修正系数--CH4 K11最小面积--CH4 K11最大面积--CH4 K11离线/在线计算偏差基值
-            unitlendict.Add(231, 20);	//CH4 K12值--CH4 K12柱修正系数--CH4 K12脱气率修正系数--CH4 K12最小面积--CH4 K12最大面积--CH4 K12离线/在线计算偏差基值"
-            unitlendict.Add(233, 8);	//C2H2峰顶点可能位置--C2H2峰顶范围起点--C2H2峰顶范围结束点--C2H2峰顶宽度"
-            unitlendict.Add(234, 8);	//C2H2左梯度YMin--C2H2左梯度XMax--C2H2右梯度YMin--C2H2右梯度XMax"
-            unitlendict.Add(235, 20);	//C2H2 K1值--C2H2 K1柱修正系数--C2H2 K1脱气率修正系数--C2H2 K1最小面积--C2H2 K1最大面积--C2H2 K1离线/在线计算偏差基值"
-            unitlendict.Add(236, 20);	//C2H2 K2值--C2H2 K2柱修正系数--C2H2 K2脱气率修正系数--C2H2 K2最小面积--C2H2 K2最大面积--C2H2 K2离线/在线计算偏差基值"
-            unitlendict.Add(237, 20);	//C2H2 K3值--C2H2 K3柱修正系数--C2H2 K3脱气率修正系数--C2H2 K3最小面积--C2H2 K3最大面积--C2H2 K3离线/在线计算偏差基值"
-            unitlendict.Add(238, 20);	//C2H2 K4值--C2H2 K4柱修正系数--C2H2 K4脱气率修正系数--C2H2 K4最小面积--C2H2 K4最大面积--C2H2 K4离线/在线计算偏差基值"
-            unitlendict.Add(239, 20);	//C2H2 K5值--C2H2 K5柱修正系数--C2H2 K5脱气率修正系数--C2H2 K5最小面积--C2H2 K5最大面积--C2H2 K5离线/在线计算偏差基值"-
-            unitlendict.Add(240, 20);	//C2H2 K6值--C2H2 K6柱修正系数--C2H2 K6脱气率修正系数--C2H2 K6最小面积--C2H2 K6最大面积--C2H2 K6离线/在线计算偏差基值"
-            unitlendict.Add(241, 20);	//C2H2 K7值--C2H2 K7柱修正系数--C2H2 K7脱气率修正系数--C2H2 K7最小面积--C2H2 K7最大面积--C2H2 K7离线/在线计算偏差基值"
-            unitlendict.Add(242, 20);	//C2H2 K8值--C2H2 K8柱修正系数--C2H2 K8脱气率修正系数--C2H2 K8最小面积--C2H2 K8最大面积--C2H2 K8离线/在线计算偏差基值"
-            unitlendict.Add(243, 20);	//C2H2 K9值--C2H2 K9柱修正系数--C2H2 K9脱气率修正系数--C2H2 K9最小面积--C2H2 K9最大面积--C2H2 K9离线/在线计算偏差基值"
-            unitlendict.Add(244, 20);	//C2H2 K10值--C2H2 K10柱修正系数--C2H2 K10脱气率修正系数--C2H2 K10最小面积--C2H2 K10最大面积--C2H2 K10离线/在线计算偏差基值"
-            unitlendict.Add(245, 20);	//C2H2 K11值--C2H2 K11柱修正系数--C2H2 K11脱气率修正系数--C2H2 K11最小面积--C2H2 K11最大面积--C2H2 K11离线/在线计算偏差基值"
-            unitlendict.Add(246, 20);	//C2H2 K12值--C2H2 K12柱修正系数--C2H2 K12脱气率修正系数--C2H2 K12最小面积--C2H2 K12最大面积--C2H2 K12离线/在线计算偏差基值"
-            unitlendict.Add(248, 8);	//C2H4峰顶点可能位置--C2H4峰顶范围起点--C2H4峰顶范围结束点--C2H4峰顶宽度"
-            unitlendict.Add(249, 8);	//C2H4左梯度YMin--C2H4左梯度XMax--C2H4右梯度YMin--C2H4右梯度XMax"
-            unitlendict.Add(250, 20);	//C2H4 K1值--C2H4 K1柱修正系数--C2H4 K1脱气率修正系数--C2H4 K1最小面积--C2H4 K1最大面积--C2H4 K1离线/在线计算偏差基值"
-            unitlendict.Add(251, 20);	//C2H4 K2值--C2H4 K2柱修正系数--C2H4 K2脱气率修正系数--C2H4 K2最小面积--C2H4 K2最大面积--C2H4 K2离线/在线计算偏差基值"
-            unitlendict.Add(252, 20);	//C2H4 K3值--C2H4 K3柱修正系数--C2H4 K3脱气率修正系数--C2H4 K3最小面积--C2H4 K3最大面积--C2H4 K3离线/在线计算偏差基值"
-            unitlendict.Add(253, 20);	//C2H4 K4值--C2H4 K4柱修正系数--C2H4 K4脱气率修正系数--C2H4 K4最小面积--C2H4 K4最大面积--C2H4 K4离线/在线计算偏差基值"
-            unitlendict.Add(254, 20);	//C2H4 K5值--C2H4 K5柱修正系数--C2H4 K5脱气率修正系数--C2H4 K5最小面积--C2H4 K5最大面积--C2H4 K5离线/在线计算偏差基值"
-            unitlendict.Add(255, 20);	//C2H4 K6值--C2H4 K6柱修正系数--C2H4 K6脱气率修正系数--C2H4 K6最小面积--C2H4 K6最大面积--C2H4 K6离线/在线计算偏差基值"
-            unitlendict.Add(256, 20);	//C2H4 K7值--C2H4 K7柱修正系数--C2H4 K7脱气率修正系数--C2H4 K7最小面积--C2H4 K7最大面积--C2H4 K7离线/在线计算偏差基值"
-            unitlendict.Add(257, 20);	//C2H4 K8值--C2H4 K8柱修正系数--C2H4 K8脱气率修正系数--C2H4 K8最小面积--C2H4 K8最大面积--C2H4 K8离线/在线计算偏差基值"
-            unitlendict.Add(258, 20);	//C2H4 K9值--C2H4 K9柱修正系数--C2H4 K9脱气率修正系数--C2H4 K9最小面积--C2H4 K9最大面积--C2H4 K9离线/在线计算偏差基值"
-            unitlendict.Add(259, 20);	//C2H4 K10值--C2H4 K10柱修正系数--C2H4 K10脱气率修正系数--C2H4 K10最小面积--C2H4 K10最大面积--C2H4 K10离线/在线计算偏差基值"
-            unitlendict.Add(260, 20);	//C2H4 K11值--C2H4 K11柱修正系数--C2H4 K11脱气率修正系数--C2H4 K11最小面积--C2H4 K11最大面积--C2H4 K11离线/在线计算偏差基值"
-            unitlendict.Add(261, 20);	//C2H4 K12值--C2H4 K12柱修正系数--C2H4 K12脱气率修正系数--C2H4 K12最小面积--C2H4 K12最大面积--C2H4 K12离线/在线计算偏差基值"
-            unitlendict.Add(263, 8);	//C2H6峰顶点可能位置--C2H6峰顶范围起点--C2H6峰顶范围结束点--C2H6峰顶宽度"
-            unitlendict.Add(264, 8);	//C2H6左梯度YMin--C2H6左梯度XMax--C2H6右梯度YMin--C2H6右梯度XMax"
-            unitlendict.Add(265, 20);	//C2H6 K1值--C2H6 K1柱修正系数--C2H6 K1脱气率修正系数--C2H6 K1最小面积--C2H6 K1最大面积--C2H6 K1离线/在线计算偏差基值"
-            unitlendict.Add(266, 20);	//C2H6 K2值--C2H6 K2柱修正系数--C2H6 K2脱气率修正系数--C2H6 K2最小面积--C2H6 K2最大面积--C2H6 K2离线/在线计算偏差基值"
-            unitlendict.Add(267, 20);	//C2H6 K3值--C2H6 K3柱修正系数--C2H6 K3脱气率修正系数--C2H6 K3最小面积--C2H6 K3最大面积--C2H6 K3离线/在线计算偏差基值"
-            unitlendict.Add(268, 20);	//C2H6 K4值--C2H6 K4柱修正系数--C2H6 K4脱气率修正系数--C2H6 K4最小面积--C2H6 K4最大面积--C2H6 K4离线/在线计算偏差基值"
-            unitlendict.Add(269, 20);	//C2H6 K5值--C2H6 K5柱修正系数--C2H6 K5脱气率修正系数--C2H6 K5最小面积--C2H6 K5最大面积--C2H6 K5离线/在线计算偏差基值"
-            unitlendict.Add(270, 20);	//C2H6 K6值--C2H6 K6柱修正系数--C2H6 K6脱气率修正系数--C2H6 K6最小面积--C2H6 K6最大面积--C2H6 K6离线/在线计算偏差基值"
-            unitlendict.Add(271, 20);	//C2H6 K7值--C2H6 K7柱修正系数--C2H6 K7脱气率修正系数--C2H6 K7最小面积--C2H6 K7最大面积--C2H6 K7离线/在线计算偏差基值"
-            unitlendict.Add(272, 20);	//C2H6 K8值--C2H6 K8柱修正系数--C2H6 K8脱气率修正系数--C2H6 K8最小面积--C2H6 K8最大面积--C2H6 K8离线/在线计算偏差基值"
-            unitlendict.Add(273, 20);	//C2H6 K9值--C2H6 K9柱修正系数--C2H6 K9脱气率修正系数--C2H6 K9最小面积--C2H6 K9最大面积--C2H6 K9离线/在线计算偏差基值"
-            unitlendict.Add(274, 20);	//C2H6 K10值--C2H6 K10柱修正系数--C2H6 K10脱气率修正系数--C2H6 K10最小面积--C2H6 K10最大面积--C2H6 K10离线/在线计算偏差基值"
-            unitlendict.Add(275, 20);	//C2H6 K11值--C2H6 K11柱修正系数--C2H6 K11脱气率修正系数--C2H6 K11最小面积--C2H6 K11最大面积--C2H6 K11离线/在线计算偏差基值"
-            unitlendict.Add(276, 20);	//C2H6 K12值--C2H6 K12柱修正系数--C2H6 K12脱气率修正系数--C2H6 K12最小面积--C2H6 K12最大面积--C2H6 K12离线/在线计算偏差基值"
-            unitlendict.Add(278, 4);	//色谱图剔除区间起点色谱图剔除区间结束点"
-            unitlendict.Add(280, 8);	//CO2峰顶点可能位置--CO2峰顶范围起点--CO2峰顶范围结束点--CO2峰顶宽度"
-            unitlendict.Add(281, 8);	//CO2左梯度YMin--CO2左梯度XMax--CO2右梯度YMin--CO2右梯度XMax"
-            unitlendict.Add(282, 20);	//CO2 K值--CO2 K柱修正系数--CO2 K脱气率修正系数--CO2 K最小面积--CO2 K最大面积"
-            //分析及报警
-            unitlendict.Add(285, 1);	//自动阀值告警开启或关闭
-            unitlendict.Add(286, 1);	//自动诊断开启或设置
-            unitlendict.Add(287, 2);	//自动告警诊断功能启用的最小日期间隔
-            unitlendict.Add(288, 1);	//报警功能设置
-            unitlendict.Add(290, 4);	//H2气体含量注意值，一级报警
-            unitlendict.Add(291, 4);	//H2气体含量注意值，二级报警
-            unitlendict.Add(292, 4);	//CO气体含量注意值，一级报警
-            unitlendict.Add(293, 4);	//CO气体含量注意值，二级报警
-            unitlendict.Add(294, 4);	//CH4气体含量注意值，一级报警
-            unitlendict.Add(295, 4);	//CH4气体含量注意值，二级报警
-            unitlendict.Add(296, 4);	//C2H4气体含量注意值，一级报警
-            unitlendict.Add(297, 4);	//C2H4气体含量注意值，二级报警
-            unitlendict.Add(298, 4);	//C2H6气体含量注意值，一级报警
-            unitlendict.Add(299, 4);	//C2H6气体含量注意值，二级报警
-            unitlendict.Add(300, 4);	//C2H2气体含量注意值，一级报警
-            unitlendict.Add(301, 4);	//C2H2气体含量注意值，二级报警
-            unitlendict.Add(302, 4);	//CO2气体含量注意值，一级报警
-            unitlendict.Add(303, 4);	//CO2气体含量注意值，二级报警
-            unitlendict.Add(304, 4);	//总烃，一级报警
-            unitlendict.Add(305, 4);	//总烃，二级报警
-            unitlendict.Add(306, 4);	//微水（PPM），一级报警
-            unitlendict.Add(307, 4);	//微水（PPM），二级报警
-            unitlendict.Add(308, 4);	//微水（AW），一级报警
-            unitlendict.Add(309, 4);	//微水（AW），二级报警
-            unitlendict.Add(310, 4);	//微水（T），一级报警
-            unitlendict.Add(311, 4);	//微水（T），二级报警
-            unitlendict.Add(312, 4);	//H2绝对产气速率注意值ul/天，一级报警
-            unitlendict.Add(313, 4);	//H2绝对产气速率注意值ul/天，二级报警
-            unitlendict.Add(314, 4);	//H2相对产气速率注意值%/月，一级报警
-            unitlendict.Add(315, 4);	//H2相对产气速率注意值%/月，二级报警
-            unitlendict.Add(316, 4);	//H2报警门限值触发条件ul/L
-            unitlendict.Add(317, 4);	//H2绝对产气速率触发ul/天
-            unitlendict.Add(318, 4);	//H2相对产气速率触发%/月
-            unitlendict.Add(319, 4);	//CO绝对产气速率注意值ul/天，一级报警
-            unitlendict.Add(320, 4);	//CO绝对产气速率注意值ul/天，二级报警
-            unitlendict.Add(321, 4);	//CO相对产气速率注意值%/月，一级报警
-            unitlendict.Add(322, 4);	//CO相对产气速率注意值%/月，二级报警
-            unitlendict.Add(323, 4);	//CO报警门限值触发条件ul/L
-            unitlendict.Add(324, 4);	//CO绝对产气速率触发ul/天
-            unitlendict.Add(325, 4);	//CO相对产气速率触发%/月
-            unitlendict.Add(326, 4);	//CH4绝对产气速率注意值ul/天，一级报警
-            unitlendict.Add(327, 4);	//CH4绝对产气速率注意值ul/天，二级报警
-            unitlendict.Add(328, 4);	//CH4相对产气速率注意值%/月，一级报警
-            unitlendict.Add(329, 4);	//CH4相对产气速率注意值%/月，二级报警
-            unitlendict.Add(330, 4);	//CH4报警门限值触发条件ul/L
-            unitlendict.Add(331, 4);	//CH4绝对产气速率触发ul/天
-            unitlendict.Add(332, 4);	//CH4相对产气速率触发%/月
-            unitlendict.Add(333, 4);	//C2H2绝对产气速率注意值ul/天，一级报警
-            unitlendict.Add(334, 4);	//C2H2绝对产气速率注意值ul/天，二级报警
-            unitlendict.Add(335, 4);	//C2H2相对产气速率注意值%/月，一级报警
-            unitlendict.Add(336, 4);	//C2H2相对产气速率注意值%/月，二级报警
-            unitlendict.Add(337, 4);	//C2H2报警门限值触发条件ul/L
-            unitlendict.Add(338, 4);	//C2H2绝对产气速率触发ul/天
-            unitlendict.Add(339, 4);	//C2H2相对产气速率触发%/月
-            unitlendict.Add(340, 4);	//C2H4绝对产气速率注意值ul/天，一级报警
-            unitlendict.Add(341, 4);	//C2H4绝对产气速率注意值ul/天，二级报警
-            unitlendict.Add(342, 4);	//C2H4相对产气速率注意值%/月，一级报警
-            unitlendict.Add(343, 4);	//C2H4相对产气速率注意值%/月，二级报警
-            unitlendict.Add(344, 4);	//C2H4报警门限值触发条件ul/L
-            unitlendict.Add(345, 4);	//C2H4绝对产气速率触发ul/天
-            unitlendict.Add(346, 4);	//C2H4相对产气速率触发%/月
-            unitlendict.Add(347, 4);	//C2H6绝对产气速率注意值ul/天，一级报警
-            unitlendict.Add(348, 4);	//C2H6绝对产气速率注意值ul/天，二级报警
-            unitlendict.Add(349, 4);	//C2H6相对产气速率注意值%/月，一级报警
-            unitlendict.Add(350, 4);	//C2H6相对产气速率注意值%/月，二级报警
-            unitlendict.Add(351, 4);	//C2H6报警门限值触发条件ul/L
-            unitlendict.Add(352, 4);	//C2H6绝对产气速率触发ul/天
-            unitlendict.Add(353, 4);	//C2H6相对产气速率触发%/月
-            unitlendict.Add(354, 4);	//CO2绝对产气速率注意值ul/天，一级报警
-            unitlendict.Add(355, 4);	//CO2绝对产气速率注意值ul/天，二级报警
-            unitlendict.Add(356, 4);	//CO2相对产气速率注意值%/月，一级报警
-            unitlendict.Add(357, 4);	//CO2相对产气速率注意值%/月，二级报警
-            unitlendict.Add(358, 4);	//CO2报警门限值触发条件ul/L
-            unitlendict.Add(359, 4);	//CO2绝对产气速率触发ul/天
-            unitlendict.Add(360, 4);	//CO2相对产气速率触发%/月
-            #endregion
-
-            //从数据库读取终端的IP和PORT
-        }
-    }
-}
-
-#region 环境及外围控制检测
-    //double OilTemprature;		    //油温	
-    //double Temprature_In;		    //柜内温度
-    //double Temprature_Out;		//柜外温度
-    //float QiBengPres ;  		 	//载气发生器气泵压力检测实际值
-    //char QiBengSwitch ;		 	//载气发生器气泵开关
-    //char AirControlSwitch; 	 	//（手动）柜体空调开关
-    //char BanReDaiStart;		 	//伴热带立即加热
-    //char DrainSwitch;		 	    //载气发生器排水阀
-    //ushort FengShanKeep_Tick; 	//风扇预吹保持时间(以脱气开始时间为准),5*60 [0-65535] (秒)
-    //ushort FengShanLast_Tick ;	//风扇吹尾保持时间(用于换气),5*60	[0-65535]	(秒)？？？？？？？？风扇停止时间？？
-    //ushort AirControlStart ;  	//柜体空调采样前开启时刻
-    //ushort AirControlWork_Tick ;	//柜体空调连续工作时间
-    //ushort BanReDaiStart_T; 		//伴热带采样前开始时刻
-    //ushort BanReDaiWork_Tick; 	//伴热带采样前工作时间
-    //ushort DrainStart;			//载气发生器排水阀启动时刻
-    //ushort DrainWork_Tick;		//载气发生器排水阀工作时间
-#endregion
+            */
