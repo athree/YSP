@@ -1,4 +1,4 @@
-﻿  <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YSP_De.aspx.cs" Inherits="WebApplication1.DevDebug.YSP_De" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="YSP_De.aspx.cs" Inherits="WebApplication1.DevDebug.YSP_De" %>
 
 <%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
 
@@ -16,9 +16,12 @@
     <script src="../Scripts/My97DatePicker/WdatePicker.js"></script>
     <script src="../Scripts/bootstrap-switch.js"></script>
     <script>
-        
-            function load(){ Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler); }
-            function EndRequestHandler() { getCss(); }
+        var sysSet = new Array(),
+            calParam = new Array(),
+            ctrlParam = new Array(),
+            stateCtrl = new Array();
+            function load(){ Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler); };
+            function EndRequestHandler() { getCss(); };
             function getCss() {
                 //开关的生成
                 $("input[type='checkbox']").bootstrapSwitch();
@@ -28,15 +31,63 @@
                 $(".meny select").width(87).height(21);
                 $(".meny input[type!=submit]").width(87).height(21);
                 $("#kModal input[type='text']").attr("class", "form-control").width(55).height(5);
-            }
+            };
             function showKModal() {
                 setTimeout(function () {
                     $('#kModal').modal('show');
                 }, 1000);
+            };
+            function getCalPara() {
+                $.post("~/DataProcess/ysp.ashx",
+                    { cmd: "getCalPara"},
+                    function (data) {
+                        for (item in data) {
+                            var key=item['Key'];
+                            var val = item['value'];
+                            $("#TB_" + key).val(val);
+                        }
+                                           
+                });
             }
+            function getK(gasName) {
+                $.post("~/DataProcess/ysp.ashx",
+                    { cmd: "getK",gas:gasName },
+                    function (data) {
+                        for (var i = 0; i < data.length; i++) {
+                            var val = data[i].Value;
+                            var j = i + 1;
+                            $("#TB_K" + j).val(val[0]);
+                            $("#TB_MI" + j).val(val[1]);
+                            $("#TB_NI" + j).val(val[2]);
+                            $("#TB_K" + j + "_MinArea").val(val[3]);
+                            $("#TB_K" + j + "_MaxArea").val(val[4]);
+                            $("#TB_JIZHI" + j).val(val[5]);
+                        }
+                    });
+            }
+            function setSys(devid) {
+                $.ajax("~/DataProcess/ysp.ashx",
+                    { cmd: "SetSys", id: devid ,data:sysSet},
+                    function (data) {
+                        switch (data) {
+                            case "Success": {
+                                //////////////////////////////////////
+                                break;
+                            }
+                            case "Fail": {
+
+                                break;
+                            }
+                            case "Exception": {
+
+                            }
+                        }
+                    });
+            }
+          
 
             $(function () {
-                    getCss();
+            getCss();
             //开关的生成
             $("input[type='checkbox']").bootstrapSwitch();
             $("input[type='radio']").bootstrapSwitch("radioAllOff", true);
@@ -136,10 +187,53 @@
                     $("table[title='zktq']").css("display", "none");
                     $("table[title='motq']").css("display", "none");
                     $("table[title='dktq']").css("display", "table");
-                }
+                };    
+            
+
+
             })
 
 
+            $("#sysSet input").change(function () {
+                var Key = $(this).id.substr(3, 3),
+                    Value;
+                if (Key == "183")
+                    Value = [$("#TB_183_1").val(), $("#TB_183_2").val()];
+                else
+                    Value = $(this).val();
+                sysSet.push({ "Key": Key, "Value": Value });
+            });
+
+
+            $("#calParam input").change(function () {
+                var Key = $(this).id.substr(3, 3),
+                    Value;
+                if (Key == "186" || Key == "187")
+                    Value = [$("#TB_" + Key + "_1").val(), $("#TB_" + Key + "_2").val(), $("#TB_" + Key + "_3").val()];
+                if (Key == "279")
+                    Value = [$("#TB_" + Key + "_1").val(), $("#TB_" + Key + "_2").val()];
+                else
+                    Value = [$("#TB_" + Key + "_1").val(), $("#TB_" + Key + "_2").val(), $("#TB_" + Key + "_3").val(), $("#TB_" + Key + "_4").val()];
+                calParam.push({ "Key": Key, "Value": Value });
+            });
+
+
+            $("#ctrlParam input").change(function () {
+                var Key = $(this).id.substr(3),
+                    Value=$(this).val();                
+                ctrlParam.push({ "Key": Key, "Value": Value });
+            });
+
+
+            $("#stateCtrl input").change(function () {
+                var strA = $(this).id.split("_"),
+                    Value;
+                if (strA[0] == "SW")
+                    Value = $(this).ischecked ? 1 : 0;
+                else
+                    Value = $(this).val();
+                ctrlParam.push({ "Key": strA[1], "Value": Value });
+            });
         })
     </script>
 </head>
@@ -321,61 +415,61 @@
 
                                                 <span lang="zh-cn">H2</span></td>
                                             <td>
-                                                <asp:TextBox ID="TextBox1" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_189_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
 
-                                                <asp:TextBox ID="TextBox8" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_189_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox15" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_189_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox36" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_190_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox43" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_190_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox50" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_190_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox57" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_190_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox64" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_189_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <!--<a id="LB_K_CO"></a>-->
-                                                <asp:Button ID="H2K" runat="server" OnClick="H2K_Click" OnClientClick="showKModal()"/>
+                                                <asp:Button ID="H2K" runat="server" OnClick="H2K_Click"/>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td><span lang="zh-cn">CO</span>                    </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox2" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_204_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
 
-                                                <asp:TextBox ID="TextBox9" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_204_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox16" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_204_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox37" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_205_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox44" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_205_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox51" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_205_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox58" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_205_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox65" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_204_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <!--<a id="LB_K_CO0"></a>-->
@@ -384,32 +478,33 @@
                                         </tr>
                                         <tr>
                                             <td><span lang="zh-cn">CH4</span></td>
-                                            <td>
-                                                <asp:TextBox ID="TextBox3" runat="server" Width="50px"></asp:TextBox>
+                                             <td>
+                                                <asp:TextBox ID="TB_219_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
 
-                                                <asp:TextBox ID="TextBox10" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_219_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox17" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_219_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox38" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_220_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox45" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_220_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox52" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_220_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox59" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_220_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox66" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_219_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
+                                           
                                                 <!--<a id="LB_K_CO1"></a>-->
                                                 <asp:Button ID="CH4K" runat="server" OnClick="CH4K_Click"/>
                                             </td>
@@ -417,29 +512,29 @@
                                         <tr>
                                             <td><span lang="zh-cn">C2H2</span></td>
                                             <td>
-                                                <asp:TextBox ID="TextBox4" runat="server" Width="50px"></asp:TextBox>
-                                            </td>
-                                            <td>
 
-                                                <asp:TextBox ID="TextBox11" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_234_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox18" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_234_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox39" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_234_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox46" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_235_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox53" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_235_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox60" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_235_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox67" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_235_4" runat="server" Width="50px"></asp:TextBox>
+                                            </td>
+                                            <td>
+                                                <asp:TextBox ID="TB_234_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <!--<a id="LB_K_CO2"></a>-->
@@ -449,30 +544,31 @@
                                         <tr>
                                             <td><span lang="zh-cn">C2H4</span></td>
                                             <td>
-                                                <asp:TextBox ID="TextBox5" runat="server" Width="50px"></asp:TextBox>
-                                            </td>
-                                            <td>
 
-                                                <asp:TextBox ID="TextBox12" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_249_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox19" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_249_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox40" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_249_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox47" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_250_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox54" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_250_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox61" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_250_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox68" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_250_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
+                                            <td>
+                                                <asp:TextBox ID="TB_249_4" runat="server" Width="50px"></asp:TextBox>
+                                            </td>
+                                            
                                             <td>
                                                 <!--<a id="LB_K_CO3"></a>-->
                                                 <asp:Button ID="C2H4K" runat="server" OnClick="C2H4K_Click"/>
@@ -482,29 +578,29 @@
                                         <tr>
                                             <td><span lang="zh-cn">C2H6</span></td>
                                             <td>
-                                                <asp:TextBox ID="TextBox6" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_264_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
 
-                                                <asp:TextBox ID="TextBox13" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_264_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox20" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_264_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox41" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_265_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox48" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_265_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox55" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_265_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox62" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_265_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox69" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_264_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <!--<a id="LB_K_CO4"></a>-->
@@ -515,29 +611,29 @@
                                         <tr>
                                             <td><span lang="zh-cn">CO2</span></td>
                                             <td>
-                                                <asp:TextBox ID="TextBox14" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_281_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
 
-                                                <asp:TextBox ID="TextBox21" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_281_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox22" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_281_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox42" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_282_1" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox49" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_282_2" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox56" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_282_3" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox63" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_282_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TextBox70" runat="server" Width="50px"></asp:TextBox>
+                                                <asp:TextBox ID="TB_281_4" runat="server" Width="50px"></asp:TextBox>
                                             </td>
                                             <td>
                                                 <!--<a id="LB_K_CO5"></a>-->
@@ -550,12 +646,12 @@
 
                                     <div class="col-md-3"><%=Erase%></div>
                                     <div class="col-md-2">
-                                        <asp:TextBox ID="tb_EraseRangeStart" runat="server" Width="70px"></asp:TextBox>
+                                        <asp:TextBox ID="TB_279_1" runat="server" Width="70px"></asp:TextBox>
                                     </div>
 
                                     <div class="col-md-1"><%=To%> </div>
                                     <div class="col-md-2">
-                                        <asp:TextBox ID="tb_EraseRangeEnd" runat="server" Width="70px"></asp:TextBox>
+                                        <asp:TextBox ID="TB_279_2" runat="server" Width="70px"></asp:TextBox>
                                     </div>
 
 
@@ -574,30 +670,30 @@
                                             <td>
                                                 <span lang="zh-cn">AW</span></td>
                                             <td>
-                                                <asp:TextBox ID="TB_AW_A" runat="server" Width="50px"
+                                                <asp:TextBox ID="TB_186_1" runat="server" Width="50px"
                                                     BackColor="#CCCCCC" Enabled="False" EnableTheming="True">0</asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TB_AW_K" runat="server" Width="50px"
+                                                <asp:TextBox ID="TB_186_2" runat="server" Width="50px"
                                                     BackColor="#CCCCCC" Enabled="False">1</asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TB_AW_B" runat="server" Width="50px">0</asp:TextBox>
+                                                <asp:TextBox ID="TB_186_3" runat="server" Width="50px">0</asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
                                                 <span lang="zh-cn">T</span></td>
                                             <td>
-                                                <asp:TextBox ID="TB_T_A" runat="server" Width="50px"
+                                                <asp:TextBox ID="TB_187_1" runat="server" Width="50px"
                                                     BackColor="#CCCCCC" Enabled="False">0</asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TB_T_K" runat="server" Width="50px"
+                                                <asp:TextBox ID="TB_187_2" runat="server" Width="50px"
                                                     BackColor="#CCCCCC" Enabled="False">1</asp:TextBox>
                                             </td>
                                             <td>
-                                                <asp:TextBox ID="TB_T_B" runat="server" Width="50px">0</asp:TextBox>
+                                                <asp:TextBox ID="TB_187_3" runat="server" Width="50px">0</asp:TextBox>
                                             </td>
                                         </tr>
                                     </table>
@@ -608,7 +704,7 @@
                                     <br />
                                     <div class="col-md-3"></div>
                                     <div class="col-md-3"><a class="btn btn-default">读取</a></div>
-                                    <div class="col-md-3"><a class="btn btn-danger">设置</a></div>
+                                    <div class="col-md-3"><a class="btn btn-danger" id="SetCal">设置</a></div>
 
                                 </div>
 
@@ -1573,7 +1669,7 @@
                     </div>
 
                     <div class="modal-body">
-                        <!-- <table class="table table-stripped table-hover">
+                        <%-- <table class="table table-stripped table-hover">
                             <thead>
                                 <tr>
                                     <th style="width: 70px">
@@ -1873,7 +1969,7 @@
                                     <asp:TextBox ID="TB_T_B" runat="server" Width="50px">0</asp:TextBox>
                                 </td>
                             </tr>
-                        </table>-->
+                        </table>--%>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default"
@@ -1908,7 +2004,7 @@
                             <asp:UpdatePanel ID="UpdatePanelK" runat="server" UpdateMode="Conditional">
                                 <ContentTemplate>
 
-                                    <table style="width: 758px; border-width: 1px; border-color: #cccccc" class="table table-stripped">
+                                    <table style="width: 758px; border-width: 1px; border-color: #cccccc" class="table table-stripped" id="kpara">
                                         <tr>
                                             <td style="width: 40px; height: 36px"></td>
                                             <td style="width: 120px; height: 36px">
